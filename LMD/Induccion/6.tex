@@ -1,0 +1,108 @@
+% Created 2017-10-07 sáb 19:53
+\documentclass[11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\setcounter{secnumdepth}{0}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}{ProposiciÃ³n}
+\newtheorem{lemma}{Lema}
+\newtheorem{corollary}{Corolario}
+\theoremstyle{definition}
+\newtheorem{definition}{DefiniciÃ³n}
+\newtheorem{proofs}{DemostraciÃ³n}
+\theoremstyle{remark}
+\newtheorem*{remark}{Nota}
+\renewcommand*{\proofname}{DemostraciÃ³n}
+\newenvironment{statement}{\noindent\rule[0.5ex]{\linewidth}{1pt}\begin{em}}{\end{em}\newline\noindent\rule[0.5ex]{\linewidth}{1pt}}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\coker}{Coker}
+\DeclareMathOperator{\spec}{Spec}
+\setlength{\parindent}{0pt}
+\newcommand{\twopartdef}[4]{\left\{\begin{array}{ll} #1 & \mbox{if } #2 \\ #3 & \mbox{if } #4 \end{array} \right.}
+\newcommand{\threepartdef}[6]{\left\{\begin{array}{lll} #1 & \mbox{if } #2 \\ #3 & \mbox{if } #4 \\ #5 & \mbox{if } #6 \end{array} \right.}
+\author{Ricardo Ruiz}
+\date{\today}
+\title{Ejercicio 6}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.5.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+
+\section{Proposición}
+\label{sec-1}
+Todo número natural es mayor que 1 y divisible por al menos
+un número primo.
+
+\section{Demostración}
+\label{sec-2}
+
+Sea $G$ un conjunto que te devuelve los múltiplos de $x$,
+siendo primo:
+
+$$
+C(x) = \left\{n: n \geq x \quad \forall x \in P: n \in \left\{f(x, a) \quad \forall a \in \omega \right\} a > 1  \right\}
+$$
+
+
+$P$ es un conjunto de números primos que luego definiremos,
+pero para que tenga sentido: $P=\emptyset$
+
+\subsection{Observación 1}
+\label{sec-2-1}
+
+Todo elemento contenido en $C$ es como mínimo múltiplo del
+primer elemento del conjunto, y, por definición ese primer
+elemento es siempre múltiplo.
+
+Sea A un conjunto definido por inducción tal que
+
+$$
+A(0) = {\emptyset}
+A(1) = C(2)
+A(2) = C(2) \bigcup C(3)
+$$
+y, generalizando
+$$
+A(n) = C(n+1) \cup (n+2)
+$$
+
+Definimos P, el conjunto de los números primos
+
+$$
+P = \left\{x: x > 1 \quad \forall x \in \omega: x \notin A(x-1) \right\}
+$$
+
+Para todo elemento perteneciente a P, su único múltiplo $> 1$,
+será él mismo.
+
+El resto de elementos $N = \omega -P \quad N \subset A$ y
+como $A$ está construido a partir de $C$, se cumple 
+\texttt{observación anterior 1}, luego todo $n \in N$ tiene al menos
+un múltiplo, el primero de $C$ al que pertenezca, que, por
+definición es primo.
+
+Luego todo número natural mayor que 1 es múltiplo al menos
+de un número primo.
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}
