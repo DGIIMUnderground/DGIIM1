@@ -1,0 +1,55 @@
+#+SETUPFILE: ../../setup/config.setup
+#+TITLE: Ejercicio 6
+
+* Proposición
+Todo número natural es mayor que 1 y divisible por al menos
+un número primo.
+
+* Demostración
+
+Sea $G$ un conjunto que te devuelve los múltiplos de $x$,
+siendo primo:
+
+$$
+C(x) = \left\{n: n \geq x \quad \forall x \in P: n \in \left\{f(x, a) \quad \forall a \in \omega \right\} a > 1  \right\}
+$$
+
+
+$P$ es un conjunto de números primos que luego definiremos,
+pero para que tenga sentido: $P=\emptyset$
+
+** Observación 1
+
+Todo elemento contenido en $C$ es como mínimo múltiplo del
+primer elemento del conjunto, y, por definición ese primer
+elemento es siempre múltiplo.
+
+Sea A un conjunto definido por inducción tal que
+
+$$
+A(0) = {\emptyset}
+A(1) = C(2)
+A(2) = C(2) \bigcup C(3)
+$$
+y, generalizando
+$$
+A(n) = C(n+1) \cup (n+2)
+$$
+
+Definimos P, el conjunto de los números primos
+
+$$
+P = \left\{x: x > 1 \quad \forall x \in \omega: x \notin A(x-1) \right\}
+$$
+
+Para todo elemento perteneciente a P, su único múltiplo $> 1$,
+será él mismo.
+
+El resto de elementos $N = \omega -P \quad N \subset A$ y
+como $A$ está construido a partir de $C$, se cumple 
+[[** Observación 1][observación anterior 1]], luego todo $n \in N$ tiene al menos
+un múltiplo, el primero de $C$ al que pertenezca, que, por
+definición es primo.
+lp
+Luego todo número natural mayor que 1 es múltiplo al menos
+de un número primo.
