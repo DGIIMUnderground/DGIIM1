@@ -1,6 +1,5 @@
 #+SETUPFILE: ../setup/config.setup
 #+TITLE: Ejercicio 31
-#+latex_header: \AtBeginDocument{\color{white}}
 
 * Enunciado
 

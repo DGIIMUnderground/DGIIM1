@@ -1,32 +1,32 @@
 #+OPTIONS: toc:nil
 #+LANGUAGE: es
 
-#+latex_header: \setcounter{secnumdepth}{0}
+#+latex_header_extra: \setcounter{secnumdepth}{0}
 
-#+latex_header: \usepackage{amsthm}
-#+latex_header: \usepackage{amsmath}
-#+latex_header: \usepackage{tikz-cd}
+#+latex_header_extra: \usepackage{amsthm}
+#+latex_header_extra: \usepackage{amsmath}
+#+latex_header_extra: \usepackage{tikz-cd}
 
 
-#+latex_header: \theoremstyle{plain}
-#+latex_header: \newtheorem{theorem}{Teorema}
-#+latex_header: \newtheorem{proposition}{Proposición}
-#+latex_header: \newtheorem{lemma}{Lema}
-#+latex_header: \newtheorem{corollary}{Corolario}
+#+latex_header_extra: \theoremstyle{plain}
+#+latex_header_extra: \newtheorem{theorem}{Teorema}
+#+latex_header_extra: \newtheorem{proposition}{Proposición}
+#+latex_header_extra: \newtheorem{lemma}{Lema}
+#+latex_header_extra: \newtheorem{corollary}{Corolario}
 
-#+latex_header: \theoremstyle{definition}
-#+latex_header: \newtheorem{definition}{Definición}
-#+latex_header: \newtheorem{proofs}{Demostración}
+#+latex_header_extra: \theoremstyle{definition}
+#+latex_header_extra: \newtheorem{definition}{Definición}
+#+latex_header_extra: \newtheorem{proofs}{Demostración}
 
-#+latex_header: \theoremstyle{remark}
-#+latex_header: \newtheorem*{remark}{Nota}
+#+latex_header_extra: \theoremstyle{remark}
+#+latex_header_extra: \newtheorem*{remark}{Nota}
 
-#+latex_header: \renewcommand*{\proofname}{Demostración}
+#+latex_header_extra: \renewcommand*{\proofname}{Demostración}
 
-#+latex_header: \newenvironment{statement}{\noindent\rule[0.5ex]{\linewidth}{1pt}\begin{em}}{\end{em}\newline\noindent\rule[0.5ex]{\linewidth}{1pt}}
-#+latex_header: \DeclareMathOperator{\im}{Im}
-#+latex_header: \DeclareMathOperator{\coker}{Coker}
-#+latex_header: \DeclareMathOperator{\spec}{Spec}
-#+latex_header: \setlength{\parindent}{0pt}
-#+latex_header: \newcommand{\twopartdef}[4]{\left\{\begin{array}{ll} #1 & \mbox{if } #2 \\ #3 & \mbox{if } #4 \end{array} \right.}
-#+latex_header: \newcommand{\threepartdef}[6]{\left\{\begin{array}{lll} #1 & \mbox{if } #2 \\ #3 & \mbox{if } #4 \\ #5 & \mbox{if } #6 \end{array} \right.}
+#+latex_header_extra: \newenvironment{statement}{\noindent\rule[0.5ex]{\linewidth}{1pt}\begin{em}}{\end{em}\newline\noindent\rule[0.5ex]{\linewidth}{1pt}}
+#+latex_header_extra: \DeclareMathOperator{\im}{Im}
+#+latex_header_extra: \DeclareMathOperator{\coker}{Coker}
+#+latex_header_extra: \DeclareMathOperator{\spec}{Spec}
+#+latex_header_extra: \setlength{\parindent}{0pt}
+#+latex_header_extra: \newcommand{\twopartdef}[4]{\left\{\begin{array}{ll} #1 & \mbox{if } #2 \\ #3 & \mbox{if } #4 \end{array} \right.}
+#+latex_header_extra: \newcommand{\threepartdef}[6]{\left\{\begin{array}{lll} #1 & \mbox{if } #2 \\ #3 & \mbox{if } #4 \\ #5 & \mbox{if } #6 \end{array} \right.}
