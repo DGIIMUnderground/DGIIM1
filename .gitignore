@@ -1,2 +1,5 @@
 *.ltxpng
 *~
+*.org
+*.tex
+*#
