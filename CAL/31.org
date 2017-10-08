@@ -1,0 +1,35 @@
+#+SETUPFILE: ../setup/config.setup
+#+TITLE: Ejercicio 31
+#+latex_header: \AtBeginDocument{\color{white}}
+
+* Enunciado
+
+Sea \(A = \left\{ 1 + \frac{1}{n}: n \in \mathbb{N} \right\}\). 
+
+* Prueba que \(\inf A = 1\)
+
+Por la observación 1.13.2, si $\alpha = inf A = 1$, entonces
+
+\[
+\forall \varepsilon > 0 \quad \exists x_\varepsilon \in A: \quad  x_\varepsilon < \alpha + \varepsilon
+\]
+
+Por tanto, \(x_\varepsilon < 1 + \varepsilon\), y como
+\(x_\varepsilon \in A\) entonces \(x_\varepsilon = 1 + \frac{1}{n_\varepsilon}\)
+
+Así, se tiene que:
+
+\[
+1 + \frac{1}{n_\varepsilon} < 1 + \varepsilon; \quad 
+\frac{1}{n_\varepsilon} < \varepsilon
+\]
+
+Despejando \(n_\varepsilon\):
+
+\[ \frac{1}{\varepsilon} < n_\varepsilon \]
+
+Y esto es cierto \(\forall \varepsilon \in \mathbb{R}_0^+ \quad \forall n_\varepsilon \in \mathbb{N}\) , ya que según la propiedad arquimediana,
+dado cualquier número real, se verifica que hay números naturales mayores que él.
+
+** ¿Tiene \(A\) mínimo? ¿Y máximo?
+

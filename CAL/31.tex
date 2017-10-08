@@ -1,0 +1,86 @@
+% Created 2017-10-08 dom 11:00
+\documentclass[11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\setcounter{secnumdepth}{0}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}{Proposición}
+\newtheorem{lemma}{Lema}
+\newtheorem{corollary}{Corolario}
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}
+\newtheorem{proofs}{Demostración}
+\theoremstyle{remark}
+\newtheorem*{remark}{Nota}
+\renewcommand*{\proofname}{Demostración}
+\newenvironment{statement}{\noindent\rule[0.5ex]{\linewidth}{1pt}\begin{em}}{\end{em}\newline\noindent\rule[0.5ex]{\linewidth}{1pt}}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\coker}{Coker}
+\DeclareMathOperator{\spec}{Spec}
+\setlength{\parindent}{0pt}
+\newcommand{\twopartdef}[4]{\left\{\begin{array}{ll} #1 & \mbox{if } #2 \\ #3 & \mbox{if } #4 \end{array} \right.}
+\newcommand{\threepartdef}[6]{\left\{\begin{array}{lll} #1 & \mbox{if } #2 \\ #3 & \mbox{if } #4 \\ #5 & \mbox{if } #6 \end{array} \right.}
+\author{Ricardo Ruiz}
+\date{\today}
+\title{Ejercicio 31}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.5.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+
+\section{Enunciado}
+\label{sec-1}
+
+Sea \(A = \left\{ 1 + \frac{1}{n}: n \in \mathbb{N} \right\}\). 
+
+\section{Prueba que \(\inf A = 1\)}
+\label{sec-2}
+
+Por la observación 1.13.2, si $\alpha = inf A = 1$, entonces
+
+\[
+\forall \varepsilon > 0 \quad \exists x_\varepsilon \in A: \quad  x_\varepsilon < \alpha + \varepsilon
+\]
+
+Por tanto, \(x_\varepsilon < 1 + \varepsilon\), y como
+\(x_\varepsilon \in A\) entonces \(x_\varepsilon = 1 + \frac{1}{n_\varepsilon}\)
+
+Así, se tiene que:
+
+\[
+1 + \frac{1}{n_\varepsilon} < 1 + \varepsilon; \quad 
+\frac{1}{n_\varepsilon} < \varepsilon
+\]
+
+Despejando \(n_\varepsilon\):
+
+\[ \frac{1}{\varepsilon} < n_\varepsilon \]
+
+Y esto es cierto \(\forall \varepsilon \in \mathbb{R}_0^+ \quad \forall n_\varepsilon \in \mathbb{N}\) , ya que según la propiedad arquimediana,
+dado cualquier número real, se verifica que hay números naturales mayores que él.
+
+\subsection{¿Tiene \(A\) mínimo? ¿Y máximo?}
+\label{sec-2-1}
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}
