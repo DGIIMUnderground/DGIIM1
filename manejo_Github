@@ -1,0 +1,14 @@
+GITHUB BÁSICO
+Github sobre todo al princio puede resultar un lío, así que he aquí lo básico.
+
+SUBIR UN ARCHIVO
+1.- git pull No queremos borrar el trabajo del resto, así que actualicémsonos
+Modificamos lo que tengamos que modificar
+2.-git add <archivo> si quereremos todo sustituir <archvo> por .
+3.- git commit -a abrirá editor preconfigurado para escribir cambios
+(si somos somo Ric podemos hacer un git commit -am "Título exclarecedor sin aaaaa")
+4.- git pull oringin <rama>  subimos los archivos, por lo general suele ser master
+
+TRABAAR CON RAMAS RAMAS
+git branch 	   para ver ramas y en la nos encontramos
+git checkout <rama> 	para cambiarse a la rama dicha
