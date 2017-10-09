@@ -4,9 +4,9 @@ Github sobre todo al princio puede resultar un lío, así que he aquí lo básic
 
 ## ¿Cómo "subo" mis "cosas"?
 
-0. `git status`
+-  `git status`
 
-El comando 0 es realmente un comando sin orden. Ejécutalo siempre que
+Este comando es realmente un comando sin orden. Ejécutalo siempre que
 quieras información sobre que estás haciendo. La información que da siempre es
 útil aunque no la entiendas porque ¡la mayoría de las respuestas a tus preguntas
 se obtienen copiando y pegando en Google!
@@ -45,31 +45,31 @@ parámetros opcionales.
 
 Por ejemplo:
 
-`git commit`: Llamará a tu editor por defecto para escribir el mensaje de
+- `git commit`: Llamará a tu editor por defecto para escribir el mensaje de
 commit. Deberás escribir en la primera línea, citando a Blanca "un Título
 exclarecedor sin aaaaa". (Recuerda que utilizamos un sistema de gestión de
 versiones que es git para controlar mejor los cambios que vamos realizando).
-
-`git commit -a`: Sera un atajo que realizará `git add .` y `git commit` en el
+ 
+- `git commit -a`: Sera un atajo que realizará `git add .` y `git commit` en el
 mismo comando. Úsalo sólo si sabes que todo lo que puede añadirse al
 repositorio, quieres que sea añadido.
-
-
-`git commit -m "Mensaje del commit"`: Registra el commit con una línea de
+ 
+ 
+- `git commit -m "Mensaje del commit"`: Registra el commit con una línea de
 mensaje (que se correspondería con la primera línea del archivo que se editaría
 con la orden `git commit`.). Recuerda escribir un mensaje de commit adecuado.
 
 Consejos genéricos: 
 
-    - Utiliza `git commit -m `: A no ser que quieras escribir descripciones al
-      estilo Blanca con `git commit`, no suele ser necesario añadir otra cosa
-más que el título (si este está suficientemente claro).
+- Utiliza `git commit -m `: A no ser que quieras escribir descripciones al
+  estilo Blanca con `git commit`, no suele ser necesario añadir otra cosa
+  más que el título (si este está suficientemente claro).
 
-    - Debes intentar que un commit reúna en un mensaje cambios relacionados.
-      Ejemplos de títulos pasables son:
-        "Corregir erratas" "Actualizar ejercicio tal" "Ejercicio x portado a latex". 
+- Debes intentar que un commit reúna en un mensaje cambios relacionados.
+  Ejemplos de títulos pasables son:
+   "Corregir erratas" "Actualizar ejercicio tal" "Ejercicio x portado a latex". 
 
-    - No valen mensajes como: "mejorando cosas" "ejercicios" "bomba nuclear".
+- No valen mensajes como: "mejorando cosas" "ejercicios" "bomba nuclear".
       Los dos primeros por ser ambiguos y el siguiente por absurdo.
 
 4. `git push <remote> <branch-name>` (Normalmente `git push origin master`)
