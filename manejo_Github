@@ -3,4 +3,8 @@ Github sobre todo al princio puede resultar un lío, así que he aquí lo básic
 
 SUBIR UN ARCHIVO
 1.- git pull No queremos borrar el trabajo del resto, así que actualicémsonos
-2.-
+Modificamos lo que tengamos que modificar
+2.-git add <archivo> si quereremos todo sustituir <archvo> por .
+3.- git commit -a abrirá editor preconfigurado para escribir cambios
+(si somos somo Ric podemos hacer un git commit -a -m "Título exclarecedor sin aaaaa")
+4.- git pull oringin <rama>  subimos los archivos, por lo general suele ser master
