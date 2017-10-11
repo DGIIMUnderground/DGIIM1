@@ -15,3 +15,6 @@ Me proponía a hacer unos apuntes de FS cuando caí en lo bonicos que quedaría 
 ### Link
 - Un sitio interesante para aprender sobre Markdown es [manuales github](https://help.github.com/articles/basic-writing-and-formatting-syntax/#links)
 los link tienen la siguiente sintaxis [ <mensaje> ]( <link> )
+
+### Imágenes
+- ![alt](http://gph.is/28VLVxf)
