@@ -1,0 +1,93 @@
+% Created 2017-10-10 mar 23:20
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\setcounter{secnumdepth}{0}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+\author{Ricardo Ruiz}
+\date{\today}
+\title{Ejercicio 1}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.5.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+
+\section{Enunciado}
+\label{sec-1}
+
+Demuestra por el principio de inducción que $P(n)$ se 
+verifica $\forall n \in \mathbb{N}, n \neq 0$
+
+\[
+P(n) = \prod_{k=1}^n \left(1 - \frac{1}{(k+1)^2}\right)
+= \frac{n+2}{2n+1} \quad \quad n > 0
+\]
+
+
+\subsection{Demostración}
+\label{sec-1-1}
+
+\subsubsection{Paso base}
+\label{sec-1-1-1}
+
+\[
+P(1) = \prod_{k=1}^1 \left(1 - \frac{1}{(k+1)^2}\right) 
+= 1 - \frac{1}{(1+1)^2} = 1 - \frac{1}{4} = \frac{3}{4}
+\]
+
+\[
+P(1) = \frac{1+2}{2\cdot1+2} = \frac{3}{4}
+\]
+
+Por lo que $P(1)$ es cierta para $n=1$
+
+\subsubsection{Paso de inducción.}
+\label{sec-1-1-2}
+Supongamos que $1\leq k$ y que $P(k)$ es cierta (Hipótesis de
+Inducción).
+
+Demostremos que de ello se deduce que $P(n+1)$ es cierta
+
+\begin{eqnarray*}
+\prod_{k=1}^{n+1} \left(1 - \frac{1}{(k+1)^2}\right) = 
+\frac{n+1+2}{2(n+1)+1} = \frac{n+3}{2n+2+2} = \frac{n+3}{2n+4}
+\end{eqnarray*}
+
+Así pues:
+
+\begin{align*}
+\prod_{k=1}^{n+1} \left(1 - \frac{1}{(k+1)^2}\right)
+= \left[\prod_{k=1}^n \left(1 - \frac{1}{(k+1)^2}\right)\right]
+\cdot \left(1-\frac{1}{(n+1+1)^2}\right) = \\
+= \frac{n+2}{2n+2} \cdot \frac{(n+2)^2-1}{(n+2)^2}
+= \frac{(n+2)^2-1}{(2n+2)(n+2)}
+= \frac{n^2+4+4n-1}{2n^2+2n+4n+4} = \\
+= \frac{n^2+4n+3}{2n^2+6n+4}
+= \frac{(n+1)(n+3)}{2(n+1)(n+2)}
+= \frac{n+3}{2n+4}
+\end{align*}
+
+
+Por lo que, por el principio de inducción finita, $P(n)$
+es cierta para todo $n>0$
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}
