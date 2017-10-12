@@ -45,7 +45,7 @@ ejecutar los siguientes comandos:
 4. [`git commit [-am '<titulo>']`](#git-commit)
 5. [`git push origin master`](#git-push)
 
-### `git status`
+### git status
 
 Este comando no es necesario ejecutarlo en un momento particular pero, créeme,
 es de gran ayuda. Te aporta información sobre el estado del repositorio. Por ello,
@@ -55,7 +55,7 @@ esa información porque... ¡puedes copiar y pegarla en google!
 Sin embargo, los siguientes comandos deberán realizarse ordenadamente, y
 constituirán la base para contribuir a un proyecto.
 
-### `git pull`
+### git pull
 
 ```console
 $ git pull <remote <branch-name>
@@ -80,7 +80,7 @@ repositorio.
 Esta es la fase donde realizas el trabajo real. Es decir, creas archivos, modificas otros....
 En resumen, pasas un rato de diversión.
 
-### `git add`
+### git add
 
 ```console
 $ git add <ruta-archivo>
@@ -93,7 +93,7 @@ almacenamiento o pre-commit. Para entendernos, es como una fase de preparación
 del commit. Primero preparas todo lo que quieres cambiar (`git add`), y luego
 lo fotografías con (`git commit`).
 
-### `git commit`
+### git commit
 
 ```console
 $ git commit [-a -m "Título"]
@@ -136,7 +136,7 @@ Consejos genéricos:
 - No valen mensajes como: "mejorando cosas" "ejercicios" "bomba nuclear".
       Los dos primeros por ser ambiguos y el siguiente por absurdo.
 
-4. `git push`
+4. git push
 
 ```console
 $ git push <remote> <branch-name>
