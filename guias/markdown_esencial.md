@@ -2,7 +2,7 @@ Me proponía a hacer unos apuntes de FS cuando caí en lo bonicos que quedaría 
 
 ## MANUAL BÁSICO DE MARKDOWN
 ### Estéticas
-- Para hacer títulos anteponer dos almuadillas \##
+- Para hacer títulos anteponer dos almohadillas \##
 - Los subtítulos con \## y \###
 - <--- este punto tan molón se hace con \- al princio de la línea
 - **Texto en negrita**:  \** texto en negrita \**
@@ -14,7 +14,11 @@ Me proponía a hacer unos apuntes de FS cuando caí en lo bonicos que quedaría 
 
 ### Link
 - Un sitio interesante para aprender sobre Markdown es [manuales github](https://help.github.com/articles/basic-writing-and-formatting-syntax/#links)
-los link tienen la siguiente sintaxis [ <mensaje> ]( <link> )
+los link tienen la siguiente sintaxis \[<mensaje>\](<link>).
+- Un caso particular son las referencias a títulos. Puedes crear un enlace hacia un título
+definido con almohadillas \##. Para ello utilizas la sintaxis descrita anteriormente, pero
+escribiendo como link el título en minúsculas y sustituyendo espacios por guiones.
+Ejemplo.: \[<mensaje>\](#visualización-del-contenido)
 
 ### Imágenes
-- ![alt](http://gph.is/28VLVxf)
+- ![Ejemplo de imagen](https://media.giphy.com/media/aRmAPxula4i7C/giphy.gif)
