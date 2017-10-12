@@ -21,4 +21,6 @@ escribiendo como link el título en minúsculas y sustituyendo espacios por guio
 Ejemplo.: \[<mensaje>\](#visualización-del-contenido)
 
 ### Imágenes
+
+- La sintaxis es !\[<Texto ayuda>\](<link de la imagen>)
 - ![Ejemplo de imagen](https://media.giphy.com/media/aRmAPxula4i7C/giphy.gif)
