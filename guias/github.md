@@ -1,39 +1,103 @@
 # Git/Github básico
 
-Github sobre todo al princio puede resultar un lío, así que he aquí lo básico.
+Git es una herramienta de sistema de control de versiones (SCV). Básicamente, te permite
+gestionar la historia de cambios de un proyecto, facilitando la cooperación entre desarrolladores.
+En particular, git es distribuido, lo que significa que cada colaborador tiene una
+copia íntegra del repositorio original localmente, a diferencia de los SCV centralizados
+que requieren de una conexión a internet para realizar cambios.
 
-## ¿Cómo "subo" mis "cosas"?
+Github, por otra parte, es un servicio remoto para almacenar repositorios `git`. Existen numerosas
+alternativas como gitlab, bitbucket, notabug, pero todavía Github sigue siendo el servicio más utilizado.
+De hecho, podríamos describirlo como "la red social de los programadores".
 
--  `git status`
+## Vale, vale, pero ¿cómo "subo" mis "cosas"?
 
-Este comando es realmente un comando sin orden. Ejécutalo siempre que
-quieras información sobre que estás haciendo. La información que da siempre es
-útil aunque no la entiendas porque ¡la mayoría de las respuestas a tus preguntas
-se obtienen copiando y pegando en Google!
+Si bien es posible utilizar la interfaz de usuario de Github para compartir nuestro
+trabajo, es preferible acostumbrarse cuanto antes a trabajar con `git` desde [la línea de
+comandos](https://libreim.github.io/blog/2015/09/10/primero/#la-terminal-sirve-más-allá-de-para-presumir).
 
+En primer lugar, tienes que configurar `git` para que guarde tu nombre e email.
 
-1. `git pull <remote <branch-name>` (Normalmente git pull origin master)
+Así,
 
-<remote>: Es la dirección remota del repositorio, en nuestro caso apunta a
-nuestro lugar en los repositorios de Github
-<branch-name>: La predeterminada a utilizar suele ser master.
+``` console
+$ git config --global user.name "Tu nombre"
+$ git config --global user.email tucorreo@example.com 
+```
+Empecemos realizando una copia del repositorio en tu ordenador.
+El comando `git clone` se encarga de ello:
 
-Este comando te descarga todo el trabajo realizado por los otros.
-Es importante ejecutarlo siempre antes de escribir nada, aunque si 
-se te olvida e intentas sobrescribir, `git` es bastante inteligente
-para no dejarte hacerlo!
+```console
+$ git clone https://github.com/pwaqo/DGIIM1.git
+```
 
+Este comando te crea una carpeta en el directorio donde es ejecutado con el repositorio íntegro.
+Si has configurado anteriormente una clave ssh, mejor utiliza la dirección ssh en lugar de http.
+(Esto te ahorra tener que introducir tu usuario y contraseña).
 
-(Aquí es cuando creas archivos, modificas otros y pasas un rato de diversión).
+Una vez dentro de esta carpeta "DGIIM1", mediante la orden `cd DGIIM1`, puedes
+ejecutar los siguientes comandos:
 
+0. [`git status`](#git-status)
+1. [`git pull origin master`](#git-pull)
+2. [Por fin puedes realizar tus cambios](#por-fin-puedes-realizar-tus-cambios)
+3. [`git add`](#git-add)
+4. [`git commit [-am '<titulo>']`](#git-commit)
+5. [`git push origin master`](#git-push)
 
-2. `git add <ruta-archivo>` (Así, `git add .` añadiría al repositorio
+### `git status`
+
+Este comando no es necesario ejecutarlo en un momento particular pero, créeme,
+es de gran ayuda. Te aporta información sobre el estado del repositorio. Por ello,
+ejecútalo después de cada orden que realices con `git`. Es útil incluso si no entiendes
+esa información porque... ¡puedes copiar y pegarla en google!
+
+Sin embargo, los siguientes comandos deberán realizarse ordenadamente, y
+constituirán la base para contribuir a un proyecto.
+
+### `git pull`
+
+```console
+$ git pull <remote <branch-name>
+```
+
+- `<remote>`: Es la dirección remota del repositorio, en nuestro caso 
+la dirección `origin` apunta a nuestro sitio en los servidores de Github.
+- `<branch-name>`: El nombre de la rama. La predeterminada a utilizar suele ser `master`.
+
+Por tanto, la orden que ejecutaremos será `git pull origin master`.
+
+Este comando actualiza tu repositorio local con el remoto. Es decir, "descarga"
+el trabajo realizado por los otros. Es importante ejecutarlo siempre antes de empezar a
+realizar cambios, para evitar las situaciones en las que dos personas estés modificando
+el mismo archivo.
+
+De todos modos, si en algún caso se te olvida, `git` no te permitirá sobreescribir el
+repositorio.
+
+### Por fin puedes realizar tus cambios
+
+Esta es la fase donde realizas el trabajo real. Es decir, creas archivos, modificas otros....
+En resumen, pasas un rato de diversión.
+
+### `git add`
+
+```console
+$ git add <ruta-archivo>
+```
+
+(Así, `git add .` añadiría todo el directorio actual al repositorio.)
 
 Este comando añade a la fase de `staging`, que podríamos llamar como
-almacnamiento o pre-commit. Para entendernos, es como que el registro de los
-cambios no es total. Los cambios ya quedan registrados con `git commit`
+almacenamiento o pre-commit. Para entendernos, es como una fase de preparación
+del commit. Primero preparas todo lo que quieres cambiar (`git add`), y luego
+lo fotografías con (`git commit`).
 
-3. `git commit [-a -m "Título"]`
+### `git commit`
+
+```console
+$ git commit [-a -m "Título"]
+```
 
 Este comando registra los cambios en la historia del repositorio. No te
 preocupes si te llegas a equivocar registrando cambios, porque en git no hay
@@ -72,7 +136,13 @@ Consejos genéricos:
 - No valen mensajes como: "mejorando cosas" "ejercicios" "bomba nuclear".
       Los dos primeros por ser ambiguos y el siguiente por absurdo.
 
-4. `git push <remote> <branch-name>` (Normalmente `git push origin master`)
+4. `git push`
+
+```console
+$ git push <remote> <branch-name>
+```
+
+(Normalmente `git push origin master`)
 
 Una vez tienes tus cambios registrados en tu ordenador es hora de compartirlos
 con los demás.
@@ -87,3 +157,6 @@ hecho un commit para evitar conflictos.
 
 - `git branch`
 - `git checkout <rama>`
+
+
+Más información en [git-scm](https://git-scm.com/book/es/v1/Ramificaciones-en-Git-%C2%BFQu%C3%A9-es-una-rama%3F)
