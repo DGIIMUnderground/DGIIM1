@@ -5,11 +5,11 @@
 
   - [Definiciones básicas](#definiciones-básicas) SIN HACER
 
-  - [Elementos básicos](#elementos-basicos)
+  - [Elementos básicos](#elementos-básicos-de-una-computadora)
   
   - [Registros del procesador](#registros-del-procesador)
   
-  - [Ejecución de Instrucciones. Tipo de Instrucciones](#ejecución-de-instrucciones) SIN HACER
+  - [Ejecución y tipos de Instrucciones](#ejecución-y-tipos-de-instrucciones) 
 
 ### Componentes de un sistema de cómputo
 
@@ -71,14 +71,16 @@ Usados por el programador en lenguaje máquina o ensamblador, cada registro tien
  De propósto general con cualquier instrucción de la máquina que realice operaciones con datos aunque hay restriciones.
 
 -**Registros de dirección**
-	     Contienen direcciones de memoria principal de datos e instrucciones. Son registros de carácter general.
+
+Contienen direcciones de memoria principal de datos e instrucciones. Son registros de carácter general.
+
  Ejemplos:
 
-	- **Regístro de índice** sumar un índice a valor base para obtener dirección efectiva.
+  - **Regístro de índice** sumar un índice a valor base para obtener dirección efectiva.
 	
-	- **Puntero de segmento** La memoria se divide en segmentos que son bloques de palabras de dirección variable, este guarda su dirección.
+  - **Puntero de segmento** La memoria se divide en segmentos que son bloques de palabras de dirección variable, este guarda su dirección.
 
-	- **Puntero de pila**
+  - **Puntero de pila**
 
 ##### Registros de control y estado
 
@@ -88,15 +90,15 @@ Aparte de los registros ya mencionados RDIM, RDAM, RDA E/S y  RDA E/S existen lo
 
 - **Registro de instrucción** (IR) Contiene la última instrucción leída.
 
-- **Palabra de estado del programa ** PWS registro o conjunto de registros que contienen información del estado del programa y **códigos de condición**.
+- **Palabra de estado del programa** PWS registro o conjunto de registros que contienen información del estado del programa y **códigos de condición**.
 Los códigos de condición tammbién llamados indicadores son bits asignados por el hardware del procesador teniendo en cuenta el resultado de operaciones (ejemplo: el resultado positivo o negativo de una operación).
 
-#### Ejecución de Instrucciones. Tipo de Instrucciones.
+#### Ejecución y tipos de instrucciones
 
 Un programa que va a ejecutarse consta de un conjunto de instrucciones almacenadas en memoria, el procesamiento de un instrucción tiene dos fases, el proceso de lectura de la instrucción('fase de búqueda') en la memoria y el de ejecución de la misma ('fase de ejecución').
      Se denomina **ciclo de instrucciones** a procesamiento requerido para una única instrucción.
 
-#### Búsqueda y ejecución de de una instrucción
+##### Búsqueda y ejecución de de una instrucción
 
 1.Principio de ciclo de cada instrucción:
 
