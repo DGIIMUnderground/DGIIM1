@@ -43,6 +43,9 @@
   - Compuesta de `buffers` zonas de almacenamiento temporal de los datos que se van a enviar.
 
 - **Bus de sistema**
+
   -Proporciona comunicación entre los procesadores, la memora principal y los módulos de E/S.
+  
+  ![](https://photos.app.goo.gl/XL0HyiXGslojBGPf1)
   
 #### Ejecución de Instrucciones. Tipo de Instrucciones.
