@@ -51,7 +51,7 @@
   
 #### Registros del procesador
 
-     Los registros de un computador sirven para dos funciones:
+Los registros de un computador sirven para dos funciones:
 
 - **Registros visibles para el usuario**
 
@@ -65,7 +65,7 @@
 
 ##### Registros visibles para el usuarios
 
-      Usados por el programador en lenguaje máquina o ensamblador, cada registro tiene una utilidad distinta:
+Usados por el programador en lenguaje máquina o ensamblador, cada registro tiene una utilidad distinta:
 
 - **Registros de datos**
  De propósto general con cualquier instrucción de la máquina que realice operaciones con datos aunque hay restriciones.
@@ -82,7 +82,7 @@
 
 ##### Registros de control y estado
 
-      Aparte de los registros ya mencionados RDIM, RDAM, RDA E/S y  RDA E/S existen los siguientes para controlar la ejecución de instrucciones:
+Aparte de los registros ya mencionados RDIM, RDAM, RDA E/S y  RDA E/S existen los siguientes para controlar la ejecución de instrucciones:
 
 - **Contador de programa** (PC) Contiene la dirección de la próxima instrucción que se leéra de la memoria.
 
@@ -93,20 +93,20 @@ Los códigos de condición tammbién llamados indicadores son bits asignados por
 
 #### Ejecución de Instrucciones. Tipo de Instrucciones.
 
-     Un programa que va a ejecutarse consta de un conjunto de instrucciones almacenadas en memoria, el procesamiento de un instrucción tiene dos fases, el proceso de lectura de la instrucción('fase de búqueda') en la memoria y el de ejecución de la misma ('fase de ejecución').
+Un programa que va a ejecutarse consta de un conjunto de instrucciones almacenadas en memoria, el procesamiento de un instrucción tiene dos fases, el proceso de lectura de la instrucción('fase de búqueda') en la memoria y el de ejecución de la misma ('fase de ejecución').
      Se denomina **ciclo de instrucciones** a procesamiento requerido para una única instrucción.
 
 #### Búsqueda y ejecución de de una instrucción
 
 1.Principio de ciclo de cada instrucción:
 
-	    1. Procesador **lee** la instrucción de la memoria.
+  1. Procesador **lee** la instrucción de la memoria.
+  
+  2. El **contador de programa** (PC) almacena la dirección de la siguiente instrución que se va leer.
 
-	    2. El **contador de programa** (PC) almacena la dirección de la siguiente instrución que se va leer.
+  3. La instrucción leída se carga dentro del registro del procesador: **registro de isntrución** (IR)
 
-	    3. La instrucción leída se carga dentro del registro del procesador: **registro de isntrución** (IR)
-
-	    4. El procesador **interpreta la istrucción**  y lleva a cabo la acción requerida.
+  4. El procesador **interpreta la istrucción**  y lleva a cabo la acción requerida.
 
 ![foto](https://github.com/BlancaCC/images/blob/master/ciclo_de_instrucci%C3%B3n_b%C3%A1sico)
 
