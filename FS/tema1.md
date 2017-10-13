@@ -1,4 +1,4 @@
-##TEMA 1. SISTEMAS DE CÓMPUTO
+## TEMA 1. SISTEMAS DE CÓMPUTO
 
 ### Índice
 - [ Componentes de un sistema de cómputo](#componentes-de-un-sistema-de-cómputo)
@@ -46,6 +46,6 @@
 
   - Proporciona comunicación entre los procesadores, la memora principal y los módulos de E/S.
   
-  ![](https://www.dropbox.com/home/FS?preview=IMG_9478.JPG)
+  ![](https://www.dropbox.com/s/wru6zpxj3y75zj2/IMG_9478.JPG?dl=0)
   
 #### Ejecución de Instrucciones. Tipo de Instrucciones.
