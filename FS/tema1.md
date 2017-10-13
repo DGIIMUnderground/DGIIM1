@@ -44,8 +44,8 @@
 
 - **Bus de sistema**
 
-  -Proporciona comunicación entre los procesadores, la memora principal y los módulos de E/S.
+  - Proporciona comunicación entre los procesadores, la memora principal y los módulos de E/S.
   
-  ![](https://photos.app.goo.gl/XL0HyiXGslojBGPf1)
+  ![](https://www.dropbox.com/home/FS?preview=IMG_9478.JPG)
   
 #### Ejecución de Instrucciones. Tipo de Instrucciones.
