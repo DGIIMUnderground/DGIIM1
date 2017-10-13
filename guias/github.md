@@ -7,7 +7,7 @@ copia íntegra del repositorio original localmente, a diferencia de los SCV cent
 que requieren de una conexión a internet para realizar cambios.
 
 Github, por otra parte, es un servicio remoto para almacenar repositorios `git`. Existen numerosas
-alternativas como gitlab, bitbucket, notabug, pero todavía Github sigue siendo el servicio más utilizado.
+alternativas como Gitlab, Bitbucket, Notabug, pero todavía Github sigue siendo el servicio más utilizado.
 De hecho, podríamos describirlo como "la red social de los programadores".
 
 ## Vale, vale, pero ¿cómo "subo" mis "cosas"?
@@ -32,10 +32,11 @@ $ git clone https://github.com/pwaqo/DGIIM1.git
 ```
 
 Este comando te crea una carpeta en el directorio donde es ejecutado con el repositorio íntegro.
-Si has configurado anteriormente una clave ssh, mejor utiliza la dirección ssh en lugar de http.
-(Esto te ahorra tener que introducir tu usuario y contraseña).
+Puedes utilizar la dirección http, con el inconveniente de que te preguntará por tu usuario
+y contraseña cada vez que quieras realizar un cambio en el repositorio.
+Para evitar esto, puedes [configurar una clave ssh](https://help.github.com/articles/connecting-to-github-with-ssh/).
 
-Una vez dentro de esta carpeta "DGIIM1", mediante la orden `cd DGIIM1`, puedes
+Una vez dentro de esta carpeta "DGIIM1" (mediante la orden `cd DGIIM1`) ya podrás
 ejecutar los siguientes comandos:
 
 0. [`git status`](#git-status)
@@ -69,15 +70,15 @@ Por tanto, la orden que ejecutaremos será `git pull origin master`.
 
 Este comando actualiza tu repositorio local con el remoto. Es decir, "descarga"
 el trabajo realizado por los otros. Es importante ejecutarlo siempre antes de empezar a
-realizar cambios, para evitar las situaciones en las que dos personas estés modificando
+realizar cambios, para evitar las situaciones en las que dos personas estén modificando
 el mismo archivo.
 
 De todos modos, si en algún caso se te olvida, `git` no te permitirá sobreescribir el
-repositorio.
+repositorio, y te informará de que tienes que hacer `git pull` antes!
 
 ### Por fin puedes realizar tus cambios
 
-Esta es la fase donde realizas el trabajo real. Es decir, creas archivos, modificas otros....
+Esta es la fase donde realizas el trabajo real. Es decir, creas archivos, modificas otros...
 En resumen, pasas un rato de diversión.
 
 ### git add
@@ -99,10 +100,12 @@ lo fotografías con (`git commit`).
 $ git commit [-a -m "Título"]
 ```
 
-Este comando registra los cambios en la historia del repositorio. No te
-preocupes si te llegas a equivocar registrando cambios, porque en git no hay
-prácticamente nada que no se pueda recuperar... pero mejor ¡controla un
-mediante `git status` qué cambios quieres realmente registrar!
+Este comando registra los cambios en la historia del repositorio. Es recomendable
+ejecutar `git status` antes de hacer ningún commit. Así puedes comprobar que archivos
+están añadidos a la fase de preparación del commit (de color verde), antes de registrar
+los cambios definitivamente. En realidad, no hay nada definitivo en git, pues es siempre
+posible modificar la historia. Pero si trabajas en equipo y has subido cambios erróneos,
+no son para nada recomendable comandos arcanos como `git rebase` o `git commit --amend`.
 
 El significado del corchete en la orden es que `-a -m "<Título>"` son
 parámetros opcionales.
@@ -147,8 +150,10 @@ $ git push <remote> <branch-name>
 Una vez tienes tus cambios registrados en tu ordenador es hora de compartirlos
 con los demás.
 
-<remote> y <branch-name> actúan como en `git pull`.  Sin embargo, este comando
-es para justo lo contrario, subir tus cambios locales al repositorio remoto.
+Si te fijas la orden es muy parecida a [git pull](#git-pull). Y de hecho 
+<remote> y <branch-name> tienen el mismo significado que en esta. Sin embargo,
+el objetivo de `git push` es justo el contrario, es decir, subir tus cambios
+locales al repositorio remoto.
 
 Recomendación: intenta ejecutar `git push origin master` cada vez que hayas
 hecho un commit para evitar conflictos.
@@ -159,4 +164,5 @@ hecho un commit para evitar conflictos.
 - `git checkout <rama>`
 
 
-Más información en [git-scm](https://git-scm.com/book/es/v1/Ramificaciones-en-Git-%C2%BFQu%C3%A9-es-una-rama%3F)
+Más información en
+[git-scm](https://git-scm.com/book/es/v1/Ramificaciones-en-Git-%C2%BFQu%C3%A9-es-una-rama%3F)
