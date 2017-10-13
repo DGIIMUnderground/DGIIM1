@@ -6,8 +6,8 @@
 
 ## Componentes de un Sistema Operativo multiprogramado
 
-### Sistemas multiprogramados y de tiempo compartido Como el mejor sitio por donde empezar es el
-principio, comencemos con una breve evolución de las computadoras, hasta un sistema multiprogramado:
+### Sistemas multiprogramados y de tiempo compartido.
+Como el mejor sitio por donde empezar es el principio, comencemos con una breve evolución de las computadoras, hasta un sistema multiprogramado:
 
 1. **Raimundo Lulio** en el siglo XII escribió *Ars Magna*, en el que se dedicó a diseñar y
 construir una máquina lógica de naturaleza mecánica, donde las teorías, los sujetos y los predicados
