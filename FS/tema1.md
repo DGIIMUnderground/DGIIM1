@@ -15,6 +15,26 @@
 
 #### Definiciones básicas
 
+- ** Informática** Información automática,  conjunto de conocimiento científicos y técnicas que hacen posible el tratamiento automático de la información por medio de ordenadores.
+
+- **Computador**: máquina capaz de aceptar unos datos de entrada, efectuar con ellos operaciones lógicas y aritméticas, y proporcionar la información resultante a través de un medio de salida; todo ello sin intervención de un operador humano y bajo el control de un programa de instrucciones previamente almacenado en el propio computador.
+
+- **Instrucción:**conjunto de símbolos insertados en una secuencia estructurada o específica que el procesador interpreta y ejecuta.
+
+- **Datos:** Símbolos que representan hechos, condiciones, situaciones o valores.
+Elementos de información.
+
+- **Programa:** Conjunto ordenado de instrucuiones que dan a la computadora indicándole las operaciones o tareas que desea que realice.
+
+
+- **Lenguaje máquina:**  Lenguaje cuyas instrucciones interpretan los circuitos eléctricos de la unidad de control.
+
+
+- **Hardware o soporte físico:** Conjunto de componentes de componentes que integran la parte material de un computador; conjunto de circuitos eléctricos, cables...
+
+
+- **Software o soporte lógico:** Conjutno de programas (so, utilisades de los usuarios...) ejecutables por el computador
+
 
 ### Elementos básicos de una computadora 
 
@@ -125,3 +145,9 @@ Estas acciones se dividen en cuatro categorías:
 
 ![](https://github.com/BlancaCC/images/blob/master/repertorio_elemental_de_instrucciones.png)
 
+#### Bibliografía
+
+- Sistemas operativos. Aspectos internos y principios de diseño.
+William Stalling
+
+- Introducción a la informática MC Graw Hill Alberto prieto espinosa antoni .. y juan carlos...
