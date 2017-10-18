@@ -70,34 +70,31 @@ todos coordinados por un **macro sistema operativo**.
  18 / 10/ 17
 
 ## Compiladores
-Sentencia de un programa a1 = b + c + 13. 77
-El compialdor lee de izquierda a derecha e intenta identifiar que es cada cosa, ejomplo : a símbolo.
-con esto va construyendo **tabal de simbloso ** signo + datos + dirección memoria princiola en la que está esa variable,
-cada vez que se haga referencia a *a* se redirrecciona a la direccecion asignada por el compilador.
+Ejemplo de sentencia de un programa a1 = b + c + 13. 77
+El compilador lee de izquierda a derecha e intenta identifiar que es cada cosa.
+con esto va construyendo **tabla de símbolos **
+signo |  datos |  dirección memoria principal en la que está esa variable,
+De esta manera, cada vez que se haga referencia a *a* se redirrecciona a la direccecion asignada por el compilador.
 
-Historia: primeras compiladores: estaa en las direcciones más bajas, antes más o menso se sabía cual podria ser, antes podía ser direción absoluta.
+En los primeros compiladores las direcciones el número de direcciones era más bajo y se podía hablar en terminos de dirección de memoria absolutos.
+En la actualidad, a alto nivel el uso de las direcciones es más complejo, abarcando incluso direcciones de direcciones, como es el caso de de las sentencias de control (if, while...). Para facilitar el trabajo se hacen asignaciones de **memoria relativa** en lo que respecta a la zona de memoria que se le otorga. Estas direcciones relativas comienzan en 0 y la siguiente dirección dependerá de la longitud de bytes del tipo de dato que se almacene.
+Los pasos que comprenden un programa antes de ser ejecutado son: la compilación, la encuadernación y la formación del ejecutable:
 
-Aora en alto nivel, la sentencias de contro (if) se lleva a una dirección, machacando contador de programa, por lo tanto tando a datos como a dirección se le asigna zona de memoria. Al igual que el programa, el compilador entonces en vez de asignar direcciones absolutas, asigna direcciones relativas, empieza en 0, dependiendo tipo suma longitud bytes y la siguiente empiez a tras esa suma, tanto en variables como en banc de instrucciones.
-
-Compilamso encuadernamso y formasmos el ejecutables:
-  1. ae carga -> se lle del disco a memoria el principal por el so. (lleva un mapa de las direccine sde memro) esto se llama **direccipn base**
-  2.- durante la ejecucicio, cada ves se aceda a variale, le suma la dirección base y le da la dirrección real. De direcciones relaticas a reales.
+- Durante la carga del programa, se lee del disco y se copia esa información en  memoria la principal por el SO. El SO cotiene un *mapa* con las direcciones que asigna en memoria **dirección base** (a partir de esta se sumarán las relativas para obtener la dirección real, cada vez que se quiera acceder a una variable durante la ejecución).
 
 El SO también protee sobre problemas del mismo programa. El acceso a los dispositivos lo hacen rutinas del so, y comprueba que la dirrección de memoria a a que accede es suyo. Si el acceso cae fuera, aborta el programa.
 
-Volviendo a la constante 13.77, se supone que no cambia de valor, el tratamiento de la constante en cammbio, lo reconoce igual que una variable, y reconoce una zona de memoria cuyo nombre es 13.77 la única diferencia, sería igual que una variable que se inicializa al principio, asignándole el mismo valor que tiene el nombre, valor explícito.
+Volviendo a cómo se almacenan la varables, en lo concerniente a las constantes, estas se trata exactamente igual que las simbólicas, con la única diferencia que como identificador, nombre de la variable está su propio símbolo, el resto es lo mismo, como valor se guarda a ellos y tiene también una dirección de memoria asociada.
 
-Qué puede pasar si me equivoco y machcaco cosas en memero, lo forma más habitula:
-  - punteros: estrucuturas dinánmianas de datos. lte equivocas y lo mandas a otra fona de tu
-  - arrays: índice que no existe.
-  - funciones, por argumentos que se le pasan, los argumentos se puede pasar por:
-    - paso por valor, se le da argumento, saca copia y lo que pasa es la copia.
-    - pasos pro referencia: lo  que se pasa del progrma princial a la función es la dirección en la que está el argumento de la función ,qué puede ocuurir: asignarle al argumento un valor, y cuando se termine de ejecutar esa función se cambia ese valor.
+  - **Punteros** permiten las estruccturas dinámicas de datos, el problema que acarrean es por su uso, podemos machar datos de la memoria por error.
 
-Por tanto las consantes son tan machacales como las varaibles, (truquillo programador: asignarle variable y ir viendo lo que vale)
+  - **Arrays** Al hacer referencia a datos de índice de memoria superiores al estipulado nos estaremos refireiendo a otros datos.
 
-Fin el compilador comforme traduce asigna direcciones relativas que empieza por cero y + longitud
-cuando se carga en memeori ael sitema operatico se encarga de comprobar qu etodo va bien.
+  - las funciones en lo concerniente al paso de datos, existen dos tipos de argumentos según su paso:
+    - paso por valor, el valor con el que se trabaja es una copia del argumento inicial, si se modifica su valos al salir de la función el original no se ve modificado.
+    - pasos por referencia: lo  que se pasa del progrma princial a la función es la dirección en la que está el argumento por tanto el riesgo reside en modificar el valor original durante la ejecución de la función.
+
+Resumen: El compilador comforme traduce asigna direcciones relativas a variables y controladores de flujo, cuando el progrmaa se carga el memoria el SO es el encargado de gestionar el acceso a memoria.
 
 ##
 - la multiporgramanación no tiene por que ser de tiempo compartido, al revés sí.
