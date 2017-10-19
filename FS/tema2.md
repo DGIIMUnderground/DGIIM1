@@ -200,3 +200,75 @@ El usuario no tiene orden para acceder a los recursos "" leer disco?? se llma
 función SO, para ejecutar eso, (so traa en kernel supe susacio..) la forma de
 hacerlo se llama **trpa** se cambia de modo usuario a kernel, cuando termina
 deja de serlo.  
+
+## Modeo de lo scinco estados.
+
+- nuevo
+
+- preparado: si se le acaba el tiempo pasará a preparado
+
+- preparado 
+
+- ejecutándose
+
+- finalizado: si el programa terminade ejecutarse, el SO actualiza la lista de procesos y libera esa zona de memoria, eso se convierte en basura.
+
+Cuando se carga un programa nuevo:
+
+ - instrucciones.
+
+  - datos: variables sin asignar un valor, estas tiene asignado un valor, basura, el que esta en memoria de otro programa. Hauy compiladorea que te permiten ver en la parte derecha, y puede saber que no le has asignado ningún valor, cuando la vas a utilizar te avisan. (otros no te dan ningún error ni en compilación ni en ejecución). Lo que sí se recomienta es trastear con el compilador. Hay compialdores que en el for la i la ponen, otros no la hacen, calculan el número de vueltas que hace el bucle. Otros, que si haces referencia dentro del buche a la i asocia sí lo tienen en cuennta, y si no no. Te implementea la veces que se repite, esta variable se conoce como void variable **variable vvacía** .
+
+
+## Transicones entre estados
+
+Diaposiica, en algunos casos aparece de preparado  finalizado, por el mismos no, porque otro proceso lo mate, la inmensa mayoría de so no lo permite. En modo super usuario sí se puded.
+
+## Descripción de procesos:
+
+- punteros de pila: cuando se ejecutan funciones
+
+diferencia entre un apila: el primero que se atiende el último que ha llegado
+cola: se atiende el primero que ha llegado
+
+en la sfuncines cuando se va acumulando se forma n
+**registro de activación** donde estan los datos, se guarda la dirección en una pila, tiene una dirección que es lo que se conoce como puntero de pila, que soluciona todos estos prolemas.
+
+## Creación de un proceso:
+
+ ## Controll de processos: modode sd eejecución del procesador.
+
+- modo usuario: no accedo a todos los registro de memora, n contador de programa, o registro de instrucción, tampoco otros instrucuciosnes
+
+- modo núcleo, kernel, supervisoor o sistema:
+
+para pasar de uno a otro, se detecta que hay una operación que no se puede hacer en modo usuario.:
+ - cuando hay una llama a sistema: leer disco, C pone un código que supone una rutina del so
+
+  - llamo sistema, se lee el dato que quiero, se manda interrucción, en el ciclo de instrucción mira a ver si era la siguiende, cuan es interrucion so compara la prioridad
+
+  - cuando haya una excepción, algo que no debería ocurrir pero ocurre, "overfloat" se levanta un aaletrar etra el so, si lo que pasa no tiene riesgo para el resto de lo sprocesos se deja pasaer (depende del compilador), otra que ocuure se lee de un ficheo, se acaba y se pide que se igue leeye, s en  este caso se aborta el programa.
+
+  - acceder a zona de memoria que no es de tu proceso.
+
+
+## pasos en la operación de cambio de ususario a kernel:
+
+- el que detecta el cambio de modo es el hardware, cuando el compilado detecta qun ainstruccíon, o interrucón o excepción, la circuitería camia a modo kernel, salva el contador de programa, y la palabra de estado del proceso, hay un bits, le cambia el estado,
+
+- se llama a la rutina que lo gestiona, cuando se sabe cuá, la direccion de esta rutina se mete en el contador de programa. Y y aempieza a ejecuatrse esa rutina.
+
+- dependiendo de la "emergencia", es posble que tenga que salvar el resto de registros de la cpu, en un overfloat como no dice nada no cambia nada, en la palabra de estadlo pone un bits, pro si el compilad r lo tennía previsto,
+
+- cuando termina resustaura, contador de programa con el proceso y la palabra de estado,
+
+esencia programa eecutado de usuari a kernel, lo mismo ocurre cuando aparecen nuevos procesos.
+diferencai ; como e cambia de proceso se salca todo do bloque del contros del proceso se coge se cambia, slava- guarda.
+
+## conspto de hebra
+
+proceso: programa + lo aue necesir a, la unidad de procesamieno, lo qu el so le asigna los recurso que necesite,
+puede ocurrirr (cada sistm hace los que le sale de las aricese) ejemplo se está navegando, se abren ventana, proceso s distintos,
+tennemso instrucucines y datos, el proceso es el mismo, lo que cambia son lso daos , en vez d arir procesos nueco s, ae abren hebras, proceso el mismo, datos de cada ebra distindo, deteo del bloque de conrtol de proceos se parten nuecos registos , direcciones, se ahor amusah memori ad eisntrucciones.
+
+navegado --> proceso asociado a ese programa, dentro de la misma ejecucion (navegador) se abre una hebra. Hebra eecución independiente del mismo proceso.x
