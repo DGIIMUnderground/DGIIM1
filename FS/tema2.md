@@ -67,67 +67,136 @@ simultáneamente.
 8. Finalmente distintos ordenadores, con distintos sistemas operativos que trabajan simultáneamente,
 todos coordinados por un **macro sistema operativo**.
 
- 18 / 10/ 17
+
+Apuntes del 18 / 10/ 17
 
 ## Compiladores
+
 Ejemplo de sentencia de un programa a1 = b + c + 13. 77
-El compilador lee de izquierda a derecha e intenta identifiar que es cada cosa.
-con esto va construyendo **tabla de símbolos **
-signo |  datos |  dirección memoria principal en la que está esa variable,
-De esta manera, cada vez que se haga referencia a *a* se redirrecciona a la direccecion asignada por el compilador.
+El compilador lee de izquierda a derecha e intenta identificar cada elemento, construyendo
+una **tabla de símbolos**.
 
-En los primeros compiladores las direcciones el número de direcciones era más bajo y se podía hablar en terminos de dirección de memoria absolutos.
-En la actualidad, a alto nivel el uso de las direcciones es más complejo, abarcando incluso direcciones de direcciones, como es el caso de de las sentencias de control (if, while...). Para facilitar el trabajo se hacen asignaciones de **memoria relativa** en lo que respecta a la zona de memoria que se le otorga. Estas direcciones relativas comienzan en 0 y la siguiente dirección dependerá de la longitud de bytes del tipo de dato que se almacene.
-Los pasos que comprenden un programa antes de ser ejecutado son: la compilación, la encuadernación y la formación del ejecutable:
+Signo |  Datos |  Dirección memoria asociada
+------| ------ | -----------------------------
+a1    |   666  |   0xab0f20x53 (En hexadecimal)
 
-- Durante la carga del programa, se lee del disco y se copia esa información en  memoria la principal por el SO. El SO cotiene un *mapa* con las direcciones que asigna en memoria **dirección base** (a partir de esta se sumarán las relativas para obtener la dirección real, cada vez que se quiera acceder a una variable durante la ejecución).
 
-El SO también protee sobre problemas del mismo programa. El acceso a los dispositivos lo hacen rutinas del so, y comprueba que la dirrección de memoria a a que accede es suyo. Si el acceso cae fuera, aborta el programa.
+De esta manera, cada vez que se haga referencia a *a* se redirecciona a la
+dirección asignada por el compilador.
 
-Volviendo a cómo se almacenan la varables, en lo concerniente a las constantes, estas se trata exactamente igual que las simbólicas, con la única diferencia que como identificador, nombre de la variable está su propio símbolo, el resto es lo mismo, como valor se guarda a ellos y tiene también una dirección de memoria asociada.
+En los primeros compiladores el número de direcciones era menor y se podía
+hablar de dirección de memoria absoluta. Sin embargo, en la actualidad, a alto
+nivel, el uso de direcciones es más complejo, abarcando incluso direcciones de
+direcciones, como es el caso de de las sentencias de control (if, while...).
+Para facilitar el trabajo se hacen asignaciones de **memoria relativa** en lo
+que respecta a la zona de memoria que se le otorga.  Estas direcciones
+relativas comienzan en 0 y continuan dependiendo del tamaño en bytes del tipo
+de dato almacenado. 
 
-  - **Punteros** permiten las estruccturas dinámicas de datos, el problema que acarrean es por su uso, podemos machar datos de la memoria por error.
+Los pasos que comprenden un programa antes de ser ejecutado son: compilación,
+encuadernación y la formación del ejecutable:
 
-  - **Arrays** Al hacer referencia a datos de índice de memoria superiores al estipulado nos estaremos refireiendo a otros datos.
+- Durante la carga del programa, se lee del disco y se copia esa información en
+  memoria principal por el SO. El SO contiene un *mapa* con las direcciones
+relativas de memoria. Estas se suman a la llamada **dirección base**, para
+obtener las direcciones reales (cada vez que se quiera acceder a una
+variable durante la ejecución).
 
-  - las funciones en lo concerniente al paso de datos, existen dos tipos de argumentos según su paso:
-    - paso por valor, el valor con el que se trabaja es una copia del argumento inicial, si se modifica su valos al salir de la función el original no se ve modificado.
-    - pasos por referencia: lo  que se pasa del progrma princial a la función es la dirección en la que está el argumento por tanto el riesgo reside en modificar el valor original durante la ejecución de la función.
+El SO también protege sobre problemas del programa. Por ejemplo, el acceso a los
+dispositivos lo hacen rutinas del SO, que comprueban si la dirección de memoria
+a la que accede el programa es correcta. En caso contrario, el SO se encargar
+de abortar el programa.
 
-Resumen: El compilador comforme traduce asigna direcciones relativas a variables y controladores de flujo, cuando el progrmaa se carga el memoria el SO es el encargado de gestionar el acceso a memoria.
+Volviendo a cómo se almacenan la variables, en lo concerniente a las constantes,
+estas se tratan exactamente igual que las simbólicas, con la única diferencia
+que como identificador, el nombre de la variable es el propio símbolo, el resto
+es lo mismo, como valor se guarda a ellos y tiene también una dirección de
+memoria asociada.
 
-##
-- la multiporgramanación no tiene por que ser de tiempo compartido, al revés sí.
-- el tiempo compartido
+  - **Punteros**: Es una variable que almacena una dirección de memoria.  Son
+    la base de las estructuras dinámicas de datos. El riesgo de su uso radica
+ en la posibilidad de sobreescribir los datos de la memoria por error.
 
-## concepto de proceso.
+  - **Arrays**: son realmente punteros encadenados en bloques de memoria. Así, es posible
+    recorrer el *array* mediante aritmética de punteros, es decir,
+aumentando en 1 la dirección de memoria asociada.
 
-Cuando hay que leer de disco el sitema usuario no lee, lso lenguajes dan sentecias, cuando se traducen son órdenes de llamadas de sistema operacito, por eemp, donde corresponde se incorporan esas unciones des so.
-lo mismo lenguajes fuertemente tipado, hay cosas que el compilador no puede resolcver en tiempo de compilacion, falta informaacioń, al texto le añade instrucciones de compilador, y cuando se está ** paquete de soporte a la ejecución ** el texto del programa, oarar que se ejecute se le llama otro lLo que se ejecuta, lo que parte como inicio, la primeera instruciion esto dse denimian **proceso** lo que en un principio era mi programa.
+  - Existen dos formas de pasar argumentos a una función:
 
-cuaand estando en una ventana se abre otra ventana, se ejecuta el nevegador, opara cada ventanita hay una **instancia** esa sesión e historia la guarda el navegador, se tiene el mismo programa y distintas instancias, proceso distintos.
-ISNTANCIA : CMPIA DEL PROGRAMA particularizado.
+    - *Por valor*: en la función se trabaja sobre una copia del valor pasado. Se
+      puede considerar más seguro ya que un cambio en la variable dentro de la
+función no influye de ninguna forma al valor original.
+
+    - *Por referencia:* a la función se le pasa la dirección de memoria de una
+      variable. Por tanto, la función puede modifica el valor original, lo que
+      constituye un riesgo en caso de error.
+
+> En el caso de C++ existen dos subtipos de paso de referencias: por
+> punteros, o por referencias. El paso por punteros es heredado de C, mientras
+> que las referencias son específicas de C++, y facilitan el paso de referencias
+> evitando errores debidos al trabajo con punteros.
+
+## Resumen
+
+El compilador conforme traduce, asigna direcciones relativas a
+variables y controladores de flujo. Cuando el programa se carga en memoria el
+SO es el encargado de gestionar el acceso del programa en memoria.
+
+## Algunas preguntas
+
+- La multiprogramación no tiene por qué ser de tiempo compartido. Pero,
+  para que sea posible el tiempo compartido es necesario un SO multiprogramado.
+
+## Concepto de proceso.
+
+Cuando hay que leer de disco el sistema usuario no lee, los lenguajes dan
+sentencias, cuando se traducen son órdenes de llamadas de SO. El SO incorpora
+funciones propias donde corresponde al programa.
+
+Lo mismo con lenguajes fuertemente tipado, como hay cosas que el compilador no
+puede resolver en tiempo de compilación por falta de información, el compilador
+añade instrucciones al texto (*paquete de soporte a la ejecución*), para que
+poder ejecutarlo.  Así, se puede denominar *proceso* al programa original
+ejecutado, es decir quitando la lógica añadida por el SO.
+
+Ejemplo:
+
+Cuando, con el navegador abierto, se abre otra ventana del navegador,
+para cada ventanita hay una **instancia** con la sesión y la historia
+que guarda el navegador. Es decir, se tiene el mismo programa pero
+con varias instancias, es decir con distintos procesos. Podemos decir
+que un proceso o instancia es una ejecución particular del programa.
 
 ## Bloque de control de un proceso.
- La memoria estaría llena de procesos o instancias, el so se encarga de admisnistrar todo, mediante el procesador,
- para gestionar **boqeu control de prceso**, par aello que infromació:
 
-- nombre
-- prioridad (so algoritmoq que la modigican) 
-- estado: en momoria un progrma puede estar, de disco a memoria;: estado nuevo, como está en memoria, el so gerena blo que de proceso, cuando tiene el relleno de la información esta **preparado** a estar ejecutado, cuando le toqu se ejecutará **estado bloqueado** . 
-- contador de programa: dirrecion de la siguiennete que se va a ejejcuat
-- datos de contexto: registros que modifica
-. informacion audotoria, uso de recursos, ejemplod de uno quee esté sobrecargado, se le da al que gestiona el sitema.
-- pntero de memoria: direciones entre las que está un programa, dirección base.
+La memoria estaría así llena de procesos o instancias. Así, el SO es el
+encargado de administrarlos de la forma correcta, para que todos sean
+ejecutados por el procesador de forma secuencial. Además, el SO tiene la
+capacidad de poder **bloquear un proceso**. Para ello, necesita la
+siguiente información sobre cada proceso:
 
-
-## implementaciín típoca de procesos
-
- - busca proceso en lista, le da la direcciín recuper ainformació co la qeu carga la información,
- - traza es lo que se pasa, en la cpu
-
-## llamadas al sistema
-
-el usuario no tiene orden para acceder a los recursos "" leer sisco?? se llma función so, para eecuatar eso, (so traa en kernl supe susacio..) la forma de hacerlo se llama **trpa** se camia de modo usuario a kernel, cuando termina deja de serlo.  
+- Nombre
+- Prioridad (SO algoritmos que la modifican) 
+- Estado: en momoria un progrma puede estar, de disco a memoria;: estado nuevo,
+  como está en memoria, el SO genera un bloque de proceso, cuando tiene el
+relleno de la información esta **preparado** a estar ejecutado, cuando le toque
+se ejecutará **estado bloqueado**. 
+- Contador de programa: dirección de la siguiente que se va a ejecutar.
+- Datos de contexto: registros que modifica. Informacion auditoria, uso de
+  recursos, ejemplos de uno que esté sobrecargado, se le da al que gestiona el
+sitema.
+- Puntero de memoria: direciones entre las que está un programa, dirección base.
 
 
+## Implementaciín típica de procesos
+
+ - Busca proceso en lista, le da la direccióín recuper información con la que
+   carga la información,
+ - traza es lo que se pasa, en la CPU
+
+## Llamadas al sistema
+
+El usuario no tiene orden para acceder a los recursos "" leer disco?? se llma
+función SO, para ejecutar eso, (so traa en kernel supe susacio..) la forma de
+hacerlo se llama **trpa** se cambia de modo usuario a kernel, cuando termina
+deja de serlo.  
