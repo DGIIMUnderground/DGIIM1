@@ -22,8 +22,8 @@ Ejemplo.: \[<mensaje>\](#visualización-del-contenido)
 
 ### Imágenes
 
-- La sintaxis es !\[<Texto ayuda>\](<link de la imagen>)
-- ![Ejemplo de imagen](https://media.giphy.com/media/aRmAPxula4i7C/giphy.gif)
+- La sintaxis es !\[\<Texto ayuda\>\](\<link de la imagen\>)
+ ![Ejemplo de imagen](https://media.giphy.com/media/aRmAPxula4i7C/giphy.gif)
 
 ### Tablas
 
@@ -35,8 +35,7 @@ dato 1 | dato 2
 dat 3 | dat 4
 
 mirad qué código más sumamente sencillo, se pude pones  más bonito alineando las columanas sin alterarse el resultado, pero ¿ES O NO ES ESTO A CASO UN MANUAL CHAPUCERO?
-'''
-      columna 1 | columna 2
+'''columna 1 | columna 2
       ---|---
 	dato 1 | dato 2
      dat 3 | dat 4
