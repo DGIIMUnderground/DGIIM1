@@ -46,6 +46,14 @@
  Instalación:  `sudo apt-get install pandoc`
  convertir archivo a pdf:  ` pandoc <archivo>.<algo> -o <nuevo_nombre>.pdf`
 
+Si queremos convertir a pdf un archivo markdown con la sintaxis propia de Github,
+es decir "Github flavored markdown", es necesario especificarlo asi:
+
+```console
+$ pandoc ejemplo.md -f markdown_github -o ejemplo.pdf
+```
+
+
 ### Link
 - Un sitio interesante para aprender sobre Markdown es [manuales github](https://help.github.com/articles/basic-writing-and-formatting-syntax/#links)
 los link tienen la siguiente sintaxis `[<mensaje>](<link>).`
