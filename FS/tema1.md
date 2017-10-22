@@ -1,24 +1,24 @@
 # TEMA 1. SISTEMA DE CÓMPUTO
 
 ### Índice
-- [1. Componentes de un sistema de cómputo](#componentes-de-un-sistema-de-cómputo)
-	- [1.1 Definiciones básicas](#definiciones-básicas)
-- [2. Capa Hardware](#capa-hardware)
-	- [2.1. Estructura de un ordenador](#estructura-de-un-ordenador)
-	- [2.2. Elementos básicos](#elementos-básicos)
-	- [2.3. Registros del procesador](#registros-del-procesador)
-	- [2.4. Ejecución de instrucciones. Tipos de instrucciones](#ejecución-de-instrucciones-tipos-de-instrucciones)
-	- [2.5. Técnicas de Comunicación de E/S](#técnicas-de-comunicación-de-es]
-	- [2.6. Excepciones](#excepciones)
-	- [2.7. Protección del procesador](#protección-del-procesador)
-	- [2.8. Protección de los dispositivos de E/S](#protección-de-los-dispositivos-de-es]
-	- [2.9. Protección de memoria](2.9 Protección de memoria)
-- [3. El sistema operativo]
-	- [3.1. El SO como interfaz Usuario/Computadora](#el-so-como-interfaz-usuario-computadora)
-	- [3.2. El SO como administrador de recursos](#el-so-como-administrador-de-recursos)
-- [4. Utilidades del Sistema](#utilidades-del-sistema)
-	- [4.1 Programas del servicio del SO](#programas-del-servicio-del-so)
-	- [4.2 Herramientas generales](#herramientas-generales)
+- [1. Componentes de un sistema de cómputo](#1-componentes-de-un-sistema-de-cómputo)
+	- [1.1 Definiciones básicas](#11-definiciones-básicas)
+- [2. Capa Hardware](#2-capa-hardware)
+	- [2.1. Estructura de un ordenador](#21-estructura-de-un-ordenador)
+	- [2.2. Elementos básicos](#22-elementos-básicos)
+	- [2.3. Registros del procesador](#23-registros-del-procesador)
+	- [2.4. Ejecución de instrucciones. Tipos de instrucciones](#24-ejecución-de-instrucciones-tipos-de-instrucciones)
+	- [2.5. Técnicas de Comunicación de E/S](#25-técnicas-de-comunicación-de-es)
+	- [2.6. Excepciones](#26-excepciones)
+	- [2.7. Protección del procesador](#27-protección-del-procesador)
+	- [2.8. Protección de los dispositivos de E/S](#28-protección-de-los-dispositivos-de-es]
+	- [2.9. Protección de memoria](#29-protección de memoria)
+- [3. El sistema operativo](#3-el-sistema-operativo)
+	- [3.1. El SO como interfaz Usuario/Computadora](#31-el-so-como-interfaz-usuario-computadora)
+	- [3.2. El SO como administrador de recursos](#32-el-so-como-administrador-de-recursos)
+- [4. Utilidades del Sistema](#4-utilidades-del-sistema)
+	- [4.1 Programas del servicio del SO](#41-programas-del-servicio-del-so)
+	- [4.2 Herramientas generales](#42-herramientas-generales)
 - [Bibliografía](#bibliografía)
 
 ### 1. Componentes de un Sistema de Cómputo
@@ -81,22 +81,22 @@
 
 1 Byte = 8 bits
 
-  Bytes            | bits
-  ----------------- ----------------
-  1 KB = 2^10 B   | 1 Kb = 2^10 b
-  1 MB = 2^10 KB  | 1 Mb = 2^20 b
-  1 GB = 2^10 MB  | 1 Gb = 2^30 b
-  1 TB = 2^10 GB  | 1 Tb = 2^40 b
-  1 PB = 2^10 TB  | 1 Pb = 2^50 b
+Bytes           | bits
+----------------| -------------
+1 KB = 2^10 B   | 1 Kb = 2^10 b
+1 MB = 2^10 KB  | 1 Mb = 2^20 b
+1 GB = 2^10 MB  | 1 Gb = 2^30 b
+1 TB = 2^10 GB  | 1 Tb = 2^40 b
+1 PB = 2^10 TB  | 1 Pb = 2^50 b
 
-![](media/image1.png){width="3.46875in" height="1.799352580927384in"}
+
+<img src="media/image1.png" align="left" width="3.46875in" height="1.799352580927384in">
 
 ### 2. Capa Hardware
 
 #### 2.1 Estructura de un Ordenador
 
-![](media/image2.png){width="3.5520833333333335in"
-height="2.1979166666666665in"}
+<img src="media/image2.png" align="left" width="3.5520833333333335in" height="2.1979166666666665in">
 
 #### 2.2 Elementos básicos
 
@@ -131,7 +131,7 @@ height="2.1979166666666665in"}
 -   **Bus de sistema:** proporciona comunicación entre procesadores,
     memoria principal y módulos de E/S.
 
-![](media/image3.png){width="2.84375in" height="2.2440627734033245in"}
+<img src="media/image3.png" align="left" width="2.84375in" height="2.2440627734033245in">
 
 #### 2.3 Registros del Procesador
 
@@ -161,7 +161,7 @@ height="2.1979166666666665in"}
             visible para el usuario, hay un registro dedicado que
             apunta a la cima de la pila. Se puede apilar y extraer.
 
-		-   ![](media/image4.png){width="1.8722222222222222in" height="1.9583333333333333in"}
+        - <img src="media/image4.png" align="left" height="1.8722222222222222in" width="1.9583333333333333in">
 
         - **Registros de control y estado**: usados por el procesador para 				controlar su operación y por rutinasprivilegiadas del sistema 				operativo para controlar la ejecución del programa. Son esenciales 				para la ejecución de instrucciones:
 
@@ -205,8 +205,7 @@ Se denomina **ciclo de instrucción** al procesamiento requerido por una
 La ejecución de un programa consiste en repetir el proceso de búsqueda y
 ejecución de instrucciones.
 
-![](media/image5.png){width="4.656340769903762in"
-height="1.0416666666666667in"}
+<img src="media/image5.png" align="left" width="4.656340769903762in" height="1.0416666666666667in">
 
 Proceso a seguir:
 
@@ -237,8 +236,9 @@ que para el procesador.
 
 ### 2.5 Técnicas de Comunicación de E/S
 
-![](media/image6.png){width="1.2694444444444444in"
-height="2.5854166666666667in"}Se pueden intercambiar datos directamente
+<img src="media/image6.png" align="left" width="1.2694444444444444in" height="2.5854166666666667in">
+
+Se pueden intercambiar datos directamente
 entre un módulo de E/S y el procesador. Hay tres **técnicas** para
 llevarlo a cabo:
 
@@ -255,8 +255,7 @@ llevarlo a cabo:
 > SOLUCIÓN: mientras se atiende al módulo de E/S, se intenta que el
  procesador pueda continuar con trabajo útil.
 
- ![](media/image7.png){width="1.2708333333333333in"
- height="2.540277777777778in"}
+<img src="media/image7.png" align="left" width="1.2708333333333333in" height="2.540277777777778in">
 
 -   **E/S dirigida de interrupciones:** evento que interrumpe el flujo
     normal de ejecución y que está producido por un elemento externo
@@ -271,17 +270,17 @@ llevarlo a cabo:
 
  **Ciclo** de instrucción con interrupciones:
 
- ![](media/image8.png){width="3.7708333333333335in" height="1.4375in"}
+<img src="media/image8.png" align="left" width="3.7708333333333335in" height="1.4375in">
 
- ![](media/image9.png){width="2.4375in"
- height="2.745138888888889in"}
+<img src="media/image9.png" align="left" width="2.4375in" height="2.745138888888889in">
 
  Tratamiento de interrupciones **vectorizadas**:
 
- ![](media/image10.png){width="3.4583333333333335in"  height="1.8216754155730535in"}
 
- ![](media/image11.png){width="1.8020833333333333in"
- height="1.4513888888888888in"}
+<img src="media/image10.png" align="left" width="3.4583333333333335in" height="1.8216754155730535in">
+
+<img src="media/image11.png" align="left" width="1.8020833333333333in" height="1.4513888888888888in">
+
 
 -   **Acceso Directo a Memoria (Direct Memory Access, DMA):**
     realizada por un módulo separado conectado en el bus del sistema o
