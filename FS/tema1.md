@@ -13,7 +13,7 @@
 
 ### Componentes de un sistema de cómputo
 
-#### Definiciones básicas
+#### Definiciones básicasaaa
 
 - ** Informática** Información automática,  conjunto de conocimiento científicos y técnicas que hacen posible el tratamiento automático de la información por medio de ordenadores.
 
