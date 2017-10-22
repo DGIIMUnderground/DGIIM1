@@ -11,7 +11,7 @@
 	- [2.5. Técnicas de Comunicación de E/S](#25-técnicas-de-comunicación-de-es)
 	- [2.6. Excepciones](#26-excepciones)
 	- [2.7. Protección del procesador](#27-protección-del-procesador)
-	- [2.8. Protección de los dispositivos de E/S](#28-protección-de-los-dispositivos-de-es]
+	- [2.8. Protección de los dispositivos de E/S](#28-protección-de-los-dispositivos-de-es)
 	- [2.9. Protección de memoria](#29-protección de memoria)
 - [3. El sistema operativo](#3-el-sistema-operativo)
 	- [3.1. El SO como interfaz Usuario/Computadora](#31-el-so-como-interfaz-usuario-computadora)
@@ -90,13 +90,13 @@ Bytes           | bits
 1 PB = 2^10 TB  | 1 Pb = 2^50 b
 
 
-<img src="media/image1.png" align="left" width="3.46875in" height="1.799352580927384in">
+<img src="media/image1.png" width="333" height="172.737847769">
 
 ### 2. Capa Hardware
 
 #### 2.1 Estructura de un Ordenador
 
-<img src="media/image2.png" align="left" width="3.5520833333333335in" height="2.1979166666666665in">
+<img src="media/image2.png" width="341" height="211">
 
 #### 2.2 Elementos básicos
 
@@ -131,7 +131,7 @@ Bytes           | bits
 -   **Bus de sistema:** proporciona comunicación entre procesadores,
     memoria principal y módulos de E/S.
 
-<img src="media/image3.png" align="left" width="2.84375in" height="2.2440627734033245in">
+<img src="media/image3.png" width="273" height="215.430026247">
 
 #### 2.3 Registros del Procesador
 
@@ -161,7 +161,7 @@ Bytes           | bits
             visible para el usuario, hay un registro dedicado que
             apunta a la cima de la pila. Se puede apilar y extraer.
 
-        - <img src="media/image4.png" align="left" height="1.8722222222222222in" width="1.9583333333333333in">
+        - <img src="media/image4.png" height="179.733333333" width="188">
 
         - **Registros de control y estado**: usados por el procesador para 				controlar su operación y por rutinasprivilegiadas del sistema 				operativo para controlar la ejecución del programa. Son esenciales 				para la ejecución de instrucciones:
 
@@ -205,7 +205,7 @@ Se denomina **ciclo de instrucción** al procesamiento requerido por una
 La ejecución de un programa consiste en repetir el proceso de búsqueda y
 ejecución de instrucciones.
 
-<img src="media/image5.png" align="left" width="4.656340769903762in" height="1.0416666666666667in">
+<img src="media/image5.png" width="447.008713911" height="100">
 
 Proceso a seguir:
 
@@ -236,7 +236,7 @@ que para el procesador.
 
 ### 2.5 Técnicas de Comunicación de E/S
 
-<img src="media/image6.png" align="left" width="1.2694444444444444in" height="2.5854166666666667in">
+<img src="media/image6.png" width="121.866666667" height="248.2">
 
 Se pueden intercambiar datos directamente
 entre un módulo de E/S y el procesador. Hay tres **técnicas** para
@@ -255,7 +255,7 @@ llevarlo a cabo:
 > SOLUCIÓN: mientras se atiende al módulo de E/S, se intenta que el
  procesador pueda continuar con trabajo útil.
 
-<img src="media/image7.png" align="left" width="1.2708333333333333in" height="2.540277777777778in">
+<img src="media/image7.png" width="122" height="243.866666667">
 
 -   **E/S dirigida de interrupciones:** evento que interrumpe el flujo
     normal de ejecución y que está producido por un elemento externo
@@ -270,16 +270,16 @@ llevarlo a cabo:
 
  **Ciclo** de instrucción con interrupciones:
 
-<img src="media/image8.png" align="left" width="3.7708333333333335in" height="1.4375in">
+<img src="media/image8.png" width="362" height="138">
 
-<img src="media/image9.png" align="left" width="2.4375in" height="2.745138888888889in">
+<img src="media/image9.png" width="234" height="263.533333333">
 
  Tratamiento de interrupciones **vectorizadas**:
 
 
-<img src="media/image10.png" align="left" width="3.4583333333333335in" height="1.8216754155730535in">
+<img src="media/image10.png" width="332" height="174.880839895">
 
-<img src="media/image11.png" align="left" width="1.8020833333333333in" height="1.4513888888888888in">
+<img src="media/image11.png" width="173" height="139.333333333">
 
 
 -   **Acceso Directo a Memoria (Direct Memory Access, DMA):**
