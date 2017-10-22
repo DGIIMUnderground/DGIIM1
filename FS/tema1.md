@@ -12,7 +12,7 @@
 	- [2.6. Excepciones](#26-excepciones)
 	- [2.7. Protección del procesador](#27-protección-del-procesador)
 	- [2.8. Protección de los dispositivos de E/S](#28-protección-de-los-dispositivos-de-es)
-	- [2.9. Protección de memoria](#29-protección de memoria)
+	- [2.9. Protección de memoria](#29-protección-de-memoria)
 - [3. El sistema operativo](#3-el-sistema-operativo)
 	- [3.1. El SO como interfaz Usuario/Computadora](#31-el-so-como-interfaz-usuario-computadora)
 	- [3.2. El SO como administrador de recursos](#32-el-so-como-administrador-de-recursos)
@@ -90,13 +90,13 @@ Bytes           | bits
 1 PB = 2^10 TB  | 1 Pb = 2^50 b
 
 
-<img src="media/image1.png" width="333" height="172.737847769">
+<img src="media/image1.png" width="500" height="300">
 
 ### 2. Capa Hardware
 
 #### 2.1 Estructura de un Ordenador
 
-<img src="media/image2.png" width="341" height="211">
+<img src="media/image2.png" width="600" height="320">
 
 #### 2.2 Elementos básicos
 
@@ -131,7 +131,7 @@ Bytes           | bits
 -   **Bus de sistema:** proporciona comunicación entre procesadores,
     memoria principal y módulos de E/S.
 
-<img src="media/image3.png" width="273" height="215.430026247">
+<img src="media/image3.png" width="500" height="400">
 
 #### 2.3 Registros del Procesador
 
@@ -161,7 +161,7 @@ Bytes           | bits
             visible para el usuario, hay un registro dedicado que
             apunta a la cima de la pila. Se puede apilar y extraer.
 
-        - <img src="media/image4.png" height="179.733333333" width="188">
+        - <img src="media/image4.png" height="270" width="300">
 
         - **Registros de control y estado**: usados por el procesador para 				controlar su operación y por rutinasprivilegiadas del sistema 				operativo para controlar la ejecución del programa. Son esenciales 				para la ejecución de instrucciones:
 
@@ -236,7 +236,7 @@ que para el procesador.
 
 ### 2.5 Técnicas de Comunicación de E/S
 
-<img src="media/image6.png" width="121.866666667" height="248.2">
+<img src="media/image6.png" align="right" width="160" height="300">
 
 Se pueden intercambiar datos directamente
 entre un módulo de E/S y el procesador. Hay tres **técnicas** para
@@ -255,7 +255,7 @@ llevarlo a cabo:
 > SOLUCIÓN: mientras se atiende al módulo de E/S, se intenta que el
  procesador pueda continuar con trabajo útil.
 
-<img src="media/image7.png" width="122" height="243.866666667">
+<img src="media/image7.png" align="right" width="160" height="300">
 
 -   **E/S dirigida de interrupciones:** evento que interrumpe el flujo
     normal de ejecución y que está producido por un elemento externo
@@ -270,14 +270,14 @@ llevarlo a cabo:
 
  **Ciclo** de instrucción con interrupciones:
 
-<img src="media/image8.png" width="362" height="138">
+<img src="media/image8.png" width="400" height="170">
 
-<img src="media/image9.png" width="234" height="263.533333333">
+<img src="media/image9.png" align="right" width="400" height="230">
 
  Tratamiento de interrupciones **vectorizadas**:
 
 
-<img src="media/image10.png" width="332" height="174.880839895">
+<img src="media/image10.png" width="400" height="230">
 
 <img src="media/image11.png" width="173" height="139.333333333">
 
