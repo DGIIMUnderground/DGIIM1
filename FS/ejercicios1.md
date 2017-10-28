@@ -157,3 +157,30 @@ done < /etc/passwd
 
 > Esta solución omite además usar cat, lo cual hacer aumentar
 > la eficiencia del script.
+
+
+**8. Realice un script que, dado A, B y C como argumento resuelva la ecuación para x:
+Ax² + Bx + C = 0 **
+
+```bash
+#!/bin/bash
+# author: Paula
+
+discriminante=$(echo "$2^2-4*$1*$3" | bc -l)
+
+if [ $1 != 0 ] # Vemos si el coeficiente de segundo grado es distinto de 0
+	then
+	if [ $discriminante -ge 0 ] # Vemos si el discriminante no es negativo
+		then
+		numerador1=$(echo "-$2-sqrt($discriminante)" | bc -l)
+		numerador2=$(echo "-$2+sqrt($discriminante)" | bc -l)
+		echo "$numerador1/(2*$1)" | bc -l
+		echo "$numerador2/(2*$1)" | bc -l
+	else
+		echo "el discriminante es negativo"
+	fi
+else # Si el coeficiente de segundo grado es 0
+	echo "-$3/$2" | bc -l
+fi
+```
+
