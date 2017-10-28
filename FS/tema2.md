@@ -272,3 +272,73 @@ puede ocurrirr (cada sistm hace los que le sale de las aricese) ejemplo se está
 tennemso instrucucines y datos, el proceso es el mismo, lo que cambia son lso daos , en vez d arir procesos nueco s, ae abren hebras, proceso el mismo, datos de cada ebra distindo, deteo del bloque de conrtol de proceos se parten nuecos registos , direcciones, se ahor amusah memori ad eisntrucciones.
 
 navegado --> proceso asociado a ese programa, dentro de la misma ejecucion (navegador) se abre una hebra. Hebra eecución independiente del mismo proceso.x
+Proceso unidad de gestión de un programa al que se asocian memeoria y gestión, si el codigo es el mismo en una hebra te ahorras el código en memeoria,
+la hebra se paparaleliza la ejecución del programa, el mismo código d eprograma abre las ejecuciones paralelas, así el progrma avanza más rápido, hasta sincronizarse esto son hebras de un mismo proceso.
+Ejemplo el servidor, hay un progrma uqe continuamente está leyendo el puerto, cuando detecta ue hay una entrada habre un hebra para atencdeae al programa.
+
+elto se utilizar para ecelerar programas, sobretodo programas de cálculo mostruosos,
+ventajas de la hebhras, se consume menos memoria, lo estados de las hebras son los mismo que los de los precesos.
+
+## Carga absoluta y reubicación
+Las direcciones que puede asignar un compilaor son las físiscas o absolutas y ls que empiezan en cero, realticas o lógicas, utilizar siempre absolutas implicaría que simpre se utilizase la misma direcciones de memoria, en el caso de instrucciones se suma lo mismo o en el caso de bucles también se saltas. (ver diapositicas 34 )
+cuando se compila un programa se realiza la reubicación, a la carga relativa se el suma la dirección inicial en la que se inicia.
+(en el nucleo, el esto tiene direccione es carga absoluta, en el se basa el grub)
+si la máquina que tienes no tiene la memeoria suficiente,ejecutar los mismos programas comparando con una de mauor, lo que tiene poca memrooa, lo que tiene que hacer es coger y descargar los procesos de discos, la rocalización supone supa cálculo...
+## reubicacion estática
+la dirrecciones llogicas se combietens en fisiaca sdespues de la de compilaciosn y cantes de la ejecucaion, antes de uqe use la dirección, estos dos momentos son estáticas y dinámica.  Lo que es dináico es en timepo de ejecución, todo lo est´atico es antes de la ejecución,
+la reubicacion estática consiste en el momento so sepa en que sitio de momoria va a colocar el programa, se hace durante el momento de la carga, so sabe a partid direccion de memro lo va a cargar, a todas las referencis le suma la dirección base, el códidog qeu se escribe elm momoria yya tiene direccion absulotga.
+ventajas, se cambia un asola vez, inconvenintes, lo que estña ahí ya no se puede cambiar,
+- dinámica en el momento de la carga se enscbe en momoria princioa direccione slógicas y cada vez que se accede a direc de momeor se lae suma diección base, en memroria son direccone logicas, acada cex que se accede se suma direccion base, que se le suma a la absoluta.  Si mi programa recorre sisitios por los que no pasa , en la acrualidad lo que se utiliza es la dinamica porque la cpu está ya diseñada paa haer eso.
+
+## espaciod de memeoria.
+mientras que un asesturuciion se ejejcuta se solapan las , en el tiempo de ejecucion global no influyen estas cosas porque es otra unidad la qeu se encarga,
+- direcciones lógicas  ensambalsdo rconmidaldo
+
+espacio dirrecione sfísica
+el so mantiene un mapa de la memor de un ordenado, el
+
+y tamantiene un mapa de memoria de cada proceso, lo que se mejte en cada momento mñas o menos el númeo del ejecutable de un modo o oro,
+taba de simbolos, va cogiendo los ombres y asignádoselo a una dirección, cuando se está haciendo la compilación, aparecen siboloa squ eno sresuelca el compilador, nombres de funcione sexternas, el encuadrernar se encarga de los otro, de esto se encarga el ejejcutable,	la tabla de simbolos puede o no ir, dpende de como se resuelva la encuadernación o el enlace, esta puede ser estática, estas referencias ya las resuelcv ale encuador en princio dnp hará falaa al ora, si se hace dinámica els necesara la tabla de sñimbolos 
+
+los datos a los que se le asigna un valor al principio estarían después del código
+En argurmentos de programa y la pila . Cuando se llama a una fución, se va generando una pila, y cuando se coge se
+se crea una zona que se crea **registro de activación** valores de los argumento que contiene las funciones, según se generen se va creando, si no borra, pero se borra. Para buscar una variable busca en los registros que lo han llamado, sino en la siguiente (diferencia entre variables globales)
+
+Lo qu ese guarda en una pila de la cpu es la direcciónn de la dirección quu ees distinta a la pila de proceso, que esta es la pila de la cpu.
+otra en memoria principa donde está el regstro de activacion las variables loales
+
+----
+codgo
+---
+variable iniciaes
+---
+variables si inicial (bajando)
+---
+---
+montículo(subiendo) o módulo
+
+en el montículo va la variables dináicas, las listas, las pilas que creen se quedan al final de la zona de memor¡ria que asigne el so.
+
+para vitar que tanto subir el mónticulo cada vez que se cree borre, **recolector de basura** que compacta el espacio no utilizado en memoria.
+
+### problemas de la fragmentación
+
+El núcle del sistema operativo está cargado en las direcciones de memoria más baja, el firmeare nada más empezar carga el so, que va cargado.
+Supongamos que el So empieza a generar z¡proceso que se van desarrollando de arriba a bajo y pueden que empiecen a quedar huecos, que la solución no sea descargar y cargar lso procesos de nuevo.
+La fra¡gmentación consitste en trocear los procesos:
+- una en plan dictarorial, todo se parte de la misma manera, la memoria se divide en trozos iguales, entre 512 k y 800k,? esos trozos son **marcos**, pro otra parte se tienen los procesos que se dividen en trozos iguale, salvo el último que puede ser más perqueños, estos trozos del mismo tamaño que el marco se llama **páginas**, esto es físicamente como está.
+Normalmente la paginación por una parte va el código y por otra los datos, cuando se ejecuta el le proceso los marcos empinezan a ocuparse, cuando ba a cargar unproceso en el mapa de marcos libres coje y mete páginas del porceos que no cecesariamente tiene que estar ordenados. Para acceder a una dirección, saber la página en que está, y dentro de la página el desplazamiento desde el principipp cuando se esté ejecutando necesito saber en que marco se está desarrollando.
+
+- Segmentación , divide el progrma en trozos que estén relacionados con la arquitectura que tiene, los trozos no tienen por qué ser iguales,
+Las direccione logicas de la paginación se deberá de dar el pagína eu el desplazamiento.
+ El so crea una tabla de paginas (entrada) y en cada fila aparece el marco en el que está la página y un bits d eprotección si se puede escrbir ysi se pude escribir. La tabla de páginas está en memoria principal, por tanto la tabla empezará a partir de una determinada dirección base, esa dirección base, cuando se ejecuta el proceso se carga en registro base de la tabla de págiana,
+ (el desplazamiento es el mismo dentro y fuera de la máquina)
+
+ventaja: se gestiona mejor la memoria.
+desvetanjas lso accesos a memoria, sin fragmentación es muy rápida, de la otra manera hay que hacer varias acceso, registros
+1. cpu memroria principas--> lee marco
+2. memoria al marco 25 --> coge desplaczamein
+
+en total hace dos accesoa a memoria.
+
+Para solucionar ese problema, Buffer de traducción adelantada TLB, lo que se tiene en cpu, es un trocito de la tabalde página en marcos, se lee ese trocito, si aparece el marco, solo habría un acceso, si no se Esta memoria se llama Caché, memoria muy rápida.  La forma de acceder pro ardware, inteneta buscar esa página el paralelo, esta tabla tiene número pagin num marco y bits de protección, en cache no necesta el número de páginas
