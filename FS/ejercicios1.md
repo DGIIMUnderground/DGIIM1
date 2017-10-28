@@ -23,3 +23,7 @@ ls /media/$USER
 ```
 grep . <guionconlineasenblanco> >> <guionsinlineasenblanco>
 ```
+
+4. Escriba un script que mediante la orden grep elimine los comentarios de otro script.
+
+
