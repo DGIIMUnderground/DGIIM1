@@ -18,5 +18,13 @@ si lo está, escriba un listado de los dispositivos montados actualmente de form
 ls /media/$USER
 ```
 
+<<<<<<< HEAD
 3. Escriba un script que mediante la orden grep elimine las líneas en blanco de otros script
 
+=======
+3. Escriba un script que mediante la orden grep elimine las líneas en blanco de otro script.
+
+```
+grep . <guionconlineasenblanco> >> <guionsinlineasenblanco>
+```
+>>>>>>> dddf94452fe67a01ec09e03ca43c77eba49ad5cc
