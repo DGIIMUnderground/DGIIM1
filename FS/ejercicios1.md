@@ -35,7 +35,7 @@ rm $1
 mv temp $1
 ```
 
-5. 5. Combine los scripts 3 y 4 para que elimine las líneas en blanco y los comentarios. ¿Habría
+ 5. Combine los scripts 3 y 4 para que elimine las líneas en blanco y los comentarios. ¿Habría
 más formas de realizar este ejercicio?
 
 ```
@@ -47,4 +47,18 @@ grep -v "#" temp > $1
 rm temp
 
 #ft Blanca.
+```
+6. Escriba un script que devuelva todos los usuarios del sistema. Además imprima una lista de
+los shells utilizados por defecto al arrancar para cada usuario.
+
+```
+#!/bin/bash
+
+for linea in `cat /etc/passwd`;
+do
+    USUARIO=`echo $linea | cut -d: -f1 `;
+    SHELL=`echo $linea | cut -d : -f7 ` ;
+    printf " El usurio $USUARIO utiliza la shell $SHELL \n";
+done;
+
 ```
