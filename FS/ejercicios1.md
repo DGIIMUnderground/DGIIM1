@@ -160,7 +160,7 @@ done < /etc/passwd
 
 
 **8. Realice un script que, dado A, B y C como argumento resuelva la ecuación para x:
-Ax² + Bx + C = 0 **
+Ax² + Bx + C = 0**
 
 ```bash
 #!/bin/bash
