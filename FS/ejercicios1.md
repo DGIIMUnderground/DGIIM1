@@ -35,3 +35,16 @@ rm $1
 mv temp $1
 ```
 
+5. 5. Combine los scripts 3 y 4 para que elimine las líneas en blanco y los comentarios. ¿Habría
+más formas de realizar este ejercicio?
+
+```
+#!/bin/bash
+
+grep . $1 > temp
+
+grep -v "#" temp > $1
+rm temp
+
+#ft Blanca.
+```
