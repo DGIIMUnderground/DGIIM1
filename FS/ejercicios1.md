@@ -26,4 +26,10 @@ grep . <guionconlineasenblanco> >> <guionsinlineasenblanco>
 
 4. Escriba un script que mediante la orden grep elimine los comentarios de otro script.
 
+```
+#!/bin/bash
 
+grep -v "#" $1 > temp
+rm $1
+mv temp $1
+```
