@@ -18,20 +18,20 @@ si lo está, escriba un listado de los dispositivos montados actualmente de form
 ls /media/$USER
 ```
 
-<<<<<<< HEAD
-3. Escriba un script que mediante la orden grep elimine las líneas en blanco de otros script
 
-=======
 3. Escriba un script que mediante la orden grep elimine las líneas en blanco de otro script.
 
 ```
 grep . <guionconlineasenblanco> >> <guionsinlineasenblanco>
 ```
-<<<<<<< HEAD
->>>>>>> dddf94452fe67a01ec09e03ca43c77eba49ad5cc
-=======
 
 4. Escriba un script que mediante la orden grep elimine los comentarios de otro script.
 
+```
+#!/bin/bash
 
->>>>>>> d16f7862b3cc7fbf799227f36f28b21e9338ee10
+grep -v "#" $1 > temp
+rm $1
+mv temp $1
+```
+
