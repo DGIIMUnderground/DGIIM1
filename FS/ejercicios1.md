@@ -131,12 +131,12 @@ los shells utilizados por defecto al arrancar para cada usuario.
 #!/bin/bash
 # author: Blanca
 
-for linea in `cat /etc/passwd`;
+for linea in `cat /etc/passwd`
 do
-    USUARIO=`echo $linea | cut -d: -f1 `;
-    SHELL=`echo $linea | cut -d : -f7 ` ;
-    printf " El usurio $USUARIO utiliza la shell $SHELL \n";
-done;
+    USUARIO=`echo $linea | cut -d: -f1 `
+    SHELL=`echo $linea | cut -d : -f7 ` 
+    printf " El usurio $USUARIO utiliza la shell $SHELL \n"
+done
 
 ```
 
@@ -149,14 +149,24 @@ done;
 # author: Ric
 
 while read linea; do
-  usuario=`echo $linea | cut -d: -f1 `;
-  shell=`echo $linea | cut -d: -f7 `; 
-  printf " El usurio $usuario utiliza la shell $shell \n";
+  usuario=`echo $linea | cut -d: -f1 `
+  shell=`echo $linea | cut -d: -f7 `
+  printf " El usurio $usuario utiliza la shell $shell \n"
 done < /etc/passwd
 ```
 
 > Esta solución omite además usar cat, lo cual hacer aumentar
 > la eficiencia del script.
+
+
+**7. lastlog es una orden que devuelve la última vez que se inició una sesión. Realice un script que devuelva a qué hora el usuario que ejecuta el script accedió al computador por última vez.**
+
+```bash
+#!/bin/bash
+# author: Paula
+
+last -R -n 1 $USER
+```
 
 
 **8. Realice un script que, dado A, B y C como argumento resuelva la ecuación para x:
