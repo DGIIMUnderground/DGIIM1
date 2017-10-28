@@ -19,3 +19,7 @@ ls /media/$USER
 ```
 
 3. Escriba un script que mediante la orden grep elimine las líneas en blanco de otro script.
+
+```
+grep . <guionconlineasenblanco> >> <guionsinlineasenblanco>
+```
