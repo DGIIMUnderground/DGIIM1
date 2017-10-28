@@ -212,6 +212,7 @@ if [[ !(-d $1) ]]
 else
 	echo "Error, el fichero ya existe."
 fi
+```
 
 > Cuando ejecutas el script en la terminal, pone que da error.
 > Pero igualmente realiza su función correctamente.
