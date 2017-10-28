@@ -194,3 +194,28 @@ else # Si el coeficiente de segundo grado es 0
 fi
 ```
 
+
+### COMPLEJOS:
+
+**1. Realice un script que permita compactar varios ficheros en uno solo. Para ello, la orden
+tomaría un primer argumento que sería el nombre del fichero de salida, y luego tomaría una
+lista de argumentos que sería la lista de archivos a compactar. Verifique que el fichero de
+salida no existía previamente mostrando los errores pertinentes en caso de existir.**
+
+```bash
+#!/bin/bash
+# author: Paula
+
+if [[ !(-d $1) ]]
+	then
+	tar -cvf $1.tar $@
+else
+	echo "Error, el fichero ya existe."
+fi
+
+> Cuando ejecutas el script en la terminal, pone que da error.
+> Pero igualmente realiza su función correctamente.
+
+
+
+
