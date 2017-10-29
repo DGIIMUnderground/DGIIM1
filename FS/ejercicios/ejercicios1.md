@@ -159,7 +159,9 @@ done < /etc/passwd
 > la eficiencia del script.
 
 
-**7. lastlog es una orden que devuelve la última vez que se inició una sesión. Realice un script que devuelva a qué hora el usuario que ejecuta el script accedió al computador por última vez.**
+**7. lastlog es una orden que devuelve la última vez que se inició una sesión.
+Realice un script que devuelva a qué hora el usuario que ejecuta el script
+accedió al computador por última vez.**
 
 ```bash
 #!/bin/bash
@@ -167,7 +169,9 @@ done < /etc/passwd
 
 last -R -n 1 $USER
 ```
-> Comentario de Blanca: Viendo esta solución ¿lo que nos cuentan de lastlog es puro engaño para liarnos más y conducirnos a la desesperación o otra solución es con lastlog?
+> Comentario de Blanca: Viendo esta solución ¿lo que nos cuentan de lastlog es
+> puro engaño para liarnos más y conducirnos a la desesperación u otra solución
+> es con lastlog?
 
 **8. Realice un script que, dado A, B y C como argumento resuelva la ecuación para x:
 Ax² + Bx + C = 0**
@@ -199,7 +203,8 @@ fi
 
 **1. Realice un script que permita compactar varios ficheros en uno solo. Para ello, la orden tomaría un primer argumento que sería el nombre del fichero de salida, y luego tomaría una lista de argumentos que sería la lista de archivos a compactar. Verifique que el fichero de
 salida no existía previamente mostrando los errores pertinentes en caso de existir.**
-```
+
+```bash
 #!/bin/bash
 # Author: Blanca
 
@@ -223,8 +228,11 @@ else
 fi
 
 ```
-> Comentario de Blanca:  Paulaaaa, yo creo que te daba error porque estabas intentado copiar el mismo archivo a sí mismo, he aquí mi solución, probablemente depurable
-> He utilizado una carpeta auxiliar ¿Alguna idea para hacerlo sin ella?
+
+> Comentario de Blanca:  Paulaaaa, yo creo que te daba error porque estabas
+> intentado copiar el mismo archivo a sí mismo, he aquí mi solución,
+> probablemente depurable He utilizado una carpeta auxiliar ¿Alguna idea para
+> hacerlo sin ella?
 
 ```bash
 #!/bin/bash
@@ -241,10 +249,13 @@ fi
 > Cuando ejecutas el script en la terminal, pone que da error.
 > Pero igualmente realiza su función correctamente.
 
-**2. Realice un script que permita la instalación del script del ejercicio 1. Para ello, el script tendrá una parte de instalador y otra parte donde estará el script a instalar. Ambos ficheros se encontrarán compactados en el mismo script. Cuando el usuario lance el script instalador, ete recortará el script y copiará el script del ejerccio 1 en el directorio dado como
-argumento **
+**2. Realice un script que permita la instalación del script del ejercicio 1.
+Para ello, el script tendrá una parte de instalador y otra parte donde estará
+el script a instalar. Ambos ficheros se encontrarán compactados en el mismo
+script. Cuando el usuario lance el script instalador, ete recortará el script y
+copiará el script del ejerccio 1 en el directorio dado como argumento**
 
-```
+```bash
 #!/bin/bash
 #Author: Blanca
 
