@@ -124,6 +124,14 @@ grep -o '^[^#]*' $1 > temp && mv temp $1
 > -o devuelve sólo lo seleccionado en lugar de la línea completa.
 > Por tanto, podemos redirigirlo y desaparecen las líneas en blanco 
 
+Otra alternativa
+```bash
+#!/bin/bash
+#autor:Alberto
+cat $1|grep -e ^[^#] > aux ##"aux" es un archivo auxilar cualquiera
+grep . aux > $1
+```
+
 6. Escriba un script que devuelva todos los usuarios del sistema. Además imprima una lista de
 los shells utilizados por defecto al arrancar para cada usuario.
 
