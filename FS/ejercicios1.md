@@ -241,6 +241,45 @@ fi
 > Cuando ejecutas el script en la terminal, pone que da error.
 > Pero igualmente realiza su función correctamente.
 
+**2. Realice un script que permita la instalación del script del ejercicio 1. Para ello, el script tendrá una parte de instalador y otra parte donde estará el script a instalar. Ambos ficheros se encontrarán compactados en el mismo script. Cuando el usuario lance el script instalador, ete recortará el script y copiará el script del ejerccio 1 en el directorio dado como
+argumento **
+
+```
+#!/bin/bash
+#Author: Blanca
+
+
+for SCRIPT in `ls`;
+do
+    if [[ `echo $SCRIPT` != `echo $0` ]] ; 
+    then
+	cp  $SCRIPT $HOME/$1; # Dirección dese de la carptea home del usuario del equipo
+    fi;
+done;
+
+```
+> Comentario Blanca: 
+> Como habéis podido notar por el comementario la carpeta a la que se quieran enviar el resto de archivos debe ser absoluta, eso no me gustaba
+> y he intentado arreglarlo de la sigueinte manera, el script no funciona, pero por si a alguien le sirve como fuente de inspiración
+> mi idea es que solo sea necesario introducir el nombre de la carpeta a la que se quiere enviar
+```
+
+for SCRIPT in `ls`;
+do
+    if [[  `echo $SCRIPT` != `echo $0`  ]] ;
+    then
+	while READ;
+	do 
+	   printf " % \n" $READ;
+	   cp $SCRIPT ~/$READ;
+	   break;
+	done <echo` find $HOME -name $1`;
+		
+    fi;
+    
+done;
+
+```
 
 **3. ImageMagick es un programa que permite trabajar con imágenes. Haga man convert para ver su uso. Después cree un script que permita unir dos imágenes en una sola.**
 
