@@ -347,6 +347,52 @@ fi
 ```
 > Este es un poco mas elaborado por que no vi el comando de adjoin y busque otro que hace lo mismo. El problema es que para utilizar este comando las dos imagenes tenian que tener el mismo tamaño, así que estuve un rato a ver como lo hacía.
 
+**Dado un fichero en el que se tiene una matriz 3x3 de números separados por “;”, tal que así:
+3 ; 1 ; 2
+12 ; 5000 ; 4
+5 ; 1 ; 2
+Realice un script para que al pasarle el fichero, automáticamente calcule el determinante de
+la matriz. **
+
+```bash
+#!/bin/bash
+#Author: Juan Helios
+
+a=0
+
+for i in `seq 1 1 3` 
+do
+	for t in `seq 1 1 3`
+	do
+	lista[a]=$(echo `cat matriz | cut -d';' -f$i | sed -n "$t"p`)
+	a=$((a+1))
+	echo ${lista[a]}
+	done
+done
+
+echo ${lista[*]}
+
+a=${lista[0]}
+d=${lista[1]}
+g=${lista[2]}
+b=${lista[3]}
+e=${lista[4]}
+h=${lista[5]}
+c=${lista[6]}
+f=${lista[7]}
+i=${lista[8]}
+
+
+
+
+determinante=$(( (a*e*i + b*f*g + c*d*h) - (c*e*g + b*d*i + a*f*h) ))
+
+echo "El determinante vale $determinante "
+	
+'''
+
+> Me sale siempre aunque he tenido que tirar de internet para encontrar el comando sed -n. Este comando nos da la linea que queremos del documento, no me valía head -n porque ese imprimía las lineas siguientes. También he tenido que informarme sobre los arrays asi que si ponen esto en el examen tengo un 0 hehe, pero me parece que excede bastante el nivel de lo que hemos visto.
+
 
 
 
