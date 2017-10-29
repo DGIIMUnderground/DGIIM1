@@ -167,7 +167,7 @@ done < /etc/passwd
 
 last -R -n 1 $USER
 ```
-
+> ¿Viendo esta solución lo que nos cuentan de lastlog es puro engaño?
 
 **8. Realice un script que, dado A, B y C como argumento resuelva la ecuación para x:
 Ax² + Bx + C = 0**
