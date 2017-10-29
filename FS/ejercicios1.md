@@ -199,6 +199,32 @@ fi
 
 **1. Realice un script que permita compactar varios ficheros en uno solo. Para ello, la orden tomaría un primer argumento que sería el nombre del fichero de salida, y luego tomaría una lista de argumentos que sería la lista de archivos a compactar. Verifique que el fichero de
 salida no existía previamente mostrando los errores pertinentes en caso de existir.**
+```
+#!/bin/bash
+# Author: Blanca
+
+if [[ !(-d $1) && !(-d $1.tar) ]]
+then
+    mkdir $1;
+    
+    for archivo in $@;
+    do
+	
+	if [[ `echo $archivo` != `echo $1` ]]; # Esta línea es la clave, no se copia a sí mismo
+	then
+	   
+	    cp $archivo $1;
+	fi;
+    done;
+    tar -cvf $1.tar $1;
+    rm -r  $1;
+else
+	echo "Error, el fichero ya existe."
+fi
+
+```
+> Paulaaaa, yo creo que te daba error porque estabas intentado copiar el mismo archivo a sí mismo, he aquí mi solución, probablemente depurable
+> He utilizado una carpeta auxiliar ¿Alguna idea para hacerlo sin ella?
 
 ```bash
 #!/bin/bash
