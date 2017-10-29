@@ -167,7 +167,7 @@ done < /etc/passwd
 
 last -R -n 1 $USER
 ```
-> ¿Viendo esta solución lo que nos cuentan de lastlog es puro engaño?
+> Comentario de Blanca: Viendo esta solución ¿lo que nos cuentan de lastlog es puro engaño para liarnos más y conducirnos a la desesperación o otra solución es con lastlog?
 
 **8. Realice un script que, dado A, B y C como argumento resuelva la ecuación para x:
 Ax² + Bx + C = 0**
@@ -203,7 +203,7 @@ salida no existía previamente mostrando los errores pertinentes en caso de exis
 #!/bin/bash
 # Author: Blanca
 
-if [[ !(-d $1) && !(-d $1.tar) ]]
+if [[ !(-d $1) && !(-d $1.tar) ]] # hay que tener en cuenta que el fichero que no tiene que existir es el .tar
 then
     mkdir $1;
     
@@ -223,7 +223,7 @@ else
 fi
 
 ```
-> Paulaaaa, yo creo que te daba error porque estabas intentado copiar el mismo archivo a sí mismo, he aquí mi solución, probablemente depurable
+> Comentario de Blanca:  Paulaaaa, yo creo que te daba error porque estabas intentado copiar el mismo archivo a sí mismo, he aquí mi solución, probablemente depurable
 > He utilizado una carpeta auxiliar ¿Alguna idea para hacerlo sin ella?
 
 ```bash
