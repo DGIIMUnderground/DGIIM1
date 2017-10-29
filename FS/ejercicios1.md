@@ -197,9 +197,7 @@ fi
 
 ### COMPLEJOS:
 
-**1. Realice un script que permita compactar varios ficheros en uno solo. Para ello, la orden
-tomaría un primer argumento que sería el nombre del fichero de salida, y luego tomaría una
-lista de argumentos que sería la lista de archivos a compactar. Verifique que el fichero de
+**1. Realice un script que permita compactar varios ficheros en uno solo. Para ello, la orden tomaría un primer argumento que sería el nombre del fichero de salida, y luego tomaría una lista de argumentos que sería la lista de archivos a compactar. Verifique que el fichero de
 salida no existía previamente mostrando los errores pertinentes en caso de existir.**
 
 ```bash
@@ -217,6 +215,23 @@ fi
 > Cuando ejecutas el script en la terminal, pone que da error.
 > Pero igualmente realiza su función correctamente.
 
+
+**3. ImageMagick es un programa que permite trabajar con imágenes. Haga man convert para ver su uso. Después cree un script que permita unir dos imágenes en una sola.**
+
+```bash
+#!/bin/bash
+# author: Paula
+
+#$1: imagen 1
+#$2: imagen 2
+#$3: imagen 1 y 2 unidas
+
+convert -adjoin $1 $2 $3
+```
+
+
+> Imagen 1 e imagen 2 no pueden ser .jpeg ni .png porque el programa no puede unirlas.
+> Los argumentos deben darse con su extensión (ejemplo: imagen1.gif).
 
 
 
