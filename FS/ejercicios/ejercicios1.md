@@ -96,6 +96,13 @@ mv temp $1
 # author: Ric
 grep -v '^#' $1 > temp && mv temp $1
 ```
+```bash
+#!/bin/bash
+# author: Alberto
+cat $1|grep -e ^[^#] > aux
+cp aux $1 
+```
+>^[^#] indica todos las lineas que NO comienzan por #
 
 **5. Combine los scripts 3 y 4 para que elimine las líneas en blanco y los
    comentarios. ¿Habría más formas de realizar este ejercicio?**
