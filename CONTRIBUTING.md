@@ -1,8 +1,8 @@
 # Contribuir en DGIIM 1
 
-¿QUIERE USTED OPTIMIZAR SU TIEMPO COMO ESTUDIANTE  DE LA DGIIM?
-¿ESTÁ CANSADO DE LA SOLEDAD ESTUDIANTIL FRENTE A LOS PROBLEMAS?
-¿QUIERE SOLUCIONES CUTRES?
+¿Está cansado de la soledad estudiantil frente a los problemas?
+¿Quiere usted optimizar su tiempo como estudiante de dgiim?
+¿Quiere soluciones cutres?
  
 Bienvenido al repositorio de apuntes de 1º del DGIIM :D
 
@@ -20,6 +20,10 @@ esencia en una palabra.
 2. Cada asignatura será representada por una carpeta única, nombrada en
 mayúscula de acuerdo con las siglas propias del plan de estudios (Ej.: LMD,FS, etc.)
 3. En el caso de problemas copiar siempre el enunciado.
+4. El mensaje de cada commit deberá ir precedido por la sigla de la asignatura
+en la que se haya contribuido. Ejemplo: `git commit -m "LMD: Naufragio recurrente".
+En el caso de que el commit sea más general y esté relacionado con ninguna
+asignatura en particular, simplemente no se ponen siglas.
+Ejemplo: `git commit -m "Siglas para contribuir"`.
 
-Ya está, si tiene alguna aportación más sobre la estética, no dude escribirla
-aquí.
+Si quiere discutir alguna de estas convenciones, coméntelo por el grupo de telegram.
