@@ -317,5 +317,29 @@ convert -adjoin $1 $2 $3
 > Imagen 1 e imagen 2 no pueden ser .jpeg ni .png porque el programa no puede unirlas.
 > Los argumentos deben darse con su extensión (ejemplo: imagen1.gif).
 
+```bash
+#!/bin/bash
+#author Juan Helios
+
+tamano1=`identify -format "%[fx:w]x%[fx:h]" $1`
+tamano2=`identify -format "%[fx:w]x%[fx:h]" $2`
+
+echo $tamano1
+echo $tamano2
+
+if [ $tamano1 != $tamano2 ]
+then
+	convert $2 -resize $tamano1\! imagennueva.png
+	echo `identify -format "%[fx:w]x%[fx:h]" imagennueva.png`
+	convert -combine imagennueva.png $1 NUEVA.png
+
+else
+	convert -combine imagennueva.png $1 NUEVA.png
+fi
+	
+```
+> Este es un poco mas elaborado por que no vi el comando de adjoin y busque otro que hace lo mismo. El problema es que para utilizar este comando las dos imagenes tenian que tener el mismo tamaño, así que estuve un rato a ver como lo hacía.
+
+
 
 
