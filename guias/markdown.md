@@ -69,14 +69,14 @@ Ejemplo.: `[<mensaje>](#visualización-del-contenido) `
 
 ### Tablas
 
-Hacer tablas en emacs es moco de pavo:
+Hacer tablas en markdown es moco de pavo:
 
 columna 1 | columna 2
 ---|---
 dato 1 | dato 2
 dat 3 | dat 4
 
-mirad qué código más sumamente sencillo, se pude pones  más bonito alineando las columanas sin alterarse el resultado, pero ¿ES O NO ES ESTO A CASO UN MANUAL CHAPUCERO?
+mirad qué código más sumamente sencillo, se pude pones  más bonito alineando las columnas sin alterarse el resultado, pero ¿ES O NO ES ESTO A CASO UN MANUAL CHAPUCERO?
 ```
 columna 1 | columna 2
        ---|---
