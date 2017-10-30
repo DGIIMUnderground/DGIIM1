@@ -393,6 +393,65 @@ echo "El determinante vale $determinante "
 
 > Me sale siempre aunque he tenido que tirar de internet para encontrar el comando sed -n. Este comando nos da la linea que queremos del documento, no me valía head -n porque ese imprimía las lineas siguientes. También he tenido que informarme sobre los arrays asi que si ponen esto en el examen tengo un 0 hehe, pero me parece que excede bastante el nivel de lo que hemos visto.
 
+> Comentario Blanca:
+> Para que no entréis en pánico he resuelto este ejercicio con los conocimientos que se nos supone de clase,
+> lo cual significa que excluye al sed -n, pero sí que incluye vectores (capítulo 4)
+> Aquí mi código
 
+``` bash
 
+#!/bin/bash
+# Author Blanca
+# Pasar por argumentos el nombre del archivo
 
+########### VARIABLES ################
+declare -a matrix; # matriz la utilizaré como una 1X9
+num=0;
+ind=0;
+
+########### INSTRUCIONES #########
+
+# añado ; al final de cada línea
+while read line
+do
+    echo "$line;" >> temp
+done <$1
+
+#Paso números a array
+while read -n 1  character;
+      
+do
+    if [[ $character == [0-9] ]] ; #si el caracter leído es un número
+    then
+	let num=num*10+$character;
+	
+    elif [[ $character == [\;] ]]
+    then
+	matrix[$ind]=$num
+	let num=0;
+	let ind=ind+1
+    fi;	
+done < temp
+rm temp
+
+##### cálculo del determinante #######n
+
+sum=1 # guardará el producto de los casillas que suman seguiendo la guerra de Sarrus
+res=1 # guaradrá el producto de las casillas que restan en la regla de Sarrus
+
+for(( i=0; i<3 ; i++ ))
+do
+    let sum=1
+    let res=1
+    for (( j=0 ; j<3 ;j++ ))
+    do
+	let ind=' j*3+ (i+j) %3 '
+	let sum=' sum * matrix[$ind]'
+	let ind=' j*3 + (5-j-i)%3'
+	let res='res * matrix[$ind]' 
+    done
+
+    let num='num + sum - res'
+done
+echo "El determinante es $num"
+```
