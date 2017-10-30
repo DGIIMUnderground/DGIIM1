@@ -8,13 +8,13 @@
 - **Texto en negrita**:  \** texto en negrita \**
 - *la cursiva es un bien preciado* para escribir en cursiva es suciciente con  \* texto que va en cursiva \*
 - Tachar texto no sé para qué puede servir, pero se hace así \~~ texto tachado \~~
-  - Tarea pendiente: ~~busacrle una utilidad a los \~\~ ~~
+  - Tarea pendiente: ~~buscarle una utilidad a los \~\~ ~~
 - Respecto a escribir código... 
   - línea corta con \` código \`  `printf " Multiplĺcate por %i " , $CERO `
   - Código extensísimo  \`\`\` [ejemplo](#tablas) \`\`\` 
  - Para salto de línea  
  dos espacios y tabulador.  
- `Para salto de línea  [tecla espacio][tecla espacio] [tecla enter] continuae scribiendo`
+ `Para salto de línea  [tecla espacio][tecla espacio] [tecla enter] continua escribiendo`
  - Separaciones con rayas 
   ```
   ***
@@ -76,7 +76,7 @@ columna 1 | columna 2
 dato 1 | dato 2
 dat 3 | dat 4
 
-mirad qué código más sumamente sencillo, se pude pones  más bonito alineando las columnas sin alterarse el resultado, pero ¿ES O NO ES ESTO A CASO UN MANUAL CHAPUCERO?
+mirad qué código más sumamente sencillo, se puede poner más bonito alineando las columnas sin alterarse el resultado, pero ¿ES O NO ES ESTO A CASO UN MANUAL CHAPUCERO?
 ```
 columna 1 | columna 2
        ---|---
