@@ -8,7 +8,7 @@
 - **Texto en negrita**:  \** texto en negrita \**
 - *la cursiva es un bien preciado* para escribir en cursiva es suciciente con  \* texto que va en cursiva \*
 - Tachar texto no sé para qué puede servir, pero se hace así \~~ texto tachado \~~
-  - Tarea pendiente: ~~buscarle una utilidad a los \~\~ ~~
+  - Tarea pendiente: ~~buscarle una utilidad a tachar~~
 - Respecto a escribir código... 
   - línea corta con \` código \`  `printf " Multiplĺcate por %i " , $CERO `
   - Código extensísimo  \`\`\` [ejemplo](#tablas) \`\`\` 
