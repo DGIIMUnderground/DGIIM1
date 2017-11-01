@@ -1,0 +1,78 @@
+#!/bin/bash
+
+
+#Esta es la solucion del ejercicio del primer examen que se paso por el grupo de clase, me funciona todo excepto en alguna parte que me sale "orden no encontrada" pero si me aparece el resultado. Seguro que hay cosas que se pueden mejorar.
+
+ayuda="
+Argumentos  y funcionamiento \n
+
+--ayuda: muestra esta ayuda por pantalla \n
+
+--alumno: muestra el nombre y apellidos, así como el grupo al que pertenece (en el sistema) el
+alumno que ha realizado el script \n
+
+--copy usario: esta orden realiza una copia de seguridad de backup \n"
+
+contadorarchivos=0
+
+if [ $# = 0 ]
+then
+	echo -e $ayuda
+
+fi
+
+if [ $1 = "--ayuda" ]
+then
+	echo -e $ayuda
+
+elif [ $1 = "--alumno" ]
+then
+	echo "Juan Helios Garcia Guzman"
+	echo `pwd`
+	echo "El alumno que ha hecho el script es el mencionado anteriormente"
+
+elif [ $1 = "--copy" ] &&  test ! -h $2
+then
+	if test -d $2
+	then
+		for i in $(ls $2)
+		do
+			if test -f $2/$i
+			then 
+				contadorarchivos=$(($contadorarchivos+1))
+			fi
+		done
+		echo -e "En el directorio hay $contadorarchivos ficheros ¿desea hacer una copia 			 de seguridad?"
+
+		read RESPUESTA
+	
+		if [ $RESPUESTA = "sí" ] | [ $RESPUESTA = "si" ] | [ $RESPUESTA = "yes" ] |[ $RESPUESTA = "y" ] | [ $RESPUESTA = "s" ]
+		then	 
+			mkdir /tmp/backup`date +%y_%m_%e` &> error
+			if [ $? != 0 ]
+			then
+				echo "Error la copia de seguridad ya existe o no se puede crear"
+			else
+				for i in $(ls $2)
+				do
+					if test -f $2/$i
+					then 
+						mv $2/$i /tmp/backup`date +%y_%m_%e`
+					fi
+				done
+			fi
+		else
+			echo "No se hara la copia de seguridad"
+		fi
+			
+
+		
+	else 
+		echo "El directorio en el que estas es `pwd` Introduce ese directorio"
+	fi
+else
+	echo "Parametro incorrecto"
+fi
+
+	
+
