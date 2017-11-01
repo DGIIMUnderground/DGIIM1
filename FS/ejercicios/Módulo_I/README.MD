@@ -1,17 +1,17 @@
 
 ## Exámenes módulo I primer cuatrimeste de FS
 ### Examen del grupo I  
-[8 puntos] 1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
+####[8 puntos] 1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
 funcionamiento:
-./examen1.sh
-./examen1.sh
-./examen1.sh
---copy
---ayuda
---alumno
-usuario
-ó
-ó
+./examen1.sh  
+./examen1.sh  
+./examen1.sh  
+--copy  
+--ayuda  
+--alumno  
+usuario  
+ó  
+ó 
 Si el guión (script) se ejecuta sin argumentos o con un número erróneo de argumentos, el script
 mostrará la ayuda.
 --ayuda: muestra esta ayuda por pantalla
@@ -32,6 +32,10 @@ o dos dígitos) y día (uno o dos dígitos).
 instalación mostrando un mensaje de error apropiado.
 6. Finalmente se copiará recursivamente el contenido del directorio del usuario en el
 directorio temporal previamente comentado.
+
+#### Solucciones
+
+
 [2 puntos] 1-b. Cree un guión (script) para que saque por pantalla solamente aquellos
 ficheros de todo el sistema que hayan sido accedidos en un número menor de minutos
 que el dado como primer argumento al guión (script). (Los errores se redirigirán al
@@ -39,9 +43,7 @@ fichero /tmp/errores.txt.)
 
 ### Examen del grupo 3
 
-Examen MÓDULO I
-
-[8 puntos] 1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
+####[8 puntos] 1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
 funcionamiento:
 ./examen1.sh
 ./examen1.sh
@@ -86,7 +88,8 @@ Donde Z es el número de ficheros totales en directorio_basura (sin contar ocult
 directorio temporal creado anteriormente. Y D es la hora y fecha en el mismo formato que elpunto 1.2.
 En dicho script no deben aparecer errores en la pantalla ni redirigirse a ficheros legibles por los
 usuarios del sistema.
-[2 puntos] 1-b. Cree un guión (script) llamado examen2.sh en el que se indique
+
+####[2 puntos] 1-b. Cree un guión (script) llamado examen2.sh en el que se indique
 como comentario la orden u órdenes necesarias para que en lugar de ejecutarse rm
 sobre ficheros o carpetas, dichos ficheros o carpetas se movieran al directorio dado
 por defecto en el script anterior en la variable directorio_basura .
