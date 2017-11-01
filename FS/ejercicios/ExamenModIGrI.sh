@@ -1,3 +1,25 @@
+
+Ejercicio 1 Grupo 1.
+1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
+funcionamiento:
+./examen1.sh --copy ó
+./examen1.sh --ayuda ó
+./examen1.sh --alumno
+
+Si el guión (script) se ejecuta sin argumentos o con un número erróneo de argumentos, el script mostrará la ayuda.
+--ayuda: muestra esta ayuda por pantalla
+--alumno: muestra el nombre y apellidos, así como el grupo al que pertenece (en el sistema) el alumno que ha realizado el script
+--copy: esta orden realiza una copia de seguridad de backup
+1. Verifica que el directorio del usuario dado por argumento existe y no es un enlace.
+2. Si el directorio no existe, muestra por pantalla un mensaje de error mostrando cuál debiera ser el directorio del usuario.
+3. Si el directorio existe, muestra por pantalla una pregunta: En el directorio hay X ficheros, ¿desea hacer la copia de seguridad? Donde X será el número de archivos (obtenidos de forma recursiva) del directorio.
+4. Si el usuario responde sí, si, yes, s, ó y, se creará un directorio llamado backup_YY_MM_DD en el directorio temporal del sistema, donde
+__YY__MM__DD será la fecha actual en formato: año (dos últimos dígitos), mes (1 o dos dígitos) y día (uno o dos dígitos).
+5. Se verificará que todo fue bien hasta este paso, en caso contrario se abortará la instalación mostrando un mensaje de error apropiado.
+6. Finalmente se copiará recursivamente el contenido del directorio del usuario en el directorio temporal previamente comentado.
+
+SOLUCIÓN
+
 #!/bin/bash
 
 ayuda="Argumentos  y funcionamiento: \n

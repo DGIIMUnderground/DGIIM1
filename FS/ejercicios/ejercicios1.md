@@ -472,7 +472,7 @@ rm temp
 
 ##### cálculo del determinante #######n
 
-sum=1 # guardará el producto de los casillas que suman seguiendo la guerra de Sarrus
+sum=1 # guardará el producto de los casillas que suman seguiendo la regla de Sarrus
 res=1 # guaradrá el producto de las casillas que restan en la regla de Sarrus
 
 for(( i=0; i<3 ; i++ ))
