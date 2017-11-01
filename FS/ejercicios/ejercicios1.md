@@ -288,8 +288,7 @@ done;
 > Como habéis podido notar por el comementario la carpeta a la que se quieran enviar el resto de archivos debe ser absoluta, eso no me gustaba
 > y he intentado arreglarlo de la sigueinte manera, el script no funciona, pero por si a alguien le sirve como fuente de inspiración
 > mi idea es que solo sea necesario introducir el nombre de la carpeta a la que se quiere enviar
-```
-
+```bash 
 for SCRIPT in `ls`;
 do
     if [[  `echo $SCRIPT` != `echo $0`  ]] ;
@@ -347,10 +346,10 @@ fi
 ```
 > Este es un poco mas elaborado por que no vi el comando de adjoin y busque otro que hace lo mismo. El problema es que para utilizar este comando las dos imagenes tenian que tener el mismo tamaño, así que estuve un rato a ver como lo hacía.
 
-** 6. Dado un fichero en el que se tiene una matriz 3x3 de números separados por “;”, tal que así:
-3 ; 1 ; 2
-12 ; 5000 ; 4
-5 ; 1 ; 2
+**6. Dado un fichero en el que se tiene una matriz 3x3 de números separados por “;”, tal que así:  
+3 ; 1 ; 2  
+12 ; 5000 ; 4  
+5 ; 1 ; 2  
 Realice un script para que al pasarle el fichero, automáticamente calcule el determinante de
 la matriz. **
 
