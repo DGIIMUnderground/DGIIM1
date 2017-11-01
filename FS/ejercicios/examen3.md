@@ -63,7 +63,7 @@ misma línea (fila) no aparece nunca más de una palabra.
 
 
 - - -
-> Esta resuelto y funciona todo me he tirado la vida pero no he recurrido a internet, quizás lo más complejo sea entender como he comprobado que eran archivos recientes de menso de 5 días, lo explico en el código.
+> Está resuelto y funciona todo, me he tirado la vida pero no he recurrido a internet, quizás lo más complejo sea entender cómo he comprobado que eran archivos recientes de menos de 5 días, lo explico en el código.
 
 ```bash 
 
