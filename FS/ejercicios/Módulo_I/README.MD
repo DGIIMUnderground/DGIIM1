@@ -1,7 +1,9 @@
-
+## Ejercicios complementarios 
+- [ejercicios1.md](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/M%C3%B3dulo_I/ejercicios1.md)
+Los enuciados se encuentran justo antes de la posible solución
 ## Exámenes módulo I primer cuatrimeste de FS
 ### Examen del grupo I  
-####[8 puntos] 1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
+#### [8 puntos] 1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
 funcionamiento:
 ./examen1.sh  
 ./examen1.sh  
@@ -33,17 +35,19 @@ instalación mostrando un mensaje de error apropiado.
 6. Finalmente se copiará recursivamente el contenido del directorio del usuario en el
 directorio temporal previamente comentado.
 
-#### Solucciones
-
-
-[2 puntos] 1-b. Cree un guión (script) para que saque por pantalla solamente aquellos
+####  [2 puntos] 1-b. Cree un guión (script) para que saque por pantalla solamente aquellos
 ficheros de todo el sistema que hayan sido accedidos en un número menor de minutos
 que el dado como primer argumento al guión (script). (Los errores se redirigirán al
 fichero /tmp/errores.txt.)
 
+#### Soluciones al examen del grupo 1
+- Paula: [ExamenModIGrI.sh](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/M%C3%B3dulo_I/ExamenModIGrI.sh)
+- Juan Helios: [examen1](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/M%C3%B3dulo_I/examen1)
+- Blanca: [examen1.md](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/M%C3%B3dulo_I/examen1.md)
+
 ### Examen del grupo 3
 
-####[8 puntos] 1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
+#### [8 puntos] 1-a. Cree un guión (script) llamado examen1.sh que tenga el siguiente
 funcionamiento:
 ./examen1.sh
 ./examen1.sh
@@ -89,7 +93,7 @@ directorio temporal creado anteriormente. Y D es la hora y fecha en el mismo for
 En dicho script no deben aparecer errores en la pantalla ni redirigirse a ficheros legibles por los
 usuarios del sistema.
 
-####[2 puntos] 1-b. Cree un guión (script) llamado examen2.sh en el que se indique
+#### [2 puntos] 1-b. Cree un guión (script) llamado examen2.sh en el que se indique
 como comentario la orden u órdenes necesarias para que en lugar de ejecutarse rm
 sobre ficheros o carpetas, dichos ficheros o carpetas se movieran al directorio dado
 por defecto en el script anterior en la variable directorio_basura .
@@ -99,3 +103,7 @@ pasado como primer argumento y además indique el número de palabras encontrada
 al final y el número de palabras totales del fichero.
 Asuma que el fichero pasado contiene una única columna con palabras y que en una
 misma línea (fila) no aparece nunca más de una palabra.
+
+#### Soluciones al examen del grupo 3
+- Juan Helios: [examen3.md](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/M%C3%B3dulo_I/examen3.md)
+- Blanca: [examen_grupo3.sh](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/M%C3%B3dulo_I/examen_grupo3.sh )
