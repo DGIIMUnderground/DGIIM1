@@ -14,8 +14,9 @@ alumno que ha realizado el script \n
 --copy usario: esta orden realiza una copia de seguridad de backup \n"
 
 contadorarchivos=0
+contadroficheros=0
 
-if [ $# = 0 ]
+if [ $# = 0 ] && [ $# -ge 2 ]
 then
 	echo -e $ayuda
 
@@ -28,8 +29,8 @@ then
 elif [ $1 = "--alumno" ]
 then
 	echo "Juan Helios Garcia Guzman"
-	echo `pwd`
-	echo "El alumno que ha hecho el script es el mencionado anteriormente"
+	echo `groups $USER`
+	echo "El alumno/usuario que ha hecho el script es $USER"
 
 elif [ $1 = "--copy" ] &&  test ! -h $2
 then
@@ -42,13 +43,14 @@ then
 				contadorarchivos=$(($contadorarchivos+1))
 			fi
 		done
-		echo -e "En el directorio hay $contadorarchivos ficheros ¿desea hacer una copia 			 de seguridad?"
+		echo -e "En el directorio hay $contadorarchivos ficheros ¿desea hacer una copia de seguridad?"
 
 		read RESPUESTA
 	
 		if [ $RESPUESTA = "sí" ] | [ $RESPUESTA = "si" ] | [ $RESPUESTA = "yes" ] |[ $RESPUESTA = "y" ] | [ $RESPUESTA = "s" ]
-		then	 
-			mkdir /tmp/backup`date +%y_%m_%e` &> error
+		then
+			directorioseguridad=backup_`date +%y_%m_%d` 
+			mkdir /tmp/$directorioseguridad &> error
 			if [ $? != 0 ]
 			then
 				echo "Error la copia de seguridad ya existe o no se puede crear"
@@ -57,9 +59,10 @@ then
 				do
 					if test -f $2/$i
 					then 
-						mv $2/$i /tmp/backup`date +%y_%m_%e`
+						cp $2/$i /tmp/$directorioseguridad
 					fi
 				done
+			
 			fi
 		else
 			echo "No se hara la copia de seguridad"
