@@ -81,3 +81,54 @@ int & z = x // define un nombre alternativo para z
 ```
 
 ## Especiificación de las funciones
+Especificación desccripción sin indicaciones sobre la forma de implementar una función,
+- Precondicines: conjuntonto de condiciones necesarias y suficietes para que se comporte la función.
+- Postcondición
+
+Debe ser: útil, completa y deben apareces: requeiseitos, efects y elementos modificados
+ejempo: `doble squrt  (double x)` sabe que devuelve y que entra
+Para explicar lo que hace se utilizan las especficaciones:
+Para ello eiste la función * DOXYGEN*: para ello seguir:
+```
+@brief Para escribir en una frase lo que hace
+@param <variable>: hay un parametro <variable> explicarems que significa, vg *valor del que calculamos la raiz cuadrada. x >= 0* (he indicado los requisitos que necesita, esto lo sabe el usuario al utilizarlo, las implicaciones, son que si no las cumples, no tiene responsabilidad)
+@
+```
+ejemplo real:
+
+```
+/**
+@brief calcula el factorial de un número
+@param n: valor cuyo factorial se calcula n>= 0
+@reurn n!
+*/
+int factorial
+```
+
+otro
+```
+/**
+@brief Intervambia el valor de dos varobeles
+@param a: primera variables. ES MODIFICADO
+@param b: la segunda variable. ES MODIFICADO
+Intercambia los valores de a y b
+
+*/
+void intercambia( int& a , int& b)
+```
+
+ejmplo 3
+```
+/**
+
+*/
+int raices (double a, double b, double c , double& x1 , double& x2 ) // a,b,c parso por valor; x1, x2 pro referencia el int es por las devuelta de las raíces
+
+```
+
+### Argumentos o parámetros por defecto
+Si a un arguemnto no se le da un valor, este se indica de la siguiente manera:
+` int funcion( int x = <entero por defecto>)`
+
+Efercicio propuesto:
+Operaciones basicas para el cáculo de número racionales Suma, diferencia y producto Diseñar, especifiquemos e implimentemos ; con el representante canónico
