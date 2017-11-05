@@ -1,7 +1,7 @@
 
 Resumen Cálculo 
 
-#Axiomas#
+##Axiomas
 - A1) Propiedad asociativa: `(x + y) + z = x + (y + z);	(xy)z = x(yz)`
 - A2) Propiedad conmutativa: ` x + y = y + x; 		xy = yx`
 - A3) Elemento neutro: `0 + x = x;		1x = x`
@@ -21,14 +21,14 @@ Resumen Cálculo
 		-> Tomar `E > 0`, que pertenezca a los reales positivos.
 
 	
-#Tema 1#
+##Tema 1
 - Axioma del continuo: Si `A` y `B` son conjuntos no vacíos de números reales, tales que todo número real de `A` es menor o igual que todo número de `B`, se verifica que hay algún número real que separa a ambos
-- Principio del *supremo*
-- Principio del *ínfimo*
+- Principio del **supremo**
+- Principio del **ínfimo**
 - Intervalos
 - Desigualdades y sus reglas
 
-#Tema 2#
+##Tema 2
 - Conjunto de los números naturales `ℕ`
 - Todo conjunto de números enteros y mayorado tiene máximo 
 - Todo conjunto de números enteros y minorado tiene mínimo
@@ -36,7 +36,7 @@ Resumen Cálculo
 - Principio arquimediano del orden de los números reales `(ℕ no está mayorado en ℝ)`: para todo número real dado, siempre hay un natural mayor que él
 - Función parte entera
 - Potencias
-- Dado un número a perteneciente a los positivos, existe un único número `b > 0`, cuya potencia `k` es igual a `a`: `b^k = a`. Se llama *"raíz k-ésima de a"*, `a^(1/k)`
+- Dado un número a perteneciente a los positivos, existe un único número `b > 0`, cuya potencia `k` es igual a `a`: `b^k = a`. Se llama **"raíz k-ésima de a"**, `a^(1/k)`
 - Un conjunto `A` es denso en un intervalo en `I` si, cada dos números de `I`, hay uno de `A`. Ejemplos: 
 	- `Q` es denso en `ℝ`
 	- `ℝ\Q` es denso en `R` 
@@ -58,11 +58,11 @@ Resumen Cálculo
 - Principio de los intervalos encajados
 - Sucesiones:
 	- Aplicaciones definidas en `ℕ` 
-*SEGUIR A PARTIR DE AQUÍ *
+**SEGUIR A PARTIR DE AQUÍ **
 
 
 
-Consejos generales útiles
+##Consejos generales útiles
 - Si no tienes ni idea de cómo hacer algo, intenta probar el contrario. Llegarás a una contradicción
 - Para poder probar que dos números positivos son iguales, es suficiente probar que sus cuadrados son iguales
 - Para probar una desigualdad entre dos números positivos, es suficiente probar dicha desigualdad para sus cuadrados.
