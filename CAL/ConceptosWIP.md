@@ -1,7 +1,7 @@
 
 Resumen Cálculo 
 
-##Axiomas
+## Axiomas
 - A1) Propiedad asociativa: `(x + y) + z = x + (y + z);	(xy)z = x(yz)`
 - A2) Propiedad conmutativa: ` x + y = y + x; 		xy = yx`
 - A3) Elemento neutro: `0 + x = x;		1x = x`
@@ -21,14 +21,14 @@ Resumen Cálculo
 		-> Tomar `E > 0`, que pertenezca a los reales positivos.
 
 	
-##Tema 1
+## Tema 1
 - Axioma del continuo: Si `A` y `B` son conjuntos no vacíos de números reales, tales que todo número real de `A` es menor o igual que todo número de `B`, se verifica que hay algún número real que separa a ambos
 - Principio del **supremo**
 - Principio del **ínfimo**
 - Intervalos
 - Desigualdades y sus reglas
 
-##Tema 2
+## Tema 2
 - Conjunto de los números naturales `ℕ`
 - Todo conjunto de números enteros y mayorado tiene máximo 
 - Todo conjunto de números enteros y minorado tiene mínimo
@@ -62,7 +62,7 @@ Resumen Cálculo
 
 
 
-##Consejos generales útiles
+## Consejos generales útiles
 - Si no tienes ni idea de cómo hacer algo, intenta probar el contrario. Llegarás a una contradicción
 - Para poder probar que dos números positivos son iguales, es suficiente probar que sus cuadrados son iguales
 - Para probar una desigualdad entre dos números positivos, es suficiente probar dicha desigualdad para sus cuadrados.
