@@ -1,4 +1,7 @@
 ## Índice de contenidos
-Directorio | Contenido
+Archivo | Contenido
 --- |	---
-[Módulo I](https://github.com/pwaqo/DGIIM1/tree/master/FS/ejercicios/M%C3%B3dulo_I) | **Conocimientos básico** de bash: intérpretes de órdenes, metacaracteres, cambio de permisos, redirecciones, variables, órdenes de búsqueda, guiones, expreiones regulares, bucles y funciones.
+[ejercicio1.md ](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/ejercicios1.md) | Ejercicios propuestos para antes del primer examen las prácticas de FS
+[examen1](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/examen1) | Solución del primer examen del las Prácticas de FS curso 2016-2017
+[ExamenModIGrI.sh](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/ExamenModIGrI.sh) | Solución alternativa al primer ejercicio del primer examen de las Prácticas de FS curso 2016-2017
+[examen1_grupo3.sh](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/examen_grupo3.sh) | Examen 1 del grupo 3 ejercicio 1 por Blanca y Alberto

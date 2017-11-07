@@ -306,6 +306,42 @@ do
 done;
 
 ```
+> Version del ejercicio 2, funciona pero es super cutre osea fijaos que he tenido que meter ## para que no me borre el archiv. El ejercicio 1 es todo lo que va con almohadillas.
+- - -
+
+``` bash
+
+##!/bin/bash
+
+#if [ $# -le 1 ]
+#then
+#	echo "Error no se ha mandado ningun archivo"
+#fi
+#if test -d $1
+#then
+#	echo "El fichero de salida ya existe"
+#else
+#	mkdir $1
+#	for i in $@
+#	do
+#		if [ $i != $1 ]
+#		then
+#			mv $i $1
+#		fi
+#	done
+#	tar -zcvf $1.tar.gz $1
+#	rm -d -r -f $1
+#fi
+#
+if test ! -d $1
+then
+	mkdir $1
+fi
+touch $1/scrp1
+chmod +rwx $1/scrp1
+grep '^#' $0 | sed 's/^.//' > $1/scrp1
+
+```
 
 **3. ImageMagick es un programa que permite trabajar con imágenes. Haga man convert para ver su uso. Después cree un script que permita unir dos imágenes en una sola.**
 

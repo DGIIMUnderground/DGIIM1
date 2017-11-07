@@ -1,0 +1,42 @@
+#!/bin/bash
+EXAMEN 7-Sep-2012
+Ejercicio1. Construya un script en bash que muestre un menú con las siguientes opciones:
+Seleccione una opción de las siguientes:
+1) Localizar usuario
+2) Permisos
+3) Salir
+(Ver imagen para saber qué hay que hacer en cada opción)
+
+######SOLUCIÓN########
+
+printf "Seleccione una opción de las siguientes:\n 1) Localizar usuario\n 2) Permisos\n 3) Salir\nElija la opción deseada:\n"
+read respuesta
+
+if [[ $respuesta == "1" ]]
+	then
+	printf "Introduzca el nombre del usuario\n"
+	read user
+	usuario=`cat /etc/passwd | cut -d: -f1 | grep -x $user`
+	if [[ $user == $usuario ]]
+		then
+		printf "El usuario $user existe en el sistema\n"
+	else
+		printf "El usuario $user NO existe en el sistema\n"
+	fi
+
+elif [[ $respuesta == "2" ]]
+	then
+	for archivo in `cd / | ls -R`
+	do	
+		if [[ !(-w $archivo) ]] #Contamos los archivos que no tienen permiso de escritura
+			then ficheros=`expr $ficheros + 1`
+		fi
+	done
+	printf "Hay $ficheros ficheros SIN permiso de escritura para el grupo del usuario $USER\n"
+
+elif [[ $respuesta == "3" ]]
+	then exit #Salimos del script
+
+else
+	printf "Seleccione correctamente la opción"
+fi
