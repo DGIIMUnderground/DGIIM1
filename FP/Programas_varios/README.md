@@ -6,7 +6,8 @@ Archivo | Contenido
 [criba3.1.cpp ] | Criba de erastótenes. Calcula los n primeros números primos. (con perversión del bucle for)
 [criba3.2.cpp] | Criba de erastótenes. Calcula los números primos menores que n.
 [3.14.cpp] | Ejercicio 14 del tema 3 (bucles) del cuaderno de prácticas.
-
+[tartaglia.cpp] | Ejercicio de examen que hace un triangulo semejante al de tartaglia
+[rombo.cpp]     | Ejercicio 3.algo :) que del cuaderno de prácticas 
 
 
 ## Compilar codigo.cpp desde la terminal:
