@@ -12,7 +12,7 @@ using namespace std;
     el equipo B.
     @return: Equipo X (donde X es el ganador) 
              O empate
-**/
+*/
 string ganador(int puntosA, int puntosB) {
     string resultado;
 
@@ -33,18 +33,11 @@ int main() {
     int puntos, puntosA=0, puntosB=0;
     int triples=0, minutos, tiempo_antes=0;
 
-    while (true) {
-
-        cin >> equipo;
-
-        // Finalizamos con la letra S
-        if (equipo == 'S')
-            break;
-
-        cin >> puntos;
-        cin >> minutos;
-
-
+    cin >> equipo;
+    cin >> puntos;
+    cin >> minutos;
+    
+    while (equipo != 'S') {
         // Detecta cuando se produce el cambio de la segunda a
         // la primera parte, y calcula el ganador de la primera
         // parte.
@@ -90,6 +83,10 @@ int main() {
 
         // Esto nos permite registrar el tiempo anterior.
         tiempo_antes = minutos;
+
+        cin >> equipo;
+        cin >> puntos;
+        cin >> minutos;
     } 
 
     ganador_final = ganador(puntosA, puntosB);
