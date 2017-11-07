@@ -1,3 +1,7 @@
+// Examen parcial FP 2013
+// Enunciado: http://bit.ly/2AiOFlc 
+// Ric
+
 #include <iostream>
 
 using namespace std;
