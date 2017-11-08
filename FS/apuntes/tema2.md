@@ -342,3 +342,4 @@ desvetanjas lso accesos a memoria, sin fragmentación es muy rápida, de la otra
 en total hace dos accesoa a memoria.
 
 Para solucionar ese problema, Buffer de traducción adelantada TLB, lo que se tiene en cpu, es un trocito de la tabalde página en marcos, se lee ese trocito, si aparece el marco, solo habría un acceso, si no se Esta memoria se llama Caché, memoria muy rápida.  La forma de acceder pro ardware, inteneta buscar esa página el paralelo, esta tabla tiene número pagin num marco y bits de protección, en cache no necesta el número de páginas
+
