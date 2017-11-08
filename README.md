@@ -21,6 +21,4 @@ el estilo de nuestro código fuente lo más coherente posible.
 
 ## LICENSE
 
-El contenido matemático está licenciado bajo [Creative Commons Attribution No Commercial
-4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/) y el código bajo la licencia GPLv3
-(Ver [LICENSE](LICENSE)).
+El código se encuentra bajo la licencia GPLv3 (Ver [LICENSE](LICENSE)) y el resto del contenido está bajo [Creative Commons Attribution No Commercial 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
