@@ -1,5 +1,6 @@
 ## COMANDO APARIENCIA SHELL 
 
+
 - C-l limpiar terminal
 - clear limpiar terminal
 
