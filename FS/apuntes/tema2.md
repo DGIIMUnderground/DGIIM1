@@ -35,19 +35,33 @@ durante la primera guerra mundial.
 Aquí se acaba la historia con personajes y comienza la evolución de la arquitectura de los
 computadores:
 
-1. **Monoprograma** La más arcaica, requiere de mucho tiempo, ya que un humano introduce programa a
-programa.
+#### 1 **Monoprograma** o **procesamiento en serie**
 
-2. **Lotes** En vez de introducir un programa se introducen varios en un cinta, "lote" esto reduce
-algo el tiempo. Para poder controlar los lotes hace falta otro programa, aparece el **sistema
-operativo**, denominado *monitor* por el inglés **Christopher S. Strachey**, pionero también de los
-lenguajes de programación con *CPL*. El problema de esto era el tiempo que empleaba el ordenador en
-los periféricos.
+La más arcaica, requiere de mucho tiempo, programador tenía interacción directa con el hardware, si había un error el programa se detenía. Problemas principales de estos sistemas:
+- **Panificación** Las instalaciones contaban con plantillas impresas de reserva de tiempo, tiempo limitado.
+- **Tiempo de configuración** Un trabajo (único programa) implicaba:
+  1. Carga memoria compilador y lenguaje de alto nivel
+  2. Carga y enlace del programa objeto y funciones comunes.
+Estos pasos suponían montar y  desmontar cintas o configuración de sistema, lo que significa un tiempo elevado de configuración del  programa que se va a configurar. 
 
-3. Para evitar esto, surgen las **interrupcciones** de la mano de un avanace de sofware y hardware,
-en el cual varios programas se desarrolla a la vez EN SITIOS DIFERENTES.
+#### 2**Lotes** o sistemas Batch.
+El primer sistema operativo en lotes (y también el primer sisema operativo de cualquer tipo) surje a medidados de los 50, en deseo de maximizar la utilización de las máquinas.
+La idea central se basaba en una pieza de software denominada **monitor** *Denominado monitor  por el inglés Christopher S. Strachey * : El usurio introduce el trabajo por medio de una tarjeta o cinta al operdor del computador y este sistema operativo, crea un sistema de lotes con los trabajos colocados en el dispositivo de entrada para que los utilice el el monitor. Cuando un programa finaliza su procesamniento devuelve el control al monitor, que comenzará la carga del siguiente programa.
 
-4. Lo cual daría lugar a la **multiprogramación** para evitar solapamientos por el interior
+Análisis de este esquema desde distintos puntos de vista:
+- **Punto de vista del monitor**: Controla la secuencia de eventos desde la memoria principar, siempre disponible para su ejecución, es denominado do **monitor residente**. El resto del monitor está formado por conjunto de utilidades y funciones cargadas como subrutinas al comienzo del programa del usuario.
+  El monitor lee de uno en uno los trabajos desde el dispositivo de entrada, coloca el trabajo en el área de programa de usuario  se le pasa el control, que cuando ha terminado se lo devuelve.
+<img src="media/tema2/monitor_residente.png" width="500" height="400">
+
+- **Punto de vista del procesador** El procesador ejecuta instrucciones, cuando el "control" lo tiene el monitor, ejecutará sus instrucciones y cuando no las del programa. El papel del monitor es de planificación, incluyendo intruccines en algún lenguaje primitivo de **lenguaje de control de trabajos ** ( JCL)
+
+En resumen: El monitor o sistema operativo en lotes es un programa, que tiene en base la habilidad del procesador para para carga instrucciones de memoria principal y tomar y abandonar el control. Necesita también un hardware con: prtección de memoria, temporizador de trabajos, instrucciones privilegiadas que solo el monitor puede realizar e interrucciones.
+La protección de memoria y los privilegios dan lugar a los modos ususario y núcleo.
+ El problema de la programación en lores  era el tiempo que empleaba el ordenador enlos periféricos.
+
+#### 4 Sistemas en lotes multiprogramados
+
+Para evitar esto, surgen las **interrupcciones** de la mano de un avanace de sofware y hardware, en el cual varios programas se desarrolla a la vez EN SITIOS DIFERENTES.  Lo cual daría lugar a la **multiprogramación** para evitar solapamientos por el anterior
 procedimiento, esto se conoce como **S.pool**, por ejemplo si varios programas requieren del uso de
 una impresora, el programa que se está ejecutando escribe en un fichero lo que quiere imprimir y
 después lo vuelca a esta una vez que ha terminado.
@@ -55,7 +69,7 @@ después lo vuelca a esta una vez que ha terminado.
 5. Teniendo en cuenta que los lotes son cerrados surgen las **colas**, sistemas de lotes abiertos,
 donde el SO controla los programas que esperan y los que se ejecutan, y cuándo termina estos dan
 pasos a los siguiente en orden de prioridad. Por tanto, si un programa no utilizaba periféricos u
-otros recursos se podía quedar eternamente allí, así surge **el tiempo compartido**, los
+otros recursos se podía quedar eternamente allí, dando como solución  **el tiempo compartido**, los
 programas tienen un tiempo limitado en la CPU.
 
 6. **Multiusuarios** misma idea anterior pero con usuarios, vg: servidores.
