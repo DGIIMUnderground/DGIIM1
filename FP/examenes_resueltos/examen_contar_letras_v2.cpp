@@ -25,10 +25,10 @@ using namespace std;
     @brief Evalua si un carácter es una letra o no.
     @param letra: letra a evaluar
     @return true si es letra, false si no.
-    (Rango de mayúsculas [A-Z]-> [65-90])
+    (Rango de mayúsculas [A-Z])
 */
 bool es_letra(char letra) {
-    return (letra >= 65 && letra <= 90);
+    return (letra >= 'A' && letra <= 'Z');
 }
 
 /**
@@ -52,12 +52,6 @@ int main() {
     float razon_vocales, razon_consonantes;
 
     cin >> letra;
-
-    /* Antes:
-    vocal_min = 'U'; // Nos aseguramos que cualquiera sea menor que vocal_min
-    cons_max = 'B';  // Nos aseguramos que cualquiera sea mayor que cons_max
-    
-    Ahora:			*/
     
     vocal_min = 'V'; // Nos aseguramos que cualquiera sea menor que vocal_min
     cons_max = 'A';  // Nos aseguramos que cualquiera sea mayor que cons_max
