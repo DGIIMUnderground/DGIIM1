@@ -13,4 +13,4 @@
   --- 	 | ---
  [ LABFS-MOD_I.txt](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/LABFS-MOD_I.txt)	| Apuntes de Gonzalo, esquemáticos
  [ResumenModuloI.odt](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/ResumenModuloI.odt) | Apuntes de Paula (otra vez .dot :( ), completísimos
- [bash.md](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/bash.md)		| Por Blanca, los tiene que mejorar, no los toquéis
+ [basicBash.md](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/basicBash.md)		| A Blanca le parece que estos esquemas están al día 
