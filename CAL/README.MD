@@ -11,12 +11,12 @@ Carpeta[ resueltos_corregidos](https://github.com/pwaqo/DGIIM1/tree/master/CAL/r
 
 
 
-### Problemas hechos por nosotros en los que hemos tenido problemas:
+### Ejercicicos en los que nos hemos topado con dificultades
 Carpeta [soluciones_nuestras](https://github.com/pwaqo/DGIIM1/tree/master/CAL/soluciones_nuestras)
 
  Problema								| Estado
  ---									| ---
- Ejercicio 38, página 26, apunes * Conceptos básicos del analisis real* | Sin resolver
+ Ejercicio 38, página 26, apunes *Conceptos básicos del analisis real* | Sin resolver
  
 
 ### Resúmenes hechos por nosotros
