@@ -44,14 +44,14 @@ La más arcaica, requiere de mucho tiempo, programador tenía interacción direc
   2. Carga y enlace del programa objeto y funciones comunes.
 Estos pasos suponían montar y  desmontar cintas o configuración de sistema, lo que significa un tiempo elevado de configuración del  programa que se va a configurar. 
 
-#### 2**Lotes** o sistemas Batch.
+#### 2 Lotes o sistemas Batch.
 El primer sistema operativo en lotes (y también el primer sisema operativo de cualquer tipo) surje a medidados de los 50, en deseo de maximizar la utilización de las máquinas.
 La idea central se basaba en una pieza de software denominada **monitor** *Denominado monitor  por el inglés Christopher S. Strachey * : El usurio introduce el trabajo por medio de una tarjeta o cinta al operdor del computador y este sistema operativo, crea un sistema de lotes con los trabajos colocados en el dispositivo de entrada para que los utilice el el monitor. Cuando un programa finaliza su procesamniento devuelve el control al monitor, que comenzará la carga del siguiente programa.
 
 Análisis de este esquema desde distintos puntos de vista:
 - **Punto de vista del monitor**: Controla la secuencia de eventos desde la memoria principar, siempre disponible para su ejecución, es denominado do **monitor residente**. El resto del monitor está formado por conjunto de utilidades y funciones cargadas como subrutinas al comienzo del programa del usuario.
   El monitor lee de uno en uno los trabajos desde el dispositivo de entrada, coloca el trabajo en el área de programa de usuario  se le pasa el control, que cuando ha terminado se lo devuelve.
-<img src="media/tema2/monitor_residente.png" width="500" height="400">
+<img src="media/tema2/monitor_residente.png" width="500" height="600">
 
 - **Punto de vista del procesador** El procesador ejecuta instrucciones, cuando el "control" lo tiene el monitor, ejecutará sus instrucciones y cuando no las del programa. El papel del monitor es de planificación, incluyendo intruccines en algún lenguaje primitivo de **lenguaje de control de trabajos ** ( JCL)
 
@@ -59,127 +59,60 @@ En resumen: El monitor o sistema operativo en lotes es un programa, que tiene en
 La protección de memoria y los privilegios dan lugar a los modos ususario y núcleo.
  El problema de la programación en lores  era el tiempo que empleaba el ordenador enlos periféricos.
 
-#### 4 Sistemas en lotes multiprogramados
+#### 3 Sistemas en lotes multiprogramados
+En los trabajos automáticos de un sistema operatuvos en lotes simple el procesador se encuentra frecuentemente parado ya que los dispositivos de entrada y salida son mucho más lentos que este, así es como surge la **multiprogramación** o **multitarea**, se expande la memoria para que pueda albergar al sistema operativo (monitor residente) y más programas habiendo multiplexación entre ellos.
+Al haber varios programas a la vez prodría haber un solapamiento del trabajo, ara evitar esto, surgen las **interrupcciones** de la mano de un avanace de sofware y hardware, en el cual varios programas se desarrollan a la vez en sitios diferentes,  esto se conoce como **S.pool**: cualquier trabajo puede suspender su actividad por la ocurrecia de un evento definido, como la finalización de una operación E/S. El procesador guardaría alguna forma de contexto ( contador de programa u otros registros) y saltaría a una rutina de tratamiento de interrupcioe: determinaría tipo interrución, la procesaría y continuaría con el proceso interrumpido. Ppor ejemplo si varios porgramas requieren de una impresora, el programa que se está ejecutando escribe en un fichero lo que quiere imprimir y después lo vuelca a esta una vez que ha terminado de itilizar la impresora el programa anterior.
 
-Para evitar esto, surgen las **interrupcciones** de la mano de un avanace de sofware y hardware, en el cual varios programas se desarrolla a la vez EN SITIOS DIFERENTES.  Lo cual daría lugar a la **multiprogramación** para evitar solapamientos por el anterior
-procedimiento, esto se conoce como **S.pool**, por ejemplo si varios programas requieren del uso de
-una impresora, el programa que se está ejecutando escribe en un fichero lo que quiere imprimir y
-después lo vuelca a esta una vez que ha terminado.
+#### 4 Sistemas de tiempo compartido  
+Teniendo en cuenta que los lotes son cerrados surgen las **colas**, sistemas de lotes abiertos, donde el SO controla los programas que esperan y los que se ejecutan, y cuándo termina estos dan pasos a los siguiente en orden de prioridad. Por tanto, si un programa no utilizaba periféricos u otros recursos se podía quedar eternamente allí, o si era necesaria la interacción de varios usuarios directamente con la computadora, con esto surge la técnica  **del tiempo compartido**, los programas tienen un tiempo limitado en la CPU.  Estos intervalos de tiempo, también son conocidos como **cuantos de computación**.
+Uno de los primeros sistemas operativos de tiempo compartido desarrollados fue el sistema CTSS (*Compatible Time-Sharing System*) desarrollado en el MIT por un grupo conocido como proyecto MAC y desarrollado para IBM.
 
-5. Teniendo en cuenta que los lotes son cerrados surgen las **colas**, sistemas de lotes abiertos,
-donde el SO controla los programas que esperan y los que se ejecutan, y cuándo termina estos dan
-pasos a los siguiente en orden de prioridad. Por tanto, si un programa no utilizaba periféricos u
-otros recursos se podía quedar eternamente allí, dando como solución  **el tiempo compartido**, los
-programas tienen un tiempo limitado en la CPU.
+ .| Multiprogramación en lotes           | Tiempo compartido
+  ---		       | --- 		      		      | ---
+ **Objetivo principal**    | Maximizar el tiempo del procesador   | Minimizarl el tiempo de respuesta
+ **Fuente de directivas<br>del sistema operativo** | Mandatos del lenguaje de control<br> de trabajos proporcionadas por el trabajp | Mandatos introducidos al terminal.
 
-6. **Multiusuarios** misma idea anterior pero con usuarios, vg: servidores.
+5. **Multiusuarios** misma idea anterior pero con usuarios, vg: servidores.
 
-7. **Multiprocesadores** más de varias CPU en un mismo ordenador, pueden trabajar en distintas
-tareas o en **paralelo**, el mismo programa se divide en varios procesadores que trabajan
-simultáneamente.
+6. **Multiprocesadores** más de varias CPU en un mismo ordenador, pueden trabajar en distintas tareas o en **paralelo**, el mismo programa se divide en varios procesadores que trabajan simultáneamente.
 
-8. Finalmente distintos ordenadores, con distintos sistemas operativos que trabajan simultáneamente,
-todos coordinados por un **macro sistema operativo**.
+7. Finalmente distintos ordenadores, con distintos sistemas operativos que trabajan simultáneamente, todos coordinados por un **macro sistema operativo**.
 
 
-Apuntes del 18 / 10/ 17
+## Algunas preguntas !!! FALTAN POR COMPLETAR LAS DEJO PARA QUE ALGUIEN LAS RELLENE
 
-## Compiladores
-
-Ejemplo de sentencia de un programa a1 = b + c + 13. 77
-El compilador lee de izquierda a derecha e intenta identificar cada elemento, construyendo
-una **tabla de símbolos**.
-
-Signo |  Datos |  Dirección memoria asociada
-------| ------ | -----------------------------
-a1    |   666  |   0xab0f20x53 (En hexadecimal)
+- La multiprogramación no tiene por qué ser de tiempo compartido. Pero  para que sea posible el tiempo compartido es necesario un SO multiprogramado.
+- Un S.O. multiprogramado es un S.O. de tiempo compartido? ¿y alcontrario?  
+- ¿Un S.O. de tiempo compartido tiene que ser multiusuario? ¿y monousuario?  
+- ¿Un S.O. monoprocesador tiene que ser monousuario? ¿y multiusuario?  
+- ¿Un S.O. multiprocesador tiene que ser monousuario? ¿y multiusuario?  
 
 
-De esta manera, cada vez que se haga referencia a *a* se redirecciona a la
-dirección asignada por el compilador.
+## Procesos
+### Concepto de proceso
 
-En los primeros compiladores el número de direcciones era menor y se podía
-hablar de dirección de memoria absoluta. Sin embargo, en la actualidad, a alto
-nivel, el uso de direcciones es más complejo, abarcando incluso direcciones de
-direcciones, como es el caso de de las sentencias de control (if, while...).
-Para facilitar el trabajo se hacen asignaciones de **memoria relativa** en lo
-que respecta a la zona de memoria que se le otorga.  Estas direcciones
-relativas comienzan en 0 y continuan dependiendo del tamaño en bytes del tipo
-de dato almacenado. 
+Se han dado distintas definiciones de proceso, algunas: 
+- Un programa en ejecución.
+- Una instancia de un programa ejecutándose en un ordenador.
+- La entidad que se puede asignar o ejecutar en un procesador.
+- Una unidad de actividad caracterizada por un solo flujo de ejecución, un estado actual y un conjunto de recursos del sistema asociados.
 
-Los pasos que comprenden un programa antes de ser ejecutado son: compilación,
-encuadernación y la formación del ejecutable:
+El diseño del sofware de la multiprogramación era sumamente complejo, los programadores acudían a métodos *ad hoc* para  cooperación y coordinación de trabajos que generaba errores de : sincronización, violación de la exclusión mutua, operación no determinista de un programa, interbloqueos.
 
-- Durante la carga del programa, se lee del disco y se copia esa información en
-  memoria principal por el SO. El SO contiene un *mapa* con las direcciones
-relativas de memoria. Estas se suman a la llamada **dirección base**, para
-obtener las direcciones reales (cada vez que se quiera acceder a una
-variable durante la ejecución).
+Para solucionar estos problemas se necesita una forma sistemática de monitorizar y controla la ejecucion de varios programas en el procesador y aquí es donde entra el concepto de proceso, conformado por:
+- Un programa ejecutable
+- Los datos asociados que necesita un programa.
+- El contexto de ejecución de un programa o estado del proceso, que es el cnjuntod de datos internos separada del proceso por el cual el sistema operativo es capaz de supervisar y controlar el proceso y el procesador para ejecutarlo. Ejemplos: contador de programa, registro de datos, prioridad, estado...
+<img src="media/tema2/proceso_tipico.jpg" width="500" height="600">
+>>>>>>>>>>>> HASTA AQUÍ ME HE QUEDADO CORRIGIENDO Y AMPLIANDO 70 DE STALLING
 
-El SO también protege sobre problemas del programa. Por ejemplo, el acceso a los
-dispositivos lo hacen rutinas del SO, que comprueban si la dirección de memoria
-a la que accede el programa es correcta. En caso contrario, el SO se encargar
-de abortar el programa.
+Cuando hay que leer de disco el sistema usuario no lee, los lenguajes dan sentencias, cuando se traducen son órdenes de llamadas de SO. El SO incorpora funciones propias donde corresponde al programa.
 
-Volviendo a cómo se almacenan la variables, en lo concerniente a las constantes,
-estas se tratan exactamente igual que las simbólicas, con la única diferencia
-que como identificador, el nombre de la variable es el propio símbolo, el resto
-es lo mismo, como valor se guarda a ellos y tiene también una dirección de
-memoria asociada.
-
-  - **Punteros**: Es una variable que almacena una dirección de memoria.  Son
-    la base de las estructuras dinámicas de datos. El riesgo de su uso radica
- en la posibilidad de sobreescribir los datos de la memoria por error.
-
-  - **Arrays**: son realmente punteros encadenados en bloques de memoria. Así, es posible
-    recorrer el *array* mediante aritmética de punteros, es decir,
-aumentando en 1 la dirección de memoria asociada.
-
-  - Existen dos formas de pasar argumentos a una función:
-
-    - *Por valor*: en la función se trabaja sobre una copia del valor pasado. Se
-      puede considerar más seguro ya que un cambio en la variable dentro de la
-función no influye de ninguna forma al valor original.
-
-    - *Por referencia:* a la función se le pasa la dirección de memoria de una
-      variable. Por tanto, la función puede modifica el valor original, lo que
-      constituye un riesgo en caso de error.
-
-> En el caso de C++ existen dos subtipos de paso de referencias: por
-> punteros, o por referencias. El paso por punteros es heredado de C, mientras
-> que las referencias son específicas de C++, y facilitan el paso de referencias
-> evitando errores debidos al trabajo con punteros.
-
-## Resumen
-
-El compilador conforme traduce, asigna direcciones relativas a
-variables y controladores de flujo. Cuando el programa se carga en memoria el
-SO es el encargado de gestionar el acceso del programa en memoria.
-
-## Algunas preguntas
-
-- La multiprogramación no tiene por qué ser de tiempo compartido. Pero,
-  para que sea posible el tiempo compartido es necesario un SO multiprogramado.
-
-## Concepto de proceso.
-
-Cuando hay que leer de disco el sistema usuario no lee, los lenguajes dan
-sentencias, cuando se traducen son órdenes de llamadas de SO. El SO incorpora
-funciones propias donde corresponde al programa.
-
-Lo mismo con lenguajes fuertemente tipado, como hay cosas que el compilador no
-puede resolver en tiempo de compilación por falta de información, el compilador
-añade instrucciones al texto (*paquete de soporte a la ejecución*), para que
-poder ejecutarlo.  Así, se puede denominar *proceso* al programa original
-ejecutado, es decir quitando la lógica añadida por el SO.
+Lo mismo con lenguajes fuertemente tipado, como hay cosas que el compilador no puede resolver en tiempo de compilación por falta de información, el compilador añade instrucciones al texto (*paquete de soporte a la ejecución*), para que poder ejecutarlo.  Así, se puede denominar *proceso* al programa original ejecutado, es decir quitando la lógica añadida por el SO.
 
 Ejemplo:
 
-Cuando, con el navegador abierto, se abre otra ventana del navegador,
-para cada ventanita hay una **instancia** con la sesión y la historia
-que guarda el navegador. Es decir, se tiene el mismo programa pero
-con varias instancias, es decir con distintos procesos. Podemos decir
-que un proceso o instancia es una ejecución particular del programa.
+Cuando, con el navegador abierto, se abre otra ventana del navegador,para cada ventanita hay una **instancia** con la sesión y la historia que guarda el navegador. Es decir, se tiene el mismo programa pero con varias instancias, es decir con distintos procesos. Podemos decir que un proceso o instancia es una ejecución particular del programa.
 
 ## Bloque de control de un proceso.
 
@@ -356,4 +289,48 @@ desvetanjas lso accesos a memoria, sin fragmentación es muy rápida, de la otra
 en total hace dos accesoa a memoria.
 
 Para solucionar ese problema, Buffer de traducción adelantada TLB, lo que se tiene en cpu, es un trocito de la tabalde página en marcos, se lee ese trocito, si aparece el marco, solo habría un acceso, si no se Esta memoria se llama Caché, memoria muy rápida.  La forma de acceder pro ardware, inteneta buscar esa página el paralelo, esta tabla tiene número pagin num marco y bits de protección, en cache no necesta el número de páginas
+
+
+
+## Compiladores
+
+Ejemplo de sentencia de un programa a1 = b + c + 13. 77
+El compilador lee de izquierda a derecha e intenta identificar cada elemento, construyendo
+una **tabla de símbolos**.
+
+Signo |  Datos |  Dirección memoria asociada
+------| ------ | -----------------------------
+a1    |   666  |   0xab0f20x53 (En hexadecimal)
+
+
+De esta manera, cada vez que se haga referencia a *a* se redirecciona a la dirección asignada por el compilador.
+
+En los primeros compiladores el número de direcciones era menor y se podía hablar de dirección de memoria absoluta. Sin embargo, en la actualidad, a alto nivel, el uso de direcciones es más complejo, abarcando incluso direcciones de direcciones, como es el caso de de las sentencias de control (if, while...).
+Para facilitar el trabajo se hacen asignaciones de **memoria relativa** en lo que respecta a la zona de memoria que se le otorga.  Estas direcciones
+relativas comienzan en 0 y continuan dependiendo del tamaño en bytes del tipo
+de dato almacenado. 
+
+Los pasos que comprenden un programa antes de ser ejecutado son: compilación,encuadernación y la formación del ejecutable:
+
+- Durante la carga del programa, se lee del disco y se copia esa información en memoria principal por el SO. El SO contiene un *mapa* con las direcciones relativas de memoria. Estas se suman a la llamada **dirección base**, para obtener las direcciones reales (cada vez que se quiera acceder a una variable durante la ejecución).
+
+El SO también protege sobre problemas del programa. Por ejemplo, el acceso a los dispositivos lo hacen rutinas del SO, que comprueban si la dirección de memoria a la que accede el programa es correcta. En caso contrario, el SO se encargar de abortar el programa.
+
+Volviendo a cómo se almacenan la variables, en lo concerniente a las constantes, estas se tratan exactamente igual que las simbólicas, con la única diferencia que como identificador, el nombre de la variable es el propio símbolo, el resto es lo mismo, como valor se guarda a ellos y tiene también una dirección de memoria asociada.
+
+  - **Punteros**: Es una variable que almacena una dirección de memoria.  Son la base de las estructuras dinámicas de datos. El riesgo de su uso radica en la posibilidad de sobreescribir los datos de la memoria por error.
+
+  - **Arrays**: son realmente punteros encadenados en bloques de memoria. Así, es posible recorrer el *array* mediante aritmética de punteros, es decir,aumentando en 1 la dirección de memoria asociada.
+
+  - Existen dos formas de pasar argumentos a una función:
+
+    - *Por valor*: en la función se trabaja sobre una copia del valor pasado. Se puede considerar más seguro ya que un cambio en la variable dentro de la función no influye de ninguna forma al valor original.
+
+    - *Por referencia:* a la función se le pasa la dirección de memoria de una variable. Por tanto, la función puede modifica el valor original, lo que constituye un riesgo en caso de error.
+
+> En el caso de C++ existen dos subtipos de paso de referencias: por punteros, o por referencias. El paso por punteros es heredado de C, mientras que las referencias son específicas de C++, y facilitan el paso de referencias evitando errores debidos al trabajo con punteros.
+
+## Resumen
+
+El compilador conforme traduce, asigna direcciones relativas a variables y controladores de flujo. Cuando el programa se carga en memoria el SO es el encargado de gestionar el acceso del programa en memoria.
 

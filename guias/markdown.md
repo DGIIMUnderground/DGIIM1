@@ -64,8 +64,26 @@ Ejemplo.: `[<mensaje>](#visualización-del-contenido) `
 
 ### Imágenes
 
-- La sintaxis es `!\[<Texto ayuda>](<link de la imagen>) `
+- La sintaxis es `![<Texto ayuda>](<link de la imagen>) `
  ![Ejemplo de imagen](https://media.giphy.com/media/aRmAPxula4i7C/giphy.gif)
+ 
+- También se pueden subir con la sintaxis de html, que te permite ajustar su tamaño y además indicarle que está en su mismo directorio. `<img src="carpeta\imagen.ext" width="200" heigh="600">` 
+Préstese especial atención a que *img* va pegado a < y que los tamaños se escriben entre dobles comillas, estos se pueden omitir y te cogerá el tamaño propio de la imagen. 
+<img src="media\haskell.png" width="200" heigh="200">  
+
+### Vídeo 
+Github no permite añadir vídeos como tales, pero podemos enlazar un vídeo a una imagen.  
+Como antes dos sintaxis, la de markdown, perdiendo la capacidad de controlar el tamaño:  
+`[![texto de la imagen](enlace_imagen)](enlace_del_video_en cuestión)`  
+`[<img src="directori\image" width="999999" height="000000">](enlace)`  
+Os dejo como ejemplo mi grupo favorito :heart:
+[<img src="media\vetusta.jpeg">](https://www.youtube.com/watch?v=6EGCURYvBhw)
+
+Si no está en github, puedes utilizar esta sintáxis`@[texto_vídeo](enlace)`  
+También tenemos la sintáxis en html:
+ `<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
+" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>`
 
 ### Tablas
 
@@ -83,3 +101,7 @@ columna 1 | columna 2
    dato 1 | dato 2
     dat 3 | dat 4
 ``` 
+
+### Emoticonos markdown  
+Esta persona se lo ha montado súper bien, os dejo su [repositorio](https://gist.github.com/rxaviers/7360908) 
+

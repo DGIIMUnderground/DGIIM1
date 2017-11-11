@@ -30,9 +30,9 @@ macro ensamlador: repertorio y otra serie de macros, el traductor de un macro en
 
 El problema no era diseñar el lenguaje, sino el traductor y que una persona a papel no lo hiciera mejor, el lenguaje para el que hacen un compilador eficicente FORTRAN 1957 John Backns, (un compilador es un traductor, pero el traductor puede ser compilador o intérprete ) el lenguaje de control del sistema operativo es interpretado, estsoo no te generan ningún fichero.
 
-Estos lenguajes son de "ALTO NIVEL", lo que hacien (lenguaje de sóimbolos) que incorporaban estructura :
-- datos: estructuras, valores agrupaos que se pueden reconocer, ejemplos que : array, string, struct (tipo regsistro), con esto aparece la idea de tipo de dato: fichero, array, entero....
-  - primitivos: el entero el real, naturales que permite manejar la máquina física: char, int, real  EL LENGUAJE LO CONOCE TODO
+Estos lenguajes son de "ALTO NIVEL", lo que hacien (lenguaje de sóimbolos) que incorporaban estructura en :
+##### datos: estructuras, valores agrupaos que se pueden reconocer, ejemplos que : array, string, struct (tipo regsistro), con esto aparece la idea de tipo de dato: fichero, array, entero....
+  - **primitivos**: el entero el real, naturales que permite manejar la máquina física: char, int, real  EL LENGUAJE LO CONOCE TODO
   - estructurados: tinen alguna estrucutura en base de primitivos : CONOCE MACROSCÓPICAMENTE LA ESTRUCTURA. del género lo conoce, pero tienei que afinarlo, tines que decir los campos que tiene y com afinarlo,
     - aparece la idea de expresión: (a+b)*f, esto antes no se podía hcer con macro ensambladores,
     - CONTROL DE FLUJO: en repertorio máquina lo que hacía que hacer era el acumulador o la dirección de memoria
@@ -41,12 +41,23 @@ Estos lenguajes son de "ALTO NIVEL", lo que hacien (lenguaje de sóimbolos) que 
   (más tarde: - TDA tipos de datos abstractos, el lenguaje no conoce ni la estructura, ni el lenga)
 Con esto aparecen dos tipos de sentencias (una sentencia es una ordden) 
 - semanticamente simples : su signifiado solo depende de ella y de nada más, ejemplo una asignación , operación de entradas y salida de una sola variabe
-- semanticamente compuestas, en esamblador no hay otra, una sentencia se ejecuta, y otra igual, en macro emsamblador, en alto nivel apareccen los dos, 
-se formaliza tipo como terna tipo (G gereno (tipo, conjunto valores posoble) , Operaciones , Propiedads)  (GOP) ejemplo
+- semánticamente compuestas, en esamblador no hay otra, una sentencia se ejecuta, y otra igual, en macro emsamblador, en alto nivel apareccen los dos, 
+se formaliza tipo como terna tipo (G géreno (tipo, conjunto valores posoble, cómo se representan vg complemetat a uno o a dos) , Operaciones , Propiedads)  (GOP) ejemplo
 int
 - género: desde {-2 elevado aknl , 2 elecakjd}
 - operacones susma rect
 - propiedades : communtativa...
-lo estructurados, array, ficheros, lo que conoce el lenguaje es la estrucutura del tipo èro no la composición (género), ejemplo array:
-conoce el tipo de filas y columnas, luego abría que dar el tipo de dato, los valores primitivos con los que trabaja.
-- instruciones: construiir sentencia de alto de nivel que haga de macro 
+- **lo estructurado**s, array, ficheros, lo que conoce el lenguaje es la estrucutura del tipo èro no la composición (género), ejemplo array:
+conoce el tipo de filas y columnas, luego abría que dar el tipo de dato, los valores primitivos con los que trabaja, lo que define el programador es el género,  género del tipo al que poertenece un vecor es por ejmplo R^3, pero no se puede multipliar un array con un array, las operaciones predefinidas no son para las matrices. SU GÉNERO Y OPERCIONES SON es una tabla de género, su género será {0, 1, 2} -> R a cada uno de sus elemento se le asigna un género.
+
+Lo que tienen es que manipula una estrucutra ordenada como matrices pero se trabaja de manera individual, accediendo a ellos con una applicaciones
+ El tipo establece la representación, en un array a representaciń de ese tipo de tres componentes de tipo real le asigna una dirección de memoria, y a partir de esa dirección de memoria que le asigne reservará espcacio para tres.
+- instruciones: construiir sentencia de alto de nivel que haga de macro
+
+#### Sentencias:
+- expresiones: 
+- sentencias compuestas: Esto influye en la ruptura del flujo, sentencias : leer, escribir, asignación, condicionals, bucles definidos, e indefinidos (while)
+  - secuencias semáticamentes simple de una variable, las otras condicionas son semánticamente simples, con la sentencia de asignación, a = expresión, eso se corresponde con carga *load* b y lo almacenas en b (en a = b ) si es una expresion más compleja la única que se asemeja es la anterior, el compilador  el traductor se encara solo de la última,
+  si tengo la instrucciń leer a, b , c , d, esto lo que hace el leer a , leer b , leer c... el paso a un nivel de alto nive es desarrollar el nivepl de machro nivel, esas instrucciones fijas son comon n patrón ,
+  ^``` if expr the ```,
+  un bucle definido tiene tiene teres expresiones: la incial, el final y el incremento, la semántica dle for es: ejecuta el cuerpo tal número de veces, un determinao número de veces, determinado antes de entrar, eso se hace con la expresion final - inicial divido entre el incremento. Para implemtarlo, se calcula un nḿeor entero ((la repeticiones) crea una variable menor que eso, pregunta si es menor, si los es ejecuta el cuerpo se recta uno y si sigue siendo meno se vuelve a repetir, SEMÁNTICA DLE FOR, hay comppiladores que lo ue hacen es calcular el número, si hacemos referencia a la variaboe asociada dommy variable, variable ficticia, si solo aparece ahí ahiu compiladores que ni la pones en la tabla de signo, si se utiliza en otro sitio ni la cambia, otros en cambio si que lo emplementa, pero en teoría no es la semántca ni lo que tienen que hacer, en otro no le asignab valores, a no ser que se utiloce dentro del cuerpo. SEMÁNTICA, EJECUTA EL CUERPO TAL NÚMEOR DE VECES.  
