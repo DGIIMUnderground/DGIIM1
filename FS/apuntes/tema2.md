@@ -66,7 +66,8 @@ Al haber varios programas a la vez prodría haber un solapamiento del trabajo, a
 #### 4 Sistemas de tiempo compartido  
 Teniendo en cuenta que los lotes son cerrados surgen las **colas**, sistemas de lotes abiertos, donde el SO controla los programas que esperan y los que se ejecutan, y cuándo termina estos dan pasos a los siguiente en orden de prioridad. Por tanto, si un programa no utilizaba periféricos u otros recursos se podía quedar eternamente allí, o si era necesaria la interacción de varios usuarios directamente con la computadora, con esto surge la técnica  **del tiempo compartido**, los programas tienen un tiempo limitado en la CPU.  Estos intervalos de tiempo, también son conocidos como **cuantos de computación**.
 Uno de los primeros sistemas operativos de tiempo compartido desarrollados fue el sistema CTSS (*Compatible Time-Sharing System*) desarrollado en el MIT por un grupo conocido como proyecto MAC y desarrollado para IBM.
-  .       | Multiprogramación en lotes           | Tiempo compartido
+
+ .| Multiprogramación en lotes           | Tiempo compartido
   ---		       | --- 		      		      | ---
  **Objetivo principal**    | Maximizar el tiempo del procesador   | Minimizarl el tiempo de respuesta
  **Fuente de directivas<br>del sistema operativo** | Mandatos del lenguaje de control<br> de trabajos proporcionadas por el trabajp | Mandatos introducidos al terminal.
