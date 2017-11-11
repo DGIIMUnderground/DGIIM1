@@ -44,14 +44,14 @@ La más arcaica, requiere de mucho tiempo, programador tenía interacción direc
   2. Carga y enlace del programa objeto y funciones comunes.
 Estos pasos suponían montar y  desmontar cintas o configuración de sistema, lo que significa un tiempo elevado de configuración del  programa que se va a configurar. 
 
-#### 2**Lotes** o sistemas Batch.
+#### 2 Lotes o sistemas Batch.
 El primer sistema operativo en lotes (y también el primer sisema operativo de cualquer tipo) surje a medidados de los 50, en deseo de maximizar la utilización de las máquinas.
 La idea central se basaba en una pieza de software denominada **monitor** *Denominado monitor  por el inglés Christopher S. Strachey * : El usurio introduce el trabajo por medio de una tarjeta o cinta al operdor del computador y este sistema operativo, crea un sistema de lotes con los trabajos colocados en el dispositivo de entrada para que los utilice el el monitor. Cuando un programa finaliza su procesamniento devuelve el control al monitor, que comenzará la carga del siguiente programa.
 
 Análisis de este esquema desde distintos puntos de vista:
 - **Punto de vista del monitor**: Controla la secuencia de eventos desde la memoria principar, siempre disponible para su ejecución, es denominado do **monitor residente**. El resto del monitor está formado por conjunto de utilidades y funciones cargadas como subrutinas al comienzo del programa del usuario.
   El monitor lee de uno en uno los trabajos desde el dispositivo de entrada, coloca el trabajo en el área de programa de usuario  se le pasa el control, que cuando ha terminado se lo devuelve.
-<img src="media/tema2/monitor_residente.png" width="500" height="400">
+<img src="media/tema2/monitor_residente.png" width="500" height="600">
 
 - **Punto de vista del procesador** El procesador ejecuta instrucciones, cuando el "control" lo tiene el monitor, ejecutará sus instrucciones y cuando no las del programa. El papel del monitor es de planificación, incluyendo intruccines en algún lenguaje primitivo de **lenguaje de control de trabajos ** ( JCL)
 
@@ -59,33 +59,32 @@ En resumen: El monitor o sistema operativo en lotes es un programa, que tiene en
 La protección de memoria y los privilegios dan lugar a los modos ususario y núcleo.
  El problema de la programación en lores  era el tiempo que empleaba el ordenador enlos periféricos.
 
-#### 4 Sistemas en lotes multiprogramados
+#### 3 Sistemas en lotes multiprogramados
 En los trabajos automáticos de un sistema operatuvos en lotes simple el procesador se encuentra frecuentemente parado ya que los dispositivos de entrada y salida son mucho más lentos que este, así es como surge la **multiprogramación** o **multitarea**, se expande la memoria para que pueda albergar al sistema operativo (monitor residente) y más programas habiendo multiplexación entre ellos.
-Al haber varios programas a la vez prodría haber un solapamiento del trabajo, ara evitar esto, surgen las **interrupcciones** de la mano de un avanace de sofware y hardware, en el cual varios programas se desarrollan a la vez en sitios diferentes,  esto se conoce como **S.pool**: cualquier trabajo puede suspender su actividad por la ocurrecia de un evento definido, como la finalización de una operación E/S. El procesador guardaría alguna forma de contexto ( contador de programa u otros registros) y saltaría a una rutina de tratamiento de interrupcioe: determinaría tipo interrución, la procesaría y continuaría con el proceso interrumpido. Ppor ejemplo si varios porgramas requieren de una impresora, el programa que se está ejecutando escribe en un fichero lo que quiere imprimir y después lo vuelca a esta una vez que ha terminado de itilizar la impresora el progrmaa anterior.
+Al haber varios programas a la vez prodría haber un solapamiento del trabajo, ara evitar esto, surgen las **interrupcciones** de la mano de un avanace de sofware y hardware, en el cual varios programas se desarrollan a la vez en sitios diferentes,  esto se conoce como **S.pool**: cualquier trabajo puede suspender su actividad por la ocurrecia de un evento definido, como la finalización de una operación E/S. El procesador guardaría alguna forma de contexto ( contador de programa u otros registros) y saltaría a una rutina de tratamiento de interrupcioe: determinaría tipo interrución, la procesaría y continuaría con el proceso interrumpido. Ppor ejemplo si varios porgramas requieren de una impresora, el programa que se está ejecutando escribe en un fichero lo que quiere imprimir y después lo vuelca a esta una vez que ha terminado de itilizar la impresora el programa anterior.
 
-#### 5 Sistemas de tiempo compartido  
+#### 4 Sistemas de tiempo compartido  
 Teniendo en cuenta que los lotes son cerrados surgen las **colas**, sistemas de lotes abiertos, donde el SO controla los programas que esperan y los que se ejecutan, y cuándo termina estos dan pasos a los siguiente en orden de prioridad. Por tanto, si un programa no utilizaba periféricos u otros recursos se podía quedar eternamente allí, o si era necesaria la interacción de varios usuarios directamente con la computadora, con esto surge la técnica  **del tiempo compartido**, los programas tienen un tiempo limitado en la CPU.  Estos intervalos de tiempo, también son conocidos como **cuantos de computación**.
 Uno de los primeros sistemas operativos de tiempo compartido desarrollados fue el sistema CTSS (*Compatible Time-Sharing System*) desarrollado en el MIT por un grupo conocido como proyecto MAC y desarrollado para IBM.
-
- ---   	    	       | Multiprogramación en lotes           | Tiempo compartido
+  .       | Multiprogramación en lotes           | Tiempo compartido
   ---		       | --- 		      		      | ---
- Objetivo principal    | Maximizar el tiempo del procesador   | Minimizarl el tiempo de respuesta
- Fuente de directivas<br>del sistema operativo | Mandatos del lenguaje de control<br> de trabajos proporcionadas por el trabajp | Mandatos introducidos al terminal.
+ **Objetivo principal**    | Maximizar el tiempo del procesador   | Minimizarl el tiempo de respuesta
+ **Fuente de directivas<br>del sistema operativo** | Mandatos del lenguaje de control<br> de trabajos proporcionadas por el trabajp | Mandatos introducidos al terminal.
 
-6. **Multiusuarios** misma idea anterior pero con usuarios, vg: servidores.
+5. **Multiusuarios** misma idea anterior pero con usuarios, vg: servidores.
 
-7. **Multiprocesadores** más de varias CPU en un mismo ordenador, pueden trabajar en distintas tareas o en **paralelo**, el mismo programa se divide en varios procesadores que trabajan simultáneamente.
+6. **Multiprocesadores** más de varias CPU en un mismo ordenador, pueden trabajar en distintas tareas o en **paralelo**, el mismo programa se divide en varios procesadores que trabajan simultáneamente.
 
-8. Finalmente distintos ordenadores, con distintos sistemas operativos que trabajan simultáneamente,todos coordinados por un **macro sistema operativo**.
+7. Finalmente distintos ordenadores, con distintos sistemas operativos que trabajan simultáneamente, todos coordinados por un **macro sistema operativo**.
 
 
 ## Algunas preguntas !!! FALTAN POR COMPLETAR LAS DEJO PARA QUE ALGUIEN LAS RELLENE
 
 - La multiprogramación no tiene por qué ser de tiempo compartido. Pero  para que sea posible el tiempo compartido es necesario un SO multiprogramado.
-  Un S.O. multiprogramado es un S.O. de tiempo compartido? ¿y alcontrario?
- ¿Un S.O. de tiempo compartido tiene que ser multiusuario? ¿y monousuario?
- ¿Un S.O. monoprocesador tiene que ser monousuario? ¿y multiusuario?
- ¿Un S.O. multiprocesador tiene que ser monousuario? ¿y multiusuario?
+- Un S.O. multiprogramado es un S.O. de tiempo compartido? ¿y alcontrario?  
+- ¿Un S.O. de tiempo compartido tiene que ser multiusuario? ¿y monousuario?  
+- ¿Un S.O. monoprocesador tiene que ser monousuario? ¿y multiusuario?  
+- ¿Un S.O. multiprocesador tiene que ser monousuario? ¿y multiusuario?  
 
 
 ## Procesos
@@ -103,7 +102,7 @@ Para solucionar estos problemas se necesita una forma sistemática de monitoriza
 - Un programa ejecutable
 - Los datos asociados que necesita un programa.
 - El contexto de ejecución de un programa o estado del proceso, que es el cnjuntod de datos internos separada del proceso por el cual el sistema operativo es capaz de supervisar y controlar el proceso y el procesador para ejecutarlo. Ejemplos: contador de programa, registro de datos, prioridad, estado...
-< img src="media/tema2/proceso_tipico.jpg">
+<img src="media/tema2/proceso_tipico.jpg" width="500" height="600">
 >>>>>>>>>>>> HASTA AQUÍ ME HE QUEDADO CORRIGIENDO Y AMPLIANDO 70 DE STALLING
 
 Cuando hay que leer de disco el sistema usuario no lee, los lenguajes dan sentencias, cuando se traducen son órdenes de llamadas de SO. El SO incorpora funciones propias donde corresponde al programa.
