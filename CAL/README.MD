@@ -1,32 +1,27 @@
-## BIENVENIDOS A LA ASIGNATURA DE CÁLCULO 1 DEL PRIMER CUATRIMESTRE
+# Bienvenidos a la asignatura de Cálculo 1
 
 El contenido que aquí encontrarás será:
-### Ejercicios resueltos corregidos por el profesor
-Carpeta[ resueltos_corregidos](https://github.com/pwaqo/DGIIM1/tree/master/CAL/resueltos_corregidos)
 
- Documentos    		 	    | Descripción
- ---	      			    | ---
- 31.org  [31.tex](https://github.com/pwaqo/DGIIM1/tree/master/CAL/resueltos_corregidos/31.tex)		       | 
- r2-casa.org  [r2-casa.tex](https://github.com/pwaqo/DGIIM1/tree/master/CAL/resueltos_corregidos/r2-casa.tex) | relación de ejercicios mandada 2	
+### Ejercicios resueltos o corregidos por el profesor
 
+Carpeta [resueltos_corregidos](https://github.com/pwaqo/DGIIM1/tree/master/CAL/resueltos_corregidos)
 
+ Documentos    		 	                   | Descripción
+ ---	      			                   | ---
+ r2-casa.org  [r2-casa.tex](r2-casa.tex)   | Relación 2 de ejercicios casa (incluye ej31)
+ r2-clase.org [r3-clase.tex](r3-clase.tex) | Por ahora, sólo ejercicio 3 resuelto en clase (coincide con el ej38 pg26)
 
 ### Ejercicicos en los que nos hemos topado con dificultades
+
 Carpeta [soluciones_nuestras](https://github.com/pwaqo/DGIIM1/tree/master/CAL/soluciones_nuestras)
 
  Problema								| Estado
  ---									| ---
- Ejercicio 38, página 26, apunes *Conceptos básicos del analisis real* | Sin resolver
- 
 
 ### Resúmenes hechos por nosotros
 
 Carpeta [apuntes](https://github.com/pwaqo/DGIIM1/tree/master/CAL/apuntes)
 
- Documento     	     | Descripción
- --- 		     | ---
- ConceptosWIP  [ConceptosWIP.md](https://github.com/pwaqo/DGIIM1/tree/master/CAL/apuntes/ConceptosWIP.md) | Conceptos básicos del tema 1: Números reales y conjuntos numerables
- 
-
-
- 
+ Documento     	                                  | Descripción
+ ---                               		          | ---
+ ConceptosWIP  [ConceptosWIP.md](ConceptosWIP.md) | Conceptos básicos del tema 1: Números reales y conjuntos numerables
