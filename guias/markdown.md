@@ -103,5 +103,5 @@ columna 1 | columna 2
 ``` 
 
 ### Emoticonos markdown  
-Esta persona se lo ha montado súper bien  
-<script src="https://gist.github.com/rxaviers/7360908.js"></script>
+Esta persona se lo ha montado súper bien, os dejo su [repositorio](https://gist.github.com/rxaviers/7360908) 
+
