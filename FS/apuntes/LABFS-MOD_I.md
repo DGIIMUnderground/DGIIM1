@@ -125,7 +125,7 @@ $ printf “Hola %d\n” $NOMBRE
 ## Variables de entorno predefinidas
 
 `[arg]` | Valor
-    --- | ---
+--- | ---
 `$BASH` | Ruta completa de ejecución de la actual instancia de bash
 `$HOME` | Ruta al directorio raíz del usuario
 `$PATH` | Lista de todos los directorios en los que buscar una orden
