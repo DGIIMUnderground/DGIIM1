@@ -68,7 +68,7 @@
 - Acotación: Protege cadenas desactivando los caracteres especiales en ellas.
   - `“[arg]”`: Acotación débil, no protege de ```! $ \ ` ```.
   - ``` `[arg]` ```: Acotación fuerte, no protege de ``` ` ```.
-
+***
 ## La orden printf ##
 
 - `printf “[arg1]~” [arg2]`: Devuelve `[arg2]` con el formato especificado en `[arg1]`.
@@ -130,6 +130,7 @@ $ printf “Hola %d\n” $NOMBRE
 `$HOME` | Ruta al directorio raíz del usuario
 `$PATH` | Lista de todos los directorios en los que buscar una orden
    `$?` | Código de retorno de la última orden ejecutada
+
 ***
 ## Control de flujo
 ## if ##
@@ -200,12 +201,12 @@ done
 
 `[arg]` | Operadores relacionales
 --- | ---
-`A=B | A==B | A -eq B` | A es igual a B
-`A != B | A -ne B` | A es distinta de B
-`A < B | A -lt B` | A es menor que B
-`A > B | A -gt B` | A es mayor que B
-`A <= B | A -le B` | A es menor o igual que B
-`A >= B | A -ge B` | A es mayor o igual que b
+`A=B \| A==B \| A -eq B` | A es igual a B
+`A != B \| A -ne B` | A es distinta de B
+`A < B \| A -lt B` | A es menor que B
+`A > B \| A -gt B` | A es mayor que B
+`A <= B \| A -le B` | A es menor o igual que B
+`A >= B \| A -ge B` | A es mayor o igual que b
 `! A` | A es falsa
 `A && B` | A es verdadera y B es verdadera
 `A \|\| B` | A es verdadera o B es verdadera

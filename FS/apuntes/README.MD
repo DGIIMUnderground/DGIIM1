@@ -11,6 +11,6 @@
 
  Archivo | Dato interés
   --- 	 | ---
- [ LABFS-MOD_I.txt](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/LABFS-MOD_I.txt)	| Apuntes de Gonzalo, esquemáticos
+ [ LABFS-MOD_I.md](https://github.com/pwaqo/DGIIM1/blob/master/FS/apuntes/LABFS-MOD_I.md)	| Apuntes de Gonzalo, esquemáticos
  [ResumenModuloI.odt](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/ResumenModuloI.odt) | Apuntes de Paula (otra vez .dot :( ), completísimos
  [basicBash.md](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/basicBash.md)		| A Blanca le parece que estos esquemas están al día 
