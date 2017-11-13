@@ -68,7 +68,7 @@
 - Acotación: Protege cadenas desactivando los caracteres especiales en ellas.
   - `“[arg]”`: Acotación débil, no protege de ```! $ \ ` ```.
   - ``` `[arg]` ```: Acotación fuerte, no protege de ``` ` ```.
-
+***
 ## La orden printf ##
 
 - `printf “[arg1]~” [arg2]`: Devuelve `[arg2]` con el formato especificado en `[arg1]`.
@@ -130,6 +130,7 @@ $ printf “Hola %d\n” $NOMBRE
 `$HOME` | Ruta al directorio raíz del usuario
 `$PATH` | Lista de todos los directorios en los que buscar una orden
    `$?` | Código de retorno de la última orden ejecutada
+
 ***
 ## Control de flujo
 ## if ##
