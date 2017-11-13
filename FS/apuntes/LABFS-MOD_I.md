@@ -73,14 +73,16 @@
 
 - `printf “[arg1]~” [arg2]`: Devuelve `[arg2]` con el formato especificado en `[arg1]`.
 
- | **Códigos de escape**
+ | Códigos de escape
+ --- | ---
 `\b` | Espacio atrás
 `\n` | Nueva linea
 `\t` | Tabulador
 `\’` | Comilla simple
 `\\` | Barra invertida
 `\0n` | n = número en octal que representa un carácter ASCII de 8 bits
- | **Códigos de formato**
+ | Códigos de formato
+ --- | ---
 `%d` | Número con signo
 `%f` | Número en coma flotante
 `%q` | Entrecomilla una cadena
@@ -120,10 +122,11 @@ $ printf “Hola %d\n” $NOMBRE
 ```
 ***
 ## Variables de entorno predefinidas
+    --- | ---
 `$BASH` | Ruta completa de ejecución de la actual instancia de bash
 `$HOME` | Ruta al directorio raíz del usuario
 `$PATH` | Lista de todos los directorios en los que buscar una orden
-`$?` | Código de retorno de la última orden ejecutada
+   `$?` | Código de retorno de la última orden ejecutada
 ***
 ## Control de flujo
 ## if ##
@@ -181,7 +184,8 @@ done
 ```
 ***
 ## Operadores
- | **Operadores aritméticos**
+ | Operadores aritméticos
+--- | ---
 `+  -` | Suma/resta
 `*  /  %` | Multiplicación/división/resto
 `**` | Potencia
@@ -192,7 +196,8 @@ done
 `= | += | -= | *= | /= | %=` | Equivalente a `[arg][op][arg]=[arg]`
 
 
- | **Operadores relacionales**
+ | Operadores relacionales
+--- | ---
 `A=B | A==B | A -eq B` | A es igual a B
 `A != B | A -ne B` | A es distinta de B
 `A < B | A -lt B` | A es menor que B
@@ -202,7 +207,8 @@ done
 `! A` | A es falsa
 `A && B` | A es verdadera y B es verdadera
 `A || B` | A es verdadera o B es verdadera
- | **Expresiones regulares**
+ | Expresiones regulares
+--- | ---
 `\` | Barra de escape, para referenciarla escribiremos \’\’
 `.` | Cualquier carácter en la posición en la que se encuentre el punto cuando se usa en un patrón con otras cosas, usado solo representa a cualquier cadena
 `( )` | Los caracteres dentro se considerarán conjuntamente
@@ -224,7 +230,8 @@ done
 
 
 ## Sintaxis guiones ##
- | **Variables de entorno definidas**
+ | Variables de entorno definidas
+--- | ---
 `$0` | Nombre del guion o script
 `${n}` | Argumentos (en orden) facilitados al guión (n∈N)
 `$* / S@` | Contiene $0 y ${n}
@@ -234,13 +241,15 @@ done
 `${arg:?val}` | Si el argumento tiene valor ≠ 0, sustituye su valor por “val”, en el caso contrario imprime el valor de arg y sale del guión. Si “val” es omitido, imprime un mensaje indicando que el argumento es nulo o no está asignado.
 
 ## Metacaracteres ##
- | **Metacaracteres de `[archivo]`**
+ | Metacaracteres de `[archivo]`
+--- | ---
 `?` | Cualquier carácter simple en esa posición.
 `*` | Cualquier secuencia de 0 o más caracteres.
 `[ ]` | Lista o rango de caracteres, separados por `,`(lista) o `-`(rango).
 `{ }` |
 `~` | `PATH` hasta `/home`
- | **Metacaracteres de redirección**
+ | Metacaracteres de redirección
+--- | ---
 `< [archivo]` | Redirecciona la entrada de una orden para obtenerla de `[archivo]`
 `> [archivo]` | Redirecciona la salida de una orden para sobreescribirla en `[archivo]`
 `>> [archivo]` | Redirecciona la salida estándar y la añade al final de `[archivo]`
@@ -249,7 +258,8 @@ done
 `2> [archivo]` | Redirecciona el error estándar a `[archivo]`
 `[arg1] | [arg]` | Cauce: La salida de `[arg1]` se usa como entrada de `[arg2]`
 `[arg1] |& [arg2]` | Cauce: La salida y error estándar de `[arg1]` se usan como entrada de `[arg2]`
- | **Metacaracteres sintácticos**
+ | Metacaracteres sintácticos
+ --- | ---
 `[arg] ; [arg]` | Separa dos órdenes que se ejecutan secuencialmente
 `( [arg]~ )` | Aisla `[arg]` separados por “;” o “|” y los trata como una única orden
 `[arg1] && [arg2]` | Ejecuta `[arg1]` sólo si `[arg2]` ha tenido éxito
