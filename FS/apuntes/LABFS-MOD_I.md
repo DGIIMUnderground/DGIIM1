@@ -123,6 +123,7 @@ $ printf “Hola %d\n” $NOMBRE
 ```
 ***
 ## Variables de entorno predefinidas
+
 `[arg]` | Valor
     --- | ---
 `$BASH` | Ruta completa de ejecución de la actual instancia de bash
@@ -191,11 +192,10 @@ done
 `+  -` | Suma/resta
 `*  /  %` | Multiplicación/división/resto
 `**` | Potencia
-`++/--` | Incremento/Decremento 1 unidad  
-          `++[arg]` realiza la acción después de ++ y `[arg]++` la realiza antes
+`++/--` | Incremento/Decremento 1 unidad  *(`++[arg]` realiza la acción después de ++ y `[arg]++` la realiza antes)*
 `( )` | Permite agrupar expresiones para controlar el orden
 `,` | Separador entre expresiones con evaluación secuencial
-`= | += | -= | *= | /= | %=` | Equivalente a `[arg][op][arg]=[arg]`
+`= \| += \| -= \| *= \| /= \| %=` | Equivalente a `[arg][op][arg]=[arg]`
 
 
 `[arg]` | Operadores relacionales
@@ -208,7 +208,7 @@ done
 `A >= B | A -ge B` | A es mayor o igual que b
 `! A` | A es falsa
 `A && B` | A es verdadera y B es verdadera
-`A || B` | A es verdadera o B es verdadera
+`A \|\| B` | A es verdadera o B es verdadera
 
 `[arg]` | Expresiones regulares
 --- | ---
@@ -260,12 +260,12 @@ done
 `&> [archivo]` | Redirecciona salida y error estándar y lo escribe en `[archivo]`
 `&>> [archivo]` | Redirecciona salida y error estándar y lo añade a `[archivo]`
 `2> [archivo]` | Redirecciona el error estándar a `[archivo]`
-`[arg1] | [arg]` | Cauce: La salida de `[arg1]` se usa como entrada de `[arg2]`
-`[arg1] |& [arg2]` | Cauce: La salida y error estándar de `[arg1]` se usan como entrada de `[arg2]`
+`[arg1] \| [arg]` | Cauce: La salida de `[arg1]` se usa como entrada de `[arg2]`
+`[arg1] \|& [arg2]` | Cauce: La salida y error estándar de `[arg1]` se usan como entrada de `[arg2]`
 
  `[arg]` | Metacaracteres sintácticos
  --- | ---
 `[arg] ; [arg]` | Separa dos órdenes que se ejecutan secuencialmente
 `( [arg]~ )` | Aisla `[arg]` separados por “;” o “|” y los trata como una única orden
 `[arg1] && [arg2]` | Ejecuta `[arg1]` sólo si `[arg2]` ha tenido éxito
-`[arg1] || [arg2]` | Ejecuta `[arg1]` sólo si `[arg2]` ha fallado
+`[arg1] \|\| [arg2]` | Ejecuta `[arg1]` sólo si `[arg2]` ha fallado
