@@ -201,12 +201,12 @@ done
 
 `[arg]` | Operadores relacionales
 --- | ---
-`A=B | A==B | A -eq B` | A es igual a B
-`A != B | A -ne B` | A es distinta de B
-`A < B | A -lt B` | A es menor que B
-`A > B | A -gt B` | A es mayor que B
-`A <= B | A -le B` | A es menor o igual que B
-`A >= B | A -ge B` | A es mayor o igual que b
+`A=B \| A==B \| A -eq B` | A es igual a B
+`A != B \| A -ne B` | A es distinta de B
+`A < B \| A -lt B` | A es menor que B
+`A > B \| A -gt B` | A es mayor que B
+`A <= B \| A -le B` | A es menor o igual que B
+`A >= B \| A -ge B` | A es mayor o igual que b
 `! A` | A es falsa
 `A && B` | A es verdadera y B es verdadera
 `A \|\| B` | A es verdadera o B es verdadera
