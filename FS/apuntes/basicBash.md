@@ -19,6 +19,7 @@
  **awk**	   		 | escanea patrocenes y procesa lenguajes
  **ls**	 	    		 | lee los directorio
  **cd** 	     		 | cambia de directorio
+ **ln** 			 | Cra enlaces simbólicos
  **pwd**	      		 | Imprime el camino absulo del direcctorio actual   
  **mkdir** Y **rmdir**  	 | rmdir -r borra si tienes también archivos dentro  
  **cat**     			 | lee el condtenido de un archivo  
@@ -93,7 +94,15 @@ Quededan 10 semanas para fin año
   $HOME			| alamacena el directorio raís de la carpeta home
   $PATH			| guarda el camino local de las órdenes
   $? 			| contiene el código de retorno hacia la última orden o guión
-  --- 			| ---
+
+*Si eres un profano en depuración lee el [apartado de depuración](#depuracion-de-programas)*
+ Variables de  depuración   |  **utilidad**  
+  --- 			    | ---
+  $LINENO   		    | representa el número de línea que está leyendo de un archivo
+  PS4			    | Variable empotrada que ajusta el valor de *xtrace* de la línea<br>`export PS4='+ línea $LINENO: ' `	
+  $FUNCNAME 		    | Array que contiene el nombre de todas las funciones que se ejecutan en el instante  
+  $BASH_ARGV 		    |  An  array  variable containing all of the parameters in the current bash execution call stack. 
+info bash y hartate información
   
 
 
