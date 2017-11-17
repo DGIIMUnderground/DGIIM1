@@ -87,4 +87,57 @@ dada la gramatica
 flecha derecha estrutura simbolo no terminal izq simolo termian, , alternativas: barra vertica  ,
 
 la e y la o no son terminal, sin estructura, con una regla de producción que define su estructula, uno o puede ser una o un por  n mas , menos, expresión una E opert¡dad con o una expresión enre parenteses, y la id identificador, un nobre de lo que sea, a partit sde esa grapatia se pede generar árboles,
-ña estructura es vn, se coge la frase, se lee de izquierda a drecha, se ve si hay aguna regla de la gramática que reconozca a id, se coge una expresión,  deeb ser sintácticamente y gramanticamente corrector gracias a la regla semántica. 
+ña estructura es vn, se coge la frase, se lee de izquierda a drecha, se ve si hay aguna regla de la gramática que reconozca a id, se coge una expresión,  deeb ser sintácticamente y gramanticamente corrector gracias a la regla semántica.
+Aparte de la propriedad de condiciones el "if" es también ambiguo.
+
+En la gramática hay como cuatro pisos;
+
+Gramática libres <-- Máquina de Turing 
+----------
+GSC Gramatica sensible contexto
+----------
+Gramaticas independientres del contexto GIC <-- automatas con pila  --> sintaxis (gramatias en medio: gramarra con argmentos y gramtica a dos niveles o de Van W)
+----------
+gramatica regular o expresiones regulares <-- reconocidad por -- automatas finitos | especifica ---> lesicp
+----------
+
+
+- la gramátuca regular, tiene las palabras que utilizas en el sistema: ejmplos: nombre de fuciones, procedimientos,constantes, su declaración está reglado;
+- Gramáticas independientes del contexto, para analizar, enteder y tratarla son las gramáticas independientes del contex, los lenguajes de programación, sus sentencias son independientes del contexto.
+- Gramatias sensibles al contexto, ejemplo, lenguajes naturales (sujeto omito),  ejemplo reconicimento de voz
+- Gramáticas libres, se diferencian de las anteriores por la reflas de produccuón. ejmplo en la realizaciín de un programa se define una gramarica linre, independientemente el algoritmo.
+
+para expecificar la sintaxis, cómo escribimos los lexemas y las indipendientes del contexto,
+Primero se unifica la gramática, falta el automáta ue los resuelva,
+
+Autómata que lo lo que va reconociendo lo almacena en la pila o plo que le queda por reconocer
+
+Máquina de turing, especifica qué es un algoritmo.
+
+Para cada tipo de gramática creo la máqina y ya tengo hecho prácticamente el traductor
+
+GRAMATICA CON ATRUBUTOS
+las que mas se utilizas soon las gramatias con atributos, para expecificar las gramáticas de los lenguajes de programación.
+Se construyen, se parte de gramática independiente dle contexto (uso particular en lenguajes de programación, la sacó ET IRONS),
+cuadrupla ( GIC, A, E , C )
+GIC: semántica básica, lenguaje de programación
+atributo: en conjunto con su valor
+reglas evalucación atributo, cómo asignar vlaor a esos atributos
+condiciones: condiciones sobre los valores que puede tomar cada atriuto
+
+Ejemplo Gramatia con atributos para expecificar las variables enteras:
+- Se define los dígitos: 0123456789 (son caracteres ascci)
+- cnstante entera: o un dígio o una constante seguida de un dígitos, ( es recursiva pro la izquierda, loo definido aparece en la definicióne)
+- Símbolos terminales: el 01234567889, no terminales dígitos y constantes,y calor)
+
+Atributos que tienen las constantes: el valor,
+definimos atributo que sea valor le asignamos significado a los dígitos, a o como dígito le damos un valor 0, que resultas ser el valos de memoria
+valro(1)=1; en memroia 000000000000000001
+...
+valor(9)=9;
+
+donde he definido las constantes enteras, la regla de evalución serña valor(cnt) = valro dñigito
+y como es recursiva, deberemos tener en cuenta la posición del dígito.
+Finalmente, habría que tener la condición de valor máxima para evitar desbordamientos, pero esto se lo tengo que poner a la cosntante
+
+SALE PARA EXPECIFICAR LA SEMÁNTICA DE LOS LENGUAES DE PROGRAMACIÓN, SE COSNTRUYE LA GRAMÁTIA CON ATRIBUTO, QUE SOLO EXPECIFICA SINTAXIS, DE UN LENGUAE QUE TIENE ALGO DE SENSIBILAD AL CONTEXTO, ME LA SALE LA EXPECFICACIÓN DEL LENGAE DE PROGRMACIÓN. 
