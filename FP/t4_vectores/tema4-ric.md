@@ -170,19 +170,83 @@ existe una relación de orden entre los elementos del vector.
     - Toda la información está en memoria principal (en el ordenador)
 
     - Grupos de algoritmos de búsqueda:
-        - O(n^2) (Mañana)
-            - Bubblesort
+        - O(n^2)
+            - Bubblesort (Burbuja)
+                - Comparamos los elementos dos a dos
+                y se deja a la izquierda el más pequeño.
+                (Intercambiándolos):
+                - En la primera iteración queda el más pequeño
+                a la izq. En la segunda iteración el siguiente, etc.
+
+                Por ello, son n^2 operaciónes.
+
+                Podemos tener dos algoritmos con la misma complejidad
+                pero puede uno ser más rápido que otro (3n^2 < 5n^2)
+
                 - Dos bucles anidados
                 - Menos eficiente
+
             - Selección
-            - Inserción
                 - Insertar en la primera posición el
                 elemento más pequeño.
-        - O()
+                - En promedio n operaciones, pero exactamente
+                n intercambios.
+    
+                - En el caso de que el vector estuviera ordenado
+                al revés, realizaría n cambios. (Es el más interesante)
+                (En cambio el de burbuja haría n^2)
 
+            - Inserción
+
+                - Por cada elemento, busca donde debería de incluirlo.
+                - Si el vector está ordenado es el más interesante.
+    
+
+
+        - O(nlog(n))
+            - Mergesort
+            - Heapsort
+            - Quicksort:
+                -> Es el mejor e implementado
+                en las bibliotecas estándar.
+
+    O(nlog(n)) es mucho más rápido EN GENERAL, pero dependerá
+del tamaño de los elementos.
 
 - Ordenación externa:
-
-En el caso de tener la información en otro dispositivo:
+    Datos en memoria secundaria (otro dispositivo)
     Ej. una cinta: información de forma secuencial.
 
+
+No está definidio un operador de comparación para los números racionales.
+Pero podemos implementarlo. De manera que podríamos luego, ordenar
+
+El tipo vector es buena implementación como contenedor genérico. En cambio para
+operaciones matemáticas, podemos utilizar valarray (STL).
+
+Para los vectores de datos lógicos:
+
+vector<bool> vb(1000);
+
+## Matrices
+
+En su sentido más general (2, 3, nxn)
+
+Existe una forma de definir matrices en C:
+
+```c++
+int v[30]; // Array de C
+int m[30][5]; // Matriz de 30 filas y 5 columnas
+```
+
+Pero no hay tipo específico para C++. En cambio, usaremos vectores de vectores.
+
+```c++
+vector<vector<int> > m; // Matriz de enteros
+```
+                  |
+            ¡Este espacio es muy importante
+            para que ciertos compiladores no den
+            problemas!
+
+Los compiladores se confunden con `>>` (operador de extracción).
