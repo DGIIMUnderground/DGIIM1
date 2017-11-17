@@ -1,3 +1,10 @@
+## BIENVENIDO A LA CARPETA DE EJERCICIOS DE FUNDAMENTOS DE SOFTWARE
+Aquí podrás encontras, las distintas soluciones que le hemos dado a ejercicios de Bash
+## Prácticas:
+Práctica		|  Descripción
+ --- 			| ---
+[Modulo_I-7](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/M%C3%B3dulo_I/Modulo_I-7.md) | Trazas y gestión de procesos
+
 ## Ejercicios complementarios 
 - [ejercicios1.md](https://github.com/pwaqo/DGIIM1/blob/master/FS/ejercicios/M%C3%B3dulo_I/ejercicios1.md)
 Los enuciados se encuentran justo antes de la posible solución

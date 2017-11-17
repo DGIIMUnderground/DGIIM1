@@ -102,53 +102,47 @@ El diseño del sofware de la multiprogramación era sumamente complejo, los prog
 Para solucionar estos problemas se necesita una forma sistemática de monitorizar y controla la ejecucion de varios programas en el procesador y aquí es donde entra el concepto de proceso, conformado por:
 - Un programa ejecutable
 - Los datos asociados que necesita un programa.
-- El contexto de ejecución de un programa o estado del proceso, que es el cnjuntod de datos internos separada del proceso por el cual el sistema operativo es capaz de supervisar y controlar el proceso y el procesador para ejecutarlo. Ejemplos: contador de programa, registro de datos, prioridad, estado...
+- El contexto de ejecución de un programa o estado del proceso, que es el conjunto de datos internos separada del proceso por el cual el sistema operativo es capaz de supervisar y controlar el proceso y el procesador para ejecutarlo. Ejemplos: contador de programa, registro de datos, prioridad, estado...
 <img src="media/tema2/proceso_tipico.jpg" width="500" height="600">
->>>>>>>>>>>> HASTA AQUÍ ME HE QUEDADO CORRIGIENDO Y AMPLIANDO 70 DE STALLING
 
-Cuando hay que leer de disco el sistema usuario no lee, los lenguajes dan sentencias, cuando se traducen son órdenes de llamadas de SO. El SO incorpora funciones propias donde corresponde al programa.
+En la imagen, se muestra la manera de gestinar dos procesos, los contenidos de los registros de un programa que fue interrumpido fueron fuardados en el contexo de ejecución del programa. Por esta razón un proceso puede verse como una estructura de datos, donde su **estado** se contiene en el contexto permitiendo así la cooperación  y la coordinación entre procesos.
 
-Lo mismo con lenguajes fuertemente tipado, como hay cosas que el compilador no puede resolver en tiempo de compilación por falta de información, el compilador añade instrucciones al texto (*paquete de soporte a la ejecución*), para que poder ejecutarlo.  Así, se puede denominar *proceso* al programa original ejecutado, es decir quitando la lógica añadida por el SO.
+> Notas de clase: 
+>Cuando hay que leer de disco el sistema usuario no lee, los lenguajes dan sentencias, cuando se traducen son órdenes de llamadas de SO. El SO incorpora funciones propias donde corresponde al programa.
+>Lo mismo con lenguajes fuertemente tipado, como hay cosas que el compilador no puede resolver en tiempo de compilación por falta de información, el compilador añade instrucciones al texto (*paquete de soporte a la ejecución*), para  poder ejecutarlo.  Así, se puede denominar *proceso* al programa original ejecutado, es decir quitando la lógica añadida por el SO.
+>Ejemplo:
+>Cuando, con el navegador abierto, se abre otra ventana del navegador,para cada ventanita hay una **instancia** con la sesión y la historia que guarda el navegador. Es decir, se tiene el mismo programa pero con varias instancias, es decir con distintos procesos. Podemos decir que un proceso o instancia es una ejecución particular del programa.
 
-Ejemplo:
+## Bloque de control de un proceso. PCB
+> Sistemas opertativos William Stalling Descripción y procesos de control, pag 107-114
 
-Cuando, con el navegador abierto, se abre otra ventana del navegador,para cada ventanita hay una **instancia** con la sesión y la historia que guarda el navegador. Es decir, se tiene el mismo programa pero con varias instancias, es decir con distintos procesos. Podemos decir que un proceso o instancia es una ejecución particular del programa.
+La memoria estaría llena de procesos o instancias. Así, el SO es el encargado de administrarlos de la forma correcta, para que todos sean ejecutados por el procesador de forma secuencial. Además, el SO tiene la capacidad de poder **bloquear un proceso**. Para que después pueda ser retomado como si nada, se  necesita información sobre cada proceso, lo que se conoce como **bloque de control de un programa* (BCP), consta de:
 
-## Bloque de control de un proceso.
+Elemento del bloque de control 	     | Descripción
+--- 	     	       		     | ---
+ **Identificador de proceso** <br> (PID *Process IDentificator*)|  Identiicador único qu ese le asocia a un proceso.
+ **Estado **      	 	     | En qué situación se encuentra el proceso en cada momento según el modelo de los cinco estados: preparado, bloqueado, preparado...
+  **Prioridad**  	  	     | Nivel de prioridad relativo al resto de procesos, el SO, cuenta con algoritmos para modificarla 
+  **Contador de programa** 	     | Dirección de la siguiente instrucción del programa  que se va a ejecutar.
+  **Puntero de memoria **	     | Direcciones entre las que está un programa, dirección base y sus datos.
+  **Datos de contexto** 	     | Datos del registro del procesador: registros que modifica, uso de  recursos, contador de programa, registros procesador...
+  **Información del estado de E/S**  | Incluyes las peticiones pendientes de E/S, los dispositivos asignados a dichos procesos de E/S, lista de fichero en uso...
+  **Información de auditoría** 	     | Inluye la cantidad de tiempo de de procesador y de reloj utilizados, limites de tiempo, registros contables...
 
-La memoria estaría así llena de procesos o instancias. Así, el SO es el
-encargado de administrarlos de la forma correcta, para que todos sean
-ejecutados por el procesador de forma secuencial. Además, el SO tiene la
-capacidad de poder **bloquear un proceso**. Para ello, necesita la
-siguiente información sobre cada proceso:
+Cuando un proceso se interrumpe, los valores de datos de contexto, se guardan en los campos correspondientes, y el estado de proceso cambia, así el SO queda libre para poner otro proceso en estado de ejecución.
 
-- Nombre
-- Prioridad (SO algoritmos que la modifican) 
-- Estado: en momoria un progrma puede estar, de disco a memoria;: estado nuevo,
-  como está en memoria, el SO genera un bloque de proceso, cuando tiene el
-relleno de la información esta **preparado** a estar ejecutado, cuando le toque
-se ejecutará **estado bloqueado**. 
-- Contador de programa: dirección de la siguiente que se va a ejecutar.
-- Datos de contexto: registros que modifica. Informacion auditoria, uso de
-  recursos, ejemplos de uno que esté sobrecargado, se le da al que gestiona el
-sitema.
-- Puntero de memoria: direciones entre las que está un programa, dirección base.
+>>> POR AQUÍ ME HE QUEDADO pag 110 stalling estados de proceso
 
+## Implementación típica de procesos
 
-## Implementaciín típica de procesos
-
- - Busca proceso en lista, le da la direccióín recuper información con la que
-   carga la información,
+ - Busca proceso en lista, le da la direccióín recuper información con la que  carga la información,
  - traza es lo que se pasa, en la CPU
 
 ## Llamadas al sistema
 
-El usuario no tiene orden para acceder a los recursos "" leer disco?? se llma
-función SO, para ejecutar eso, (so traa en kernel supe susacio..) la forma de
-hacerlo se llama **trpa** se cambia de modo usuario a kernel, cuando termina
-deja de serlo.  
+El usuario no tiene orden para acceder a los recursos "" leer disco?? se llma función SO, para ejecutar eso, (so traa en kernel supe susacio..) la forma de hacerlo se llama **trapa** se cambia de modo usuario a kernel, cuando termina deja de serlo.  
 
-## Modeo de lo scinco estados.
+## Modeo de los cinco estados.
 
 - nuevo
 
@@ -218,7 +212,7 @@ proceso: programa + lo aue necesir a, la unidad de procesamieno, lo qu el so le 
 puede ocurrirr (cada sistm hace los que le sale de las aricese) ejemplo se está navegando, se abren ventana, proceso s distintos,
 tennemso instrucucines y datos, el proceso es el mismo, lo que cambia son lso daos , en vez d arir procesos nueco s, ae abren hebras, proceso el mismo, datos de cada ebra distindo, deteo del bloque de conrtol de proceos se parten nuecos registos , direcciones, se ahor amusah memori ad eisntrucciones.
 
-navegado --> proceso asociado a ese programa, dentro de la misma ejecucion (navegador) se abre una hebra. Hebra eecución independiente del mismo proceso.x
+navegado -->proceso asociado a ese programa, dentro de la misma ejecucion (navegador) se abre una hebra. Hebra eecución independiente del mismo proceso.x
 Proceso unidad de gestión de un programa al que se asocian memeoria y gestión, si el codigo es el mismo en una hebra te ahorras el código en memeoria,
 la hebra se paparaleliza la ejecución del programa, el mismo código d eprograma abre las ejecuciones paralelas, así el progrma avanza más rápido, hasta sincronizarse esto son hebras de un mismo proceso.
 Ejemplo el servidor, hay un progrma uqe continuamente está leyendo el puerto, cuando detecta ue hay una entrada habre un hebra para atencdeae al programa.
