@@ -35,7 +35,7 @@ durante la primera guerra mundial.
 Aquí se acaba la historia con personajes y comienza la evolución de la arquitectura de los
 computadores:
 
-#### 1 **Monoprograma** o **procesamiento en serie**
+#### 1. **Monoprograma** o **procesamiento en serie**
 
 La más arcaica, requiere de mucho tiempo, el programador tenía interacción directa con el hardware, (no existía el Sistema Operativo) si había un error el programa se detenía.
 
@@ -50,17 +50,17 @@ Estos pasos suponían montar y desmontar cintas o configurar tarjetas. Si ocurr�
 
 Se han desarrollado varias herramientas de software de sistemas con el fin de realizar el procesamiento serie más eficiente: bibliotecas de funciones comunes, enlazadores, cargadores, depuradores, rutinas de gestión de E/S disponibles como software común para todos los usuarios…
 
-#### 2 Sistemas en lotes sencillos o Sistemas Batch.
+#### 2. Sistemas en lotes sencillos o Sistemas Batch.
 El primer sistema operativo en lotes (y también el primer sisema operativo de cualquer tipo) surge en deseo de maximizar la utilización de las máquinas.
-La idea central se basaba en una pieza de software denominada **monitor** *Denominado monitor  por el inglés Christopher S. Strachey * : El usuario no tiene que acceder directamente a la máquina, sino que introduce el trabajo por medio de una tarjeta o cinta al operador del computador, que crea un sistema de lotes con los trabajos enviados y los coloca en el dispositivo de entrada para que los utilice el monitor. Cuando un programa finaliza su procesamniento devuelve el control al monitor, que comenzará la carga del siguiente programa.
+La idea central se basaba en una pieza de software denominada **monitor**: el usuario no tiene que acceder directamente a la máquina, sino que introduce el trabajo por medio de una tarjeta o cinta al operador del computador, que crea un sistema de lotes con los trabajos enviados y los coloca en el dispositivo de entrada para que los utilice el monitor. Cuando un programa finaliza su procesamniento devuelve el control al monitor, que comenzará la carga del siguiente programa.
 
 Análisis de este esquema desde distintos puntos de vista:
 - **Punto de vista del monitor**: controla la secuencia de eventos desde la memoria principal, siempre disponible para su ejecución. Esta porción del monitor es denominado **monitor residente**. El resto del monitor está formado por conjunto de utilidades y funciones comunes que se encargan como subrutinas al comienzo del programa del usuario.
   El monitor lee de uno en uno los trabajos desde el dispositivo de entrada (lector de tarjetas o dispositivo de cinta magnética), coloca el trabajo en el área de programa de usuario, y se le pasa el control, que cuando ha terminado le devuelve el control al monitor, que lee el siguiente trabajo. Los resultados de cada trabajo se envían a un dispositivo de salida (impresora) para entregárselo al usuario.
-<img src="media/tema2/monitor_residente.png" width="500" height="600">
+<img src="media/tema2/monitor_residente.png" width="250" height="300">
 
-- **Punto de vista del procesador** El procesador ejecuta instrucciones de la zona de memoria principal que contiene el monitor. Por lo que se lee el siguiente trabajo y se almacena en otra zona de memoria principal. El procesador encontrará una instrucción de salto en el monitor que le indica al procesador que continúe la ejecución al inicio del programa de usuario. El procesador entonces ejecutará las instrucciones del programa usuario hasta que encuentre una condición de finalización o de error. Cualquiera de estas condiciones hace que el procesador ejecute la siguiente instrucción del programa monitor. Por tanto, la frase “se pasa el control al trabajo” significa que el procesador leerá y ejecutará instrucciones del programa de usuario, y la frase “se devuelve el control al monitor” indica que el procesador leerá y ejecutará instrucciones del programa monitor.
-Cuando el "control" lo tiene el monitor, ejecutará sus instrucciones y cuando no las del programa. El papel del monitor es de planificación, incluyendo intruccines en algún lenguaje primitivo de **lenguaje de control de trabajos ** ( JCL)
+- **Punto de vista del procesador**: el procesador ejecuta instrucciones de la zona de memoria principal que contiene el monitor. Por lo que se lee el siguiente trabajo y se almacena en otra zona de memoria principal. El procesador encontrará una instrucción de salto en el monitor que le indica al procesador que continúe la ejecución al inicio del programa de usuario. El procesador entonces ejecutará las instrucciones del programa usuario hasta que encuentre una condición de finalización o de error. Cualquiera de estas condiciones hace que el procesador ejecute la siguiente instrucción del programa monitor. Por tanto, la frase “se pasa el control al trabajo” significa que el procesador leerá y ejecutará instrucciones del programa de usuario, y la frase “se devuelve el control al monitor” indica que el procesador leerá y ejecutará instrucciones del programa monitor.
+Cuando el "control" lo tiene el monitor, ejecutará sus instrucciones y cuando no las del programa. El papel del monitor es de planificación, incluyendo intruccines en algún lenguaje primitivo de **lenguaje de control de trabajos** (JCL)
 
 En resumen: El monitor o sistema operativo en lotes es un programa, que tiene en base la habilidad del procesador para para carga instrucciones de memoria principal y tomar y abandonar el control.
 
@@ -68,17 +68,17 @@ Necesita también un hardware con: protección de memoria, temporizador de traba
 La protección de memoria y los privilegios dan lugar a los modos ususario y núcleo.
  El problema de la programación en lotes  era el tiempo que empleaba el ordenador en los periféricos.
 
-#### 3 Sistemas en lotes multiprogramados
+#### 3. Sistemas en lotes multiprogramados
 En los trabajos automáticos de un sistema operatuvos en lotes simple el procesador se encuentra frecuentemente parado ya que los dispositivos de entrada y salida son mucho más lentos que este, así es como surge la **multiprogramación** o **multitarea**, se expande la memoria para que pueda albergar al sistema operativo (monitor residente) y más programas habiendo multiplexación entre ellos.
 Al haber varios programas a la vez prodría haber un solapamiento del trabajo, ara evitar esto, surgen las **interrupcciones** de la mano de un avanace de sofware y hardware, en el cual varios programas se desarrollan a la vez en sitios diferentes,  esto se conoce como **S.pool**: cualquier trabajo puede suspender su actividad por la ocurrecia de un evento definido, como la finalización de una operación E/S. El procesador guardaría alguna forma de contexto (contador de programa u otros registros) y saltaría a una rutina de tratamiento de interrupciones: determinaría tipo interrución, la procesaría y continuaría con el proceso interrumpido. Por ejemplo si varios porgramas requieren de una impresora, el programa que se está ejecutando escribe en un fichero lo que quiere imprimir y después lo vuelca a esta una vez que ha terminado de utilizar la impresora el programa anterior.
 
-#### 4 Sistemas de tiempo compartido  
+#### 4. Sistemas de tiempo compartido  
 Teniendo en cuenta que los lotes son cerrados surgen las **colas**, sistemas de lotes abiertos, donde el SO controla los programas que esperan y los que se ejecutan, y cuándo termina estos dan pasos a los siguiente en orden de prioridad. Por tanto, si un programa no utilizaba periféricos u otros recursos se podía quedar eternamente allí, o si era necesaria la interacción de varios usuarios directamente con la computadora, con esto surge la técnica  **del tiempo compartido**, los programas tienen un tiempo limitado en la CPU.  Estos intervalos de tiempo, también son conocidos como **cuantos de computación**.
 Uno de los primeros sistemas operativos de tiempo compartido desarrollados fue el sistema CTSS (*Compatible Time-Sharing System*) desarrollado en el MIT por un grupo conocido como proyecto MAC y desarrollado para IBM.
 
  .| Multiprogramación en lotes           | Tiempo compartido
   ---		       | --- 		      		      | ---
- **Objetivo principal**    | Maximizar el tiempo del procesador   | Minimizarl el tiempo de respuesta
+ **Objetivo principal**    | Maximizar el tiempo del procesador   | Minimizar el tiempo de respuesta
  **Fuente de directivas<br>del sistema operativo** | Mandatos del lenguaje de control<br> de trabajos proporcionadas por el trabajp | Mandatos introducidos al terminal.
 
 5. **Multiusuarios** misma idea anterior pero con usuarios, vg: servidores.
@@ -112,7 +112,7 @@ Para solucionar estos problemas se necesita una forma sistemática de monitoriza
 - Un programa ejecutable
 - Los datos asociados que necesita un programa.
 - El contexto de ejecución de un programa o estado del proceso, que es el conjunto de datos internos separada del proceso por el cual el sistema operativo es capaz de supervisar y controlar el proceso y el procesador para ejecutarlo. Ejemplos: contador de programa, registro de datos, prioridad, estado...
-<img src="media/tema2/proceso_tipico.jpg" width="500" height="600">
+<img src="media/tema2/proceso_tipico.jpg" width="250" height="300">
 
 En la imagen, se muestra la manera de gestinar dos procesos, los contenidos de los registros de un programa que fue interrumpido fueron fuardados en el contexo de ejecución del programa. Por esta razón un proceso puede verse como una estructura de datos, donde su **estado** se contiene en el contexto permitiendo así la cooperación  y la coordinación entre procesos.
 
@@ -122,16 +122,15 @@ En la imagen, se muestra la manera de gestinar dos procesos, los contenidos de l
 >Ejemplo:
 >Cuando, con el navegador abierto, se abre otra ventana del navegador,para cada ventanita hay una **instancia** con la sesión y la historia que guarda el navegador. Es decir, se tiene el mismo programa pero con varias instancias, es decir con distintos procesos. Podemos decir que un proceso o instancia es una ejecución particular del programa.
 
-## Implementación típica de procesos
+## Implementación de procesos típica
 Forma en la cual los procesos pueden gestionarse:
 Dos procesos, A y B, se encuentran en una porción de memoria principal. Es decir, se ha asignado un bloque de memoria a cada proceso, que contiene el programa, datos e información de contexto. Se incluye a cada proceso en una lista de procesos que construye y mantien el SO. La lista de procesos contiene una entrada por cada proceso, e incluye un puntero a la ubicación del bloque de memoria que contiene el proceso. La entrada podría también incluir parte o todo el contexto de ejecución del proceso. El resto del contexto de ejecuicón es almacenado en otro lugar, tal vez junto al propio proceso o frecuentemente en una región de memoria separada. El registro índice del proceso contiene el índice del proceso que le procesador está actualmente controlando en la lista de procesos. El contador de programa apunta a la siguiente instrucción del proceso que se va a ejecutar. Los registros base y límite definen la región de memoria y el registro límite le tamaño de la región (en bytes o palabras). El contador de programa y todas las referencias de datos se interpretan de forma relativa al registro base y no debn exceder el valor almacenado en el registro límite. Esto previene la interferencia entre los procesos.
-En la imagen, el registro índice del proceso indica que el proceso B está ejecutando. El proceso A estab aejecutando previamente, pero fue interrumpido temporalmente. Los contenidos de todos los registros en el momento de la interrupción de A fueron guardados en su contexto de ejecución. Posteriormente, el SO puede cambiar el proceso en ejecución y continuar la ejecución del contexto de A. Cuando se carga el contador de programa con un valor que apunta al área de programa de A, el proceso A continuará la ejecución automáticamente.
+En la imagen anterior (Figura 2.8), el registro índice del proceso indica que el proceso B está ejecutando. El proceso A estab aejecutando previamente, pero fue interrumpido temporalmente. Los contenidos de todos los registros en el momento de la interrupción de A fueron guardados en su contexto de ejecución. Posteriormente, el SO puede cambiar el proceso en ejecución y continuar la ejecución del contexto de A. Cuando se carga el contador de programa con un valor que apunta al área de programa de A, el proceso A continuará la ejecución automáticamente.
 
-<img src="media/tema2/proceso_tipico.jpg" width="500" height="600">
+- Busca proceso en lista, le da la dirección recuper información con la que  carga la información,
+- traza es lo que se pasa, en la CPU
 
- //- Busca proceso en lista, le da la dirección recuper información con la que  carga la información,
- //- traza es lo que se pasa, en la CPU
-//que es esooo???
+>> que es esooo de arriba¿?¿???!?¿?!
 
 ## Bloque de control de un proceso (PCB, Process Control Block)
 La memoria estaría llena de procesos o instancias. Así, el SO es el encargado de administrarlos de la forma correcta, para que todos sean ejecutados por el procesador de forma secuencial. Además, el SO tiene la capacidad de poder **bloquear un proceso**. Para que después pueda ser retomado como si nada, se  necesita información sobre cada proceso, lo que se conoce como **bloque de control de un programa* (BCP), consta de:
@@ -154,14 +153,14 @@ Por lo que un proceso está compuesto del código de programa, los datos asociad
 Se puede caracterizar el comportamiento de un determinado proceso, listando la secuencia de instrucciones que se ejecutan para dicho proceso (traza del proceso).
 La figura 3.2 muestra el despliegue en memoria de tres procesos que no usan memoria virtual, por lo que están representador por programas que residen en memoria principal. Además, existe un pequeño programa activador (dispatcher) que intercambia el procesador de un proceso a otro.
 La figura 3.3 muestra las trazas de cada uno de los procesos en los primeros instantes de ejecución. Se muestran las 12 primeras instrucciones ejecutadas por los procesos A y C. El proceso B ejecuta 4 instrucciones y se asume que la cuarta instrucción invoca una operación de E/S, a la cual el proceso debe esperar.
-<img src="media/tema2/estado_proceso.jpg" width="500" height="600">
+	Desde el punto de vista del procesador se entremezclan las trazas de ejecución de los procesos y las trazas del código del SO. Ejemplo de traza de ejecución:
+
+<img src="media/tema2/estado_proceso.jpg" width="250" height="300">
 
 #### Modelo de proceso de dos estados
 La responsabilidad principal del sistema operativo es controlar la ejecución de los procesos; esto incluye determinar el patrón de entrelazado para la ejecución y asignar recursos a los procesos. El primer paso en el diseño de un sistema operativo para el control de procesos es describir el comportamiento que se desea que tengan los procesos.
 Se puede construir el modelo más simple posible observando que, en un instante  dado, un proceso está siendo ejecutado por el procesador o no. En este modelo, un proceso puede estar en dos estados: ejecutando  no ejecutando. Cuando el SO crea un nuevo proceso, crea el BCP para el nuevo proceso e inserta dicho proceso en el sistema de estado no ejecutando. El proceso existe, es conocido por el SO, y está esperando su oportunidad e ejecutar. De cuando en cuando, el proceso actualmente en ejecución se interrumpirá y una parte del SO, el activador, seleccionará otro proceso.
 Debe haber información correspondiente a cada proceso, incluyendo el estado actual y su localización en memoria: BCP. Los procesos que no están ejecutando deben estar en una especie de cola, esperando su turno para la ejecución. Existe una sola cola cuyas entradas son punteros al BCP de un proceso en particular. Alternativamente, la cola deb consistir en una lista enlazada de bloques de datos, en la cual cada bloque que representa un proceso. Si el proceso ha finalizado o ha sido abortado, se descarta (sale del sistema). En cualquier caso, el activador selecciona un proceso de la cola para ejecutar.
-
-
 
 #### Llamadas al sistema
 >> Carr07 pp. 114-115 COMPLETAR
