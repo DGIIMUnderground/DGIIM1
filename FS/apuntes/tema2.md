@@ -2,18 +2,51 @@
 
 ## Índice
 1. [Componentes de un Sistema Operativo (SO) multiprogramado](#1-componentes-de-un-sistema-operativo-multiprogramado)
+	1.1 [Sistemas multiprogramados y de tiempo compartido](#11-sistemas-multiprogramados-y-de-tiempo-compartido)
+	1.2 [Monoprograma o procesamiento en serie](#12-monoprograma-o-procesamiento-en-serie)
+	1.3 [Sistemas en lotes sencillos o Sistemas Batch](#13-sistemas-en-lotes-sencillos-o-sistemas-batch)
+	1.4 [Sistemas en lotes multiprogramados](#14-sistemas-en-lotes-multiprogramados)
+	1.5 [Sistemas de tiempo compartido](#15-sistemas-de-tiempo-compartido)
+	1.6 [Procesos](#16-procesos)
+		1.6.1 [Concepto de proceso](#161-concepto-de-proceso)
+	1.7 [Implementación de procesos típica](#17-implementación-de-procesos-típica)
+	1.8 [Bloque de control de un proceso (PCB, Process Control Block)](#18-bloque-de-control-de-un-proceso-(pcb-process-control-block)
+	1.9 [Estados de los procesos](#19-estados-de-los-procesos)
+		1.9.1 [Modelo de proceso de dos estados](#191-modelo-de-proceso-de-dos-estados)
+		1.9.2 [Llamadas al sitema](#192-llamadas-al-sistema)
+		1.9.3 [Modelo de los cinco estados](#193-modelo-de-los-cinco-estados)
+		1.9.4 [Transiciones entre estados](#194-transiciones-entre-estados)
 
 2. [Descripción y control de procesos](#2-descripción-y-control-de-procesos)
+	2.1 [Descripción de procesos: PCB](#21-descripción-de-procesos-pcb)
+	2.2 [Control de procesos](#22-control-de-procesos)
+		2.2.1 [Modo de ejecución del procesador](#221-modo-de-ejecución-del-procesador)
+		2.2.2 [Operación de cambio de modo](#222-operación-de-cambio-de-modo)
+		2.2.3 [Pasos en la operación de cambio de ususario a kernel](#223-pasos-en-la-operación-de-cambio-de-usuario-a-kernel)
+		2.2.4 [Operación de cambio de contexto (cambio de proceso)](#224-operación-de-cambio-de-contexto-cambio-de-proceso)
+		2.2.5 [Pasos en una operación de cambio de contexto (Dispatcher)](#225-pasos-en-una-operación-de-cambio-de-contexto-dispatcher)
 
 3. [Hebras (hilos)](#3-hebras-(hilos))
+	3.1 [Concepto de Hebra (hilos)](#31-concepto-de-hebra-hilos)
+	3.2 [Modelo de cinco estados para hebras](#32-modelo-de-cinco-estados-para-hebras)
+	3.3 [Ventajas de las hebras](#33-ventajas-de-las-hebras)
 
 4. [Gestión básica de memoria](#4-gestión-básica-de-memoria)
+	4.1 [Carga absoluta y reubicación](#41-carga-absoluta-y-reubicación)
+	4.2 [Reubicación estática](#42-reubicación-estática)
+	4.3 [Reubicación dinámica](#43-reubicación-dinámica)
+	4.4 [Espacios para las direcciones de memoria](#44-espacios-para-las-direcciones-de-memoria)
+	4.5 [Problema de la fragmentación de memoria](#45-problema-de-la-fragmentación-de-memoria)
+	4.6 [Solución a la fragmentación de memoria](#46-solución-a-la-fragmentación-de-memoria)
+		4.6.1 [Paginación](#461-paginación)
+		4.6.2 [Segmentación](#462-segmentación)
 
 5. [Compiladores](#5-compiladores)
+	5.1 [Resumen](#51-resumen)
 
 ## 1. COMPONENTES DE UN SISTEMA OPERATIVO MULTIPROGRAMADO
 
-### 1.1 Sistemas multiprogramados y de tiempo compartido.
+### 1.1 Sistemas multiprogramados y de tiempo compartido
 Como el mejor sitio por donde empezar es el principio, comencemos con una breve evolución de las computadoras, hasta un sistema multiprogramado:
 
 1. **Raimundo Lulio** en el siglo XII escribió *Ars Magna*, en el que se dedicó a diseñar y
@@ -42,7 +75,7 @@ durante la primera guerra mundial.
 Aquí se acaba la historia con personajes y comienza la evolución de la arquitectura de los
 computadores:
 
-### 1.2 **Monoprograma** o **procesamiento en serie**
+### 1.2 Monoprograma o procesamiento en serie
 
 La más arcaica, requiere de mucho tiempo, el programador tenía interacción directa con el hardware, (no existía el Sistema Operativo) si había un error el programa se detenía.
 
@@ -57,7 +90,7 @@ Estos pasos suponían montar y desmontar cintas o configurar tarjetas. Si ocurr�
 
 Se han desarrollado varias herramientas de software de sistemas con el fin de realizar el procesamiento serie más eficiente: bibliotecas de funciones comunes, enlazadores, cargadores, depuradores, rutinas de gestión de E/S disponibles como software común para todos los usuarios…
 
-### 1.3 Sistemas en lotes sencillos o Sistemas Batch.
+### 1.3 Sistemas en lotes sencillos o Sistemas Batch
 El primer sistema operativo en lotes (y también el primer sisema operativo de cualquer tipo) surge en deseo de maximizar la utilización de las máquinas.
 La idea central se basaba en una pieza de software denominada **monitor**: el usuario no tiene que acceder directamente a la máquina, sino que introduce el trabajo por medio de una tarjeta o cinta al operador del computador, que crea un sistema de lotes con los trabajos enviados y los coloca en el dispositivo de entrada para que los utilice el monitor. Cuando un programa finaliza su procesamniento devuelve el control al monitor, que comenzará la carga del siguiente programa.
 
@@ -177,7 +210,7 @@ El usuario no tiene orden para acceder a los recursos "" leer disco?? se llama f
 **Paso realizados durante una llamada al Sistema**
 >> Completar
 
-#### 1.9.3 Modelo de los cinco estados.
+#### 1.9.3 Modelo de los cinco estados
 
 - nuevo
 
@@ -240,7 +273,7 @@ para pasar de uno a otro, se detecta que hay una operación que no se puede hace
 #### 2.2.2 Operación de cambio de modo
 
 
-#### 2.2.3 Pasos en la operación de cambio de ususario a kernel:
+#### 2.2.3 Pasos en la operación de cambio de usuario a kernel
 
 - el que detecta el cambio de modo es el hardware, cuando el compilado detecta qun ainstruccíon, o interrucón o excepción, la circuitería camia a modo kernel, salva el contador de programa, y la palabra de estado del proceso, hay un bits, le cambia el estado,
 
