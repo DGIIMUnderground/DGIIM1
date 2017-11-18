@@ -275,43 +275,57 @@ en la sfuncines cuando se va acumulando se forma n
 **registro de activación** donde estan los datos, se guarda la dirección en una pila, tiene una dirección que es lo que se conoce como puntero de pila, que soluciona todos estos prolemas.
 
 #### Creación de un proceso: Inicialización de PCB
+Una vez que el SO decide crear un proceso procederá de la siguiente manera:
+1. **Asignar un identificador de proceso único al proceso**: se añade una nueva entrada a la tabla primaria de procesos, que contiene una entrada por proceso.
+2. **Reservar espacio para proceso**: incluye todos los elementos de la imagen del proceso. Para ello, el SO debe conocer cuánta memoria se requiere para el espacio de direcciones privado (programas y datos) y para la pila de usaurio. Estos valores se pueden asignar por defecto basándonos en el tipo de proceso, o pueden fijarse en base a la solictud de creación del trabajo remitido por el usuario. Por último, se deb reservar el espacio para el BCP.
+3. **Inicialización del BCP**: la parte de identificación de proceso del BCP contiene el identificador del proceso y otros identificadores (como el indicador del proceso padre). En la información de estado de proceso del BCP, que se inicializa con la mayoría de entradas a 0, excepto el contador de programa (fijado en el punto entrada del programa) y los punteros de pila de sistema (fijados para definir los límites de la pila del proceso). La parte de información de control de procesos se inicializa en base a valores por omisión, considerando también los atributos que han sido solicitados para este proceso. La prioridad se puede fijar y el proceso no debe poseer ningún recurso (dispositivos de E/S, ficheros) a menos que exista una indicación explícita o que hayan sido heredados del padre.
+4. **Establecer los enlaces apropiados**: si el SO mantiene cada cola del planificador como una lista enlazada, el nuevo proceso debe situarse en la cola de Listos o en Listos/Suspendidos.
+5. **Creación o expansión de otras estructuras de datos**: el SO puede mantener un registro de auditoría por cada proceso que se puede utilizar posteriormente a efectos de facturación y/o de análisis de rendimiento de sistema.
 
+En resumen:
+1. Asignar identificador único al proceso.
+2. Asignar un nuevo PCB.
+3. Asignar memoria para el programa asociado.
+4. Inicializar PCB:
+	4.1 PC: dirección inicial de comienzo del programa.
+	4.2 SP: dirección de la pila de sistema.
+	4.3 Memoria donde reside el programa.
+	4.4 El resto de campos se inicializan a valores por omisión.
 
 ### 2.2 Control de procesos
 #### 2.2.1 Modo de ejecución del procesador
 
-- modo usuario: no accedo a todos los registro de memora, n contador de programa, o registro de instrucción, tampoco otros instrucuciosnes
+- **Modo usuario**: no accede a todos los registro de memoria, n contador de programa, o registro de instrucción, tampoco otros instrucciones
 
-- modo núcleo, kernel, supervisoor o sistema:
-
-para pasar de uno a otro, se detecta que hay una operación que no se puede hacer en modo usuario.:
- - cuando hay una llama a sistema: leer disco, C pone un código que supone una rutina del so
-
-  - llamo sistema, se lee el dato que quiero, se manda interrucción, en el ciclo de instrucción mira a ver si era la siguiende, cuan es interrucion so compara la prioridad
-
-  - cuando haya una excepción, algo que no debería ocurrir pero ocurre, "overfloat" se levanta un aaletrar etra el so, si lo que pasa no tiene riesgo para el resto de lo sprocesos se deja pasaer (depende del compilador), otra que ocuure se lee de un ficheo, se acaba y se pide que se igue leeye, s en  este caso se aborta el programa.
-
-  - acceder a zona de memoria que no es de tu proceso.
-
+- **Modo núcleo, kernel, supervisor o sistema**: para pasar de uno a otro, se detecta que hay una operación que no se puede hacer en modo usuario.
 
 ##### ¿Cómo utiliza el SO el modo de ejecución?
+El modo de ejecución (incluido en PSW) cambia a modo kernel,
+automáticamente por hardware, cuando se produce:
+	- Una **interrupción**: se compara la prioridad.
+	- Una **excepción**: algo que no debería ocurrir pero ocurre, "overfloat" se levanta un aaletrar etra el SO, si lo que pasa no tiene riesgo para el resto de lo sprocesos se deja pasar (depende del compilador), otra que ocurre se lee de un fichero, se acaba y se pide que se igue leeye, s en  este caso se aborta el programa.
+	- Una **llamada al sistema**: leer disco, C pone un código que supone una rutina del SO. Llamo sistema, se lee el dato que quiero, se manda interrucción, en el ciclo de instrucción mira a ver si era la siguiente.
 
+Seguidamente se ejecuta la rutina del SO correspondiente al evento producido.
+Finalmente, cuando termina la rutina, el hardware restaura automáticamente el modo de ejecución a modo usuario.
 
 #### 2.2.2 Operación de cambio de modo
-
+En la fase de interrupción, el procesador comprueba que no exista ninguna interrupción pendiente. Si no hay interrupciones pendientes, el procesador pasa a la fase de búsqueda de instrucción, siguiendo con el programa del proceso actual. Si hay una interrupción pendiente, el proceso actúa así:
+1. Coloca el contador de programa en la dirección de comienzo de la rutina del programa manejador de la interrupción.
+2. Cambia de modo usuario a modo núclero de forma que el código de tratamiento de la interrupción pueda incluir instrucciones privilegiadas.
+	El procesador pasa a la fase de búsqueda de instrucción y busca la primera instrucción del programa de manejo de interrupción, que le dará servicio. El contexto del proceso que se ha interrumpido se salvaguarda en el BCP del programa interrumpido.
+	Es decir, se ejecuta una rutina del SO en el contexto del proceso que se encuentra en estado "Ejecutándose".
+	La operación de cambio de modo se puede realizar siempreque el SO pueda ejecutarse, luego como resultado de una interrupción, excepción o llamada al sistema.
+	
 
 #### 2.2.3 Pasos en la operación de cambio de usuario a kernel
+1. El que detecta el cambio de modo es el hardware, cuando el compilador detecta una llamada al sistema, interrucpción o excepción. El hardware salva cel contador de programa (**PC**) y la palabra de estado del proceso (**PSW**) y cambia el bit de modo a **modo kernel**.
 
-- el que detecta el cambio de modo es el hardware, cuando el compilado detecta qun ainstruccíon, o interrucón o excepción, la circuitería camia a modo kernel, salva el contador de programa, y la palabra de estado del proceso, hay un bits, le cambia el estado,
+2. Se determina automáticamente la **rutina del SO** que deb ejecutarse y cargar el **PC** con su dirección de comienzo.
 
-- se llama a la rutina que lo gestiona, cuando se sabe cuá, la direccion de esta rutina se mete en el contador de programa. Y y aempieza a ejecuatrse esa rutina.
+3. **Ejecutar la rutina**. Posiblemente la rutina comience **salvando** el resto de registros del procesador y termine **restaurando** en el procesador la información de registros previamente salvada.
 
-- dependiendo de la "emergencia", es posble que tenga que salvar el resto de registros de la cpu, en un overfloat como no dice nada no cambia nada, en la palabra de estadlo pone un bits, pro si el compilad r lo tennía previsto,
-
-- cuando termina resustaura, contador de programa con el proceso y la palabra de estado,
-
-esencia programa eecutado de usuari a kernel, lo mismo ocurre cuando aparecen nuevos procesos.
-diferencai ; como e cambia de proceso se salca todo do bloque del contros del proceso se coge se cambia, slava- guarda.
+4. Volver de la **rutina del SO** al proceso que se estaba ejecutando. El **hardware** automáticamente restaura en el procesador la información del **PC** y **PSW** previamente salvada.
 
 #### 2.2.4 Operación de cambio de contexto (cambio de proceso)
 
