@@ -170,6 +170,7 @@ En la imagen anterior (Figura 2.8), el registro índice del proceso indica que e
 - traza es lo que se pasa, en la CPU
 
 >> que es esooo de arriba¿?¿???!?¿?!
+>>> Comentario Blanca: esto es un apunte que tomé en clase y por ahora no sé bien donde meterlo
 
 ### 1.8 Bloque de control de un proceso (PCB, Process Control Block)
 La memoria estaría llena de procesos o instancias. Así, el SO es el encargado de administrarlos de la forma correcta, para que todos sean ejecutados por el procesador de forma secuencial. Además, el SO tiene la capacidad de poder **bloquear un proceso**. Para que después pueda ser retomado como si nada, se  necesita información sobre cada proceso, lo que se conoce como **bloque de control de un programa* (BCP), consta de:
@@ -202,7 +203,22 @@ Se puede construir el modelo más simple posible observando que, en un instante 
 Debe haber información correspondiente a cada proceso, incluyendo el estado actual y su localización en memoria: BCP. Los procesos que no están ejecutando deben estar en una especie de cola, esperando su turno para la ejecución. Existe una sola cola cuyas entradas son punteros al BCP de un proceso en particular. Alternativamente, la cola deb consistir en una lista enlazada de bloques de datos, en la cual cada bloque que representa un proceso. Si el proceso ha finalizado o ha sido abortado, se descarta (sale del sistema). En cualquier caso, el activador selecciona un proceso de la cola para ejecutar.
 
 #### 1.9.2 Llamadas al sistema
->> Carr07 pp. 114-115 COMPLETAR
+>> Carri 114-115
+Por lo general, un sistema operativo está en un estado consistente y el código del servicio puede hacer ususo de la funcionalidad general de un SO.Suele existir una única solicitud de interrucción de servicio, por lo que los servicioes empiezan ejecutando el mismo código.
+El servicio puede requerir una espera (que bloquerá al proceso) como leer un disco o no, como cerrar un proceso.:
+##### Cuando un servicio no requere de espera:
+- La intrucción **TRAP** genera la interrucción de petición de servicio.
+- El procesador acepta la interrucción, por lo que el proceso pasa de mis usuario a modo usuario a modo privilegiado.
+- A través de la tabla de interruciones se ejecuta la rutina genérica que salva los registros visibles en la pila de sisema del proceso interrumpido. Seguidamente utilizaq el identificador del servicio (almacenado en un registro) para entrar en la table de servicios y determina el punto de acceso del servicio solicitante.
+- Llama al servicioo y ejecuta el correspondiente código.
+- Se retorna la rutina genérica que restiruye los registros y en RETI, con lo que se devuelve la siguiente intrucción al TRAP.
+
+Durante la ejecución de un servicio, pudo llegar una interrución que pndría a ejecutr otro proceso.
+
+#### Servivio que contiene espera
+El tratamiento se divide en dos fase, unna que inicial el servicio y otra que lo termina:
+- La primera fase inicia el servicio (por ejemplo, lanza la oreden de lectura de un disco), ejecuta el planificador, el proceso queda bloqeudado, y se pone en ejecución el proceso selleccionado, pro lo que se produce un cambio de conexto.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>> continual por el segundo punton de la pag 105
 
 El usuario no tiene orden para acceder a los recursos "" leer disco?? se llama función SO, para ejecutar eso, (so traa en kernel supe susacio..) la forma de hacerlo se llama **trapa** se cambia de modo usuario a kernel, cuando termina deja de serlo.  
 
