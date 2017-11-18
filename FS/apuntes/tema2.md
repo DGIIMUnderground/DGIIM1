@@ -328,9 +328,10 @@ Finalmente, cuando termina la rutina, el hardware restaura automáticamente el m
 #### 2.2.2 Operación de cambio de modo
 En la fase de interrupción, el procesador comprueba que no exista ninguna interrupción pendiente. Si no hay interrupciones pendientes, el procesador pasa a la fase de búsqueda de instrucción, siguiendo con el programa del proceso actual. Si hay una interrupción pendiente, el proceso actúa así:
 1. Coloca el contador de programa en la dirección de comienzo de la rutina del programa manejador de la interrupción.
-2. Cambia de modo usuario a modo núclero de forma que el código de tratamiento de la interrupción pueda incluir instrucciones privilegiadas.
-	El procesador pasa a la fase de búsqueda de instrucción y busca la primera instrucción del programa de manejo de interrupción, que le dará servicio. El contexto del proceso que se ha interrumpido se salvaguarda en el BCP del programa interrumpido.
-	Es decir, se ejecuta una rutina del SO en el contexto del proceso que se encuentra en estado "Ejecutándose".
+2. Cambia de modo usuario a modo núclero de forma que el código de tratamiento de la interrupción pueda incluir instrucciones privilegiadas.<br>
+	
+	El procesador pasa a la fase de búsqueda de instrucción y busca la primera instrucción del programa de manejo de interrupción, que le dará servicio. El contexto del proceso que se ha interrumpido se salvaguarda en el BCP del programa interrumpido.<br>
+	Es decir, se ejecuta una rutina del SO en el contexto del proceso que se encuentra en estado "Ejecutándose".<br>
 	La operación de cambio de modo se puede realizar siempreque el SO pueda ejecutarse, luego como resultado de una interrupción, excepción o llamada al sistema.
 	
 
@@ -344,9 +345,28 @@ En la fase de interrupción, el procesador comprueba que no exista ninguna inter
 4. Volver de la **rutina del SO** al proceso que se estaba ejecutando. El **hardware** automáticamente restaura en el procesador la información del **PC** y **PSW** previamente salvada.
 
 #### 2.2.4 Operación de cambio de contexto (cambio de proceso)
-
+Un cambio de modo puede ocurrir sin que se cambie el estado del proceso actualmente en estado Ejecutando. Salvaguarda del estado y su posterior restauración comportan solo una ligera sobrecarga. Sin embargo, si el proceso actualmente en estado Ejecutando, se va a mover a cuqluier otro estado, entonces el SO debe realizar cambios sustanciales en su entorno. Los pasos a realizar para cambiar de proceso son:
+1. Salvar el estado del procesador, incluyendo el contador de programa y otros registros.
+2. Actualizar el BCP que está en el estado Ejecutando (incluye cambiar el estado del proceso a otro estado). También se tienen que actualizar otros campos importantes, incluyendo la razón por la cual el proceso ha dejado el estado de Ejecutando y demás información de auditoría.
+3. Mover el BCP a la cola apropiada (Listo, Bloqueado en el evento i, Listo/Suspendido).
+4. Selección de un nuevo proceso a ejecutar.
+5. Actualizar el BCP elegido (incluye pasarlo al estado Ejecutando).
+6. Actualizar las estructuras de datos de gestión de memoria.
+7. Restaurar el estado del procesador al que tenía en el moento en el que el proceso seleccionado salió del estado Ejecutando por última vez, leyendo los valores anteriores de contado de programa y registros. <br>
+	Por tando, el cambio de proceso, que implica un cambio en el estado, requiere un mayor esfuerzo que un cambio de modo.
+	Se puede realizar cuando el SO pueda ejecutarse y decida llevarlo acabo. Luego solamente como resultado de una interrupción, excepción o llamada al sistema.
 
 #### 2.2.5 Pasos en una operación de cambio de contexto (Dispatcher)
+1. Salvar los registros del procesador en el **PCB** del proceso que actualmente está en estado "**Ejecutándose**".
+2. **Actualizar** el campo **estado del proceso** al nuevo estado al que pasa e insertar el **PCB** en la **cola** correspondiente.
+3. Seleccionar un **nuevo proceso del conjunto** de los que se encuentran en estado "**Preparado**" (Scheduler o Planificador de CPU).
+4. **Actualizar el estado del proceso** seleccionado a "**Ejecutándose**" y sacarlo de la cola de preparados.
+5. **Cargar los registros** del procesador con la información de los registros almacenada en el **PCB del proceso** seleccionado.
+
+
+- ¿Si se produce una interrupción, una excepción o una llamada al sistema, se
+produce necesariamente un cambio de modo? ¿y un cambio de contexto?
+
 
 ## 3. HEBRAS (hilos)
 ### 3.1 Concepto de Hebra (hilos)
