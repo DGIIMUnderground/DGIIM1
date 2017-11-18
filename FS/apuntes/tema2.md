@@ -1,15 +1,15 @@
 # TEMA 2. Introducción a los sistemas operativos
 
 ## Índice
-1. [Componentes de un Sistema Operativo (SO) multiprogramado](#1-COMPONENTES-DE-UN-SISTEMA-OPERATIVO-MULTIPROGRAMADO)
+1. [Componentes de un Sistema Operativo (SO) multiprogramado](#1-componentes-de-un-sistema-operativo-multiprogramado)
 
-2. [Descripción y control de procesos](#2-DESCRIPCIÓN-Y-CONTROL-DE-PROCESOS)
+2. [Descripción y control de procesos](#2-descripción-y-control-de-procesos)
 
-3. [Hebras (hilos)](#3-HEBRAS-(hilos))
+3. [Hebras (hilos)](#3-hebras-(hilos))
 
-4. [Gestión básica de memoria](#4-GESTIÓN-BÁSICA-DE-MEMORIA)
+4. [Gestión básica de memoria](#4-gestión-básica-de-memoria)
 
-5. [Compiladores](#5-COMPILADORES)
+5. [Compiladores](#5-compiladores)
 
 ## 1. COMPONENTES DE UN SISTEMA OPERATIVO MULTIPROGRAMADO
 
