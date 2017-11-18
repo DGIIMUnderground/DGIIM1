@@ -10,7 +10,7 @@
 	1.6 [Procesos](#16-procesos)
 		1.6.1 [Concepto de proceso](#161-concepto-de-proceso)
 	1.7 [Implementación de procesos típica](#17-implementación-de-procesos-típica)
-	1.8 [Bloque de control de un proceso (PCB, Process Control Block)](#18-bloque-de-control-de-un-proceso-(pcb-process-control-block)
+	1.8 [Bloque de control de un proceso (PCB, Process Control Block)](#18-bloque-de-control-de-un-proceso-pcb-process-control-block)
 	1.9 [Estados de los procesos](#19-estados-de-los-procesos)
 		1.9.1 [Modelo de proceso de dos estados](#191-modelo-de-proceso-de-dos-estados)
 		1.9.2 [Llamadas al sitema](#192-llamadas-al-sistema)
