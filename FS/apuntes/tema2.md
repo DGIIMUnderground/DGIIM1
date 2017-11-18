@@ -15,7 +15,6 @@
 		- [1.9.1 Modelo de proceso de dos estados](#191-modelo-de-proceso-de-dos-estados)
 		- [1.9.2 Llamadas al sitema](#192-llamadas-al-sistema)
 		- [1.9.3 Modelo de los cinco estados](#193-modelo-de-los-cinco-estados)
-		- [1.9.4 Transiciones entre estados](#194-transiciones-entre-estados)
 
 - [2. Descripción y control de procesos](#2-descripción-y-control-de-procesos)
 	- [2.1 Descripción de procesos: PCB](#21-descripción-de-procesos-pcb)
@@ -211,29 +210,57 @@ El usuario no tiene orden para acceder a los recursos "" leer disco?? se llama f
 >> Completar
 
 #### 1.9.3 Modelo de los cinco estados
+Trata de representar las actividades que le SO lleva a cabo sobre los procesos:
+- **Creación de un proceso:** cuando se va a añadir un nuevo proceso a aquellos que se están gestionando en un determinado momento, el SO construye las estructuras de datos que se usan para manejar el proceso y reserva el espacio de direcciones en memoria principal para el proceso.
+	En un entorno por lotes, un proceso se crea como respuesta a una solicitud de trabajo. En un entorno interactivo, un proceso se crea cuando un nuevo usuario entra en el sistema. En ambos casos el SO es responsable de la creación de nuevos procesos.
+	Razones para la creacion de un proceso:
+	- **Nuevo proceso de lotes**: el SO dispone de un flujo de control de lotes de trabajos. Cuando el SO está listo para procesar un nuevo trabajo, leerá la siguiente secuencia de mandatos de control de trabajos.
+	- **Sesión interactiva**: un usuario desde un terminal entra en el sistema.
+	- **Creado por el sistema operativo para proporcionar un servicio**: el SO puede crear un proceso para realizar una función en representación de un programa de usuario, sin que el usuario tenga que esperar.
+	- **Creado por un proceso existente**: por motivos de modularidad o para explotar el paralelismo, un programa de usuario puede ordenar la creación de un número de procesos.
 
-- nuevo
+	Cuando un SO crea un proceso a petición explícita de otro proceso, dicha acción se denomina **creación del proceso**.
+	Cuando un proceso lanza otro, al primero se le denomina **proceso padre**, y al proceso creado se le denomina **proceso hijo**.
 
-- preparado: si se le acaba el tiempo pasará a preparado
+- **Terminación de procesos:** todo sistema debe proporcionar los mecanismos mediante los cuales un proceso indica su finalización, o que ha completado su tarea.
+	Un trabajo por lotes debe incluir una instrucción HALT o una llamada a un servicio de SO específica para su terminación. Para una aplicación interactiva, las acciones del usuario indicarán cuándo el proceso ha terminado. Todas estas acciones tienen como resultado final la solicitud de un s ervicio al SO para terminar con el proceso solicitante.
+	Adicionalmente, un número de error o una condición de fallo puede llevar a la finalización de un proceso.
+	Razones para la terminación de un proceso:
+	- **Finalización normal**
+	- **Límite de tiempo excedido**
+	- **Memoria no disponible**
+	- **Violaciones de frontera**
+	- **Error de protección**
+	- **Error aritmético**
+	- **Fallo de E/S**
+	- **Instrucción no válida**
 
-- preparado 
 
-- ejecutándose
 
-- finalizado: si el programa terminade ejecutarse, el SO actualiza la lista de procesos y libera esa zona de memoria, eso se convierte en basura.
+Por lo que para ello hace uso de cinco estados:
+- **Ejecutando**: el proceso está actualmente en ejecución. Asumimos que el computador tiene un único procesador, de forma que solo un proceso puede estar en este estado en un instante determinado.
+- **Listo o preparado**: un proceso que se prepara para ejecutar cuando tenga la oportunidad.
+- **Bloqueado**: un proceso que no puede ejecutar hasta que se cumpla un evento determinado o se complete una operación E/S.
+- **Nuevo**: un proceso que se acaba de crear y que aún no ha sido admitido en el grupo de procesos ejecutables por el SO. Se trata de un nuevo proceso que no ha sido cargado en memoria principal, aunque su BCP si ha sido creado.
+- **Saliente**: un proceso que ha sido liberado del grupo de procesos ejecutables por el SO, debido a que ha sido detenido o que ha sido abortado por alguna razón. Si el programa termina de ejecutarse, el SO actualiza la lista de procesos y libera esa zona de memoria, eso se convierte en basura.
+
+>> Insertar imagen diapositiva 18
+
+
 
 Cuando se carga un programa nuevo:
-
- - instrucciones.
-
-  - datos: variables sin asignar un valor, estas tiene asignado un valor, basura, el que esta en memoria de otro programa. Hauy compiladorea que te permiten ver en la parte derecha, y puede saber que no le has asignado ningún valor, cuando la vas a utilizar te avisan. (otros no te dan ningún error ni en compilación ni en ejecución). Lo que sí se recomienta es trastear con el compilador. Hay compialdores que en el for la i la ponen, otros no la hacen, calculan el número de vueltas que hace el bucle. Otros, que si haces referencia dentro del buche a la i asocia sí lo tienen en cuennta, y si no no. Te implementea la veces que se repite, esta variable se conoce como void variable **variable vacía** .
+ - Instrucciones.
+ - Datos: variables sin asignar un valor, estas tienen asignado un valor, basura, el que está en memoria de otro programa. Hay compiladores que te permiten ver en la parte derecha, y puede saber que no le has asignado ningún valor, cuando la vas a utilizar te avisan (otros no te dan ningún error ni en compilación ni en ejecución). Lo que sí se recomienta es trastear con el compilador. Hay compiladores que en el for la i la ponen, otros no la hacen, calculan el número de vueltas que hace el bucle. Otros, que si haces referencia dentro del buche a la i asocia sí lo tienen en cuennta, y si no, no. Te implementa la veces que se repite, esta variable se conoce como void variable **variable vacía** .
 
 
-#### 1.9.4 Transiciones entre estados
-
-Diaposiica, en algunos casos aparece de preparado  finalizado, por el mismos no, porque otro proceso lo mate, la inmensa mayoría de so no lo permite. En modo super usuario sí se puede.
-
-
+#### 1.9.3.1 Transiciones entre estados
+- **Nuevo -> Preparado**: el PCB está creado y el programa está disponible en memoria.
+- **Ejecutándose -> Finalizado**: el proceso finaliza normalmente o es abortado por el SO a causa de un error no recuperable.
+- **Preparado -> Ejecutándose**: el SO (planificador CPU) selecciona un proceso para que se ejecute en el procesador.
+- **Ejecutándose -> Bloqueado**: el proceso solicita algo al SO por lo que debe esperar.
+- **Ejecutándose -> Preparado**: un proceso ha alcanzado el máximo tiempo de ejecución ininterrumpida.
+- **Bloqueado -> Preparado**: se produce el evento por el cual el SO bloqueó al proceso.
+- **Preparado (o Bloqueado) -> Finalizado**: terminación de un proceso por parte de otro (en la mayoría de los SO modernos, no se permite. En modo super usuario sí se puede).
 
 
 ## 2. DESCRIPCIÓN Y CONTROL DE PROCESOS
