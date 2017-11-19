@@ -370,31 +370,47 @@ produce necesariamente un cambio de modo? ¿y un cambio de contexto?
 
 ## 3. HEBRAS (hilos)
 ### 3.1 Concepto de Hebra (hilos)
+El concepto de **proceso (tarea)** tiene dos características diferenciadas e independientes que permiten al SO:
+- **Propiedad de recursos:** controla la asignación de los recursos necesarios para la ejecución de programas.
 
-proceso: programa + lo aue necesir a, la unidad de procesamieno, lo qu el so le asigna los recurso que necesite,
-puede ocurrirr (cada sistm hace los que le sale de las aricese) ejemplo se está navegando, se abren ventana, proceso s distintos,
-tennemso instrucucines y datos, el proceso es el mismo, lo que cambia son lso daos , en vez d arir procesos nueco s, ae abren hebras, proceso el mismo, datos de cada ebra distindo, deteo del bloque de conrtol de proceos se parten nuecos registos , direcciones, se ahor amusah memori ad eisntrucciones.
 
-navegado -->proceso asociado a ese programa, dentro de la misma ejecucion (navegador) se abre una hebra. Hebra eecución independiente del mismo proceso.x
-Proceso unidad de gestión de un programa al que se asocian memeoria y gestión, si el codigo es el mismo en una hebra te ahorras el código en memeoria,
-la hebra se paparaleliza la ejecución del programa, el mismo código d eprograma abre las ejecuciones paralelas, así el progrma avanza más rápido, hasta sincronizarse esto son hebras de un mismo proceso.
-Ejemplo el servidor, hay un progrma uqe continuamente está leyendo el puerto, cuando detecta ue hay una entrada habre un hebra para atencdeae al programa.
-
-elto se utilizar para ecelerar programas, sobretodo programas de cálculo mostruosos,
-ventajas de la hebhras, se consume menos memoria, lo estados de las hebras son los mismo que los de los precesos.
+- **Planificación/ejecución:** la ejecuicón de un proceso sigue una ruta de ejecución (traza) a través de uno o más programas. Esta ejecución puede estar intercalada con ese u otros procesos. Por lo que un proceso tien un estado de ejecución (Ejecutando, Listo...) y una prioridad de activación y esta es la que se planifica y activa por el SO.<br>
+Para distinguir estas características, la unidad que se activa se denomina **hilo (thread), o proceso ligero**, mientras que la unidad de propiedad de recursos se denomina **proceso o tarea**.<br>
+>Proceso: programa más lo que necesita, la unidad de procesamiento, lo que el SO le asigna los recursos que necesite,
+puede ocurrir (cada sistm hace los que le sale de las narices). Por ejemplo se está navegando, se abren ventana, procesos distintos, tenemos instrucciones y datos, el proceso es el mismo, lo que cambia son los datos , en vez de abrir procesos nuevos, se abren hebras, proceso el mismo, datos de cada hebra distinto, deteo del bloque de conrtol de proceos se parten nuevos registos, direcciones, se ahorra mucha memoria de instrucciones.
+>navegado -> proceso asociado a ese programa, dentro de la misma ejecucion (navegador) se abre una hebra. Hebra ejecución independiente del mismo proceso.
+>Proceso unidad de gestión de un programa al que se asocian memeoria y gestión, si el codigo es el mismo en una hebra te ahorras el código en memoria, la hebra se paraleliza la ejecución del programa, el mismo código de programa abre las ejecuciones paralelas, así el programa avanza más rápido, hasta sincronizarse esto son hebras de un mismo proceso.
+>Ejemplo el servidor, hay un progrma que continuamente está leyendo el puerto, cuando detecta ue hay una entrada habre un hebra para atencdeae al programa.
+>Esto se utilizar para acelerar programas, sobretodo programas de cálculo mostruosos, ventajas de la hebras, se consume menos memoria, lo estados de las hebras son los mismos que los de los precesos.
+<br>
+**Multihilo** se refiere a la capacidad de un SO de dar soporte a múltiples hilos de ejecución en un solo proceso. Y el enfoque tradicional de un solo hilo de ejecución por proceso, en el que no se identifica con el concepto de hilo es el **monohilo**.<br>
+En un entorno multihilo, un proceso se define como la unidad de asignación de recursos y una unidad de protección. Características:
+- La **tarea** se encarga de soportar todos los recursos necesarios (incluida la memoria).
+- Cada una de las hebras permite la **ejecución del programa** de forma independiente del resto de hebras.
 
 #### 3.2 Modelo de cinco estados para hebras
-
+Las hebras hebras debido a su característica de ejecución de programas presentan cinco estados análogos al modelo de estados para procesos:
+- Ejecutándose
+- Preparado (listo para ejecutarse)
+- Bloqueado
+- Nuevo
+- Finalizado
+> Insertar imagen diapositiva 30
 
 #### 3.3 Ventajas de las hebras
-
+Los mayores beneficios de los hilos provienen de las consecuencias del rendimiento:
+1. Menor tiempo de **creación** de una hebra en un proceso ya creado que la creación de un nuevo proceso.
+2. Menor tiempo de **finalización** de una hebra que de un proceso.
+3. Menor tiempo de **cambio de contexto (hebra)** entre hebras pertenecientes al mismo proceso.
+4. Facilitan la **comunicación** entre hebras pertenecientes al mismo proceso.
+5. Permiten aprovechar las **técnicas** de programación concurrente y el multiprocesamiento simétrico.
 
 ## 4. GESTIÓN BÁSICA DE MEMORIA
 ### 4.1 Carga absoluta y reubicación
-Las direcciones que puede asignar un compilaor son las físiscas o absolutas y ls que empiezan en cero, realticas o lógicas, utilizar siempre absolutas implicaría que simpre se utilizase la misma direcciones de memoria, en el caso de instrucciones se suma lo mismo o en el caso de bucles también se saltas. (ver diapositicas 34 )
+Las direcciones que puede asignar un compilador son las físicas o absolutas y las que empiezan en cero, realticas o lógicas, utilizar siempre absolutas implicaría que simpre se utilizase la misma direcciones de memoria, en el caso de instrucciones se suma lo mismo o en el caso de bucles también se saltas. (ver diapositiva 34)
 cuando se compila un programa se realiza la reubicación, a la carga relativa se el suma la dirección inicial en la que se inicia.
-(en el nucleo, el esto tiene direccione es carga absoluta, en el se basa el grub)
-si la máquina que tienes no tiene la memeoria suficiente,ejecutar los mismos programas comparando con una de mauor, lo que tiene poca memrooa, lo que tiene que hacer es coger y descargar los procesos de discos, la rocalización supone supa cálculo...
+(en el núcleo, el esto tiene direccione es carga absoluta, en el se basa el grub)
+si la máquina que tienes no tiene la memoria suficiente, ejecutar los mismos programas comparando con una de mauor, lo que tiene poca memoria, lo que tiene que hacer es coger y descargar los procesos de discos, la localización supone supa cálculo...
 
 ### 4.2 Reubicacion estática
 la dirrecciones llogicas se combietens en fisiaca sdespues de la de compilaciosn y cantes de la ejecucaion, antes de uqe use la dirección, estos dos momentos son estáticas y dinámica.  Lo que es dináico es en timepo de ejecución, todo lo est´atico es antes de la ejecución,
@@ -406,7 +422,7 @@ ventajas, se cambia un asola vez, inconvenintes, lo que estña ahí ya no se pue
 
 
 ### 4.4 Espacios para las direcciones de memoria
-mientras que un asesturuciion se ejejcuta se solapan las , en el tiempo de ejecucion global no influyen estas cosas porque es otra unidad la qeu se encarga,
+Mientras que un asesturuciion se ejejcuta se solapan las , en el tiempo de ejecucion global no influyen estas cosas porque es otra unidad la qeu se encarga,
 - direcciones lógicas  ensambalsdo rconmidaldo
 
 espacio dirrecione sfísica
