@@ -203,7 +203,9 @@ Se puede construir el modelo más simple posible observando que, en un instante 
 Debe haber información correspondiente a cada proceso, incluyendo el estado actual y su localización en memoria: BCP. Los procesos que no están ejecutando deben estar en una especie de cola, esperando su turno para la ejecución. Existe una sola cola cuyas entradas son punteros al BCP de un proceso en particular. Alternativamente, la cola deb consistir en una lista enlazada de bloques de datos, en la cual cada bloque que representa un proceso. Si el proceso ha finalizado o ha sido abortado, se descarta (sale del sistema). En cualquier caso, el activador selecciona un proceso de la cola para ejecutar.
 
 #### 1.9.2 Llamadas al sistema
->> Carri 114-115
+>> J. Carretero, F. García, P. de Miguel, F. Pérez, Sistemas Operativos (2a Edición), McGraw-Hill,
+2007i  páginas: 114-115
+
 Por lo general, un sistema operativo está en un estado consistente y el código del servicio puede hacer ususo de la funcionalidad general de un SO.Suele existir una única solicitud de interrucción de servicio, por lo que los servicioes empiezan ejecutando el mismo código.
 El servicio puede requerir una espera (que bloquerá al proceso) como leer un disco o no, como cerrar un proceso.:
 ##### Cuando un servicio no requere de espera:
@@ -214,18 +216,21 @@ El servicio puede requerir una espera (que bloquerá al proceso) como leer un di
 - Se retorna la rutina genérica que restiruye los registros y en RETI, con lo que se devuelve la siguiente intrucción al TRAP.
 
 Durante la ejecución de un servicio, pudo llegar una interrución que pndría a ejecutr otro proceso.
+<img src="media/tema2/ejecucion_servicio_sin_espera.jpg" width="300" height="350">
 
 #### Servivio que contiene espera
 El tratamiento se divide en dos fase, unna que inicial el servicio y otra que lo termina:
-- La primera fase inicia el servicio (por ejemplo, lanza la oreden de lectura de un disco), ejecuta el planificador, el proceso queda bloqeudado, y se pone en ejecución el proceso selleccionado, pro lo que se produce un cambio de conexto.
->>>>>>>>>>>>>>>>>>>>>>>>>>>>> continual por el segundo punton de la pag 105
-
-El usuario no tiene orden para acceder a los recursos "" leer disco?? se llama función SO, para ejecutar eso, (so traa en kernel supe susacio..) la forma de hacerlo se llama **trapa** se cambia de modo usuario a kernel, cuando termina deja de serlo.  
-
-**Paso realizados durante una llamada al Sistema**
->> Completar
+- La primera fase inicia el servicio (por ejemplo, lanza la oreden de lectura de un disco), ejecuta el planificador, el proceso queda bloqeudado, y se pone en ejecución el proceso selleccionado, pro lo que se produce un cambio de contexto.
+- Más adelante un evento indica el fin de la espera (ejmplo: un disco completa una lectura y genera una interrución), est ainterrución ejecutará el contexto de otro proceso y podrá tener un parte aplazada.
+- Si la operación se completó con exito el proceso pasa de bloqueado a listo.
+- Cuano el planificador seleccione otra vez este porceso, seguirá la ejecuciń completando la segunda fase del servicio, (ejemplo: copiando buffer de la información leída en el disco).
+- Finalmente se genera el argumento de retorno del servicio y se restituyen los registros visibles, y se retorina al preceso que sigue su ejecución en modo usuario.
+<img src="media/tema2/ejecucion_servicio_con_espera.jpg" width="300" height="350"> 
+  
 
 #### 1.9.3 Modelo de los cinco estados
+>> stalling pag 114-120
+
 Trata de representar las actividades que le SO lleva a cabo sobre los procesos:
 - **Creación de un proceso:** cuando se va a añadir un nuevo proceso a aquellos que se están gestionando en un determinado momento, el SO construye las estructuras de datos que se usan para manejar el proceso y reserva el espacio de direcciones en memoria principal para el proceso.
 	En un entorno por lotes, un proceso se crea como respuesta a una solicitud de trabajo. En un entorno interactivo, un proceso se crea cuando un nuevo usuario entra en el sistema. En ambos casos el SO es responsable de la creación de nuevos procesos.
@@ -251,8 +256,6 @@ Trata de representar las actividades que le SO lleva a cabo sobre los procesos:
 	- **Fallo de E/S**
 	- **Instrucción no válida**
 
-
-
 Por lo que para ello hace uso de cinco estados:
 - **Ejecutando**: el proceso está actualmente en ejecución. Asumimos que el computador tiene un único procesador, de forma que solo un proceso puede estar en este estado en un instante determinado.
 - **Listo o preparado**: un proceso que se prepara para ejecutar cuando tenga la oportunidad.
@@ -260,9 +263,7 @@ Por lo que para ello hace uso de cinco estados:
 - **Nuevo**: un proceso que se acaba de crear y que aún no ha sido admitido en el grupo de procesos ejecutables por el SO. Se trata de un nuevo proceso que no ha sido cargado en memoria principal, aunque su BCP si ha sido creado.
 - **Saliente**: un proceso que ha sido liberado del grupo de procesos ejecutables por el SO, debido a que ha sido detenido o que ha sido abortado por alguna razón. Si el programa termina de ejecutarse, el SO actualiza la lista de procesos y libera esa zona de memoria, eso se convierte en basura.
 
->> Insertar imagen diapositiva 18
-
-
+<img src="media/tema2/modelos_cinco_estados.png" width="300" height="350"> 
 
 Cuando se carga un programa nuevo:
  - Instrucciones.
@@ -281,14 +282,13 @@ Cuando se carga un programa nuevo:
 
 ## 2. DESCRIPCIÓN Y CONTROL DE PROCESOS
 ### 2.1 Descripción de procesos: PCB
-
+>> carr pag .87 y p.137
 - punteros de pila: cuando se ejecutan funciones
 
 diferencia entre un apila: el primero que se atiende el último que ha llegado
 cola: se atiende el primero que ha llegado
 
-en la sfuncines cuando se va acumulando se forma n
-**registro de activación** donde estan los datos, se guarda la dirección en una pila, tiene una dirección que es lo que se conoce como puntero de pila, que soluciona todos estos prolemas.
+en la sfuncines cuando se va acumulando se forma nuevo **registro de activación** donde están los datos, se guarda la dirección en una pila, tiene una dirección que es lo que se conoce como puntero de pila, que soluciona todos estos prolemas.
 
 #### Creación de un proceso: Inicialización de PCB
 Una vez que el SO decide crear un proceso procederá de la siguiente manera:
@@ -311,8 +311,7 @@ En resumen:
 ### 2.2 Control de procesos
 #### 2.2.1 Modo de ejecución del procesador
 
-- **Modo usuario**: no accede a todos los registro de memoria, n contador de programa, o registro de instrucción, tampoco otros instrucciones
-
+- **Modo usuario**: no accede a todos los registro de memoria, n contador de programa, o registro de instrucción, tampoco otros instrucciones  
 - **Modo núcleo, kernel, supervisor o sistema**: para pasar de uno a otro, se detecta que hay una operación que no se puede hacer en modo usuario.
 
 ##### ¿Cómo utiliza el SO el modo de ejecución?
@@ -364,8 +363,7 @@ Un cambio de modo puede ocurrir sin que se cambie el estado del proceso actualme
 5. **Cargar los registros** del procesador con la información de los registros almacenada en el **PCB del proceso** seleccionado.
 
 
-- ¿Si se produce una interrupción, una excepción o una llamada al sistema, se
-produce necesariamente un cambio de modo? ¿y un cambio de contexto?
+- ¿Si se produce una interrupción, una excepción o una llamada al sistema, se produce necesariamente un cambio de modo? ¿y un cambio de contexto?
 
 
 ## 3. HEBRAS (hilos)
@@ -406,21 +404,28 @@ Los mayores beneficios de los hilos provienen de las consecuencias del rendimien
 5. Permiten aprovechar las **técnicas** de programación concurrente y el multiprocesamiento simétrico.
 
 ## 4. GESTIÓN BÁSICA DE MEMORIA
+>> [Stall05] (pp. 308-309, 331-337)
 ### 4.1 Carga absoluta y reubicación
-Las direcciones que puede asignar un compilador son las físicas o absolutas y las que empiezan en cero, realticas o lógicas, utilizar siempre absolutas implicaría que simpre se utilizase la misma direcciones de memoria, en el caso de instrucciones se suma lo mismo o en el caso de bucles también se saltas. (ver diapositiva 34)
+No es posible conocer previamente las direcciones de memoria de un programa, el SO operativo es el que se encarga de posicionar y tener la información de la memoria.
+Las direcciones que puede asignar un compilador son las físicas o absolutas y las que empiezan en cero, realticas o lógicas, utilizar siempre absolutas implicaría que simpre se utilizase la misma direcciones de memoria, en el caso de instrucciones se suma lo mismo o en el caso de bucles también se saltas. 
+<img src="media/tema2/carga_absoluta_reubicacion.png" width="300" height="350"> 
 cuando se compila un programa se realiza la reubicación, a la carga relativa se el suma la dirección inicial en la que se inicia.
 (en el núcleo, el esto tiene direccione es carga absoluta, en el se basa el grub)
 si la máquina que tienes no tiene la memoria suficiente, ejecutar los mismos programas comparando con una de mauor, lo que tiene poca memoria, lo que tiene que hacer es coger y descargar los procesos de discos, la localización supone supa cálculo...
 
+La direcciones lógicas se combierten en físicas después de la de compilación y antes de la ejecución o antes de que use la dirección, estos dos momentos son estáticas y dinámica.
+
 ### 4.2 Reubicacion estática
-la dirrecciones llogicas se combietens en fisiaca sdespues de la de compilaciosn y cantes de la ejecucaion, antes de uqe use la dirección, estos dos momentos son estáticas y dinámica.  Lo que es dináico es en timepo de ejecución, todo lo est´atico es antes de la ejecución,
-la reubicacion estática consiste en el momento so sepa en que sitio de momoria va a colocar el programa, se hace durante el momento de la carga, so sabe a partid direccion de memro lo va a cargar, a todas las referencis le suma la dirección base, el códidog qeu se escribe elm momoria yya tiene direccion absulotga.
-ventajas, se cambia un asola vez, inconvenintes, lo que estña ahí ya no se puede cambiar,
-- dinámica en el momento de la carga se enscbe en momoria princioa direccione slógicas y cada vez que se accede a direc de momeor se lae suma diección base, en memroria son direccone logicas, acada cex que se accede se suma direccion base, que se le suma a la absoluta.  Si mi programa recorre sisitios por los que no pasa , en la acrualidad lo que se utiliza es la dinamica porque la cpu está ya diseñada paa haer eso.
+Una vez que se conoce la posición de memoria en la que se va a colocar el programa, durante la carga a cada dirección de memoria lógica le suma la dirección base, la primera dirección donde se va a cargar, dando lugar a direcciones absolutas.
+Las ventajas que aporta es que el cambio de dirección lógica a absoluta solo se hace una vez, pero como desventaja ya no se puede cambiar.
+
 
 ### 4.3 Reubicación dinámica
+La reubicación dinámica se produce en tiempo de ejecución.
+Durante la carga se escribe en memoria principal las direcciones lógicas y cada vez que se vaya a acceder a una de estas direcciones se le suma la dirección base.
+Esto tiene de ventaja el ahorro de operaciones en caso de qeu haya direcciones que no se utilicen, aunque en la actualidad la reubicación absoluta es obsoleta ya que ahora se encarga la CPU de esto.
 
-
+>> POR AQUÍ ME HE QUEDADO
 ### 4.4 Espacios para las direcciones de memoria
 Mientras que un asesturuciion se ejejcuta se solapan las , en el tiempo de ejecucion global no influyen estas cosas porque es otra unidad la qeu se encarga,
 - direcciones lógicas  ensambalsdo rconmidaldo

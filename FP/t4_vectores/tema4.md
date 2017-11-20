@@ -84,3 +84,53 @@ void producto_escalar( int escalar ; vector<int>& v)
 
 }
 ```
+> Sobrecargas de vectores es cuando tienes dos funciones del mismo nombre 
+Tipos de operaciones:
+- Internas: sobre la memoria principal
+- Externeas: fuera de la memoria.
+
+### Algoritmo de ordenación
+- quicksort: el mejor método que se conoce sincircustancias especiales
+otros métodos menos eficaces:
+
+- Método de la burbuja:
+```
+for( int i = 0 ; i < longitud - 1 ; i++)
+     for( int j = longitud - 1 ; j < i; j-- )
+     	  if ( v [j] < v[j-1])
+	     intercambia( i , j ) // intercambia los valor del vector del con subídices i y j
+```
+
+los for pueden tener variables cetinelas( es de tipo booleano):
+`for( int i=0 ; i < n && variable_centinela ; i++) `
+
+#### Selección
+
+Selecciona cual es el más pequeño y lo coloca al principio
+Paso una vez, selecciono el más pequeño y lo coloco el primero,
+siguiente pasada, busco el segundo más pequeño y lo coloca el segundo
+...
+Complejidad 0(n²) Pero realiza n cambios;
+
+```cpp
+
+```
+
+#### Inserción
+Va avanzando una casilla y lo ordena:
+Cuando hay una casilla ordena 1
+avanza una casilla, ahora ordenaesos dos
+avanza otra, ahora ordena 3
+Cuando, encuentra uno que no esta ordenando, va pasando los valores de su izquierda a la derecha, a no ser que esa sea la suya, ejemplo
+|1|3|6|2 --> |1|3|2|6 --> 1|2|3|6
+
+Eficiencia o(n²)
+
+### Matrices
+La STL para mejorar el uso de datos de vectores se utiliza `valarray`, el tipo vector es un tipo gen
+Para resolver la gestión de memoria y optimizarla, se saca nuevas funciones  `vector<bool> v(10000)` un vector guarda una variable en 1 bytes, mientras que solo utiliza 1 bit en bool
+
+int v[30] //vectori primitivo de C
+int v[filas][columnas]
+
+la alternativa a esto, sería `vector<vector<int> >` NO SE UTILIZA >> POR SER OPERADOR, SEPARADO
