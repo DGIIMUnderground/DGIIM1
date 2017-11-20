@@ -127,7 +127,8 @@ Uno de los primeros sistemas operativos de tiempo compartido desarrollados fue e
 7. Finalmente distintos ordenadores, con distintos sistemas operativos que trabajan simultáneamente, todos coordinados por un **macro sistema operativo**.
 
 
-### Algunas preguntas !!! FALTAN POR COMPLETAR LAS DEJO PARA QUE ALGUIEN LAS RELLENE
+### Algunas preguntas
+> !!! FALTAN POR COMPLETAR, LAS DEJO PARA QUE ALGUIEN LAS RELLENE
 
 - La multiprogramación no tiene por qué ser de tiempo compartido. Pero para que sea posible el tiempo compartido es necesario un S.O. multiprogramado.
 - Un S.O. multiprogramado es un S.O. de tiempo compartido? ¿y al contrario?  
@@ -169,8 +170,8 @@ En la imagen anterior (Figura 2.8), el registro índice del proceso indica que e
 - Busca proceso en lista, le da la dirección recuper información con la que  carga la información,
 - traza es lo que se pasa, en la CPU
 
->> que es esooo de arriba¿?¿???!?¿?!
->>> Comentario Blanca: esto es un apunte que tomé en clase y por ahora no sé bien donde meterlo
+>>Paula: que es esooo de arriba¿?¿???!?¿?!
+>> Blanca: esooo es un apunte que tomé en clase y por ahora no sé bien donde meterlo
 
 ### 1.8 Bloque de control de un proceso (PCB, Process Control Block)
 La memoria estaría llena de procesos o instancias. Así, el SO es el encargado de administrarlos de la forma correcta, para que todos sean ejecutados por el procesador de forma secuencial. Además, el SO tiene la capacidad de poder **bloquear un proceso**. Para que después pueda ser retomado como si nada, se  necesita información sobre cada proceso, lo que se conoce como **bloque de control de un programa* (BCP), consta de:
@@ -422,41 +423,32 @@ Las ventajas que aporta es que el cambio de dirección lógica a absoluta solo s
 
 ### 4.3 Reubicación dinámica
 La reubicación dinámica se produce en tiempo de ejecución.
-Durante la carga se escribe en memoria principal las direcciones lógicas y cada vez que se vaya a acceder a una de estas direcciones se le suma la dirección base.
+Durante la carga se escribe en memoria principal las direcciones lógicas o relativas y cada vez que se vaya a acceder a una de estas direcciones se le suma la dirección base.
 Esto tiene de ventaja el ahorro de operaciones en caso de qeu haya direcciones que no se utilicen, aunque en la actualidad la reubicación absoluta es obsoleta ya que ahora se encarga la CPU de esto.
 
->> POR AQUÍ ME HE QUEDADO
+
 ### 4.4 Espacios para las direcciones de memoria
-Mientras que un asesturuciion se ejejcuta se solapan las , en el tiempo de ejecucion global no influyen estas cosas porque es otra unidad la qeu se encarga,
-- direcciones lógicas  ensambalsdo rconmidaldo
 
-espacio dirrecione sfísica
-el so mantiene un mapa de la memor de un ordenado, el
+#### Espacio de direcciones lógico.
+Conjunto de direcciones lógicas (o relativas) que utiliza un programa ejecutable.
 
-y tamantiene un mapa de memoria de cada proceso, lo que se mejte en cada momento mñas o menos el númeo del ejecutable de un modo o oro,
-taba de simbolos, va cogiendo los ombres y asignádoselo a una dirección, cuando se está haciendo la compilación, aparecen siboloa squ eno sresuelca el compilador, nombres de funcione sexternas, el encuadrernar se encarga de los otro, de esto se encarga el ejejcutable,	la tabla de simbolos puede o no ir, dpende de como se resuelva la encuadernación o el enlace, esta puede ser estática, estas referencias ya las resuelcv ale encuador en princio dnp hará falaa al ora, si se hace dinámica els necesara la tabla de sñimbolos 
+#### Espacio de direcciones físico.
+Conjunto de direcciones físicas (memoria principal) correspondientes a las direcciones lógicas del programa en un instante dado. El sistema operativo contiene un mapa con la memoria, procesos, tabla de signos...  Cuando se está realizando la compilación a cada nombre se el asigna una dirección de memoria, para los símbolos no resueltos por el compilador ( ejemplo funciones externas) se resuelven durante la encadernación o enlace.
+> como apuntes: la tabla de símbolos puede ser dinámica o estática, en caso de ser dinámica el encuadernador hará uso de ella.
+> Los datos a los que se le asigna un valor al comienzo del programa, en memoria estarían despuén del código, en argumentos de progrma y pila.
+> Las pilas se van formando cada vez que se llama a una función, creando zonas de **registros de activación** que contienen los valores que van tomando las funciones.
+> Para buscar una variable se buscan en los registros que la han llamado, a diferencia de la variables globales.
+> Lo que se gurada en una pila de la CPU es la dirección de la dirección que es distinta a la pila de proceso, que está en la pila de la cpu y otra en memoria principal, en el registro de acivación de la variables globales.
 
-los datos a los que se le asigna un valor al principio estarían después del código
-En argurmentos de programa y la pila . Cuando se llama a una fución, se va generando una pila, y cuando se coge se
-se crea una zona que se crea **registro de activación** valores de los argumento que contiene las funciones, según se generen se va creando, si no borra, pero se borra. Para buscar una variable busca en los registros que lo han llamado, sino en la siguiente (diferencia entre variables globales)
+<img src="media/tema2/mapa_de_memoria.png" width="300" height="350">
+montículo o módulo: en él se van almacenando las varaibles dinámicas, las listas y las pilas, al final del espacio de memoria reservado. Para evitar un desbordamiento del montículo se uiliza el **recolector de basura** compacta el espacio no utilizado en en memoria.
 
-Lo qu ese guarda en una pila de la cpu es la direcciónn de la dirección quu ees distinta a la pila de proceso, que esta es la pila de la cpu.
-otra en memoria principa donde está el regstro de activacion las variables loales
+#### Mapa de memoria de un ordenador.
+Todo el espacio de memoria direccionable por el ordenador. Normalmente depende del tamaño del bus de direcciones.
+#### Mapa de memoria de un proceso.
+Se almacena en una estructura de datos (que reside en memoria) donde se guarda el tamaño total del espacio de direcciones lógico y la correspondencia entre las direcciones lógicas y las físicas.
 
-----
-codgo
----
-variable iniciaes
----
-variables si inicial (bajando)
----
----
-montículo(subiendo) o módulo
-
-en el montículo va la variables dináicas, las listas, las pilas que creen se quedan al final de la zona de memor¡ria que asigne el so.
-
-para vitar que tanto subir el mónticulo cada vez que se cree borre, **recolector de basura** que compacta el espacio no utilizado en memoria.
-
+>> POR AQUÍ ME HE QUEDADO
 ### 4.5 Problema de la fragmentación de memoria
 
 El núcle del sistema operativo está cargado en las direcciones de memoria más baja, el firmeare nada más empezar carga el so, que va cargado.
