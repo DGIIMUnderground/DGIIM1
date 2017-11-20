@@ -216,7 +216,7 @@ El servicio puede requerir una espera (que bloquerá al proceso) como leer un di
 - Se retorna la rutina genérica que restiruye los registros y en RETI, con lo que se devuelve la siguiente intrucción al TRAP.
 
 Durante la ejecución de un servicio, pudo llegar una interrución que pndría a ejecutr otro proceso.
-<img src="media/tema2/ejecucion_servicio_sin_espera.jpeg" width="300" height="350">
+<img src="media/tema2/ejecucion_servicio_sin_espera.jpeg" width="400" height="250">
 
 #### Servivio que contiene espera
 El tratamiento se divide en dos fase, unna que inicial el servicio y otra que lo termina:
@@ -225,7 +225,7 @@ El tratamiento se divide en dos fase, unna que inicial el servicio y otra que lo
 - Si la operación se completó con exito el proceso pasa de bloqueado a listo.
 - Cuano el planificador seleccione otra vez este porceso, seguirá la ejecuciń completando la segunda fase del servicio, (ejemplo: copiando buffer de la información leída en el disco).
 - Finalmente se genera el argumento de retorno del servicio y se restituyen los registros visibles, y se retorina al preceso que sigue su ejecución en modo usuario.
-<img src="media/tema2/ejecucion_servicio_sin_espera.jpeg" width="300" height="350"> 
+<img src="media/tema2/ejecucion_servicio_con_espera.jpeg" width="3400" height="250"> 
   
 
 #### 1.9.3 Modelo de los cinco estados
