@@ -60,7 +60,7 @@ empieza a trabajar en la primera de algoritmo.
 4. A mediados del mismo siglo las matemáticas se empiezan a formalizar y estructurarse,
 considerándose un fin por sí mismas, surgiendo los axiomas de Peano, lógica... Todo gracias a
 personas y asociaciones como: **David Hilbert** y en 1950 **Burbaki**. Gracias a este movimiento,
-**Turing** crea las "máquinas de Turing" y posteriormente "la máquina universal de Tuuring" que
+**Turing** crea las "máquinas de Turing" y posteriormente "la máquina universal de Turing" que
 podría considerarse uno de los precursores del ordenador.
 
 5. A este ritmo los ordenadores iban surgiendo de manera natural. **A. Church** saca la máquina de
