@@ -215,3 +215,19 @@ disown	| Suprime un trabajo de la lista de trabajos activos (help disown) `disow
 kill 	| Envía una señal a un/os proceso/s. Por defecto, finaliza la ejecución de un proceso (man kill)
 ps 	| Muestra el estado de los procesos actuales en el sistema (man ps)
 top	| Muestra los procesos en ejecución con actualización de su información en tiempo real (man top)  
+
+
+## Compilación de programas  
+### Compilación con g++  
+#### Procesos de la compilación
+1. **Procesar** procesador acepta como entrada un archivo con código fuente, elimina los comentarios e interpreta las **directivas de procesamiento**  
+2. **Compilador** analiza el código fuente y lo traduce a un código objeto, **módulo objeto** con la extensión `.o`, en este porceso no se resuelven las referencias externa a variable o funciones.  
+`g++ -c archivo.cpp` genera si no hay errores de programación el módulo objeto.  
+3. **Enlazador** resuelve las referencias externas y genera un archivo ejecutable.  
+
+órdenes de compilación en g++  
+
+ órden 	   	       | Función  
+ ---		       | --- 
+ `g++ -o archivo.cpp`  | Realiza etapa de procesado y compilación generando módulo objeto si no hay error 
+ 
