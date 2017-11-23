@@ -141,3 +141,67 @@ y como es recursiva, deberemos tener en cuenta la posición del dígito.
 Finalmente, habría que tener la condición de valor máxima para evitar desbordamientos, pero esto se lo tengo que poner a la cosntante
 
 SALE PARA EXPECIFICAR LA SEMÁNTICA DE LOS LENGUAES DE PROGRAMACIÓN, SE COSNTRUYE LA GRAMÁTIA CON ATRIBUTO, QUE SOLO EXPECIFICA SINTAXIS, DE UN LENGUAE QUE TIENE ALGO DE SENSIBILAD AL CONTEXTO, ME LA SALE LA EXPECFICACIÓN DEL LENGAE DE PROGRMACIÓN. 
+
+Gramática:
+<letras>a b c d e...z
+<dígitos> 0123456789
+<letra digitos> <letras|dígitos>
+<identificadores> ---> <letras>|identificadores><letras dígitos>
+
+Uns secuenza correcta de caracteres se llama *lexema*, unidad mínima de significado.
+Cuando se pasa de las palabras al ámbito de las frases, las reglas sintáxticas,  En los leguanjes de programación cuando se pasa la palra, término concreto se pasa a n término genérico
+término concreto -- se abstrae--> *token*
+estructuras sintáxticas se representan en términos de token. (ejmplo en sintaxis un token sería sujeto, verbo, "pepe" lexema que sería sandía come")  
+### Qué hace un compilador  
+1.El compilado rlee caracteres y comprueba con la gramática  
+juan := pepe +  10
+id       id  op  cte
+lee la j es una letra, continua puesto que puede ser
+...
+llega al espacio: elemento terminal
+:= *separador* sentencia asignación a lo de derecha le asigna lo de la izquierda 
+...
+4Sentencia d eizquiedra a derecah hasta que encuentra un separador, localiza un lexema,   
+
+Cnstruye tabla símbolos   
+lexema  | tipo | longitud | dirección | otras | valor | otras 
+--- 	| ---  | --- 	  | ---       | ---   | ---   | --- 
+juan	| int  | 16 BITS  | 0 	      | aksdak| si se le asignado, si se ah inicializzdo | dkanvjf 
+Pepe 	| real | 32 	  | 16 	      | akjfd | ad    | aldk 
+j 	|kajfd | 112	  | 48 	      | akcd  | asmc  | almcdk  
+10 	| int  | klaJSº	   |ALK	      |ADLK   | 10    |AKNL  
+
+variales explicitas le asocia el tipo 
+en las constantes tipo 10 le asingan implícitamente, el compilador le asicia un valos, ejemplo 10.
+
+Cando se leen un progrma lo primero que aparee es una zona de declaraciones, qué es lo que voy a utilizar, le dice al compilador que ese ombre lo ienen que buscar en un determinado tipo, 
+
+en la parte procedural cuando no se ha declaraod una variable, 
+las direcciones son el signidiado del lexema; 
+
+cuando ve un lexema si es correcto lo conoce como un token, identificador,                           
+... cuntinua leyendo , pepe, ve    que es correcto porque se ha declarado  , identificador al sitáxtico, 
+ver que una frase es correcta y añadir a tabla de símbilos     
+>> la funciones son abstraciiones de sentencias, unn procedimiento es una abatreación de setiencia void, un procedimineto no devuelve valor
+---
+el identificador de variable lo que hace es iniciar una un nuevo lexema, sentecián de asignación, porque ya ha enviado la otra,  
+Si se empieza un if empiez una sentencia condicional, a no ser que se ponga if := expresión, igual que for, while, llamadas a porcedimiento 
+lo que expera después del := es una expresión (recordar árbol sintáctico), se va reconociendo hasta que se ve una expresión que es correcta y dice que eso es una sentencia correcta, así se haría el análisis sintaxtico.  
+
+#### tipos de aŕboles sintaxticos   
+##### De forma descendente   LL (letf left)
+axioma  --> se hace descendentemente ( se supone correcta y se empiez a leer de arriba bajo) y de izquierda a derecha l 
+          *
+ iden		expr
+		id  id
+
+tiene una pla con lo que va analizando y guardanto ( esto el construtps )
+#### LR 
+Autómata más complejo qeu el anterior pero más eficiente 
+lee hacia arriba de derecha a izquierda  
+
+> en los libros tem ponen ll(n) o lr(n) siendo n el número de token que se le tineen que enviar par que la reconozca unívocamene 
+> sobre una grrmatica de más de uno se puede trabajar con una de ll(1) o lr( 1) compactando los símbolos 
+
+Resumen: 
+lee caracter a caracter de izquierda a derecha, la anota o consuta en TS, recocn0oce token y se lo manda al analizador sintáctico que lo reconoce, con las familias LR y LL

@@ -227,7 +227,16 @@ top	| Muestra los procesos en ejecución con actualización de su información e
 
 órdenes de compilación en g++  
 
- órden 	   	       | Función  
- ---		       | --- 
- `g++ -o archivo.cpp`  | Realiza etapa de procesado y compilación generando módulo objeto si no hay error 
- 
+ órden				 | Función  
+ ---		       	       	 | --- 
+ `g++ -o archivo.cpp`  	       	 | Realiza etapa de procesado y compilación generando módulo objeto si no hay error 
+ `g++ archivo.o ach.o` 	       	 | Crea el ejutable, a.out 
+ `g++ -o nom_ejecuta archivo.o`  | Igual que el anterior pero en vex de nombrar al archivo con a.out, lo nombra nom_ejecuta.out 
+ `ar -rvs biblio.a modulo.o mod.o`| Genera una librería <br>genera un archivo .a <br>> r inserta los miembros del archivo, s crea índice, v amplia información en verbose   
+`$ g++ -L./ -o programa2 main2.o factorial.o hello.o -lmates` | crea ejecutable especificando las librerias con la raiz mates, esta se debe encontra en el direcorio  
+`g++ -I./directorio -L./ -o programa2 main2.cpp factorial.cpp hello.cpp -lmates` | igual que la anterior pero especificando el directorio  
+
+
+## Uso de archivos del tipo makefile  
+
+Makefile permite gestionar las depedencias, comprobando que archivos se han modificado desde la última vez que se ejecutó y vuelve a construir el ejecutable cambiando solo lás modificaciones.
