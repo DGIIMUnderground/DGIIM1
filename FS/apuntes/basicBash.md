@@ -1,7 +1,8 @@
-> Aquí encontrarás lo suficiente para que con un man seas la reina del mambo
+Aquí encontrarás lo suficiente para que con un man seas la reina del mambo
 
 
 ## Comandillos útiles para utilizar en terminal  
+
 -` C-l` limpiar terminal
 - `clear` limpiar terminal
 - Para cerrar al termial C-alt-w
@@ -13,36 +14,37 @@
  
 ## Comados relacionados con archivos y direcctorios
 
- COMANDOS                        | FUNCIONES
- ---		 		 | ---
- **tr**[option].., SET1 	 | traduce o borra caracteres :)
- **awk**	   		 | escanea patrocenes y procesa lenguajes
- **ls**	 	    		 | lee los directorio
- **cd** 	     		 | cambia de directorio
- **ln** 			 | Cra enlaces simbólicos
- **pwd**	      		 | Imprime el camino absulo del direcctorio actual   
- **mkdir** Y **rmdir**  	 | rmdir -r borra si tienes también archivos dentro  
- **cat**     			 | lee el condtenido de un archivo  
- **mv  /<archivo1> <archivo2>**  | mueve un archivo    
- **file** 	   		 | muestra el tipo de archivo.  
- **more** **pager**  **pg**  	 | visualiza un archivo fraccionándolo en la pantalla cada vez.  
- **rm**   	     		 | borra DEFINITIVAMENTE un archivo/directorio
- **touch**			 | modifica fecha y hora de un archivo, si no los crea  
- **clear** 			 | borra el contenido de la terminal actual
- **tail** -<entero> <archivo> 	 | muestra las líneas finales de un fichero  
- **head** -/<entero>/ <archivo>  | muestras las "numero de líneas iniciales de un fichero.  
- **sort** <archivo>   		 | ordena bajo un critero elegido las líneas de un archivo.  
- **wc**   			 | cuenta el número de algo de un fichero 
- chmod [ugoa][+-=][rwx]dir/file  | Cambio a los permisos de un archivo o direcctorio	 
- **echo** 			 | escribe un mensaje en termminal  
- `alias <nombre>='<ódener>' `	 | Definir comportamiento de una orden, sin argumentos, ves los alias creados,
- `unalias 		    	 | Borrar un alias
- `\alias`			 | Para ignorar un alias y ejecutar la orden original
- **printf ** 			 | muestra en el bash lo que se especifique 
- **sleep** <segundos>		 | Produce una pausa de los segundos introducidos como argumentos	 
- --- 	  			 | ---
+ COMANDOS                           | FUNCIONES
+ ---                                | ---
+ **tr**[option].., SET1             | Traduce o borra caracteres :)
+ **awk**                            | Escanea patrones y procesa lenguajes.
+ **ls**                             | Lee los directorio
+ **cd**                             | Cambia de directorio
+ **ln**                             | Crea enlaces simbólicos
+ **pwd**                            | Imprime el camino absulo del direcctorio actual   
+ **mkdir** Y **rmdir**              | Rmdir -r borra si tienes también archivos dentro  
+ **cat**                            | Lee el contenido de un archivo  
+ **mv  /<archivo1> <archivo2>**     | Mueve un archivo    
+ **file**                           | Muestra el tipo de archivo.  
+ **more** **pager**  **pg**         | Visualiza un archivo fraccionándolo en la pantalla cada vez.  
+ **rm**                             | Borra DEFINITIVAMENTE un archivo/directorio
+ **touch**                          | Modifica fecha y hora de un archivo, si no existe, lo crea  
+ **clear**                          | Borra el contenido de la terminal actual
+ **tail** -<entero> <archivo>       | Muestra las líneas finales de un fichero  
+ **head** -/<entero>/ <archivo>     | Muestras las "numero de líneas iniciales de un fichero.  
+ **sort** <archivo>   	        	| Ordena bajo un critero elegido las líneas de un archivo.  
+ **wc**   			                | Cuenta el número de algo de un fichero 
+ **chmod [ugoa][+-=][rwx]dir/file** | Cambio a los permisos de un archivo o direcctorio	 
+ **echo**                           | Escribe un mensaje en termminal  
+ **`alias <nombre>='<ódener>' `**   | Definir comportamiento de una orden, sin argumentos, ves los alias creados,
+ **`unalias`**                      | Borrar un alias
+ **`\alias`**                       | Para ignorar un alias y ejecutar la orden original
+ **printf**                         | Muestra en el bash lo que se especifique 
+ **sleep** <segundos>               | Produce una pausa de los segundos introducidos como argumentos	 
 
-- código de formato para print 
+
+- Código de formato para print 
+
 ``` 
   - %d número con signo  
   - %f  número en coma flotante  
@@ -51,6 +53,7 @@
   - %x núemero en hexadecimal  
   - %o número en octal
 ```
+
 - Ejemplo: 
 ```bash
 blanca@debian:$printf "Quededan %i semanas para fin año \n" $( expr $DIFERENCIA / 7)
@@ -107,21 +110,22 @@ info bash y hartate información
   
 
 
-    Operaciones con varibles	| Utilidad 
-    ---		    		| ---
-    `declare -[i,s,a] <nombre>`	| declara variables 
-    `declare -p <nombre>	| Ver el contenido de una variable  
-    `export <variable>`		| para que el sistema la reconozca 
-    \` orden \`			| Sustitución de orden como si guera un avariable  
-    `$(orede) `			| Sustitución de orden como si fuera una variable  
-    `expre <operación>`		| Permite operaciones con variables ```numero=`expr $numero + 1` ```
-    ` $(( expresión )) `	| Evalua expresiones aritméticas y sustituye su valor, LOS ESPACIOS CUÍDAMELOS  
-    ` $[ expresión ] ` 		| Evalua expresiones aritméticas y sustituye su valor
-    `operacioens | bc -l `	| Permite operaciones con decimales <3  
-    `let varInt=asignación`	| Asigna valor a una variable entera SIN ESPACIO EN BLANCO `let a='a +   4'`  o `let a=a+4`
+Operaciones con varibles	| Utilidad 
+---		    		| ---
+`declare -[i,s,a] <nombre>`	| declara variables 
+`declare -p <nombre>	| Ver el contenido de una variable  
+`export <variable>`		| para que el sistema la reconozca 
+\` orden \`			| Sustitución de orden como si guera un avariable  
+`$(orede) `			| Sustitución de orden como si fuera una variable  
+`expre <operación>`		| Permite operaciones con variables ```numero=`expr $numero + 1` ```
+` $(( expresión )) `	| Evalua expresiones aritméticas y sustituye su valor, LOS ESPACIOS CUÍDAMELOS  
+` $[ expresión ] ` 		| Evalua expresiones aritméticas y sustituye su valor
+`operacioens | bc -l `	| Permite operaciones con decimales <3  
+`let varInt=asignación`	| Asigna valor a una variable entera SIN ESPACIO EN BLANCO `let a='a +   4'`  o `let a=a+4`
 
      
 ## Guiones 
+
 1. Comenzar con `#!/bin/bash` 
 2. Cambiarle los permisos a ejecución ` chmod +x <script>`  
 3. Ejecutar indicando directorio en el que se encuentra `./<script.sh>` si se encuentrn en el direcctorio actual 
@@ -170,6 +174,7 @@ done;
 
  
 ### Depuración de programas  
+
  - para activarlo, + para desactivarlo, 
 
  Comando                  | Función 
@@ -179,6 +184,7 @@ done;
  `bash -x`  `set -x`	  | Igual que -v pero con todas las sustituciones y expansiones realizadas
 
 #### Orden trap 
+
 Traza,especifica una acción a reaizar cada vez que recive una señal (mecanismos de comunicación entre distintos procesos en linux <3) 
 colocar después del #!/bin/bash 
 trap <lo que quieras que haga tras cada ejecución de una línea> DEBUG
