@@ -68,6 +68,19 @@
 - Acotación: Protege cadenas desactivando los caracteres especiales en ellas.
   - `“[arg]”`: Acotación débil, no protege de ```! $ \ ` ```.
   - ``` `[arg]` ```: Acotación fuerte, no protege de ``` ` ```.
+- `g++ [arg]~ [prog] [file]~`: Es el compilador de la GNU para C y C++
+  - `g++ -c [prog]`:Realiza la etapa de preprocesado y compilación, sin resolver las referencias externas
+    - * Genera el módulo objeto `[prog].o` *
+  - `g++ -o [prog] [file]~`: Cambia el nombre del archivo de salida por el de `[prog]`
+  - `g++ -L[dir] [arg]~ [prog] [file]~`: Permite especificar la localización de las librerías
+  - `g++ [arg]~ [prog] [file]~ -l[str]`: Busca la biblioteca `lib[srt].a`
+  - `g++ -I[dir] [arg]~ [prog] [file]~`: Permite especificar la localización de los archivos de cabecera
+    - * Esto no es necesario si los archivos de cabecera se encuentran en el directorio donde ejecutamos las órdenes
+- `ld [arg]~ [prog] [file]~`: Es el enlazador de la GNU
+- `make`: Ejecuta el archivo `makefileGNU`, `makefile` o `Makefile`
+  - `make -f [file]`: Permite ejecutar `make` en `[file]` * (útil para makefiles con nombres distintos al por defecto) *
+  - `make -p`: Muestra las variables predefinidas que pueden usarse dentro de la especificación de un archivo makefile
+- `$([var]:[str1]=[str2]`: Sustituye `[str1]` por `[str2]` en `[var]`
 ***
 ## La orden printf ##
 
@@ -132,8 +145,8 @@ $ printf “Hola %d\n” $NOMBRE
    `$?` | Código de retorno de la última orden ejecutada
 
 ***
-## Control de flujo
-## if ##
+## Control de flujo ##
+### if
 ```
 if [condition];
 then
@@ -145,7 +158,7 @@ then
   [declarations];)
 fi
 ```
-## case ##
+### case
 ```
 case [patron?] in
   [patron1] )
@@ -157,21 +170,21 @@ case [patron?] in
     [declarations] ;;
 esac
 ```
-## while ##
+### while
 ```
 while [condition];
 do
   [declarations]
 done
 ```
-## until ##
+### until
 ```
 until [condition];
 do
   [declarations]
 done
 ```
-## for ##
+### for
 ```
 for [name] (in [list]);
 do
@@ -179,7 +192,7 @@ do
 done
 ```
 ***
-## Funciones
+## Funciones ##
 ```
 [name]() {
   [declarations]
@@ -187,7 +200,28 @@ done
 }
 ```
 ***
-## Operadores
+## Makefiles ##
+```
+[var]~
+
+[obj]: [dep]~
+        [arg]~
+[dep1]: [dep]~
+        [arg]~
+...
+[dep~]: [dep]~
+        [arg]~
+```
+
+`arg` | Variables predefinidas
+--- | ---
+`$@` | Nombre del objetivo de la regla en la que se usa
+`$<` | Primera dependencia de la regla en la que se usa
+`$?` | Todas las dependencias modificadas de la regla en la que se usa separadas por un espacio en blanco
+`$^` | Todas las dependencias separadas por un espacio en blanco
+
+***
+## Operadores ##
 `[arg]` | Operadores aritméticos
 --- | ---
 `+  -` | Suma/resta
@@ -270,3 +304,4 @@ done
 `( [arg]~ )` | Aisla `[arg]` separados por “;” o “|” y los trata como una única orden
 `[arg1] && [arg2]` | Ejecuta `[arg1]` sólo si `[arg2]` ha tenido éxito
 `[arg1] \|\| [arg2]` | Ejecuta `[arg1]` sólo si `[arg2]` ha fallado
+
