@@ -145,8 +145,8 @@ $ printf “Hola %d\n” $NOMBRE
    `$?` | Código de retorno de la última orden ejecutada
 
 ***
-## Control de flujo
-## if ##
+## Control de flujo ##
+### if
 ```
 if [condition];
 then
@@ -158,7 +158,7 @@ then
   [declarations];)
 fi
 ```
-## case ##
+### case
 ```
 case [patron?] in
   [patron1] )
@@ -170,21 +170,21 @@ case [patron?] in
     [declarations] ;;
 esac
 ```
-## while ##
+### while
 ```
 while [condition];
 do
   [declarations]
 done
 ```
-## until ##
+### until
 ```
 until [condition];
 do
   [declarations]
 done
 ```
-## for ##
+### for
 ```
 for [name] (in [list]);
 do
@@ -192,7 +192,7 @@ do
 done
 ```
 ***
-## Funciones
+## Funciones ##
 ```
 [name]() {
   [declarations]
@@ -200,7 +200,7 @@ done
 }
 ```
 ***
-## Makefiles
+## Makefiles ##
 ```
 [var]~
 
@@ -221,7 +221,7 @@ done
 `$^` | Todas las dependencias separadas por un espacio en blanco
 
 ***
-## Operadores
+## Operadores ##
 `[arg]` | Operadores aritméticos
 --- | ---
 `+  -` | Suma/resta
