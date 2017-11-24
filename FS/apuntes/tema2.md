@@ -60,7 +60,7 @@ empieza a trabajar en la primera de algoritmo.
 4. A mediados del mismo siglo las matemáticas se empiezan a formalizar y estructurarse,
 considerándose un fin por sí mismas, surgiendo los axiomas de Peano, lógica... Todo gracias a
 personas y asociaciones como: **David Hilbert** y en 1950 **Burbaki**. Gracias a este movimiento,
-**Turing** crea las "máquinas de Turing" y posteriormente "la máquina universal de Tuuring" que
+**Turing** crea las "máquinas de Turing" y posteriormente "la máquina universal de Turing" que
 podría considerarse uno de los precursores del ordenador.
 
 5. A este ritmo los ordenadores iban surgiendo de manera natural. **A. Church** saca la máquina de
@@ -90,7 +90,7 @@ Estos pasos suponían montar y desmontar cintas o configurar tarjetas. Si ocurr�
 Se han desarrollado varias herramientas de software de sistemas con el fin de realizar el procesamiento serie más eficiente: bibliotecas de funciones comunes, enlazadores, cargadores, depuradores, rutinas de gestión de E/S disponibles como software común para todos los usuarios…
 
 ### 1.3 Sistemas en lotes sencillos o Sistemas Batch
-El primer sistema operativo en lotes (y también el primer sisema operativo de cualquer tipo) surge en deseo de maximizar la utilización de las máquinas.
+El primer sistema operativo en lotes (y también el primer sistema operativo de cualquier tipo) surge en deseo de maximizar la utilización de las máquinas.
 La idea central se basaba en una pieza de software denominada **monitor**: el usuario no tiene que acceder directamente a la máquina, sino que introduce el trabajo por medio de una tarjeta o cinta al operador del computador, que crea un sistema de lotes con los trabajos enviados y los coloca en el dispositivo de entrada para que los utilice el monitor. Cuando un programa finaliza su procesamniento devuelve el control al monitor, que comenzará la carga del siguiente programa.
 
 Análisis de este esquema desde distintos puntos de vista:
@@ -101,15 +101,15 @@ Análisis de este esquema desde distintos puntos de vista:
 - **Punto de vista del procesador**: el procesador ejecuta instrucciones de la zona de memoria principal que contiene el monitor. Por lo que se lee el siguiente trabajo y se almacena en otra zona de memoria principal. El procesador encontrará una instrucción de salto en el monitor que le indica al procesador que continúe la ejecución al inicio del programa de usuario. El procesador entonces ejecutará las instrucciones del programa usuario hasta que encuentre una condición de finalización o de error. Cualquiera de estas condiciones hace que el procesador ejecute la siguiente instrucción del programa monitor. Por tanto, la frase “se pasa el control al trabajo” significa que el procesador leerá y ejecutará instrucciones del programa de usuario, y la frase “se devuelve el control al monitor” indica que el procesador leerá y ejecutará instrucciones del programa monitor.
 Cuando el "control" lo tiene el monitor, ejecutará sus instrucciones y cuando no las del programa. El papel del monitor es de planificación, incluyendo intruccines en algún lenguaje primitivo de **lenguaje de control de trabajos** (JCL)
 
-En resumen: El monitor o sistema operativo en lotes es un programa, que tiene en base la habilidad del procesador para para carga instrucciones de memoria principal y tomar y abandonar el control.
+En resumen: El monitor o sistema operativo en lotes es un programa, que tiene en base, la habilidad del procesador para cargar instrucciones de memoria principal y tomar y abandonar el control.
 
 Necesita también un hardware con: protección de memoria, temporizador de trabajos, instrucciones privilegiadas que solo el monitor puede realizar e interrucciones.
 La protección de memoria y los privilegios dan lugar a los modos ususario y núcleo.
  El problema de la programación en lotes  era el tiempo que empleaba el ordenador en los periféricos.
 
 ### 1.4 Sistemas en lotes multiprogramados
-En los trabajos automáticos de un sistema operatuvos en lotes simple el procesador se encuentra frecuentemente parado ya que los dispositivos de entrada y salida son mucho más lentos que este, así es como surge la **multiprogramación** o **multitarea**, se expande la memoria para que pueda albergar al sistema operativo (monitor residente) y más programas habiendo multiplexación entre ellos.
-Al haber varios programas a la vez prodría haber un solapamiento del trabajo, ara evitar esto, surgen las **interrupcciones** de la mano de un avanace de sofware y hardware, en el cual varios programas se desarrollan a la vez en sitios diferentes,  esto se conoce como **S.pool**: cualquier trabajo puede suspender su actividad por la ocurrecia de un evento definido, como la finalización de una operación E/S. El procesador guardaría alguna forma de contexto (contador de programa u otros registros) y saltaría a una rutina de tratamiento de interrupciones: determinaría tipo interrución, la procesaría y continuaría con el proceso interrumpido. Por ejemplo si varios porgramas requieren de una impresora, el programa que se está ejecutando escribe en un fichero lo que quiere imprimir y después lo vuelca a esta una vez que ha terminado de utilizar la impresora el programa anterior.
+En los trabajos automáticos de un sistema operativo en lotes simples el procesador se encuentra frecuentemente parado ya que los dispositivos de entrada y salida son mucho más lentos que este, así es como surge la **multiprogramación** o **multitarea**, se expande la memoria para que pueda albergar al sistema operativo (monitor residente) y más programas habiendo multiplexación entre ellos.
+Al haber varios programas a la vez podría haber un solapamiento del trabajo, para evitar esto, surgen las **interrupcciones** de la mano de un avance de sofware y hardware, en el cual varios programas se desarrollan a la vez en sitios diferentes,  esto se conoce como **S.pool**: cualquier trabajo puede suspender su actividad por la ocurrecia de un evento definido, como la finalización de una operación E/S. El procesador guardaría alguna forma de contexto (contador de programa u otros registros) y saltaría a una rutina de tratamiento de interrupciones: determinaría tipo interrución, la procesaría y continuaría con el proceso interrumpido. Por ejemplo si varios porgramas requieren de una impresora, el programa que se está ejecutando escribe en un fichero lo que quiere imprimir y después lo vuelca a esta una vez que ha terminado de utilizar la impresora el programa anterior.
 
 ### 1.5 Sistemas de tiempo compartido  
 Teniendo en cuenta que los lotes son cerrados surgen las **colas**, sistemas de lotes abiertos, donde el SO controla los programas que esperan y los que se ejecutan, y cuándo termina estos dan pasos a los siguiente en orden de prioridad. Por tanto, si un programa no utilizaba periféricos u otros recursos se podía quedar eternamente allí, o si era necesaria la interacción de varios usuarios directamente con la computadora, con esto surge la técnica  **del tiempo compartido**, los programas tienen un tiempo limitado en la CPU.  Estos intervalos de tiempo, también son conocidos como **cuantos de computación**.
@@ -127,7 +127,8 @@ Uno de los primeros sistemas operativos de tiempo compartido desarrollados fue e
 7. Finalmente distintos ordenadores, con distintos sistemas operativos que trabajan simultáneamente, todos coordinados por un **macro sistema operativo**.
 
 
-### Algunas preguntas !!! FALTAN POR COMPLETAR LAS DEJO PARA QUE ALGUIEN LAS RELLENE
+### Algunas preguntas
+> !!! FALTAN POR COMPLETAR, LAS DEJO PARA QUE ALGUIEN LAS RELLENE
 
 - La multiprogramación no tiene por qué ser de tiempo compartido. Pero para que sea posible el tiempo compartido es necesario un S.O. multiprogramado.
 - Un S.O. multiprogramado es un S.O. de tiempo compartido? ¿y al contrario?  
@@ -153,7 +154,7 @@ Para solucionar estos problemas se necesita una forma sistemática de monitoriza
 - El contexto de ejecución de un programa o estado del proceso, que es el conjunto de datos internos separada del proceso por el cual el sistema operativo es capaz de supervisar y controlar el proceso y el procesador para ejecutarlo. Ejemplos: contador de programa, registro de datos, prioridad, estado...
 <img src="media/tema2/proceso_tipico.jpg" width="300" height="350">
 
-En la imagen, se muestra la manera de gestinar dos procesos, los contenidos de los registros de un programa que fue interrumpido fueron fuardados en el contexo de ejecución del programa. Por esta razón un proceso puede verse como una estructura de datos, donde su **estado** se contiene en el contexto permitiendo así la cooperación  y la coordinación entre procesos.
+En la imagen, se muestra la manera de gestinar dos procesos, los contenidos de los registros de un programa que fue interrumpido fueron guardados en el contexto de ejecución del programa. Por esta razón un proceso puede verse como una estructura de datos, donde su **estado** se contiene en el contexto permitiendo así la cooperación  y la coordinación entre procesos.
 
 > Notas de clase: 
 >Cuando hay que leer de disco el sistema usuario no lee, los lenguajes dan sentencias, cuando se traducen son órdenes de llamadas de SO. El SO incorpora funciones propias donde corresponde al programa.
@@ -163,14 +164,14 @@ En la imagen, se muestra la manera de gestinar dos procesos, los contenidos de l
 
 ### 1.7 Implementación de procesos típica
 Forma en la cual los procesos pueden gestionarse:
-Dos procesos, A y B, se encuentran en una porción de memoria principal. Es decir, se ha asignado un bloque de memoria a cada proceso, que contiene el programa, datos e información de contexto. Se incluye a cada proceso en una lista de procesos que construye y mantien el SO. La lista de procesos contiene una entrada por cada proceso, e incluye un puntero a la ubicación del bloque de memoria que contiene el proceso. La entrada podría también incluir parte o todo el contexto de ejecución del proceso. El resto del contexto de ejecuicón es almacenado en otro lugar, tal vez junto al propio proceso o frecuentemente en una región de memoria separada. El registro índice del proceso contiene el índice del proceso que le procesador está actualmente controlando en la lista de procesos. El contador de programa apunta a la siguiente instrucción del proceso que se va a ejecutar. Los registros base y límite definen la región de memoria y el registro límite le tamaño de la región (en bytes o palabras). El contador de programa y todas las referencias de datos se interpretan de forma relativa al registro base y no debn exceder el valor almacenado en el registro límite. Esto previene la interferencia entre los procesos.
-En la imagen anterior (Figura 2.8), el registro índice del proceso indica que el proceso B está ejecutando. El proceso A estab aejecutando previamente, pero fue interrumpido temporalmente. Los contenidos de todos los registros en el momento de la interrupción de A fueron guardados en su contexto de ejecución. Posteriormente, el SO puede cambiar el proceso en ejecución y continuar la ejecución del contexto de A. Cuando se carga el contador de programa con un valor que apunta al área de programa de A, el proceso A continuará la ejecución automáticamente.
+Dos procesos, A y B, se encuentran en una porción de memoria principal. Es decir, se ha asignado un bloque de memoria a cada proceso, que contiene el programa, datos e información de contexto. Se incluye a cada proceso en una lista de procesos que construye y mantien el SO. La lista de procesos contiene una entrada por cada proceso, e incluye un puntero a la ubicación del bloque de memoria que contiene el proceso. La entrada podría también incluir parte o todo el contexto de ejecución del proceso. El resto del contexto de ejecución es almacenado en otro lugar, tal vez junto al propio proceso o frecuentemente en una región de memoria separada. El registro índice del proceso contiene el índice del proceso que le procesador está actualmente controlando en la lista de procesos. El contador de programa apunta a la siguiente instrucción del proceso que se va a ejecutar. Los registros base y límite definen la región de memoria y el registro límite le tamaño de la región (en bytes o palabras). El contador de programa y todas las referencias de datos se interpretan de forma relativa al registro base y no deben exceder el valor almacenado en el registro límite. Esto previene la interferencia entre los procesos.
+En la imagen anterior (Figura 2.8), el registro índice del proceso indica que el proceso B está ejecutando. El proceso A estaba ejecutando previamente, pero fue interrumpido temporalmente. Los contenidos de todos los registros en el momento de la interrupción de A fueron guardados en su contexto de ejecución. Posteriormente, el SO puede cambiar el proceso en ejecución y continuar la ejecución del contexto de A. Cuando se carga el contador de programa con un valor que apunta al área de programa de A, el proceso A continuará la ejecución automáticamente.
 
 - Busca proceso en lista, le da la dirección recuper información con la que  carga la información,
 - traza es lo que se pasa, en la CPU
 
->> que es esooo de arriba¿?¿???!?¿?!
->>> Comentario Blanca: esto es un apunte que tomé en clase y por ahora no sé bien donde meterlo
+>>Paula: que es esooo de arriba¿?¿???!?¿?!
+>> Blanca: esooo es un apunte que tomé en clase y por ahora no sé bien donde meterlo
 
 ### 1.8 Bloque de control de un proceso (PCB, Process Control Block)
 La memoria estaría llena de procesos o instancias. Así, el SO es el encargado de administrarlos de la forma correcta, para que todos sean ejecutados por el procesador de forma secuencial. Además, el SO tiene la capacidad de poder **bloquear un proceso**. Para que después pueda ser retomado como si nada, se  necesita información sobre cada proceso, lo que se conoce como **bloque de control de un programa* (BCP), consta de:
@@ -199,32 +200,32 @@ La figura 3.3 muestra las trazas de cada uno de los procesos en los primeros ins
 
 #### 1.9.1 Modelo de proceso de dos estados
 La responsabilidad principal del sistema operativo es controlar la ejecución de los procesos; esto incluye determinar el patrón de entrelazado para la ejecución y asignar recursos a los procesos. El primer paso en el diseño de un sistema operativo para el control de procesos es describir el comportamiento que se desea que tengan los procesos.
-Se puede construir el modelo más simple posible observando que, en un instante  dado, un proceso está siendo ejecutado por el procesador o no. En este modelo, un proceso puede estar en dos estados: ejecutando  no ejecutando. Cuando el SO crea un nuevo proceso, crea el BCP para el nuevo proceso e inserta dicho proceso en el sistema de estado no ejecutando. El proceso existe, es conocido por el SO, y está esperando su oportunidad e ejecutar. De cuando en cuando, el proceso actualmente en ejecución se interrumpirá y una parte del SO, el activador, seleccionará otro proceso.
-Debe haber información correspondiente a cada proceso, incluyendo el estado actual y su localización en memoria: BCP. Los procesos que no están ejecutando deben estar en una especie de cola, esperando su turno para la ejecución. Existe una sola cola cuyas entradas son punteros al BCP de un proceso en particular. Alternativamente, la cola deb consistir en una lista enlazada de bloques de datos, en la cual cada bloque que representa un proceso. Si el proceso ha finalizado o ha sido abortado, se descarta (sale del sistema). En cualquier caso, el activador selecciona un proceso de la cola para ejecutar.
+Se puede construir el modelo más simple posible observando que, en un instante  dado, un proceso está siendo ejecutado por el procesador o no. En este modelo, un proceso puede estar en dos estados: ejecutando ó no ejecutando. Cuando el SO crea un nuevo proceso, crea el BCP para el nuevo proceso e inserta dicho proceso en el sistema de estado no ejecutando. El proceso existe, es conocido por el SO, y está esperando su oportunidad y ejecutar. De cuando en cuando, el proceso actualmente en ejecución se interrumpirá y una parte del SO, el activador, seleccionará otro proceso.
+Debe haber información correspondiente a cada proceso, incluyendo el estado actual y su localización en memoria: BCP. Los procesos que no están ejecutando deben estar en una especie de cola, esperando su turno para la ejecución. Existe una sola cola cuyas entradas son punteros al BCP de un proceso en particular. Alternativamente, la cola debe consistir en una lista enlazada de bloques de datos, en la cual cada bloque que representa un proceso. Si el proceso ha finalizado o ha sido abortado, se descarta (sale del sistema). En cualquier caso, el activador selecciona un proceso de la cola para ejecutar.
 
 #### 1.9.2 Llamadas al sistema
 >> J. Carretero, F. García, P. de Miguel, F. Pérez, Sistemas Operativos (2a Edición), McGraw-Hill,
 2007i  páginas: 114-115
 
-Por lo general, un sistema operativo está en un estado consistente y el código del servicio puede hacer ususo de la funcionalidad general de un SO.Suele existir una única solicitud de interrucción de servicio, por lo que los servicioes empiezan ejecutando el mismo código.
+Por lo general, un sistema operativo está en un estado consistente y el código del servicio puede hacer uso de la funcionalidad general de un SO. Suele existir una única solicitud de interrucción de servicio, por lo que los servicioes empiezan ejecutando el mismo código.
 El servicio puede requerir una espera (que bloquerá al proceso) como leer un disco o no, como cerrar un proceso.:
-##### Cuando un servicio no requere de espera:
-- La intrucción **TRAP** genera la interrucción de petición de servicio.
-- El procesador acepta la interrucción, por lo que el proceso pasa de mis usuario a modo usuario a modo privilegiado.
-- A través de la tabla de interruciones se ejecuta la rutina genérica que salva los registros visibles en la pila de sisema del proceso interrumpido. Seguidamente utilizaq el identificador del servicio (almacenado en un registro) para entrar en la table de servicios y determina el punto de acceso del servicio solicitante.
-- Llama al servicioo y ejecuta el correspondiente código.
-- Se retorna la rutina genérica que restiruye los registros y en RETI, con lo que se devuelve la siguiente intrucción al TRAP.
+##### Cuando un servicio no requiere de espera:
+- La intrucción **TRAP** genera la interrupción de petición de servicio.
+- El procesador acepta la interrupción, por lo que el proceso pasa de mis usuario a modo usuario a modo privilegiado.
+- A través de la tabla de interrupciones se ejecuta la rutina genérica que salva los registros visibles en la pila de sistema del proceso interrumpido. Seguidamente utiliza el identificador del servicio (almacenado en un registro) para entrar en la tabla de servicios y determina el punto de acceso del servicio solicitante.
+- Llama al servicio y ejecuta el correspondiente código.
+- Se retorna la rutina genérica que restituye los registros y en RETI, con lo que se devuelve la siguiente intrucción al TRAP.
 
-Durante la ejecución de un servicio, pudo llegar una interrución que pndría a ejecutr otro proceso.
+Durante la ejecución de un servicio, pudo llegar una interrupción que pondría a ejecutar otro proceso.
 <img src="media/tema2/ejecucion_servicio_sin_espera.jpeg" width="800" height="250">
 
 #### Servivio que contiene espera
-El tratamiento se divide en dos fase, unna que inicial el servicio y otra que lo termina:
-- La primera fase inicia el servicio (por ejemplo, lanza la oreden de lectura de un disco), ejecuta el planificador, el proceso queda bloqeudado, y se pone en ejecución el proceso selleccionado, pro lo que se produce un cambio de contexto.
-- Más adelante un evento indica el fin de la espera (ejmplo: un disco completa una lectura y genera una interrución), est ainterrución ejecutará el contexto de otro proceso y podrá tener un parte aplazada.
-- Si la operación se completó con exito el proceso pasa de bloqueado a listo.
-- Cuano el planificador seleccione otra vez este porceso, seguirá la ejecuciń completando la segunda fase del servicio, (ejemplo: copiando buffer de la información leída en el disco).
-- Finalmente se genera el argumento de retorno del servicio y se restituyen los registros visibles, y se retorina al preceso que sigue su ejecución en modo usuario.
+El tratamiento se divide en dos fases, una que inicial el servicio y otra que lo termina:
+- La primera fase inicia el servicio (por ejemplo, lanza la oreden de lectura de un disco), ejecuta el planificador, el proceso queda bloqueado, y se pone en ejecución el proceso seleccionado, por lo que se produce un cambio de contexto.
+- Más adelante un evento indica el fin de la espera (ejemplo: un disco completa una lectura y genera una interrupción), esta interrupción ejecutará el contexto de otro proceso y podrá tener una parte aplazada.
+- Si la operación se completó con éxito el proceso pasa de bloqueado a listo.
+- Cuando el planificador seleccione otra vez este proceso, seguirá la ejecución completando la segunda fase del servicio, (ejemplo: copiando buffer de la información leída en el disco).
+- Finalmente se genera el argumento de retorno del servicio y se restituyen los registros visibles, y se retorna al proceso que sigue su ejecución en modo usuario.
 <img src="media/tema2/ejecucion_servicio_con_espera.jpeg" width="800" height="250"> 
   
 
@@ -244,7 +245,7 @@ Trata de representar las actividades que le SO lleva a cabo sobre los procesos:
 	Cuando un proceso lanza otro, al primero se le denomina **proceso padre**, y al proceso creado se le denomina **proceso hijo**.
 
 - **Terminación de procesos:** todo sistema debe proporcionar los mecanismos mediante los cuales un proceso indica su finalización, o que ha completado su tarea.
-	Un trabajo por lotes debe incluir una instrucción HALT o una llamada a un servicio de SO específica para su terminación. Para una aplicación interactiva, las acciones del usuario indicarán cuándo el proceso ha terminado. Todas estas acciones tienen como resultado final la solicitud de un s ervicio al SO para terminar con el proceso solicitante.
+	Un trabajo por lotes debe incluir una instrucción HALT o una llamada a un servicio de SO específica para su terminación. Para una aplicación interactiva, las acciones del usuario indicarán cuándo el proceso ha terminado. Todas estas acciones tienen como resultado final la solicitud de un servicio al SO para terminar con el proceso solicitante.
 	Adicionalmente, un número de error o una condición de fallo puede llevar a la finalización de un proceso.
 	Razones para la terminación de un proceso:
 	- **Finalización normal**
@@ -288,7 +289,7 @@ Cuando se carga un programa nuevo:
 diferencia entre un apila: el primero que se atiende el último que ha llegado
 cola: se atiende el primero que ha llegado
 
-en la sfuncines cuando se va acumulando se forma nuevo **registro de activación** donde están los datos, se guarda la dirección en una pila, tiene una dirección que es lo que se conoce como puntero de pila, que soluciona todos estos prolemas.
+En las funcines cuando se va acumulando se forma nuevo **registro de activación** donde están los datos, se guarda la dirección en una pila, tiene una dirección que es lo que se conoce como puntero de pila, que soluciona todos estos problemas.
 
 #### Creación de un proceso: Inicialización de PCB
 Una vez que el SO decide crear un proceso procederá de la siguiente manera:
@@ -311,15 +312,15 @@ En resumen:
 ### 2.2 Control de procesos
 #### 2.2.1 Modo de ejecución del procesador
 
-- **Modo usuario**: no accede a todos los registro de memoria, n contador de programa, o registro de instrucción, tampoco otros instrucciones  
+- **Modo usuario**: no accede a todos los registro de memoria, contador de programa, o registro de instrucción, tampoco otras instrucciones  
 - **Modo núcleo, kernel, supervisor o sistema**: para pasar de uno a otro, se detecta que hay una operación que no se puede hacer en modo usuario.
 
 ##### ¿Cómo utiliza el SO el modo de ejecución?
 El modo de ejecución (incluido en PSW) cambia a modo kernel,
 automáticamente por hardware, cuando se produce:
 	- Una **interrupción**: se compara la prioridad.
-	- Una **excepción**: algo que no debería ocurrir pero ocurre, "overfloat" se levanta un aaletrar etra el SO, si lo que pasa no tiene riesgo para el resto de lo sprocesos se deja pasar (depende del compilador), otra que ocurre se lee de un fichero, se acaba y se pide que se igue leeye, s en  este caso se aborta el programa.
-	- Una **llamada al sistema**: leer disco, C pone un código que supone una rutina del SO. Llamo sistema, se lee el dato que quiero, se manda interrucción, en el ciclo de instrucción mira a ver si era la siguiente.
+	- Una **excepción**: algo que no debería ocurrir pero ocurre, "overfloat" se levanta una alerta entra el SO, si lo que pasa no tiene riesgo para el resto de los procesos se deja pasar (depende del compilador), otra que ocurre se lee de un fichero, se acaba y se pide que sigue leeye, s en  este caso se aborta el programa.
+	- Una **llamada al sistema**: leer disco, C pone un código que supone una rutina del SO. Llamo al sistema, se lee el dato que quiero, se manda interrupción, en el ciclo de instrucción mira a ver si era la siguiente.
 
 Seguidamente se ejecuta la rutina del SO correspondiente al evento producido.
 Finalmente, cuando termina la rutina, el hardware restaura automáticamente el modo de ejecución a modo usuario.
@@ -422,41 +423,32 @@ Las ventajas que aporta es que el cambio de dirección lógica a absoluta solo s
 
 ### 4.3 Reubicación dinámica
 La reubicación dinámica se produce en tiempo de ejecución.
-Durante la carga se escribe en memoria principal las direcciones lógicas y cada vez que se vaya a acceder a una de estas direcciones se le suma la dirección base.
+Durante la carga se escribe en memoria principal las direcciones lógicas o relativas y cada vez que se vaya a acceder a una de estas direcciones se le suma la dirección base.
 Esto tiene de ventaja el ahorro de operaciones en caso de qeu haya direcciones que no se utilicen, aunque en la actualidad la reubicación absoluta es obsoleta ya que ahora se encarga la CPU de esto.
 
->> POR AQUÍ ME HE QUEDADO
+
 ### 4.4 Espacios para las direcciones de memoria
-Mientras que un asesturuciion se ejejcuta se solapan las , en el tiempo de ejecucion global no influyen estas cosas porque es otra unidad la qeu se encarga,
-- direcciones lógicas  ensambalsdo rconmidaldo
 
-espacio dirrecione sfísica
-el so mantiene un mapa de la memor de un ordenado, el
+#### Espacio de direcciones lógico.
+Conjunto de direcciones lógicas (o relativas) que utiliza un programa ejecutable.
 
-y tamantiene un mapa de memoria de cada proceso, lo que se mejte en cada momento mñas o menos el númeo del ejecutable de un modo o oro,
-taba de simbolos, va cogiendo los ombres y asignádoselo a una dirección, cuando se está haciendo la compilación, aparecen siboloa squ eno sresuelca el compilador, nombres de funcione sexternas, el encuadrernar se encarga de los otro, de esto se encarga el ejejcutable,	la tabla de simbolos puede o no ir, dpende de como se resuelva la encuadernación o el enlace, esta puede ser estática, estas referencias ya las resuelcv ale encuador en princio dnp hará falaa al ora, si se hace dinámica els necesara la tabla de sñimbolos 
+#### Espacio de direcciones físico.
+Conjunto de direcciones físicas (memoria principal) correspondientes a las direcciones lógicas del programa en un instante dado. El sistema operativo contiene un mapa con la memoria, procesos, tabla de signos...  Cuando se está realizando la compilación a cada nombre se el asigna una dirección de memoria, para los símbolos no resueltos por el compilador ( ejemplo funciones externas) se resuelven durante la encadernación o enlace.
+> como apuntes: la tabla de símbolos puede ser dinámica o estática, en caso de ser dinámica el encuadernador hará uso de ella.
+> Los datos a los que se le asigna un valor al comienzo del programa, en memoria estarían despuén del código, en argumentos de progrma y pila.
+> Las pilas se van formando cada vez que se llama a una función, creando zonas de **registros de activación** que contienen los valores que van tomando las funciones.
+> Para buscar una variable se buscan en los registros que la han llamado, a diferencia de la variables globales.
+> Lo que se gurada en una pila de la CPU es la dirección de la dirección que es distinta a la pila de proceso, que está en la pila de la cpu y otra en memoria principal, en el registro de acivación de la variables globales.
 
-los datos a los que se le asigna un valor al principio estarían después del código
-En argurmentos de programa y la pila . Cuando se llama a una fución, se va generando una pila, y cuando se coge se
-se crea una zona que se crea **registro de activación** valores de los argumento que contiene las funciones, según se generen se va creando, si no borra, pero se borra. Para buscar una variable busca en los registros que lo han llamado, sino en la siguiente (diferencia entre variables globales)
+<img src="media/tema2/mapa_de_memoria.png" width="300" height="350">
+montículo o módulo: en él se van almacenando las varaibles dinámicas, las listas y las pilas, al final del espacio de memoria reservado. Para evitar un desbordamiento del montículo se uiliza el **recolector de basura** compacta el espacio no utilizado en en memoria.
 
-Lo qu ese guarda en una pila de la cpu es la direcciónn de la dirección quu ees distinta a la pila de proceso, que esta es la pila de la cpu.
-otra en memoria principa donde está el regstro de activacion las variables loales
+#### Mapa de memoria de un ordenador.
+Todo el espacio de memoria direccionable por el ordenador. Normalmente depende del tamaño del bus de direcciones.
+#### Mapa de memoria de un proceso.
+Se almacena en una estructura de datos (que reside en memoria) donde se guarda el tamaño total del espacio de direcciones lógico y la correspondencia entre las direcciones lógicas y las físicas.
 
-----
-codgo
----
-variable iniciaes
----
-variables si inicial (bajando)
----
----
-montículo(subiendo) o módulo
-
-en el montículo va la variables dináicas, las listas, las pilas que creen se quedan al final de la zona de memor¡ria que asigne el so.
-
-para vitar que tanto subir el mónticulo cada vez que se cree borre, **recolector de basura** que compacta el espacio no utilizado en memoria.
-
+>> POR AQUÍ ME HE QUEDADO
 ### 4.5 Problema de la fragmentación de memoria
 
 El núcle del sistema operativo está cargado en las direcciones de memoria más baja, el firmeare nada más empezar carga el so, que va cargado.

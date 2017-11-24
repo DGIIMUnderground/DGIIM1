@@ -215,3 +215,28 @@ disown	| Suprime un trabajo de la lista de trabajos activos (help disown) `disow
 kill 	| Envía una señal a un/os proceso/s. Por defecto, finaliza la ejecución de un proceso (man kill)
 ps 	| Muestra el estado de los procesos actuales en el sistema (man ps)
 top	| Muestra los procesos en ejecución con actualización de su información en tiempo real (man top)  
+
+
+## Compilación de programas  
+### Compilación con g++  
+#### Procesos de la compilación
+1. **Procesar** procesador acepta como entrada un archivo con código fuente, elimina los comentarios e interpreta las **directivas de procesamiento**  
+2. **Compilador** analiza el código fuente y lo traduce a un código objeto, **módulo objeto** con la extensión `.o`, en este porceso no se resuelven las referencias externa a variable o funciones.  
+`g++ -c archivo.cpp` genera si no hay errores de programación el módulo objeto.  
+3. **Enlazador** resuelve las referencias externas y genera un archivo ejecutable.  
+
+órdenes de compilación en g++  
+
+ órden				 | Función  
+ ---		       	       	 | --- 
+ `g++ -o archivo.cpp`  	       	 | Realiza etapa de procesado y compilación generando módulo objeto si no hay error 
+ `g++ archivo.o ach.o` 	       	 | Crea el ejutable, a.out 
+ `g++ -o nom_ejecuta archivo.o`  | Igual que el anterior pero en vex de nombrar al archivo con a.out, lo nombra nom_ejecuta.out 
+ `ar -rvs biblio.a modulo.o mod.o`| Genera una librería <br>genera un archivo .a <br>> r inserta los miembros del archivo, s crea índice, v amplia información en verbose   
+`$ g++ -L./ -o programa2 main2.o factorial.o hello.o -lmates` | crea ejecutable especificando las librerias con la raiz mates, esta se debe encontra en el direcorio  
+`g++ -I./directorio -L./ -o programa2 main2.cpp factorial.cpp hello.cpp -lmates` | igual que la anterior pero especificando el directorio  
+
+
+## Uso de archivos del tipo makefile  
+
+Makefile permite gestionar las depedencias, comprobando que archivos se han modificado desde la última vez que se ejecutó y vuelve a construir el ejecutable cambiando solo lás modificaciones.
