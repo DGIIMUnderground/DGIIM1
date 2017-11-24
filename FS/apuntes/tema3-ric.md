@@ -115,3 +115,153 @@ Ejemplo: constante entera 14:
         - Valor del 0: 0 Donde el primero es el símbolo y el segundo el
           significado.
 
+
+22/11/17
+
+
+
+
+
+
+
+
+
+<letra> a | b | c | d | e | ... | z
+<digito> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<letra digito> <letra>|<digito>
+
+<identificador> -> <letra> | <identificador><letra digito>
+
+
+Esta gramática genera un lenguaje que sería el que contendría
+los identificadores formados por caracteres y digitos, teniendo
+en cuenta que
+
+
+Lexemas: p1a2b3c.
+
+
+Analogía en español:
+     lex      lex    lex
+    Pepe     come    un bocadillo
+
+Abstrayendo
+    Sujeto + Verbo + Complemento
+
+
+Esa abstracción es un token.
+La estructura sintáctica se representa en términos de token.
+
+
+¿Qué hace un compilador con esta sentencia?
+
+
+1. Análisis léxico
+
+```
+juan := pepe + 10
+```
+
+El compilador lee de izquierda a derecha analizando si la estructura corresponde
+con la gramática.
+
+El := actúa como separador. Pero también podrían haber sido los espacios
+en blanco.
+
+Además, el compilador genera una tabla de símbolos
+
+
+Se construye la tabla de símbolos para que en otras fases las utilice.
+
+Lexema | Tipo | Longitud | Dirección | Otros | Valor        |
+---    | ---  | ---      | ---       | ---   | ---          |
+Juan   | I    | 2        | 0         | ...   | (El que sea) | 
+p      | R    | 4        | 2         | ...   | (El que sea) |
+C      | I    | 2        | 6         | ...   |              |
+
+
+En un programa, lo primero que aparece es la parte de declaración
+(incluidas en librerías o no).
+
+
+En el caso de Python, es dinámicamente tipado, lo cual significa que no hay
+declaración explícita del tipo de variables. (No indicamos int char, etc.)
+Es un lenguaje polimórfico, porque los identificadores son objetos.
+
+2. Análisis sintáctico
+
+
+juan := pepe + 10
+
+id       id  op id
+
+identificador_variable = expresión
+
+
+
+- Funciones:
+
+    - Abstracciones de expresiones
+    - Siempre devuelven variables
+
+```c++
+string ladrido(string nombre) {
+    return "Guau " + nombre;
+}
+
+int main() {
+    string sonido = ladrido("Ricardo");
+    cout << sonido << endl; // Guau Ricardo
+}
+```
+
+2. Procedimientos:
+
+    - Abstracciones de sentencias
+    - Realizan acciones pero no devuelven valor
+    - Pueden modificar variables.
+
+
+```c++
+void ladrar(string nombre) {
+    cout << "Guau  " << nombre << endl;
+}
+int main() {
+    ladrar()
+}
+```
+
+Algunos conjuntos de gramáticas:
+
+- LL (left left)
+
+Las gramáticas que elaboran el árbol sintáctico de forma
+descendente y de izquierda a derecha. 
+(Si la frase es correcta tiene que terminar en el axioma).
+
+- LR (left right)
+
+Las gramáticas que elaboran el árbol de abajo hacia arriba
+y de derecha a izquierda.
+
+- LL(n) 
+- LR(n)
+
+Donde n es el número de tokens que hay que enviar para que reconozca 
+unívocamente la frase que está analizando.
+
+Cualquier gramática con n > 1, se puede trabajar con una gramátic
+equivalente n = 1.
+
+
+Resumen:
+
+Cualquier sentencia de un lenguaje de programación.
+Caracter a caracter de izquierda a derecha. Reconoce palabras
+y la anota en la tabla de símbolos.
+Estos tokens los manda al analizador sintáctico que crea
+el árbol, mediante LL o LR, o LL(n) LR(n):
+
+
+- Análisis léxico (automáta finito)
+- Análisis sintáctico (autómata con pilas)
