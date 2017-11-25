@@ -482,20 +482,14 @@ Se almacena en una estructura de datos (que reside en memoria) donde se guarda e
 Con particiones del mismo tamaño, la ubicación de los procesos en memoria es trivial. En cuanto haya una partición disponible, un proceso se carga en dicha partición. Si todas las particiones se encuentran ocupadas por procesos que no están listos para ejecutar, entonces uno de dichos procesos debe llevarse a disco para dejar espacio para un nuevo proceso. Cuál de los procesos se lleva a disco es una decisión de **planificación**. <br>
 Con particiones de diferente tamaño, hay dos formas posibles de asignar los procesos a las particiones. La forma más sencilla consiste en asignar cada proceso a la partición más pequeña dentro de la cual cabe. Se necesita una cola de planificación para cada partición que mantenga procesos en disco destinados a dicha partición. La ventaja es que los procesos siempre se asignan de tal forma que se minimiza la memoria malgastada dentro de una partición (fragmentación interna). Pero no es óptima. Una técnica óptima sería emplear una única cola para todos los procesos. En el moento de cargar un proceso en la memoria principal, se selecciona la partición más pequeña disponible que puede albergar dicho proceso. Si todas las particiones están ocupadas, se debe llevar a cabo una decisión para enviar a *swap* a algún proceso. <br>
 El uso de particiones de distinto tamaño proporciona un grado de flexibilidad frente a las particiones fijas. Además, los esquemas de particiones fijas son relativamente sencillos y requieren un soporte mínimo por parte del SO y una sobrecarga de procesamiento mínimo. Sin embargo, tiene una serie de **desventajas**:
-- El númerod e particiones especificadsa en tiempo de generación del sistema limita el número de procesos activos (no suspendidos) del sistema.
+- El número de particiones especificadas en tiempo de generación del sistema limita el número de procesos activos (no suspendidos) del sistema.
 - Debido a que los tamaños de las particiones son preestablecidos en tiempo de generación del sistema, los trabjaos pequeños no utilizan el espacio de las particiones eficientemente. En un entorno donde el requisito de almacenamiento principal de todos los trabajos se conoce de antemano. Se trata de una técnica ineficiente.<br>
 
 <img src="media/tema2/problemas_fragmentacion_memoria.png">
 <br>
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Estono va aqui
-#### Ventajas y desventajas
 
-- **Ventaja**: se gestiona mejor la memoria.
-- **Desvetanjas**: los accesos a memoria, sin fragmentación son más rápidos, de la otra manera hay que hacer varios accesos, registros
-1. cpu memoria principas--> lee marco
-2. memoria al marco 25 --> coge desplazamineto
-en total hace dos accesos a memoria.
 
 
 >> Este apartado se recoge en las páginas 314-316 de Stalling,  habla de la paginación estática y denámica de una manera mucho más amplia que la que aquí se recoge, pero he preferido dejar la expicación tomada en clase, ya que no creo que se nos pida más de esa.
@@ -507,10 +501,9 @@ Es decir, la solución es trocear el espacio lógico en unidades más pequeñas:
 Los esquemas de organización del espacio lógico de direcciones y de traducción de una dirección del espacio lógico al espacio físico son:
 - Paginación
 - Segmentación
+<br>
+Por lo que, para solucionar ese problema, está el Buffer de traducción adelantada TLB, lo que se tiene en CPU, es un trocito de la tablas de página en marcos, se lee ese trocito, si aparece el marco, solo habría un acceso, si no se esta memoria se llama Caché (memoria muy rápida).  La forma de acceder pro ardware, inteneta buscar esa página el paralelo, esta tabla tiene número pagin num marco y bits de protección, en cache no necesita el número de páginas
 
->>>>>>
-Para solucionar ese problema, Buffer de traducción adelantada TLB, lo que se tiene en cpu, es un trocito de la tabalde página en marcos, se lee ese trocito, si aparece el marco, solo habría un acceso, si no se Esta memoria se llama Caché, memoria muy rápida.  La forma de acceder pro ardware, inteneta buscar esa página el paralelo, esta tabla tiene número pagin num marco y bits de protección, en cache no necesta el número de páginas
->>>>>>
 
 #### 4.6.1 Paginación
 Consiste en trocear los procesos de manera homogénea, es decir, todo se parte de la misma manera: la memoria física se divide en bloques iguales, el tamaño es potencia de dos, de 512 B a 8 KB estas porciones se denominan **marcos de página**.<br>
@@ -540,18 +533,47 @@ Toda referencia a la memoria virtual puede causar dos accesos a la memoria físi
 
 <br>
 Dada una dirección virtual, el procesador primero examina la TLB, si la entrada de la tabla de páginas solicitad está presente (acierto en TLB), entonces se recupera el número de marco y se construye la dirección real. Si la entrada de la tabla de páginas solictiada no se encuentra (fallo en la TLB), el procesador utiliza el número de página para indexar la tabla de páginas del proceso y examinar la correspondiente entrada de la tabla de páginas. Si el bit de presente está puesto a 1, entonces la página se encuentra en memoria principal, y el procesador puede recuperar el número de marco desde la entrada de la tabla de páginas para construir la dirección real. El procesador también autorizará la TLB para incluir esta nueva entrada de tabla de páginas. Finalmente, si el bit presente no está pueso a 1, entonces la página solicitad no se encuentra en la memoria principal y se produce un fallo de acceso de meomria, llamado **fallo de página**. En este punto, abandonamos el dominio del hardware para invocar al SO, el cual cargará la página necesaria y actualizada de la tabla de páginas.
+<br>
+Cada entrada de la TLB debe incluir un número de página así como la entrada de la tabla de páginas completa. El procesador proporciona un hardware que permite consultar simultáneamente varias entradas para determinar si hay una conciencia sobre un número de página. Esta técnica se denomina **resolución asociativa (asociative mapping)** que contrasta con la resolución directa, o indexación, utilizada para buscar en la tabla de páginas. El mecanismo de memoria virtual debe interactuar con el sistema de cache (no la cache de TLB, sino la cache de la memoria principal).
+<br>
+En resumen, el problema de los dos accesos a memoria se resuelve con una caché hardware de consulta rápida denominada búfer de traducción
+adelantada o **TLB** (*Translation Look-aside Buffer*).
+<br>
+El TLB se implementa como un conjunto de **registros asociativos** que permiten una búsqueda en paralelo. De esta forma, para traducir una dirección:
+1 Si existe ya en el registro asociativo, obtenemos el marco.
+2 Si no, la buscamos en la tabla de páginas y se actualiza el TLB con esta nueva entrada.
 
+##### 4.6.1.5 Ventajas y desventajas
+- **Ventaja**: se gestiona mejor la memoria.
+- **Desvetanjas**: los accesos a memoria, sin fragmentación son más rápidos, de la otra manera hay que hacer varios accesos, registros
+1. cpu memoria principas--> lee marco
+2. memoria al marco 25 --> coge desplazamineto
+En total hace dos accesos a memoria.
 
 #### 4.6.2 Segmentación
-Divide el programa en trozos no necesariamente iguales,  relacionados con la arquitectura del programa.
+Esquema de organización de memoria que soporta mejor la visión de memoria del usuario: un programa es una colección de unidades lógicas (segmentos). Por ejemplo: procedimientos, funciones, pila, tabla de símbolos, matrices, etc.<br>
+> Insertar diapositiva 49
+<br>
+
+>>Esto que es??? -------> Divide el programa en trozos no necesariamente iguales, relacionados con la arquitectura del programa.
 En las direcciones lógicas de la paginación se deberá de dar la página y  el desplazamiento para poder ser traducidas a direcciones físicas, para ello el SO crea una tabla de paginas (*entradas*) y en cada fila aparece el **marco** en el que está la página y  bits de protección o **modo de acceso**, de lectura o escritura. La tabla de páginas está en memoria principal, por tanto la tabla empezará a partir de una determinada dirección base, esa dirección base, cuando se ejecuta el proceso se carga en el registro base de la tabla de páginas, (el desplazamiento es el mismo dentro y fuera de la máquina).
 
 ##### 4.6.2.1 Tabla de Segmentos
-
+Una dirección lógica es una tupla:
+ <número_de_segmento, desplazamiento>
+La **Tabla de Segmentos** aplica *direcciones bidimensionales* definidas por el usuario en direcciones físicas de una dimensión. Cada entrada de la tabla tiene los siguientes elementos (aparte de presencia, modificación y protección):
+- **base**: dirección física donde reside el inicio del segmento en memoria.
+- **tamaño**: longitud del segmento.
 ##### 4.6.2.2 Implementación de la Tabla de Segmentos
-
+La tabla de segmentos se mantiene en memoria principal.
+- El **Registro Base de la Tabla de Segmentos (RBTS)** apunta a la
+tabla de segmentos (suele almacenarse en el PCB del proceso).
+- El **Registro Longitud de la Tabla de Segmentos (STLR)** indica el
+número de segmentos del proceso; el no de segmento s, generado
+en una dirección lógica, es legal si **s < STLR** (suele almacenarse
+en el PCB del proceso).
 ##### 4.6.2.3 Esquema de traducción
-
+> Insertar diapositiva 52
 
 ## 5. COMPILADORES
 
