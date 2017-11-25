@@ -390,7 +390,7 @@ Las hebras hebras debido a su característica de ejecución de programas present
 - Bloqueado
 - Nuevo
 - Finalizado
-> Insertar imagen diapositiva 30
+<img src="media/tema2/diap30.png">
 
 #### 3.3 Ventajas de las hebras
 Los mayores beneficios de los hilos provienen de las consecuencias del rendimiento:
@@ -441,14 +441,13 @@ La direcciones lógicas se combierten en físicas después de la de compilación
 ### 4.2 Reubicacion estática
 El **compilador** genera **direcciones lógicas** (relativas) de 0 a M. La decisión de **dónde ubicar** el programa en memoria principal se realiza en **tiempo de carga**. El **cargador** añade la dirección base de carga a todas las referencias relativas a meomria de programa.<br>
 Es decir, una vez que se conoce la posición de memoria en la que se va a colocar el programa, durante la carga a cada dirección de memoria lógica le suma la dirección base, la primera dirección donde se va a cargar, dando lugar a direcciones absolutas.<br>
-La **ventaja** que aporta es que el cambio de dirección lógica a absoluta solo se hace una vez, pero como **desventaja** ya no se puede cambiar.<br>
->Insertar imagen diapositiva 35
+La **ventaja** que aporta es que el cambio de dirección lógica a absoluta solo se hace una vez, pero como **desventaja** ya no se puede <img src="media/tema2/diap35.png">
 
 ### 4.3 Reubicación dinámica
 El **compilador** genera **direcciones lógicas** (relativas) de 0 a M. La **traducción** de direcciones lógicas a físicas se realizan en **tiempo de ejecución**, luego el programa está cargado con referencias relativas. Además, requiere apoyo **hardware**. <br>
 Es decir, durante la carga se escribe en memoria principal las direcciones lógicas o relativas y cada vez que se vaya a acceder a una de estas direcciones se le suma la dirección base.<br>
 Esto tiene de **ventaja** el ahorro de operaciones en caso de qeu haya direcciones que no se utilicen, aunque en la actualidad la reubicación absoluta es obsoleta ya que ahora se encarga la CPU de esto.
->Insertar imagen diapositiva 36
+<img src="media/tema2/diap36.png">
 
 ### 4.4 Espacios para las direcciones de memoria
 
@@ -475,7 +474,7 @@ Conjunto de direcciones físicas (memoria principal) correspondientes a las dire
 Todo el espacio de memoria direccionable por el ordenador. Normalmente depende del tamaño del bus de direcciones.
 #### Mapa de memoria de un proceso.
 Se almacena en una estructura de datos (que reside en memoria) donde se guarda el tamaño total del espacio de direcciones lógico y la correspondencia entre las direcciones lógicas y las físicas.
-<img src="media/tema2/mapa_de_memoria.png" width="450" height="350">
+<img src="media/tema2/mapa_de_memoria.png">
 
 
 ### 4.5 Problema de la fragmentación de memoria
@@ -488,12 +487,6 @@ El uso de particiones de distinto tamaño proporciona un grado de flexibilidad f
 <img src="media/tema2/problemas_fragmentacion_memoria.png">
 <br>
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Estono va aqui
-
-
-
->> Este apartado se recoge en las páginas 314-316 de Stalling,  habla de la paginación estática y denámica de una manera mucho más amplia que la que aquí se recoge, pero he preferido dejar la expicación tomada en clase, ya que no creo que se nos pida más de esa.
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 ### 4.6 Solución a la fragmentación de memoria
 Con el particionamiento dinámico, las particiones son de longitud y número variable. Cuando se lleva un proceso a la memoria principal, se le asgina exactamente tanta memoria como requiera y no más. <br>
@@ -529,7 +522,7 @@ Una entrada por cada página del proceso:
 - En este este esquema cada acceso a una instrucción o dato requiere dos accesos a memoria, uno a la tabla de páginas y otro a memoria.
 ##### 4.6.1.4 Búfer de Traducción Adelantada (TLB)
 Toda referencia a la memoria virtual puede causar dos accesos a la memoria física: uno para buscar la entrada la tabla de páginas apropiada y otro para buscar los datos solicitados. De esa forma, un esquema de memoria virtual básico causaría el efecto de duplicar el tiempo de acceso a memoria. Para solventar este problema, la mayoría de esquemas de la memoria virtual utilizan un *cache* especial de alta velocidad para las entradas de la tabla de página (**TLB**, Translation Look-aside- Buffer). Esta *cache* funciona de forma similar a una memoria cache general y contiene aquellas entradas de la tabla de páginas que han sido usadas de forma más reciente. La organización del hardware de paginación resultante es:
-> Insertar diapositiva 48
+<img src="media/tema2/diap48.png">
 
 <br>
 Dada una dirección virtual, el procesador primero examina la TLB, si la entrada de la tabla de páginas solicitad está presente (acierto en TLB), entonces se recupera el número de marco y se construye la dirección real. Si la entrada de la tabla de páginas solictiada no se encuentra (fallo en la TLB), el procesador utiliza el número de página para indexar la tabla de páginas del proceso y examinar la correspondiente entrada de la tabla de páginas. Si el bit de presente está puesto a 1, entonces la página se encuentra en memoria principal, y el procesador puede recuperar el número de marco desde la entrada de la tabla de páginas para construir la dirección real. El procesador también autorizará la TLB para incluir esta nueva entrada de tabla de páginas. Finalmente, si el bit presente no está pueso a 1, entonces la página solicitad no se encuentra en la memoria principal y se produce un fallo de acceso de meomria, llamado **fallo de página**. En este punto, abandonamos el dominio del hardware para invocar al SO, el cual cargará la página necesaria y actualizada de la tabla de páginas.
@@ -552,7 +545,7 @@ En total hace dos accesos a memoria.
 
 #### 4.6.2 Segmentación
 Esquema de organización de memoria que soporta mejor la visión de memoria del usuario: un programa es una colección de unidades lógicas (segmentos). Por ejemplo: procedimientos, funciones, pila, tabla de símbolos, matrices, etc.<br>
-> Insertar diapositiva 49
+<img src="media/tema2/diap49.png">
 <br>
 
 >>Esto que es??? -------> Divide el programa en trozos no necesariamente iguales, relacionados con la arquitectura del programa.
