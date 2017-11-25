@@ -63,13 +63,9 @@ personas y asociaciones como: **David Hilbert** y en 1950 **Burbaki**. Gracias a
 **Turing** crea las "máquinas de Turing" y posteriormente "la máquina universal de Turing" que
 podría considerarse uno de los precursores del ordenador.
 
-5. A este ritmo los ordenadores iban surgiendo de manera natural. **A. Church** saca la máquina de
-cálculo **Post** y comienzan a aparecer los nuevos paradigmas: operacionales, funcionales y lógicos.
+5. A este ritmo los ordenadores iban surgiendo de manera natural. **A. Church** saca la máquina de cálculo **Post** y comienzan a aparecer los nuevos paradigmas: operacionales, funcionales y lógicos.
 
-6. Surge el primer ordenador, **Colosus** para generar tablas de tiro, más tarde los ingleses lo
-utilizaron para manejar la información de los radares, aunque no se sabe si el primero fue alemán
-por los archivos encontrados tras su muerte a **Kamrao Zure** ingeniero para el ejército alemán
-durante la primera guerra mundial.
+6. Surge el primer ordenador, **Colosus** para generar tablas de tiro, más tarde los ingleses lo utilizaron para manejar la información de los radares, aunque no se sabe si el primero fue alemán por los archivos encontrados tras su muerte a **Kamrao Zure** ingeniero para el ejército alemán durante la primera guerra mundial.
 
 Aquí se acaba la historia con personajes y comienza la evolución de la arquitectura de los
 computadores:
@@ -405,27 +401,54 @@ Los mayores beneficios de los hilos provienen de las consecuencias del rendimien
 5. Permiten aprovechar las **técnicas** de programación concurrente y el multiprocesamiento simétrico.
 
 ## 4. GESTIÓN BÁSICA DE MEMORIA
->> [Stall05] (pp. 308-309, 331-337)
 ### 4.1 Carga absoluta y reubicación
-No es posible conocer previamente las direcciones de memoria de un programa, el SO operativo es el que se encarga de posicionar y tener la información de la memoria.
-Las direcciones que puede asignar un compilador son las físicas o absolutas y las que empiezan en cero, realticas o lógicas, utilizar siempre absolutas implicaría que simpre se utilizase la misma direcciones de memoria, en el caso de instrucciones se suma lo mismo o en el caso de bucles también se saltas. 
-<img src="media/tema2/carga_absoluta_reubicacion.png" width="300" height="350"> 
-cuando se compila un programa se realiza la reubicación, a la carga relativa se el suma la dirección inicial en la que se inicia.
+Los requisitos que la gestión de memoria debe satisfacer son:
+- Reubicación.
+- Protección.
+- Compartición.
+- Organización lógica.
+- Organización física.
+<br>
+**REUBICACIÓN**
+Es la capacidad de cargar y ejecutar un programa en un lugar arbitrario de la memoria. <br>
+En un sistema multiprogramado, la memoria principal disponible se comparte entre varios procesos. Por lo que no es posible saber anticipadamente qué programas residirán en memoria principal en tiempo de ejecución de su programa. Sería bueno poder intercambiar procesos en la memoria principal para maximizar la utilización del procesador, proporcionando un gran número de procesos para la ejecución. Una vez que un programa se ha llevado al disco, sería bastante limitante tener que colocarlo en la misma región de memoria principal donde se hallaba, cuando este se trae de nuevo a la memoria. Por el contrario, podría ser necesario **reubicar** el proceso a un área de memoria diferente. <br>
+Por tanto, no se puede conocer de forma anticipada dónde se va a colocar un programa y se debe permitir que los programas se puedan mover en la memoria principal, debido al *intercambio o swap*. Esto pone de manifiesto a aspectos técnicos relacionados con el direccionamiento.<br>
+Las instrucciones de salto contienen una dirección para referenciar una instrucción que se va a ejecutar a continuación. Las instrucciones de referencia de los datos contienen la dirección del byte o palabra de datos referenciados.<br>
+
+**CARGA**
+El primer paso en la creación de un proceso activo es cargar un programa en memoria principal y crear una imagen del proceso. En la carga de programa se debe satisfacer el direccionamiento siguiendo tres técnicas diferentes:
+- Carga absoluta.
+- Carga reubicable.
+- Carga dinámica en tiempo real.
+<br>
+**Carga absoluta**
+Consiste ne asignar direcciones físicas (direcciones de memoria principal) al programa en tiempo de compilación. El programa no es reubicable. <br>
+Un cargador absoluto requiere que un módulo de carga dado deb cargarse siempre en la misma ubicación de la memoria principal. Por tanto, en el módulo de carga presentado al cargador, todas las referencias a direcciones deben ser direcciones de memoria principal específicas o absolutas. <br>
+Es preferible permitir que las referencias de memoria dentro de los programas se expresen simbólicamente, y entonces resolver dichas referencias simbólicas en tiempo de compilación o ensamblado. Cada referencia a una instrucción o elemento de datos se representa inicialmente como un símbolo. A la hora de preparar el módulo para su entrada a un cargador absoluto, el ensamblador o compilador convertirá todas estas referencias a direcciones específicas. <br>
+<br>
+<br>
+No es posible conocer previamente las direcciones de memoria de un programa, el SO es el que se encarga de posicionar y tener la información de la memoria.<br>
+Las direcciones que puede asignar un compilador son las físicas o absolutas y las que empiezan en cero, realticas o lógicas, utilizar siempre absolutas implicaría que siempre se utilizase la misma direcciones de memoria, en el caso de instrucciones se suma lo mismo o en el caso de bucles también se saltas. 
+<br>
+<img src="media/tema2/carga_absoluta_reubicacion.png" width="600" height="350"> 
+<br>
+Cuando se compila un programa se realiza la reubicación, a la carga relativa se el suma la dirección inicial en la que se inicia.
 (en el núcleo, el esto tiene direccione es carga absoluta, en el se basa el grub)
 si la máquina que tienes no tiene la memoria suficiente, ejecutar los mismos programas comparando con una de mauor, lo que tiene poca memoria, lo que tiene que hacer es coger y descargar los procesos de discos, la localización supone supa cálculo...
 
 La direcciones lógicas se combierten en físicas después de la de compilación y antes de la ejecución o antes de que use la dirección, estos dos momentos son estáticas y dinámica.
 
 ### 4.2 Reubicacion estática
-Una vez que se conoce la posición de memoria en la que se va a colocar el programa, durante la carga a cada dirección de memoria lógica le suma la dirección base, la primera dirección donde se va a cargar, dando lugar a direcciones absolutas.
-Las ventajas que aporta es que el cambio de dirección lógica a absoluta solo se hace una vez, pero como desventaja ya no se puede cambiar.
-
+El **compilador** genera **direcciones lógicas** (relativas) de 0 a M. La decisión de **dónde ubicar** el programa en memoria principal se realiza en **tiempo de carga**. El **cargador** añade la dirección base de carga a todas las referencias relativas a meomria de programa.<br>
+Es decir, una vez que se conoce la posición de memoria en la que se va a colocar el programa, durante la carga a cada dirección de memoria lógica le suma la dirección base, la primera dirección donde se va a cargar, dando lugar a direcciones absolutas.<br>
+La **ventaja** que aporta es que el cambio de dirección lógica a absoluta solo se hace una vez, pero como **desventaja** ya no se puede cambiar.<br>
+>Insertar imagen diapositiva 35
 
 ### 4.3 Reubicación dinámica
-La reubicación dinámica se produce en tiempo de ejecución.
-Durante la carga se escribe en memoria principal las direcciones lógicas o relativas y cada vez que se vaya a acceder a una de estas direcciones se le suma la dirección base.
-Esto tiene de ventaja el ahorro de operaciones en caso de qeu haya direcciones que no se utilicen, aunque en la actualidad la reubicación absoluta es obsoleta ya que ahora se encarga la CPU de esto.
-
+El **compilador** genera **direcciones lógicas** (relativas) de 0 a M. La **traducción** de direcciones lógicas a físicas se realizan en **tiempo de ejecución**, luego el programa está cargado con referencias relativas. Además, requiere apoyo **hardware**. <br>
+Es decir, durante la carga se escribe en memoria principal las direcciones lógicas o relativas y cada vez que se vaya a acceder a una de estas direcciones se le suma la dirección base.<br>
+Esto tiene de **ventaja** el ahorro de operaciones en caso de qeu haya direcciones que no se utilicen, aunque en la actualidad la reubicación absoluta es obsoleta ya que ahora se encarga la CPU de esto.
+>Insertar imagen diapositiva 36
 
 ### 4.4 Espacios para las direcciones de memoria
 
@@ -433,40 +456,40 @@ Esto tiene de ventaja el ahorro de operaciones en caso de qeu haya direcciones q
 Conjunto de direcciones lógicas (o relativas) que utiliza un programa ejecutable.
 
 #### Espacio de direcciones físico.
-Conjunto de direcciones físicas (memoria principal) correspondientes a las direcciones lógicas del programa en un instante dado. El sistema operativo contiene un mapa con la memoria, procesos, tabla de signos...  Cuando se está realizando la compilación a cada nombre se el asigna una dirección de memoria, para los símbolos no resueltos por el compilador ( ejemplo funciones externas) se resuelven durante la encadernación o enlace.
-> como apuntes: la tabla de símbolos puede ser dinámica o estática, en caso de ser dinámica el encuadernador hará uso de ella.
-> Los datos a los que se le asigna un valor al comienzo del programa, en memoria estarían despuén del código, en argumentos de progrma y pila.
+Conjunto de direcciones físicas (memoria principal) correspondientes a las direcciones lógicas del programa en un instante dado. El sistema operativo contiene un mapa con la memoria, procesos, tabla de signos...  Cuando se está realizando la compilación a cada nombre se el asigna una dirección de memoria, para los símbolos no resueltos por el compilador ( ejemplo funciones externas) se resuelven durante la encadernación o enlace. <br>
+> Como apuntes: la tabla de símbolos puede ser dinámica o estática, en caso de ser dinámica el encuadernador hará uso de ella.
+<br>
+> Los datos a los que se le asigna un valor al comienzo del programa, en memoria estarían despuén del código, en argumentos de programa y pila.
+<br>
 > Las pilas se van formando cada vez que se llama a una función, creando zonas de **registros de activación** que contienen los valores que van tomando las funciones.
+<br>
 > Para buscar una variable se buscan en los registros que la han llamado, a diferencia de la variables globales.
-> Lo que se gurada en una pila de la CPU es la dirección de la dirección que es distinta a la pila de proceso, que está en la pila de la cpu y otra en memoria principal, en el registro de acivación de la variables globales.
+<br>
+> Lo que se guarda en una pila de la CPU es la dirección de la dirección que es distinta a la pila de proceso, que está en la pila de la CPU y otra en memoria principal, en el registro de acivación de la variables globales.
+<br>
 
-<img src="media/tema2/mapa_de_memoria.png" width="300" height="350">
-montículo o módulo: en él se van almacenando las varaibles dinámicas, las listas y las pilas, al final del espacio de memoria reservado. Para evitar un desbordamiento del montículo se uiliza el **recolector de basura** compacta el espacio no utilizado en en memoria.
+<br>
+**Montículo o módulo:** en él se van almacenando las variables dinámicas, las listas y las pilas, al final del espacio de memoria reservado. Para evitar un desbordamiento del montículo se uiliza el **recolector de basura** compacta el espacio no utilizado en memoria.
 
 #### Mapa de memoria de un ordenador.
 Todo el espacio de memoria direccionable por el ordenador. Normalmente depende del tamaño del bus de direcciones.
 #### Mapa de memoria de un proceso.
 Se almacena en una estructura de datos (que reside en memoria) donde se guarda el tamaño total del espacio de direcciones lógico y la correspondencia entre las direcciones lógicas y las físicas.
+<img src="media/tema2/mapa_de_memoria.png" width="450" height="350">
 
 
 ### 4.5 Problema de la fragmentación de memoria
+Con particiones del mismo tamaño, la ubicación de los procesos en memoria es trivial. En cuanto haya una partición disponible, un proceso se carga en dicha partición. Si todas las particiones se encuentran ocupadas por procesos que no están listos para ejecutar, entonces uno de dichos procesos debe llevarse a disco para dejar espacio para un nuevo proceso. Cuál de los procesos se lleva a disco es una decisión de **planificación**. <br>
+Con particiones de diferente tamaño, hay dos formas posibles de asignar los procesos a las particiones. La forma más sencilla consiste en asignar cada proceso a la partición más pequeña dentro de la cual cabe. Se necesita una cola de planificación para cada partición que mantenga procesos en disco destinados a dicha partición. La ventaja es que los procesos siempre se asignan de tal forma que se minimiza la memoria malgastada dentro de una partición (fragmentación interna). Pero no es óptima. Una técnica óptima sería emplear una única cola para todos los procesos. En el moento de cargar un proceso en la memoria principal, se selecciona la partición más pequeña disponible que puede albergar dicho proceso. Si todas las particiones están ocupadas, se debe llevar a cabo una decisión para enviar a *swap* a algún proceso. <br>
+El uso de particiones de distinto tamaño proporciona un grado de flexibilidad frente a las particiones fijas. Además, los esquemas de particiones fijas son relativamente sencillos y requieren un soporte mínimo por parte del SO y una sobrecarga de procesamiento mínimo. Sin embargo, tiene una serie de **desventajas**:
+- El númerod e particiones especificadsa en tiempo de generación del sistema limita el número de procesos activos (no suspendidos) del sistema.
+- Debido a que los tamaños de las particiones son preestablecidos en tiempo de generación del sistema, los trabjaos pequeños no utilizan el espacio de las particiones eficientemente. En un entorno donde el requisito de almacenamiento principal de todos los trabajos se conoce de antemano. Se trata de una técnica ineficiente.<br>
 
-El núcle del sistema operativo está cargado en las direcciones de memoria más baja, el firmware nada más empezar carga el so.
-Supongamos que el SO empieza a generar subprocesos que se van desarrollando de arriba a bajo y al final algunos procesos queden huecos,espacios de memoria libre,  con el objetivo de solucionar esto, sin tener que cargar y descargar de nuevo los procesos surgen:
+<img src="media/tema2/problemas_fragmentacion_memoria.png">
+<br>
 
-#### La fragmentación
-Consiste en trocear los procesos de manera homogénea, todo se parte de la misma manera, la memoria se divide en trozos iguales, el tamaño es potencia de dos, de 512 B a 8 KB estos espacios se deniminan **marcos**, por otra parte se tienen los procesos  se dividen en trozos iguales, del mismo tamaño del marco, salvo el último que puede ser más perqueño, denominados **páginas**.
-Normalmente en la paginación por una parte va el código y por otra los datos, cuando se ejecuta el  proceso los marcos libres empiezan a ocuparse, no necesariamente de manera ordenada. El estado de un marco se recoge en el **mapa de marcos libres**.
-Para acceder a una dirección, se debe saber la página en que está, y dentro de la página el desplazamiento,es decir, desde el principio de su ejeción necesito saber en qué marco se está desarrollando y línea concreta.
-<img src="media/tema2/direcciones_paginacion.png">
-
-####  Segmentación
-Divide el programa en trozos no necesariamente iguales,  relacionados con la arquitectura del programa.
-En las direcciones lógicas de la paginación se deberá de dar la página y  el desplazamiento para poder ser traducidas a direcciones físicas, para ello el SO crea una tabla de paginas (*entradas*) y en cada fila aparece el **marco** en el que está la página y  bits de protección o **modo de acceso**, de lectura o escritura. La tabla de páginas está en memoria principal, por tanto la tabla empezará a partir de una determinada dirección base, esa dirección base, cuando se ejecuta el proceso se carga en el registro base de la tabla de páginas, (el desplazamiento es el mismo dentro y fuera de la máquina).
-<img src="media/tema2/esquema_traduccion_paginacion.png">
-
-
-#### ventajas y desventajas
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Estono va aqui
+#### Ventajas y desventajas
 
 - **Ventaja**: se gestiona mejor la memoria.
 - **Desvetanjas**: los accesos a memoria, sin fragmentación son más rápidos, de la otra manera hay que hacer varios accesos, registros
@@ -474,31 +497,54 @@ En las direcciones lógicas de la paginación se deberá de dar la página y  el
 2. memoria al marco 25 --> coge desplazamineto
 en total hace dos accesos a memoria.
 
->> Este aparetado se recoge en las páginas 314-316 de Stalling,  habla de la paginación estática y denámica de una manera mucho más amplia que la que aquí se recoge, pero he preferido dejar la expicación tomada en clase, ya que no creo que se nos pida más de esa.
+
+>> Este apartado se recoge en las páginas 314-316 de Stalling,  habla de la paginación estática y denámica de una manera mucho más amplia que la que aquí se recoge, pero he preferido dejar la expicación tomada en clase, ya que no creo que se nos pida más de esa.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 ### 4.6 Solución a la fragmentación de memoria
+Con el particionamiento dinámico, las particiones son de longitud y número variable. Cuando se lleva un proceso a la memoria principal, se le asgina exactamente tanta memoria como requiera y no más. <br>
+Es decir, la solución es trocear el espacio lógico en unidades más pequeñas: **páginas** (elementos de longitud física), o **segmentos** (elementos de longitud variable). Los trozos no tienen por qué ubicarse consecutivamente en el espacio físico.<br>
+Los esquemas de organización del espacio lógico de direcciones y de traducción de una dirección del espacio lógico al espacio físico son:
+- Paginación
+- Segmentación
+
+>>>>>>
 Para solucionar ese problema, Buffer de traducción adelantada TLB, lo que se tiene en cpu, es un trocito de la tabalde página en marcos, se lee ese trocito, si aparece el marco, solo habría un acceso, si no se Esta memoria se llama Caché, memoria muy rápida.  La forma de acceder pro ardware, inteneta buscar esa página el paralelo, esta tabla tiene número pagin num marco y bits de protección, en cache no necesta el número de páginas
-
-<img src="media/tema2/problemas_fragmentacion_memoria.png"> 	      
-
->> POR SI NO FUERA OBVIO, POR AQUÍ ME HE QUEDADO
->> las diapositicos uqe quuedan son  a partir de la 46, vamos que ya queda nada, el índice va un poco mal, señalo con >>> lo que ya está hecho, la verdad es que le dejo a alguien más fresco la tarea de arreglarlo
+>>>>>>
 
 #### 4.6.1 Paginación
-
+Consiste en trocear los procesos de manera homogénea, es decir, todo se parte de la misma manera: la memoria física se divide en bloques iguales, el tamaño es potencia de dos, de 512 B a 8 KB estas porciones se denominan **marcos de página**.<br>
+El espacio lógico de un proceso se divide conceptualmente en bloques del mismo tamaño, salvo el último que puede ser más pequeño, denominados **páginas**. <br>
+Los marcos de página contendrán páginas de los procesos. <br>
+Normalmente en la paginación por una parte va el código y por otra los datos, cuando se ejecuta el proceso los marcos libres empiezan a ocuparse, no necesariamente de manera ordenada. El estado de un marco se recoge en el **mapa de marcos libres**.
+Para acceder a una dirección, se debe saber la página en que está, y dentro de la página el desplazamiento,es decir, desde el principio de su ejeción necesito saber en qué marco se está desarrollando y línea concreta.<br>
+<img src="media/tema2/direcciones_paginacion.png">
+<br>
+Cuando la CPU genere una dirección lógica será necesario traducirla a la dirección física correspondiente, la **tabla de páginas** mantiene información necesaria para realizar dicha traducción. Existe una tabla de páginas por proceso.
+**Tabla de marcos de página**, usada por el SO y contiene información sobre cada marco de página.
 
 ##### 4.6.1.1 Contenido de la tabla de páginas
-
+Una entrada por cada página del proceso:
+- **Número de marco** en el que está almacenada la página si está en MP.
+- **Modo de acceso** autorizado a la página (bits de protección).
 ##### 4.6.1.2 Esquema de traducción
+<img src="media/tema2/esquema_traduccion_paginacion.png">
 
->>>>>> has aquí 
 ##### 4.6.1.3 Implementación de la Tabla de Páginas
-
+- La tabla de páginas se mantiene en memoria principal.
+- El *registro base de la tabla de páginas* (**RBTP**) apunta a la tabla de páginas (suele almacenarse en el PCB del proceso).
+- En este este esquema cada acceso a una instrucción o dato requiere dos accesos a memoria, uno a la tabla de páginas y otro a memoria.
 ##### 4.6.1.4 Búfer de Traducción Adelantada (TLB)
+Toda referencia a la memoria virtual puede causar dos accesos a la memoria física: uno para buscar la entrada la tabla de páginas apropiada y otro para buscar los datos solicitados. De esa forma, un esquema de memoria virtual básico causaría el efecto de duplicar el tiempo de acceso a memoria. Para solventar este problema, la mayoría de esquemas de la memoria virtual utilizan un *cache* especial de alta velocidad para las entradas de la tabla de página (**TLB**, Translation Look-aside- Buffer). Esta *cache* funciona de forma similar a una memoria cache general y contiene aquellas entradas de la tabla de páginas que han sido usadas de forma más reciente. La organización del hardware de paginación resultante es:
+> Insertar diapositiva 48
 
+<br>
+Dada una dirección virtual, el procesador primero examina la TLB, si la entrada de la tabla de páginas solicitad está presente (acierto en TLB), entonces se recupera el número de marco y se construye la dirección real. Si la entrada de la tabla de páginas solictiada no se encuentra (fallo en la TLB), el procesador utiliza el número de página para indexar la tabla de páginas del proceso y examinar la correspondiente entrada de la tabla de páginas. Si el bit de presente está puesto a 1, entonces la página se encuentra en memoria principal, y el procesador puede recuperar el número de marco desde la entrada de la tabla de páginas para construir la dirección real. El procesador también autorizará la TLB para incluir esta nueva entrada de tabla de páginas. Finalmente, si el bit presente no está pueso a 1, entonces la página solicitad no se encuentra en la memoria principal y se produce un fallo de acceso de meomria, llamado **fallo de página**. En este punto, abandonamos el dominio del hardware para invocar al SO, el cual cargará la página necesaria y actualizada de la tabla de páginas.
 
 
 #### 4.6.2 Segmentación
+Divide el programa en trozos no necesariamente iguales,  relacionados con la arquitectura del programa.
+En las direcciones lógicas de la paginación se deberá de dar la página y  el desplazamiento para poder ser traducidas a direcciones físicas, para ello el SO crea una tabla de paginas (*entradas*) y en cada fila aparece el **marco** en el que está la página y  bits de protección o **modo de acceso**, de lectura o escritura. La tabla de páginas está en memoria principal, por tanto la tabla empezará a partir de una determinada dirección base, esa dirección base, cuando se ejecuta el proceso se carga en el registro base de la tabla de páginas, (el desplazamiento es el mismo dentro y fuera de la máquina).
 
 ##### 4.6.2.1 Tabla de Segmentos
 
@@ -548,4 +594,4 @@ Volviendo a cómo se almacenan la variables, en lo concerniente a las constantes
 ### 5.1 Resumen
 
 El compilador conforme traduce, asigna direcciones relativas a variables y controladores de flujo. Cuando el programa se carga en memoria el SO es el encargado de gestionar el acceso del programa en memoria.
-
+<br>
