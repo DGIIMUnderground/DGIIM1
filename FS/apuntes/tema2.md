@@ -448,29 +448,41 @@ Todo el espacio de memoria direccionable por el ordenador. Normalmente depende d
 #### Mapa de memoria de un proceso.
 Se almacena en una estructura de datos (que reside en memoria) donde se guarda el tamaño total del espacio de direcciones lógico y la correspondencia entre las direcciones lógicas y las físicas.
 
->> POR AQUÍ ME HE QUEDADO
+
 ### 4.5 Problema de la fragmentación de memoria
 
-El núcle del sistema operativo está cargado en las direcciones de memoria más baja, el firmeare nada más empezar carga el so, que va cargado.
-Supongamos que el So empieza a generar z¡proceso que se van desarrollando de arriba a bajo y pueden que empiecen a quedar huecos, que la solución no sea descargar y cargar lso procesos de nuevo.
-La fra¡gmentación consitste en trocear los procesos:
-- una en plan dictarorial, todo se parte de la misma manera, la memoria se divide en trozos iguales, entre 512 k y 800k,? esos trozos son **marcos**, pro otra parte se tienen los procesos que se dividen en trozos iguale, salvo el último que puede ser más perqueños, estos trozos del mismo tamaño que el marco se llama **páginas**, esto es físicamente como está.
-Normalmente la paginación por una parte va el código y por otra los datos, cuando se ejecuta el le proceso los marcos empinezan a ocuparse, cuando ba a cargar unproceso en el mapa de marcos libres coje y mete páginas del porceos que no cecesariamente tiene que estar ordenados. Para acceder a una dirección, saber la página en que está, y dentro de la página el desplazamiento desde el principipp cuando se esté ejecutando necesito saber en que marco se está desarrollando.
+El núcle del sistema operativo está cargado en las direcciones de memoria más baja, el firmware nada más empezar carga el so.
+Supongamos que el SO empieza a generar subprocesos que se van desarrollando de arriba a bajo y al final algunos procesos queden huecos,espacios de memoria libre,  con el objetivo de solucionar esto, sin tener que cargar y descargar de nuevo los procesos surgen:
 
-- Segmentación , divide el progrma en trozos que estén relacionados con la arquitectura que tiene, los trozos no tienen por qué ser iguales,
-Las direccione logicas de la paginación se deberá de dar el pagína eu el desplazamiento.
- El so crea una tabla de paginas (entrada) y en cada fila aparece el marco en el que está la página y un bits d eprotección si se puede escrbir ysi se pude escribir. La tabla de páginas está en memoria principal, por tanto la tabla empezará a partir de una determinada dirección base, esa dirección base, cuando se ejecuta el proceso se carga en registro base de la tabla de págiana,
- (el desplazamiento es el mismo dentro y fuera de la máquina)
+#### La fragmentación
+Consiste en trocear los procesos de manera homogénea, todo se parte de la misma manera, la memoria se divide en trozos iguales, el tamaño es potencia de dos, de 512 B a 8 KB estos espacios se deniminan **marcos**, por otra parte se tienen los procesos  se dividen en trozos iguales, del mismo tamaño del marco, salvo el último que puede ser más perqueño, denominados **páginas**.
+Normalmente en la paginación por una parte va el código y por otra los datos, cuando se ejecuta el  proceso los marcos libres empiezan a ocuparse, no necesariamente de manera ordenada. El estado de un marco se recoge en el **mapa de marcos libres**.
+Para acceder a una dirección, se debe saber la página en que está, y dentro de la página el desplazamiento,es decir, desde el principio de su ejeción necesito saber en qué marco se está desarrollando y línea concreta.
+<img src="media/tema2/direcciones_paginacion.png">
 
-ventaja: se gestiona mejor la memoria.
-desvetanjas lso accesos a memoria, sin fragmentación es muy rápida, de la otra manera hay que hacer varias acceso, registros
-1. cpu memroria principas--> lee marco
-2. memoria al marco 25 --> coge desplaczamein
+####  Segmentación
+Divide el programa en trozos no necesariamente iguales,  relacionados con la arquitectura del programa.
+En las direcciones lógicas de la paginación se deberá de dar la página y  el desplazamiento para poder ser traducidas a direcciones físicas, para ello el SO crea una tabla de paginas (*entradas*) y en cada fila aparece el **marco** en el que está la página y  bits de protección o **modo de acceso**, de lectura o escritura. La tabla de páginas está en memoria principal, por tanto la tabla empezará a partir de una determinada dirección base, esa dirección base, cuando se ejecuta el proceso se carga en el registro base de la tabla de páginas, (el desplazamiento es el mismo dentro y fuera de la máquina).
+<img src="media/tema2/esquema_traduccion_paginacion.png">
 
-en total hace dos accesoa a memoria.
+
+#### ventajas y desventajas
+
+- **Ventaja**: se gestiona mejor la memoria.
+- **Desvetanjas**: los accesos a memoria, sin fragmentación son más rápidos, de la otra manera hay que hacer varios accesos, registros
+1. cpu memoria principas--> lee marco
+2. memoria al marco 25 --> coge desplazamineto
+en total hace dos accesos a memoria.
+
+>> Este aparetado se recoge en las páginas 314-316 de Stalling,  habla de la paginación estática y denámica de una manera mucho más amplia que la que aquí se recoge, pero he preferido dejar la expicación tomada en clase, ya que no creo que se nos pida más de esa.
 
 ### 4.6 Solución a la fragmentación de memoria
 Para solucionar ese problema, Buffer de traducción adelantada TLB, lo que se tiene en cpu, es un trocito de la tabalde página en marcos, se lee ese trocito, si aparece el marco, solo habría un acceso, si no se Esta memoria se llama Caché, memoria muy rápida.  La forma de acceder pro ardware, inteneta buscar esa página el paralelo, esta tabla tiene número pagin num marco y bits de protección, en cache no necesta el número de páginas
+
+<img src="media/tema2/problemas_fragmentacion_memoria.png"> 	      
+
+>> POR SI NO FUERA OBVIO, POR AQUÍ ME HE QUEDADO
+>> las diapositicos uqe quuedan son  a partir de la 46, vamos que ya queda nada, el índice va un poco mal, señalo con >>> lo que ya está hecho, la verdad es que le dejo a alguien más fresco la tarea de arreglarlo
 
 #### 4.6.1 Paginación
 
@@ -479,6 +491,7 @@ Para solucionar ese problema, Buffer de traducción adelantada TLB, lo que se ti
 
 ##### 4.6.1.2 Esquema de traducción
 
+>>>>>> has aquí 
 ##### 4.6.1.3 Implementación de la Tabla de Páginas
 
 ##### 4.6.1.4 Búfer de Traducción Adelantada (TLB)
