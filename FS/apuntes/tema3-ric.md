@@ -265,3 +265,35 @@ el árbol, mediante LL o LR, o LL(n) LR(n):
 
 - Análisis léxico (automáta finito)
 - Análisis sintáctico (autómata con pilas)
+
+
+Traductores:
+	- Intérpretes
+		Lee sentencia a sentencia, la traduce a código
+		máquina y se ejecuta en tiempo real.
+		Ejemplos de lenguajes interpretados:
+			Python, Ruby, Perl
+		Generalmente, los intérpretes generan código más ineficiente,
+		pues se gana en tiempo de traducción.
+	- Compiladores
+		Existe una fase de compilación (traducción del código
+		) y luego
+		se ejecuta en lenguaje máquina.
+		Ejemplos de lenguajes compilados:
+			C, C++, Go, Rust, etc..
+
+Código máquina
+Tabla de símbolos
+	- Cada función / Clase genera su propia tabla
+	de símbolos
+Mapa de memoria (el código tiene tanto tamaño)
+
+
+Una vez escrito un programa en módulos independientes, que realizan
+llamadas a funciones en otros, es necesaria la acción del encuadernador
+(parte del proceso de compilación) para que se ejecute correctamente.
+
+El encuadernador además separa los datos del código y diseña el mapa
+de memoria total.
+
+
