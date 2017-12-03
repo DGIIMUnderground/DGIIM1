@@ -6,9 +6,9 @@
 ### 1.1 Concepto de lenguaje de programación
 Un **lenguaje de programación** es un conjunto de símbolos y de reglas para combinarlos, que se usan para expresar algoritmos.
 
-	Poseen un **léxico** (vocabulario o conjunto de símbolos permitidos), una **sintaxis** (indica cómo realizar construcciones del lenguaje) y una **semántica** (determina el significado de cada construcción correcta.
+Poseen un **léxico** (vocabulario o conjunto de símbolos permitidos), una **sintaxis** (indica cómo realizar construcciones del lenguaje) y una **semántica** (determina el significado de cada construcción correcta.
 
-	Los lenguajes de programación, o lenguajes de alto nivel, están específicamente diseñados para programar computadores. Sus características son:
+Los lenguajes de programación, o lenguajes de alto nivel, están específicamente diseñados para programar computadores. Sus características son:
 - Son **independientes** de la arquitectura física del computador. Por tanto, no obligan al programador a conocer los detalles del computador que utiliza, y permiten utilizar los mismos programas en computadores diferentes, con distinto lenguaje de máquina (*portabilidad*).
 - Una **sentencia** en un lenguaje de alto nivel da lugar, tras el proceso de traducción, a **varias instrucciones** en lenguaje máquina.
 - Algo expresado en un lenguaje de alto nivel utiliza **notaciones más cercanas a las habituales** en el ámbito en el que se usan.
@@ -61,20 +61,20 @@ Fases en la traducción de un programa fuente a un programa objeto, por un compi
 ### 2.5 Definición de gramática
 La complejidad de la verificación sintáctica depende del tipo de gramática que define el lenguaje.
 
-Una gramática definida como G=(V_N, V_T, P, S), donde:
-- V_N es el conjunto de símbolos no terminales.
-- V_T es el conjunto de símbolos terminales.
+Una gramática definida como G=($V_N$, $V_T$, P, S), donde:
+- $V_N$ es el conjunto de símbolos no terminales.
+- $V_T$ es el conjunto de símbolos terminales.
 - P es el conjunto de producciones.
 - S es el simbolo inicial.
 
-**EJEMPLO**
+**EJEMPLO.**
 Dada la gramática siguiente:
 
 <img src="media/Tema3/D8_1.png">
 
 
 Y el texto de entrada: 
-		**id+id*(id-(id/id))**
+		id+id*(id-(id/id))
 
 Usando las reglas de formación gramatical, se obtendría una representación que valida la construcción del texto de entrada -> verificación sintáctica correcta.
 
@@ -105,15 +105,21 @@ El analizador léxico realiza otras funciones secundarias:
 
 
 **EJEMPLO 1**
+
 <img src="media/Tema3/D11.png">
 
 **EJEMPLO 2**
+
 <img src="media/Tema3/D12.png">
 
 **EJEMPLO 3**
+
 Al realizar el análisis léxico de la sentencia Pascal
+
 		Intensidad := (Magnitud + D) * 17
+
 se generará la siguiente secuencia de símbolos:
+
 		Identificador [1]
 		Asignación
 		(
@@ -141,7 +147,7 @@ literales).
 #### 3.2.3 Especificación de los Tokens usando expresiones regulares
 Se pueden usar expresiones regulares para identificar un patrón de símbolos del alfabeto como pertenecientes a un token determinado:
 1. Cero o mas veces, operador *
-2. Uno o más veces, operador +: r* = r^+$|\lambda
+2. Uno o más veces, operador +: r* = $r^+$|$\lambda$
 3. Cero o una vez, operador ?
 4. Una forma cómoda de definir clases de caracteres es de la siguiente forma:
 		a|b|c|···|z = [a-z]
@@ -176,9 +182,9 @@ Si no se encuentra un árbol sintáctico para una secuencia de entrada, entonces
 #### 3.3.2 Gramáticas libres de contexto
 > Completar con (Aho08, pp197)
 
-Una gramática definida como G=(V_N, V_T, P, S), donde:
-- V_N es el conjunto de símbolos no terminales.
-- V_T es el conjunto de símbolos terminales.
+Una gramática definida como G=($V_N$, $V_T$, P, S), donde:
+- $V_N$ es el conjunto de símbolos no terminales.
+- $V_T$ es el conjunto de símbolos terminales.
 - P es el conjunto de producciones.
 - S es el símbolo inicial.
 
@@ -188,20 +194,23 @@ se dice que es una gramática libre de contexto cuando el conjunto de produccion
 <img src="media/Tema3/D18.png">
 
 
-es decir, solo admiten tener un símbolo no terminal en su parte izquierda. La denominación *libre de contexto* se debe a que se puede cambiar A por /alfa , independientemente del contexto en el que aparezca A.
+es decir, solo admiten tener un símbolo no terminal en su parte izquierda. La denominación *libre de contexto* se debe a que se puede cambiar A por $/alfa$ , independientemente del contexto en el que aparezca A.
 
 
 #### 3.3.3 Gramáticas ambiguas
 Una gramática es ambigua cuando admite más de un árbol sintáctico para una misma secuencia de símbolos de entrada.
 
-Ejemplo 3.2: Dadas las producciones de la gramática del ejemplo 4.1 y dada la misma secuencia de entrada **id+id*id**, se puede apreciar que le pueden corresponder dos árboles sintácticos.
+**Ejemplo 3.2**: Dadas las producciones de la gramática del ejemplo 4.1 y dada la misma secuencia de entrada **id+id*id**, se puede apreciar que le pueden corresponder dos árboles sintácticos.
 
 <img src="media/Tema3/D19.png">
 
 
 Cuando programamos en un determinado lenguaje:
+
 ¿A qué nos referimos cuando hablamos de “precedencia de operadores”?
+
 ¿Por qué hay que utilizar los paréntesis para evitar la precedencia de operador?
+
 
 ### 3.4 Análisis semántico
 Semántica de un lenguaje de programación es el significado dado a las distintas construcciones sintácticas.
@@ -216,7 +225,10 @@ En el proceso de traducción, el significado de las sentencias se obtiene de la 
 
 		sent_asignación -> IDENTIFICADOR OP_ASIG expresion PYC
 
-		Donde *IDENTIFICADOR*, *OP_ASIG* y *PYC* son símbolos terminales (tokens) que representan a una variable, el operador de asignación "=" y al delimitador de sentencia ";" respectivamente, deben cumplirse las siguientes reglas semánticas:
+		Donde *IDENTIFICADOR*, *OP_ASIG* y *PYC* son símbolos terminales (tokens)
+		que representan a una variable, el operador de asignación "="
+		y al delimitador de sentencia ";" respectivamente, deben cumplirse
+		las siguientes reglas semánticas:
 		- *IDENTIFICADOR* debe estar previamente declarado.
 		- El tipode la *expresion* debe ser acorde al tipo del *IDENTIFICADOR*.
 
@@ -281,7 +293,7 @@ En la práctica, el usuario crea un archivo con el programa fuente. Esto suele r
 ## 5. Modelo de memoria de un proceso
 El SO gestiona el mapa de meomria de un proceso durante la vida del mismo. Además, el mapa inicial de un proceso está muy vinculado con el archivo que contiene el programa ejecutable asociado al mismo.
 
-	Los programadores desarrollan sus aplicaciones utilizando lenguajes de alto nivel. Por lo que una aplicación estará compuesta por un conjunto de módulos de código fuente que deberán ser procesados para obtener el ejecutable de la aplicación. Este procesamiento consta de dos fases:
+Los programadores desarrollan sus aplicaciones utilizando lenguajes de alto nivel. Por lo que una aplicación estará compuesta por un conjunto de módulos de código fuente que deberán ser procesados para obtener el ejecutable de la aplicación. Este procesamiento consta de dos fases:
 - **Compilación**: se genera el código máquina correspondiente a cada módulo fuente de la aplicación asignando direcciones a los símbolos definidos en el módulo y resolviendo las referencias a los mismos. Como resultado de esta fase se genera un módulo objeto por cada archivo fuente.
 - **Montaje o enlace**: se genera un ejecutable agrupando todos los archivos objeto y resolviendo las referencias entre módulos.
 
@@ -367,6 +379,7 @@ pasar por varias fases antes de poder ejecutarse:
 
 ### 6.1 Ejemplo de compilación
 **gcc o g++** es un wrapper (envoltorio) que invoca a:
+
 		$ gcc -v ejemplo.c
 		cpp1 ... 	// preprocesador
 		cc ... 	// compilador
@@ -375,16 +388,21 @@ pasar por varias fases antes de poder ejecutarse:
 
 
 Podemos salvar los archivos temporales con
+
 		$ gcc -save-temps
 
 Podemos generar el archivo ensamblador con
+
 		$ gcc –S
 
 El archivo objeto con
+
 		$ gcc –c
 
 Enlazar un objeto para generar el ejecutable con:
+
 		ld objeto.o -o eje
+
 
 ### 6.2 Compilación
 El compilador procesa cada uno de los archivos de código fuente para generar el correspondiente archivo objeto.
@@ -398,6 +416,7 @@ Realiza las siguientes acciones:
 
 *Ejemplo*
 Programa ejemplo:
+
 		#include <stdio.h>
 		int x=42;
 
@@ -406,6 +425,7 @@ Programa ejemplo:
 			printf("Hola Mundo, x=%d\n", x);
 
 Tabla de símbolos:
+
 		$ gcc -c hola.c
 		$ nm hola.o
 		00000000 T main
@@ -431,9 +451,9 @@ En ocasiones, debe realizar reubicaciones dependiendo del esquema de gestión de
 #### 6.3.3 Tipos de enlazado y ámbito
 - **Atributos de enlazado:** externo, interno o sin enlazado
 - Los tipos de enlazado definen una especie de **ámbito:**
-	- Enlazado externo --> visibilidad global
-	- Enlazado interno --> visibilidad de fichero
-	- Sin enlazado --> visibilidad de bloque
+	- Enlazado externo -> visibilidad global
+	- Enlazado interno -> visibilidad de fichero
+	- Sin enlazado -> visibilidad de bloque
 
 #### 6.3.4 Reglas de enlazado
 1. Cualquier objeto/identificador que tenga ámbito global deberá tener enlazado interno si su declaración contiene el especificador **static.**
@@ -486,7 +506,7 @@ Los archivos objeto (resultado de la compilación) y ejecutable (resultado del e
 ### 7.1 Definiciones
 Una **biblioteca** es una colección de objetos normalmente relacionados entre sí.
 
-	Las bibliotecas favorecen modularidad y reusabilidad del código. Podemos clasificarlas según la forma de enlazarlas:
+Las bibliotecas favorecen modularidad y reusabilidad del código. Podemos clasificarlas según la forma de enlazarlas:
 - **Bibliotecas estáticas**: se enlazan con el programa en la compilación (.a).
 - **Bibliotecas dinámicas**: se enlazan en ejecución (.so).
 
@@ -498,6 +518,7 @@ Una biblioteca estática es básicamente un conjunto de archivos objeto que se c
 
 Pasos para su creación:
 - Construimos el código fuente:
+
 		double media(double a, double b)
 		{
 			return (a+b) / 2;
@@ -505,12 +526,15 @@ Pasos para su creación:
 
 
 - Generamos el objeto:
+
 		gcc -c calc_mean.c -o calc_mean.o
 
 - Archivamos el objeto (creamos la biblioteca):
+
 		ar rcs libmean.a calc_mean.o
 
 - Utilizamos la biblioteca:
+
 		gcc -static prueba.c -L. -lmean -o statically_linked
 
 
@@ -522,9 +546,9 @@ Las bibliotecas estáticas tiene algunos inconvenientes:
 - Si actualizamos las bibliotecas, debemos recompilar el programa para que se beneficie de la nueva versión.
 
 
-	Para resolver estas deficiencias se usan las **bibliotecas dinámicamente enlazadas o bibliotecas dinámicas**. Las bibliotecas dinámicas se integran **en ejecución**, para ello se ha realizado la reubicación de módulos. Su diferencia con un ejecutable: tienen tabla de símbolos, información de reubicación y no tiene punto de entrada.
+Para resolver estas deficiencias se usan las **bibliotecas dinámicamente enlazadas o bibliotecas dinámicas**. Las bibliotecas dinámicas se integran **en ejecución**, para ello se ha realizado la reubicación de módulos. Su diferencia con un ejecutable: tienen tabla de símbolos, información de reubicación y no tiene punto de entrada.
 	
-	Cuando en la fase de montaje el montador procesa una biblioteca dinámica, no incluye en el ejecutable código extraído de la misma, sino que simplemente anota en el ejecutable el nombre de la biblioteca para que ésta sea cargada y enlazada en tiempo de ejecución.
+Cuando en la fase de montaje el montador procesa una biblioteca dinámica, no incluye en el ejecutable código extraído de la misma, sino que simplemente anota en el ejecutable el nombre de la biblioteca para que ésta sea cargada y enlazada en tiempo de ejecución.
 
 Pueden ser:
 - **Bibliotecas compartidas de carga dinámica** – la reubicación se realiza en tiempo de enlazado.
@@ -538,15 +562,19 @@ Pueden ser:
 
 ### 7.5 Creación y uso de bibliotecas dinámicas
 - Generamos el objeto de la biblioteca:
+
 		gcc -c -fPIC calc_mean.c -o calc_mean.o
 
 - Creamos la bibloteca:
+
 		gcc -shared -Wl,-soname,libmean.so.1 -o libmean.so.1.0.1 calc_mean.o
 
 - Usamos la biblioteca:
+
 		gcc main.c -o dynamically_linked -L. -lmean
 
 - Podemos ver las bibliotecas enlazadas con un programa:
+
 		ldd hola
 
 
