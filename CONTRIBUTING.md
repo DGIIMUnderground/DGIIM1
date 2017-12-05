@@ -21,7 +21,7 @@ esencia en una palabra.
 mayúscula de acuerdo con las siglas propias del plan de estudios (Ej.: LMD,FS, etc.)
 3. En el caso de problemas copiar siempre el enunciado.
 4. El mensaje de cada commit deberá ir precedido por la sigla de la asignatura
-en la que se haya contribuido. Ejemplo: `git commit -m "LMD: Naufragio recurrente".
+en la que se haya contribuido. Ejemplo: `git commit -m "LMD: Naufragio recurrente".`
 En el caso de que el commit sea más general y esté relacionado con ninguna
 asignatura en particular, simplemente no se ponen siglas.
 Ejemplo: `git commit -m "Siglas para contribuir"`.
