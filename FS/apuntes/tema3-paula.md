@@ -22,7 +22,7 @@ La utilización de conceptos habituales suele implicar las siguientes cualidades
 - Contiene **operadores** y **funciones**: aritméticas (seno, coseno...), especiales (cambiar un dato de tipo real a entero...), lógicas (comparar...), de tratamiento de caracteres (buscar una subcadena en una cadena de caracteres...), etc.
 - Pueden incluirse **comentarios** en las líneas de instrucciones o específicas.
 
->Insertar imagen 582
+<img src="media/Tema3/traduccion.jpg">
 
 Aunque los programas escritos en lenguajes de programación no pueden ser directamente interpretados por el computador, siendo necesario realizar previamente su *traducción* a lenguaje máquina. Hay dos tipos de traductores de lenguajes de programación: compiladores e intérpretes.
 
@@ -374,7 +374,7 @@ pasar por varias fases antes de poder ejecutarse:
 4. Enlazado
 5. Carga y Ejecución
 
->Insertar diapositiva 38
+<img src="media/Tema3/D38.png">
 
 
 ### 6.1 Ejemplo de compilación
@@ -437,7 +437,7 @@ Tabla de símbolos:
 El **enlazador** (linker) debe agrupar los archivos objetos de la aplicación y las bibliotecas, y resolver las referencias entre ellos.
 En ocasiones, debe realizar reubicaciones dependiendo del esquema de gestión de memoria utilizado.
 
->Insertar diapositiva 41
+<img src="media/Tema3/D41.png">
 
 #### 6.3.1 Funciones del enlazador
 - Se completa la etapa de resolución de símbolos externos utilizando la tabla de símbolos.
@@ -446,7 +446,7 @@ En ocasiones, debe realizar reubicaciones dependiendo del esquema de gestión de
 - En sistemas paginados, se realiza la **reubicación de regiones**, es decir, transformar direcciones de una región en direcciones del mapa del proceso.
 
 #### 6.3.2 Agrupamiento de módulos en regiones
->Insertar diapositiva 43
+<img src="media/Tema3/D43.png">
 
 #### 6.3.3 Tipos de enlazado y ámbito
 - **Atributos de enlazado:** externo, interno o sin enlazado
@@ -510,7 +510,7 @@ Las bibliotecas favorecen modularidad y reusabilidad del código. Podemos clasif
 - **Bibliotecas estáticas**: se enlazan con el programa en la compilación (.a).
 - **Bibliotecas dinámicas**: se enlazan en ejecución (.so).
 
->Insertar diapositiva 54
+<img src="media/Tema3/D54.png">
 
 
 ### 7.2 Bibliotecas estáticas
