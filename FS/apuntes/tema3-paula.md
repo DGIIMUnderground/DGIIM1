@@ -22,7 +22,7 @@ La utilización de conceptos habituales suele implicar las siguientes cualidades
 - Contiene **operadores** y **funciones**: aritméticas (seno, coseno...), especiales (cambiar un dato de tipo real a entero...), lógicas (comparar...), de tratamiento de caracteres (buscar una subcadena en una cadena de caracteres...), etc.
 - Pueden incluirse **comentarios** en las líneas de instrucciones o específicas.
 
-<img src="media/Tema3/traduccion.png">
+<img src="media/Tema3/traduccion.jpg">
 
 Aunque los programas escritos en lenguajes de programación no pueden ser directamente interpretados por el computador, siendo necesario realizar previamente su *traducción* a lenguaje máquina. Hay dos tipos de traductores de lenguajes de programación: compiladores e intérpretes.
 
