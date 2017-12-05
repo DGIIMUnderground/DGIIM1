@@ -38,8 +38,8 @@ Resumen Cálculo
 - Potencias
 - Dado un número a perteneciente a los positivos, existe un único número `b > 0`, cuya potencia `k` es igual a `a`: `b^k = a`. Se llama **"raíz k-ésima de a"**, `a^(1/k)`
 - Un conjunto `A` es denso en un intervalo en `I` si, cada dos números de `I`, hay uno de `A`. Ejemplos: 
-	- `Q` es denso en `ℝ`
-	- `ℝ\Q` es denso en `R` 
+	- `ℚ` es denso en `ℝ`
+	- `ℝ\ℚ` es denso en `ℝ` 
 - Desigualdad de las medias
 - Finitud e infinitud
 - Propiedades de los conjuntos finitos
