@@ -246,7 +246,8 @@ vector<vector<int> > m; // Matriz de enteros
 ```
                   |
             ¡Este espacio es muy importante
-            para que ciertos compiladores no den
+            para evitar problemas en C++98 no den
             problemas!
+(En C++11 este espacio no es necesario):
 
 Los compiladores se confunden con `>>` (operador de extracción).
