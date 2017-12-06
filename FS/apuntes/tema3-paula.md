@@ -442,7 +442,7 @@ pasar por varias fases antes de poder ejecutarse:
 4. Enlazado
 5. Carga y Ejecución
 
-<img src="media/Tema3/D38.png">
+<img src="media/Tema3/D37.png">
 
 
 ### 6.1 Ejemplo de compilación
