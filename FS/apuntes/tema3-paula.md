@@ -180,7 +180,65 @@ A partir de una secuencia de tokens, el analizador sintáctico nos devuelve:
 Si no se encuentra un árbol sintáctico para una secuencia de entrada, entonces la secuencia de entrada es incorrecta sintácticamente (tiene errores sintácticos).
 
 #### 3.3.2 Gramáticas libres de contexto
-> Completar con (Aho08, pp197)
+Si utilizamos una variable sintáctica *instr* para denotar las instrucciones, y una variable *expr* para denotar las expresiones, la siguiente producción:
+
+		instr -> if (expr) instr else instr
+
+especifica la estructura de esta forma de instrucción condicional. 
+
+La gramática libre de contexto consiste en terminales, no terminales, un símbolo inicial y producciones.
+1. Los **terminales** son los símbolos básicas a partir de los cuales se forman las cadenas. El término *nombre de token* es un sinónimo de *terminal*. Las terminales son los primeros componentes de los tokens que produce el analizador léxico. En el ejemplo, los terminales son las palabras reservadas *if* y *else*, y los símbolos *(* y *)*.
+2. Los **no terminales** son variables sintácticas que denotan conjuntos de cadenas. En el ejemplo *instr* y *expr* son no terminales. Los conjuntos de cadenas denotados por los no terminales ayudan a definir el lenguaje generado por la gramática. Los no terminales imponen una estructura jerárquica sobre el lenguaje, que representa la clave para el análisis sintáctico y la traducción.
+3. En una gramática, un no terminal se distingue como el **símbolo inicial**, y el conjunto de cadenas que denota es el lenguaje generado por la gramática. Las producciones para el símbolo inicial se listan primero.
+4. Las **producciones** de una gramática especifcan la forma en que pueden combinarse los terminales y los no terminales para formar cadenas. Cada producción consiste en:
+	4.1 Un no terminal, conocido como *encabezado* o *lado izquierdo* de la producción; esta producción define algunas de las cadenas denotadas por el encabezado.
+	4.2 El símbolo *->* o *:=*.
+	4.3 Un *cuerpo* o *lado derecho*, que consiste en cero  más terminales y no terminales. Los componentes del cuerpo describen una forma en que pueden construirse las cadenas del no terminal en el encabezado.
+
+*Ejemplo*. En esta gramática, los símbolos de los terminales son:
+
+		id + - * / ( )
+
+Los símbolos de los no terminaels son *expresión*, *term* y *factor*, y *expresión* es el símbolo inicial.
+
+
+
+Gramática par las expresiones aritméticas simples:
+
+expresión -> expresión + term
+
+expresión -> expresión - term
+
+expresión -> term
+
+term -> term * factor
+
+term -> term / factor
+
+term -> factor
+
+factor -> (expresión)
+
+factor -> id
+
+
+
+**CONVENCIONES DE NOTACIÓN**
+1. Estos símbolos son **terminales**:
+	1.1 Las primeras letras minúsculas del alfabeto, como *a*, *b*, *c*.
+	1.2 Los símbolos de operadores como +, *.
+	1.3 Los símbolos de puntuación como paréntesis, coma...
+	1.4 Los dígitos 0, 1, ..., 9.
+	1.5 Las cadenas en negrita como *id* o *if*, cada una de las cuales representa un solo símbolo terminal.
+2. Estos símbolos son **no terminales**:
+	2.1 Las primeras lteras mayúsculas del alfabeto, como *A*, *B*, *C*.
+	2.2 La letra *S* que es el símbolo inicial.
+	2.3 Los nombres en cursiva y minúsculas, como *expr* o *instr*.
+	2.4 Al hablar sobre las construcciones de programación, las letras mayúsculas pueden utilizarse para representar no terminales. Por ejemplo, los no terminales para expresiones, término y factores se representan a menudo *E*, *T*, *F*, respectivamente.
+
+
+
+DIAPOSITIVAS:
 
 Una gramática definida como G=($V_N$, $V_T$, P, S), donde:
 - $V_N$ es el conjunto de símbolos no terminales.
@@ -306,12 +364,23 @@ En resumen, los elementos responsables de la gestión de memoria son:
 - MMU (Memory Management Unit).
 
 ### 5.1 Niveles de la gestión de memoria
-- **Nivel de procesos** - reparto de memoria entre los procesos. Responsabilidad del SO.
-- **Nivel de regiones** - distribución del espacio asignado a un proceso a las regiones del mismo. Gestionado por el SO.
-- **Nivel de zonas** - reparto de una región entre las diferentes zonas (nivel estático, dinámico basado en pila y dinámico basado en heap) de ésta. Gestión del lenguaje de programación con soporte del SO.
+- **Nivel de procesos** - reparto de memoria entre los procesos. Responsabilidad del SO. Se realizan operaciones vinculadas con la gestión del mapa de memoria del proceso:
+	- **Crear el mapa de memoria del proceso** (*crear_mapa*): antes de comenzar la ejecución de un programa, hay que iniciar su imagen de memoria tomando como base el fichero ejecutable que lo contiene. En UNIX se rata del servicio *exec*.
+	- **Eliminar el mapa de memoria del proceso** (*eliminar_mapa*): cuando termina la ejcución de un proceso, hay que liberar todos sus recursos, entre los que está su mapa de memoria. En UNIX también hay que liberar el mapa actual del proceso en el servicio *exec*, antes de crear el nuevo mapa basado en el ejecutable especifciado.
+	- **Duplicar el mapa de memoria del proceso** (*duplicar_mapa*): el servicio *fork* de UNIX crea un unevo proceso cuyo mapa de memoria es un duplicado del mapa del padre.
+	- **Cambiar de mapa de meomria de proceso** (*cambiar_mapa*): cuando se produce un cambio de contexto, habrá que activar de alguna forma el nuevo map y desactivar el anterior.
+- **Nivel de regiones** - distribución del espacio asignado a un proceso a las regiones del mismo. Gestionado por el SO. Las operaciones están relacionadas con la gestión de las regiones:
+	- **Crear una región dentro del mapa de un proceso** (*crear_región*): será activada al crear el mapa del proceso, para crear las regiones iniciales del mismo. Además, se utilizará para ir creando las nuevas regiones que aparezcan según se va ejecutando el proceso.
+	- **Eliminar una región del mapa de un proceso** (*eliminar_región*): al terminar un proceso hay que eliminar todas sus regiones. Además, hay regiones que desaparecen durante la ejecución del proceso.
+	- **Cambiar el tamaño de una región** (*redimensionar_región*): algunas regiones, como la pila y el *heap*, tienen un tamaño dinámico que evoluciona según lo vaya requiriendo el proceso.
+	- **Duplicar una región del mapa de un proceso en el mapa de otro** (*duplicar_región*): el duplicado del mapa sociado al servicio *fork* requiere duplicar cad auna de las regiones del proceso padre.
+- **Nivel de zonas** - reparto de una región entre las diferentes zonas (nivel estático, dinámico basado en pila y dinámico basado en heap) de ésta. Gestión del lenguaje de programación con soporte del SO. Las operaciones identificadas solo son aplicables a las regiones que almacenan internamente múltiples zonas independientes, como *heap* o la pila.
+	- **Reservar una zona** (*reservar_zona*): en el caso de *heap* y tomando como ejemplo el lenguaje C++, se trataría del operador *new*.
+	- **Liberar una zona reservada** (*liberar_zona*): en C++ se corresponde a la operación *delete*.
+	- **Cambiar el tamaño de una zona reservada** (*redimensionar_zona*).
 
 ### 5.2 Necesidades de memoria de un proceso
-- Tener un espacio lógico independiente.
+- Tener un espacio lógico propio e independiente.
 - Espacio protegido del resto de procesos.
 - Posibilidad de compartir memoria.
 - Soporte a diferentes regiones.
@@ -334,16 +403,15 @@ Para ello veremos:
 - Bibliotecas.
 
 ### 5.4 Tipos de datos
-- Datos estáticos
-- Globales
-- Constantes o variables
-- Con o sin valor inicial – direccionamiento relativo: PIC. Se trata de una región privada ya que cad aproceso que ejecuta un determinado programa necesita una copia propia de las variables del mismo.
+- **Datos estáticos:** datos que existen durante toda la vida del programa. Cada dato tiene asociada una posición fija en el mapa de memoria del proceso durante toda la ejecución del programa. Tipos:
+	- **Globales:** a todo el programa, a todo un módulo o locales a una función, dependiendo del ámbito de viibilidad de la variable correspondiente. Es muy importante para el compilador y montador.
+	- **Constantes o variables:** las constantes no se modifican. El compilador puede hacer ciertas comprobaciones y generar un error en caso de que se intente modificar. Pero, es necesario asegurarse en tiempo de ejecución de que no se puede modificar, para lo cual habrá que asociar este tipo de dato a una región que no pueda modificarse.
+	- **Con o sin valor inicial** – direccionamiento relativo: PIC. En caso de que tenga un valor asociado, habrá que asegurarse de que este esté almacenado en la memoria cuando el proceso intente acceder al mismo. Dado que el mapa inicial del proceso se construye a partir del ejecutable, habrá que almacenar ese valor en el mismo. El código PIC se trata de una región privada ya que cada proceso que ejecuta un determinado programa necesita una copia propia de las variables del mismo.
+- Datos dinámicos asociados a la ejecución de una función: la vida de estte tipo de objetos de memoria está sociada a la ejecución de una función y se corresponden con las variables locales (las n o estáticas) y los parámetros de la función. Se crean cuando se invoca la función correspondiente y se destruyen cuando termina la llamada. En consecuencia, estas variables no tienen asignado espacio en el map ainicial del proceso ni en el ejecutable. Se almacenan dinámicamente en la pila del proceso, en una estructura de datos denominada **registro de activación**, donde se guardan las variables locales, parámetros y la información necesaria para retornar al punto de llamada cuando termina la ejecución de la función.
+La dirección que corresponde a una variable de este tipo se determina en tiempo de ejecución. Para acceder a esta variable, hay que consultar el último registro de activación apilado. Este tipo de variables, al igual que las estáticas, pueden tener asignado un valor inicial.
+- Datos dinámicos controlados por el programa – **heap**. Se trata de datos dinámicos que el programa crea cuando considera oportuno, usando los mecanismos proporcionados por el lenguaje de programación correspondiente. Los datos se guardan en la región *heap*, donde se van almacenando todos los datos dinámicos usados por el programa. El espacio asignado se liberará cuando ya no sea necesario, obien porque así lo indique el programa usando un mecanismo de detección automático, denominado **recolección de basura**.
+La dirección asociada a un dato de este tipo solo se conoce en tiempo de ejecución, cuando el entorno de ejecución del elnguaje le asigna una zona del *heap*. Las referencias a este tipo de objetos no necesitan reubicarse y cumplen la propiedad PIC. Por tanto, el compilador y las bibliotecas del lenguaje resuelven todos los aspectos de implementación requeridos.
 
-<br>
-
-- Datos dinámicos asociados a la ejecución de una función:
-- Se almacenan en pila en un **registro de activación  de las llamadas a funciones (las variables locales, parámetros, dirección de retorno...)**
-- Datos dinámicos controlados por el programa – **heap**. Esta región sirve de soporte para la memoria dinámica que reserva un programa en tiempo de ejecución. Cada programa tiene un único *heap*.
 
 <img src="media/tema2/mapa_de_memoria.png">
 
