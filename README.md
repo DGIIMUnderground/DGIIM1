@@ -1,8 +1,15 @@
 # 1º DGIIM
 
 Repositorio de apuntes de 1º del Doble grado de Informática y Matemáticas.
-La idea es mantener un espacio separado para nuestro curso y luego fusionar
-los cambios con el [repositorio general](https://github.com/libreim/apuntesDGIIM/)
+Nuestro objetivo es mantener un espacio separado para el curso y luego fusionar los cambios con el [repositorio general del grado](https://github.com/libreim/apuntesDGIIM/)
+
+## ¿Por qué debería colaborar en este maravillo repositorio?
+El trabajar en vano no es algo deseado y la generosidad  en época de parciales parece ser que tampoco, sin embargo, tenga presentes los frutos de participar:
+- El maestro sabe más que el aprendiz, refuerce y dé claridad a sus conocimientos haciéndolos materiales.
+- El total no es igual que la suma de sus partes, conozca herramientas como git y github que le darán cuerpo y consistencia a sus proyectos presentes y futuros.
+- Los sistemas tienden a sus niveles más bajos de energía, saber que su trabajo será público le conducirá a su perfeccionamiento.
+- La cultura, bien de todos; mejore su calidad en proyectos como este.
+- La unión hace la fuerza, no esté solo ante los problemas, recuerde que sus compañeros se encuentran frente al mismo y aydudándole se ayudan todos.
 
 ## ¿Cómo puedo ayudar?
 

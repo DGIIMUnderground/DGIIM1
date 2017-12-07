@@ -2,6 +2,7 @@
 
 ## Declaración de funciones
 - Declaración `inline`: sugiere al compilador que copie el código de la función y lo reemplaze por cada llamada a la función, si el código no es muy extenso, esto supondría una optimización.
+
 ## Conversión de datos 
 Conversión de tipos`static_cast<dataTypeName>(expresión) ` `static_cast<double>(25)`
 
@@ -57,7 +58,7 @@ Lee y escribe en fichero. Pasos a segir:
 - Sintaxis: ` <expresión1> ? <expresión2> : <expresion3>`
 - Si se cumple la expresión 1 realiza la expresión 2, en caso contrario la 3.
 
-Ejemplo súper molón de lal algoritmo de Euclides para calcular el mcd
+Ejemplo súper molón del algoritmo de Euclides para calcular el mcd
 ```cpp
 int Mcd( int a, int b )
 {
@@ -144,10 +145,40 @@ using nombre_namespace::miembro ; // para incluir un miembro concreto
  --- 				| --- 				| ---
  `assert ( expr) `			| Si una expresión es 0 termina el programa con un mesaje de error <br>necesita de la biblioteca `assert.h`
 
+## Vectores
+
+> No confundir con array, estos son dinámicos si necesidad de punteros
+> Lo escrito dentro de [] puede ser omitido
+
+- Se requiere de la **biblioteca vector** de la STL `include <vector>`  
+- Declaración de un vector: `vector<TIPO>NOMBRE [ ( [ TAMAÑO ] , [ OCUPADO ] ) ]` `vector<float> mis_notas_matemáticas( 2 , 0 )`  
+  - Por defecto el tamaño será 0
+  - Por defecto a tamaño dado, contiene 0
+
+- Se pueden hacer vectores de vectores `vector< vector < TIPO > ( TAMAÑO , vector<TIPO>(TAMAÑO) )` `vector< vector <float > > notas_DGIIM( 6 )`  
+  - Cuidado de no escribir en la sintaxis `>>` ya que es un operado
+
+### Funciones miembras
+
+ funcion      | descripción							| sintaxis
+ ---	      |  ---								|  ---
+ size 	      | Devuelve tamaño de vector				   	| `VECTOR.size()`
+ max_size     | Tamaño máximo (al declarse reserva un espacio de memoria ) 	| `VECTOR.max_size()`
+ resize       | Modifica el tamaño del vetor 	      	      	 	   	| `VECTOR.resize( NUEVO_TAMAÑO )`
+ empty	      | Devuelve si e vector está vacío 				| `VECTOR.empty()`
+ push_back    | Añade un elemento al final del vector				| `VECTOR.push_back(2.718281828)`
+ pop_back     | Elimina el último elemento     					| `VECTOR.pop_back()`
+
+[Para más información cpp reference] (http://www.cplusplus.com/reference/vector/vector/)
+
+
+
+
+
 ## Bibliografía
 
  Libro								| Autor		| Apreciaciones
  --- 								| --- 		| ---
- *C++ programing: Program desing including data structures* 	| D.S. Malik 	| Bien ejemplificado, nivel muy básico, recimendado como libro de iniciación
+ *C++ programing: Program desing including data structures* 	| D.S. Malik 	| Bien ejemplificado, nivel muy básico, recomendado como libro de iniciación
  cpp reference	  	  	 	   			| A saber quién escribirá eso | Muy útil para consultas puntuales
  
