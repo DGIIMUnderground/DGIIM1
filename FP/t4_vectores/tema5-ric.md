@@ -62,3 +62,50 @@ En el caso de protected, es accesible a clases derivadas (por herencia).
 
 En C++, tenemos el parámetros this como semejante al self, de python.
 
+
+15/12/17
+
+Importante de cara al examen:
+
+    - Escribir especificación de las funciones en el examen. 
+    - Referencias constantes
+    - Sobrecarga de operadores (+)
+    - Producto de 2 matrices
+        - 3 bucles anidados
+    
+
+Detalle importante:
+
+Cuando declaramos objetos constantes, ejemplo
+
+```c++
+const Fecha f,g
+if (f < g)
+    cout << "f es menor que g"
+```
+Esto da error si la sobrecarga del operador `<` está definida
+sin especificar `const` al final del método.
+
+Podemos copiar un objeto
+
+```c++
+Fecha::MetodoChachiPiruli() const {
+    Fecha f(*this);
+}
+```
+
+Curiosidad, si queremos sobrecargar el `operador++`,
+no podemos implementar el método constante.
+
+Para diferenciar la sobrecarga de los operadores
+incremento postfijo y el prefijo 
+
+```c++
+operator++(int) // Postfijo
+operator++() // Prefijo
+```
+
+Las variables de clase en C++ las declaramos mediante
+`static`
+
+`static const std::vector<int> dias_mes;`
