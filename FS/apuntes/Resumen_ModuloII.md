@@ -1,5 +1,5 @@
 # Módulo II
-## Sesión 8
+## SESIÓN 8: Compilación de programas
 ### Generar el ejecutable
 **.cpp -> .o**
 
@@ -109,6 +109,7 @@ Además, se puede invocar una regla sin dependencias a la hora de ejecutar la ut
 			rm *.o
 
 Para ejecutar esta última regla:
+
 		$ make -f <makefile> clean
 
 
@@ -177,9 +178,93 @@ De esta manera se obtiene
 
 
 
+## SESIÓN 9: Depuración de programas
+Para depurar programas se utiliza **gdb**, que permite ver qué pasa dentro de un programa cuando éste se ejecuta, o qué pasó cuando el programa dio un fallo y abortó.
+
+Esquema normal de funcionamiento:
+1. Compilar el programa con **g++ con la opción -g** (para poder usar gdb).
+
+		$ g++ -g <archivo1>.cpp <archivo2>.cpp -o <nombre>
+		
+		ó
+		
+		$ g++ -g -o <nombre> <archivo1>.cpp <archivo2>.cpp
+		
+		Donde <nombre> es el archivo ejecutable.
+
+2. Ejecutar el depurador **gdb**.
+3. Dentro del intérprete del depurador, ejecutar el programa con la orden **run**.
+4. Mostrar el **resultado** que aparece tras la ejecución.
 
 
 
+### Órdenes
+- **apropos**: busca en todo el manual por si hubiera ayuda a un término.
+		
+		apropos run
 
+- **quit / q**: abandonar el depurador.
+- **list / l**: listar código.
+	
+		list 1, 10
+		Para listar todas las líneas desde la 1a la 10
+
+- **display** *variable*: muestra el valor de la variable durante la ejecución cada vez que el programa se detiene en un punto de ruptura. A cada orden display se le asigna un valor numérico que permite referenciarla.
+- **print** *variable*: muestra el valor de una variable únicamente en el punto de ruptura en el que se da esta orden. Se puede aplicar tanto a variables de área global o de alcance local.
+- **delete display** *id*: elimina el efecto de la orden display sobre una variable, donde id representa el valor numérico asociado a la orden display correspondiente. Ese valor toma 1 para la primera orden display, 2 para la siguiente y así sucesivamente.
+- **examine** *dirección*: examina el contenido de una dirección de memoria. La dirección siempre se expresa en hexadecimal.
+- **show values**: muestra la historia de valores de las variables impresas.
+- **p/x $pc**: muestra el contador de programa usando su dirección lógica.
+- **x/i $pc**: muestra la siguiente instrucción que se ejecutará usando el contador de programa.
+- **disassemble**: muestra el código ensamblador de la parte que estamos depurando.
+- **whatis** *variable*: devuelve el tipo de una variable.
+- **info locals**: lista todas las variables locales.
+- **break**: para añadir puntos de ruptura simple que permiten examinar qué hace el programa en un determinado lugar. Puede tomar como parámetro: el nombre de una función, la dirección lógica donde parar, o un número de línea.
+- **continue**: para continuar el programa hasta el final o hasta el próximo punto de ruptura.
+- **next / n**: avanzar a la siguiente instrucción del programa una vez detenidos a causa de un punto de ruptura. Ejecuta el subprograma como si se tratase de una instrucción simple (no entra en funciones, etc.).
+- **step / s**: avanzar a la siguiente instrucción del programa una vez detenidos a causa de un punto de ruptura. Entra en el marco donde se encuentra el subprograma ejecutando sus instrucciones paso a paso (entra en funciones, etc.).
+- **info breakpoints**: para ver los puntos de ruptura activos.
+- **delete**: para eliminar puntos de ruptura.
+- **info frame**: muestra información acerca del marco actual (frame = marco).
+- **backtrace full**: muestra la información referente a las variables locales y el resto de información asociada al marco.
+- **down**: bajar en la pila de marcos.
+- **up**: subi en la pila de marcos. 
+
+### Ejecución de guiones
+Ejemplo.
+
+		break multiplica
+		run
+		display x
+		display y
+		display final
+		continue
+		continue
+		delete display 1
+		delete display 2
+		continue
+
+		
+		$ gdb -x guion.gdb ejemplo1
+
+### Puntos de ruptura condicionales
+Solo se habilita el punto de ruptura si se cumple la condición. Se utiliza la sintaxis del lenguaje depurado.
+
+Ejemplo.
+
+		(gdb) break 13 if tmp > 10
+		Punto de interrupción 1 at 0x804866a: file mainsesion10.cpp, line 13.
+		
+		(gdb) run
+		Starting program: /home/usuario/ejemplo10.1
+	
+		(gdb) Breakpoint 1, cuenta (y=0) at mainsesion10.cpp:13
+		13	tmp = y + 2;
+
+		(gdb) print tmp
+		$3 = 11
+
+
+### Cambio de valores en variables
 
 
