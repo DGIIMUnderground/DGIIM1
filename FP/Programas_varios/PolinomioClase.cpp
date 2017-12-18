@@ -29,7 +29,7 @@ public:
     /**
      * @brief: constructor primitivo
      * @param grado_: grado del polinomio
-     * @paran Px_: vector de coeficientes. Desde 0 hasta n
+     * @param Px_: vector de coeficientes. Desde 0 hasta n
      */
     Polinomio(unsigned int grado_, vector<double> Px_){
         grado=grado_;
