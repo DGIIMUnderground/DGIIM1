@@ -61,4 +61,4 @@ uninstall:
 	rm "$(INSTALL_DIR)/$(EXECUTABLE)"
 
 clean:
-	rm $(OBJS) $(LIB_NAME) $(EXECUTABLE) 
+	rm $(OBJS) $(LIB_NAME) 
