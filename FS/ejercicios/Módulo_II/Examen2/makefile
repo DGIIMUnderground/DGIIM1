@@ -13,7 +13,7 @@
 
 #Nombre archivo: makefile
 #Uso: make
-#     make all
+#     make all$@
 #Descripción: mantiene todas las dependencias
 
 # Variables
@@ -51,4 +51,4 @@ $(LIB_NAME): $(LIB_OBJS)
 	-ar -rvs $@ $^
 
 clean:
-	rm $(OBJS) $(LIB_NAME) $(EXECUTABLE) 
+	rm $(OBJS) $(LIB_NAME) 
