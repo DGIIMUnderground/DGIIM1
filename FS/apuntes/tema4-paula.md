@@ -1,7 +1,7 @@
-#Tema 4. Sistemas de archivos. Introducción a las bases de datos
+# Tema 4. Sistemas de archivos. Introducción a las bases de datos
 
-##1. Concepto de archivo y directorio
-###1.1 Concepto de archivo
+## 1. Concepto de archivo y directorio
+### 1.1 Concepto de archivo
 >Prie06 595-598
 
 
@@ -14,7 +14,7 @@ Un **registro** es una estructura dentro del archivo que contiene la informació
 Un registro se puede dividir en campos. Un **campo** es un dato que representa una información unitaria o independiente.
 
 
-###1.1.1 Operaciones sobre archivos
+### 1.1.1 Operaciones sobre archivos
 El sistema operativo permite que el usuario pueda aludir al archivo mediante un **nombre**, independientemente de la forma en que se almacene en el dispositivo (p.e., un disco).
 
 Todo archivo tiene asociados unos **atributos**, además del nombre, como: tamaño, fecha de creación y de modificación, propietario, permisos de acceso, etc. (dependerá del sistema operativo).
@@ -25,19 +25,19 @@ El SO proporciona órdenes o servicios para operar sobre los archivos como:
 - Abrir/cerrar un archivo para el procesamiento de su contenido.
 - Leer/escribir un registro de un determinado archivo.
 
-###1.1.2 Gestión de archivos
+### 1.1.2 Gestión de archivos
 >Prie06 596
 
 
 >Nos dice cómo interviene el SO para manipular los archivos del sistema
 
-###1.1.2.1 Gestión de archivos: comentarios
+### 1.1.2.1 Gestión de archivos: comentarios
 - El sistema operativo transporta, cada vez que se accede al dispositivo, una cantidad fija de información que depende de las características físicas de éste: bloque o registro físico, de longitud distinta al tamaño del registro.
 - El sistema operativo transforma la dirección lógica usada en los programas de usuario en la dirección física con la que se direcciona en el dispositivo.
 - Un archivo es una estructura de datos externa al programa que lo usa; en las operaciones de lectura/escritura se transfiere la información a/desde un buffer en memoria principal asociado a las operaciones de entrada/salida sobre el archivo.
 
 
-###1.1.3 Clasificación de archivos según el tipo de registros
+### 1.1.3 Clasificación de archivos según el tipo de registros
 1. **Longitud fija**: los registros tienen la misma longitud.
 2. **Longitud variable**: los registros no tienen la misma longitud. Sin embargo, si se sabe la longitud que tiene cada registro.
 	2.1 **Con delimitador:** un determinado carácter llamado delimitador marca el fin de un registro (suelen usarse como delimitadores el salto de línea, nulo, etc.).
@@ -47,7 +47,7 @@ El SO proporciona órdenes o servicios para operar sobre los archivos como:
 
 Una posibilidad añadida: disponer de un **campo clave** (o llave) que permita localizar rápidamente un registro.
 
-###1.2 Concepto de directorio
+### 1.2 Concepto de directorio
 **Directorio** es un archivo especial que permite agrupar archivos según las necesidades de los usuarios. En cada dispositivo existe una estructura jerárquica donde se localizan todos los archivos de los distintos usuarios que lo usan.
 
 En la visión que el usuario tiene de la estructura jerárquica de archivos se utilizan los
@@ -60,8 +60,8 @@ siguientes conceptos:
 
 El sistema operativo proporciona operaciones para manejar los conceptos anteriores.
 
-##2. Organización de archivos
-###2.1 Organización secuencial
+## 2. Organización de archivos
+### 2.1 Organización secuencial
 >Prie06 600-602
 
 
@@ -86,7 +86,7 @@ La organización secuencial es **adecuada**:
 - Se puede utilizar con dispositivos secuenciales que son de bajo precio.
 
 
-####2.1.2 Organización secuencial: operaciones sobre archivos
+#### 2.1.2 Organización secuencial: operaciones sobre archivos
 - **Añadir.** Sólo es posible escribir al final del archivo, después del último registro escrito.
 - **Consulta o recuperación.** Se realiza en orden secuencial, es decir, el orden en el que se hubieran escrito determina el orden en el que se leen los registros. Para leer el registro que ocupa la posición n en el archivo es necesario leer previamente los **n-1** registros que hay antes que él. Por ejemplo, si queremos leer el 4º registro, tenemos que leer los registros 1, 2, 3 y 4.
 - **Inserción, modificación y eliminación.** No es fácil realizar estas operaciones sobre un archivo secuencial.
@@ -96,7 +96,7 @@ La organización secuencial es **adecuada**:
 
 >No se puede insertar los registros en el medio
 
-###2.2 Organización secuencial encadenada o lógica
+### 2.2 Organización secuencial encadenada o lógica
 Junto a cada registro se almacena un puntero con la dirección física del registro siguiente, dando lugar a una cadena de registros.
 
 El último registro de la cadena contiene una marca especial en el lugar del puntero indicando que ya no hay más registros en el archivo.
@@ -108,7 +108,7 @@ El último registro de la cadena contiene una marca especial en el lugar del pun
 **Principal inconveniente:** limita las consultas de forma secuencial.
 
 
-####2.2.1 Organización secuencial encadenada: operaciones sobre archivos
+#### 2.2.1 Organización secuencial encadenada: operaciones sobre archivos
 - **Consulta o recuperación.** La consulta es secuencial, al igual que en un archivo con organización secuencial pura. Cada vez que se lee un registro se lee la posición del siguiente, lo que permite seguir la secuencia lógica del archivo.
 - **Inserción.** Hay que seguir los siguientes pasos:
 	1. Localizar la posición donde se desea insertar; es decir, entre qué dos registros debe estar el nuevo registro del archivo.
@@ -123,13 +123,13 @@ La principal **ventaja** de la organización secuencial encadenada es la facilid
 
 Su principal **inconveniente** es, al igual que en la organización secuencial pura, su limitación a consulta es secuencial.
 
-####2.2.2 Organización secuencial encadenada: ejemplo de inserción
+#### 2.2.2 Organización secuencial encadenada: ejemplo de inserción
 Se inserta un registro con llave “Gato”.
 
 >Insertar diap12
 
 
-###2.2 Organización secuencial indexada
+### 2.2 Organización secuencial indexada
 >Prie06 604-608
 
 
@@ -152,7 +152,7 @@ La gestión de la estructura la realiza el sistema operativo o un software espec
 P.e. Logroño esta en el segundo tramo.
 Para buscar caceres, leo almeria pero no me dice nada. Ahora tendria que leer cuenca y entonces me habría pasado.
 
-####2.2.1 Organización secuencial indexada: operaciones sobre archivos
+#### 2.2.1 Organización secuencial indexada: operaciones sobre archivos
 - **Consulta.** Se realiza por llave (esto es, localizar un registro conocida su llave) sin necesidad de leer los registros que no se encuentran en su mismo tramo. El procedimiento a seguir para realizar una consulta por llave es:
 	1. Leer secuencialmente las llaves en la zona de índices hasta encontrar una mayor o igual a la del registro buscado.
 	2. Obtener la dirección de comienzo del tramo donde está el registro.
@@ -162,11 +162,11 @@ Para buscar caceres, leo almeria pero no me dice nada. Ahora tendria que leer cu
 - **Modificación.** Las modificaciones son posibles tan sólo si el registro no aumenta
 de longitud al ser modificado y no se altera el valor de la llave del mismo.
 
-####2.2.2 Organización secuencial indexada: ejemplo
+#### 2.2.2 Organización secuencial indexada: ejemplo
 
 
 
-###2.3 Organización directa o aleatoria
+### 2.3 Organización directa o aleatoria
 >Prie06 608-611
 
 
@@ -179,7 +179,7 @@ La organización directa es útil para archivos donde los accesos deben realizar
 Si la información se va a procesar en conjunto, con frecuencia puede ser más rentable
 una organización secuencial indexada.
 
-####2.3.1 Organización directa o aleatoria: problemas de los sinónimos
+#### 2.3.1 Organización directa o aleatoria: problemas de los sinónimos
 Un problema fundamental de esta organización es elegir adecuadamente la
 función de transformación o método de direccionamiento que se va a
 utilizar ya que pueden darse las siguientes situaciones no deseadas:
@@ -191,7 +191,7 @@ Hay dos formas de resolver el problema de los sinónimos, siempre a costa de com
 - Se reserva una zona de desbordamiento donde se escribirán los registros que no se pueden escribir en la posición que les corresponde según la transformación. Esta zona se puede gestionar secuencialmente o encadenada a la zona principal de registros.
 
 
-####2.3.2 Organización directa o aleatoria: métodos de direccionamiento
+#### 2.3.2 Organización directa o aleatoria: métodos de direccionamiento
 1. Direccionamiento directo. Se utiliza como dirección la propia llave y solo es factible cuando la llave es numérica y su rango de valores no es mayor que el rango de direcciones en el archivo. Por ejemplo, el archivo de habitaciones de un hotel puede organizarse en forma aleatoria con direccionamiento directo haciendo coincidir la dirección
 con el número de habitación.
 	**Inconveniente:** En algunos casos pueden quedar lagunas de direcciones sin utilizar, en lugares conocidos de antemano. En este caso se pueden ocupar dichas direcciones desplazando las direcciones superiores.
@@ -203,13 +203,13 @@ Se utiliza cuando:
 - La llave no es numérica, en cuyo caso se necesita una conversión previa para obtener un número a partir de ella. Por ejemplo se usa el equivalente decimal al propio código binario del carácter (al carácter A le correspondería el 65, ...)
 - La llave es numérica pero toma valores en un rango inadecuado para usarse directamente como dirección.
 
-####2.3.3 Organización directa o aleatoria: operaciones sobre archivos
+#### 2.3.3 Organización directa o aleatoria: operaciones sobre archivos
 
 
 
 
-##3. Bases de datos
-###3.1 Problemática
+## 3. Bases de datos
+### 3.1 Problemática
 >Prie06 617-628
 
 
@@ -222,7 +222,7 @@ En una aplicación convencional con archivos aparecen los siguientes problemas:
 4. **Dependencia con los programas.** En un archivo no están reflejadas las relaciones existentes entre campos y registros. El programa que trabaja con el archivo es quien determina en cada caso dichas relaciones. En consecuencia, cualquier modificación de la estructura de un archivo obliga a modificar todos los programas que lo usen. Esto ocurre aun en el caso de que la alteración sea ajena al programa. Así por ejemplo, si se aumenta la longitud de un campo habrá que modificar incluso los programas que no lo usan.
 5. **Seguridad.** Uno de los mayores problemas de cualquier sistema de información es mantener la seguridad necesaria sobre los datos que contiene. Si se está trabajando con archivos, el control deberá realizarlo el propio programa. El aspecto de la seguridad es particularmente deficitario en los sistemas de archivos.
 
-###3.2 Concepto de Base de Datos
+### 3.2 Concepto de Base de Datos
 >Prie06 617-628
 
 
@@ -239,7 +239,7 @@ En una base de datos se almacenan las relaciones entre datos junto a los datos.
 
 La forma en la que se almacenan las relaciones entre datos y el utilizar como unidad de almacenamiento el campo además del registro, es el fundamento de la independencia respecto a los programas de aplicación.
 
-###3.3 Requisitos que deben cumplir las bases de datos
+### 3.3 Requisitos que deben cumplir las bases de datos
 1. **Acceso múltiple.** Diversos usuarios pueden acceder a la base de datos, sin que se produzcan conflictos, ni visiones incoherentes.
 2. **Utilización múltiple.** Cada usuario podrá tener una imagen o visión particular de la estructura de la base de datos.
 3. **Flexibilidad.** Se podrán usar distintos métodos de acceso, con tiempos de respuesta razonablemente pequeños.
@@ -251,7 +251,7 @@ La forma en la que se almacenan las relaciones entre datos y el utilizar como un
 9. **Interfaz de alto nivel.** Existe una forma sencilla y cómoda de utilizar la base al menos desde un lenguaje de programación de alto nivel.
 10. **Interrogación directa (“query”).** Existe una utilidad que permite el acceso a los datos de forma interactiva o conversacional.
 
-###3.4 Estructura de una base de datos
+### 3.4 Estructura de una base de datos
 >Su diapositiva.
 Se almacena información de una serie de objetos o elmentos. Estos objetos reciben el nombre de entidades, siendo una entidad cualquier ente sobre el que se almacena información.
 De cada entidad se alamacenan una serie de datos que se denominan atributos de la entidad. Puede ser atributo de una entidad cualquier característica o propiedad de esta.
@@ -266,7 +266,7 @@ En una base de datos se almacenan además de las entidades, las **relaciones** e
 En la implementación de la base de datos, estas relaciones se almacenan con punteros que inserta automáticamente el software que la maneja y esto es "transparente" al usuario.
 
 
-###3.5 Niveles de abstracción de la información: vistas y esquemas
+### 3.5 Niveles de abstracción de la información: vistas y esquemas
 - **Nivel de vista:** permite describir diferentes
 **vistas** o **subesquemas**, cada una de las cuales se corresponde con la parte de la base de datos que interesa a un determinado grupo
 de usuarios. Además limita el acceso solo a la información de la vista.
@@ -278,7 +278,7 @@ incluyendo todos los datos almacenados en ella y las relaciones entre ellos. Est
 >Insertar diap29
 
 
-###3.6 Modelos de datos
+### 3.6 Modelos de datos
 **Modelo de datos:** grupo de herramientas conceptuales que permite describir los datos, sus relaciones, su semántica y sus limitaciones. Ayuda a describir la estructura de una base de datos.
 
 Clasificación de los modelos de datos:
@@ -286,8 +286,8 @@ Clasificación de los modelos de datos:
 - **Modelos lógicos basados en registros.** Describen los datos a nivel conceptual y a nivel de vista, permitiendo especificar la estructura lógica pero no las limitaciones de los datos. Casos a tratar: Modelo jerárquico, Modelo en red y Modelo relacional.
 - **Modelos físicos de los datos.** Describen los datos en el nivel de implementación de los sistemas de base de datos.
 
-###3.7 Modelo entidad-relación
-####3.7.1 Conceptos básicos
+### 3.7 Modelo entidad-relación
+#### 3.7.1 Conceptos básicos
 - **Entidad:** objeto que tiene existencia propia, que puede distinguirse de otros y del cuál se quiere almacenar información de ciertas características. Ejemplo: Pepe con DNI 24324450 y que vive en Granada.
 - **Conjunto de entidades:** grupo de entidades del mismo tipo que representa la estructura genérica de una entidad de interés. Las entidades pueden pertenecer a más de un conjunto de entidades. Ejemplo: Cliente.
 - **Relación:** asociación entre varias entidades. Ejemplo: El cliente con DNI 24324450 compra un coche con matricula 6670 BBC el 7/11/2005.
@@ -295,7 +295,7 @@ Clasificación de los modelos de datos:
 - **Grado de una relación:** número de tipos de entidad que intervienen en un tipo de relación. Ejemplo: En el caso de la relación en la que un cliente compra un coche, el grado de la relación es 2.
 - **Atributo:** unidad básica de información sobre un tipo de entidad o un tipo de relación. Ejemplos: DNI, Nombre, Dirección, Fecha de compra.
 
-####3.7.2 Tipos de correspondencias (cardinalidad)
+#### 3.7.2 Tipos de correspondencias (cardinalidad)
 **Cardinalidad:** expresa el número de entidades con las que puede asociarse o corresponderse una determinada entidad mediante una relación.
 
 En el caso de un conjunto binario de relaciones R entre los conjuntos de relaciones A y B, los tipos de correspondencias o cardinalidades pueden ser:
@@ -322,12 +322,13 @@ Sus componentes principales son:
 
 
 **Ejemplo.**
+
 >Insertar diap34
+>El subrayado significa que es una llave.
 
 
-
-###3.8 Modelo lógicos basados en registros
-####3.8.1 Tipos de bases de datos
+### 3.8 Modelo lógicos basados en registros
+#### 3.8.1 Tipos de bases de datos
 1. **Modelo de datos jerárquico.** Permite especificar una **base de datos jerárquica**, donde se establece una relación jerárquica entre los datos en forma de árbol, y no es posible definir relaciones muchos a muchos.
 
 >Insertar diap35
@@ -342,7 +343,7 @@ Las tablas deben cumplir las siguientes condiciones:
 	3. En ninguna tabla existen registros duplicados.
 	4. El orden de los registros en la tabla es indiferente. En cada momento se pueden recuperar los registros en un orden particular.
 	5. En cada tabla hay una llave, formada por uno o varios campos.
-###3.9 Transformación del modelo entidad-relación al modelo de datos relacional
+### 3.9 Transformación del modelo entidad-relación al modelo de datos relacional
 Dado un Diagrama entidad-relación, el paso a tablas o relaciones del Modelo de datos relacional se efectúa como sigue:
 - **Conjuntos de entidades:**
 	- Se define una tabla para cada conjunto de entidades.
@@ -361,8 +362,8 @@ Dado un Diagrama entidad-relación, el paso a tablas o relaciones del Modelo de 
 >Insertar diap 39
 
 
-##4. Sistema de gestión de la bases de datos
-###4.1 Definición de sistema de gestión de base de datos 
+## 4. Sistema de gestión de la bases de datos
+### 4.1 Definición de sistema de gestión de base de datos 
 **Sistema de gestión de la base de datos - SGBD** (*Data Base Management System* - DBMS): conjunto de software destinado a la creación, control y manipulación de la información de una base de datos.
 
 Un SGBD debe permitir la realización de las siguientes **tareas**:
@@ -373,7 +374,7 @@ subesquemas.
 conversacional.
 4. **Organización** física de la base de datos y recuperación tras fallos del sistema.
 
-####4.2 Lenguajes específicos en un SGBD
+#### 4.2 Lenguajes específicos en un SGBD
 Las tres primeras tareas se realizan mediante dos lenguajes específicos:
 - **Lenguaje de descripción de datos (DDL**, *Data Description Language*). Se usa para la descripción del esquema y de los subesquemas.
 - **Lenguaje de manipulación de datos (DML**, *Data Manipulation Language*). Se utiliza para el acceso a la base de datos desde lenguajes de alto nivel o en modo conversacional.
