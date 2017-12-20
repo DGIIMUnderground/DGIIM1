@@ -77,6 +77,10 @@ int main (){
   cout << "Jugador 1: ¿De cuántos intentos disponemos?" << endl;
   cin >> intentos_permitidos;
 
+	//Para que el jugador 2 no vea la palabra:
+	cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+	cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+
   while (intentos_permitidos > 0 && acertar == false ){
     cout << "La palabra es: " << palabra_cubierta << endl;
     cout << "Letras usadas: " << caracteresusados << endl;
