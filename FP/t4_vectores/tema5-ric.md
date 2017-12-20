@@ -109,3 +109,11 @@ Las variables de clase en C++ las declaramos mediante
 `static`
 
 `static const std::vector<int> dias_mes;`
+
+Cuando los métodos son cortos, es preferible implentarlos
+directamente en el archivo cabecera anteponiendo la
+palabra inline.
+
+Incluso se puede implementar dentro de la cabecera
+.h. Pero mezclamos especificación con implementación
+lo cual puede ser visto un poco feo.
