@@ -117,3 +117,79 @@ palabra inline.
 Incluso se puede implementar dentro de la cabecera
 .h. Pero mezclamos especificación con implementación
 lo cual puede ser visto un poco feo.
+
+
+21/12/2017
+
+Información tiquismiquis:
+    - La especificación incluye la cabecera de la
+función (valor de retorno), nombre de la función
+y argumentos.
+
+    - Los observadores son const, no modifican
+el objeto.
+
+
+Especificación de la clase Polinomio
+```c++
+
+/**
+    @brief: TDA para representar polinomios
+    Vienen dados por a0x^1 + a1 x² + ... + an x^n
+    OPeraciones definidas x, - *, / extraer raíces, evaluar
+*/
+class Polinomio {
+    public:
+
+        /**
+        @brief: Constructor por defecto
+        El objeto es creado como el polinomio 0.
+        */
+        Polinomio();
+
+        /**
+        @brief: Constructor primitivo.
+        @param coef:
+            Restricciones
+                 - v.size() == (grado + 1)
+                 - v[v.size()] != 0 
+        @param grado: 
+            0 excluido pues para eso está el constructor por defecto
+            Construimos el polinomio de grado "grado" con la forma
+            coef[0] + coef[1]x^1 + .... + coef[grado]x^grado
+        */
+        Polinomio(vector<double>& coef, int grado) const;
+
+        /**
+        @brief: Constructor por copia
+        
+        */
+        Polinomio(const Polinomio& polin);
+
+        /**
+        @brief: Evalua el polinomio en un punto dado
+        @param x: punto en el que se evalúa el polinomio
+        @return : Devuelve el valor que se obtiene
+        al evaluar el punto en el polinomio
+        */
+        double Evaluar(double x) const;
+
+        /**
+        @brief: Devuelve la suma de dos polnomios
+        @param polin: polinomio que se quiere sumar
+        @return: suma de los polinomios
+        */
+        double operator()(double x) const;
+        Polinomio suma(const Polinomio& polin) const;
+
+        /**
+        @brief: Extrar grado de un polinomio
+        @return: en
+        */
+        int grado() const;
+
+    private:
+        vector<double> coef;
+        unsigned int grado;
+}
+```
