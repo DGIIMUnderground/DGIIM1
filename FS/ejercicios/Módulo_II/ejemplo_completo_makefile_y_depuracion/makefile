@@ -24,7 +24,6 @@ LIB_OBJS=$(LIB_SRCS:.cpp=.o)
 INSTALL_DIR=/tmp
 
 EXECUTABLE_DEBUG=programa2_depurable.out
-DEBUG_SCRIPT=./guion.gdb
 
 all: $(EXECUTABLE) $(LIB_NAME)
 
@@ -49,8 +48,7 @@ install:
 uninstall:
 	rm $(INSTALL_DIR)/$(EXECUTABLE)
 	
-debug: $(EXECUTABLE_DEBUG) $(LIB_NAME) $(DEBUG_SCRIPT)
-	gdb -x $(DEBUG_SCRIPT) $(EXECUTABLE_DEBUG)
+debug: $(EXECUTABLE_DEBUG) $(LIB_NAME)
 	
 $(EXECUTABLE_DEBUG): $(OBJS) $(LIB_NAME)
 	$(CC) -g -L$(LIB_DIR) -o $@ $^
