@@ -15,6 +15,8 @@
   - Concatena archivos.
   - Copia un archivo.
   - Crea un archivo de texto.
+- `cut [arg]~ [archivo]~`: Selecciona partes de un `[archivo]`/`[standard]` input según el criterio especificado.
+    - `cut -d [char] [arg]~ [archivo]~`: Usa `[char]` como delimitador para cortar.
 - `cp [archivo1] [archivo2]`: Copia un archivo en otro. Crea el 2º si no existe.
 - `mv [fuente] [destino]`: Se usa para mover archivos o renombrarlos.
 - `file [archivo]`: Muestra el tipo de archivo.
@@ -68,14 +70,16 @@
 - Acotación: Protege cadenas desactivando los caracteres especiales en ellas.
   - `“[arg]”`: Acotación débil, no protege de ```! $ \ ` ```.
   - ``` `[arg]` ```: Acotación fuerte, no protege de ``` ` ```.
+
+
 - `g++ [arg]~ [prog] [file]~`: Es el compilador de la GNU para C y C++
-  - `g++ -c [prog]`:Realiza la etapa de preprocesado y compilación, sin resolver las referencias externas
-    - * Genera el módulo objeto `[prog].o` *
-  - `g++ -o [prog] [file]~`: Cambia el nombre del archivo de salida por el de `[prog]`
-  - `g++ -L[dir] [arg]~ [prog] [file]~`: Permite especificar la localización de las librerías
-  - `g++ [arg]~ [prog] [file]~ -l[str]`: Busca la biblioteca `lib[srt].a`
-  - `g++ -I[dir] [arg]~ [prog] [file]~`: Permite especificar la localización de los archivos de cabecera
-    - * Esto no es necesario si los archivos de cabecera se encuentran en el directorio donde ejecutamos las órdenes
+- `g++ -c [prog]`:Realiza la etapa de preprocesado y compilación, sin resolver las referencias externas
+  - * Genera el módulo objeto `[prog].o` *
+- `g++ -o [prog] [file]~`: Cambia el nombre del archivo de salida por el de `[prog]`
+- `g++ -L[dir] [arg]~ [prog] [file]~`: Permite especificar la localización de las librerías
+- `g++ [arg]~ [prog] [file]~ -l[str]`: Busca la biblioteca `lib[srt].a`
+- `g++ -I[dir] [arg]~ [prog] [file]~`: Permite especificar la localización de los archivos de cabecera
+  - * Esto no es necesario si los archivos de cabecera se encuentran en el directorio donde ejecutamos las órdenes
 - `ld [arg]~ [prog] [file]~`: Es el enlazador de la GNU
 - `make`: Ejecuta el archivo `makefileGNU`, `makefile` o `Makefile`
   - `make -f [file]`: Permite ejecutar `make` en `[file]` * (útil para makefiles con nombres distintos al por defecto) *
@@ -304,4 +308,3 @@ done
 `( [arg]~ )` | Aisla `[arg]` separados por “;” o “|” y los trata como una única orden
 `[arg1] && [arg2]` | Ejecuta `[arg1]` sólo si `[arg2]` ha tenido éxito
 `[arg1] \|\| [arg2]` | Ejecuta `[arg1]` sólo si `[arg2]` ha fallado
-
