@@ -150,7 +150,7 @@ class Polinomio {
         /**
         @brief: Constructor primitivo.
         @param coef:
-            Restricciones
+            Restricciones para el programador:
                  - v.size() == (grado + 1)
                  - v[v.size()] != 0 
         @param grado: 
@@ -191,5 +191,65 @@ class Polinomio {
     private:
         vector<double> coef;
         unsigned int grado;
+};
+
+Polinomio Polinomio::operator+(const Polinomio& p) const {
+    Polinomio r((grado > p) ?: *this : p);
+
+    // p.grado (?) es privado!
+    if (grado > p.grado) {
+        for (int i=0; i <= p.grado; i++)
+            r.coef[i] += p.coef[i];
+    } else {
+        for (int i=0; i <= grado; i++)
+            n.coef[i] += p.coef[i];
+    }
+    return r;
+}
+
+double Polinomio::operator()(const double& x) const {
+
+    // Cuidado:
+    // pow es muy costosa, por lo que mereceria la pena
+    // quizas tratar los casos i=0, i=1, etc...
+
+    // Pero lo mejor es sin duda el Algoritmo de Horner
+    // Sucesivas multiplicaciones
+
+
+    double suma = 0;
+    for (int i=0; i < coef.size(); i++)
+        suma += coef[i] * pow(x, i);
+    return suma;
 }
 ```
+
+Invariante de la representación:
+    - Condición que tiene que cumplir la implementación
+para mantener coherente el tipo de dato de Polinomio.
+    - Ejemplo:
+Cada vez que aparezca un objeto polinomio y sea
+manipulado, debe respetar esta condición:
+
+        - v.size() == (grado + 1)
+        - v[v.size()] != 0 
+
+Ahora bien, esto es distinto del caso de la restricción
+en el constructor, pues es el usuario el que tiene
+la responsabilidad.
+
+Función de abstracción
+
+{
+coef 
+grado 
+} -> p(x) = coef[0] + .... 
+
+Indica explícitamente como se construye
+el polinomio. Debe estar indicada en la implementación
+pues es una operación externa.
+
+Datos sobre funciones recursivas:
+
+    x^n = (x^(n/2))^2
+
