@@ -24,12 +24,12 @@ El software multiplataforma puede dividirse en **dos tipos**:
 1. Aplicaciones que requieren su **creación o compilación para cada plataforma** específica donde se ejecutará.
 2. Aquellas otras **aplicaciones que directamente se pueden ejecutar** en más de una plataforma sin preparación especial (e.g. plataforma Java): aplicaciones escritas en un lenguaje interpretado (o precompilado en un código intermedio) portable, es decir, cuando el intérprete y los paquetes para su ejecución son estándares para varias plataformas.
 
-<img src="media/Tema5/diap4.png>
+<img src="media/Tema5/diap4.png">
 
 ### 1.4 Plataforma Java
 Ejemplo de plataforma a **mayor nivel de abstracción** (incluye lenguaje de programación) que el proporcionado por un sistema operativo.
 
-<img src="media/Tema5/diap5.png>
+<img src="media/Tema5/diap5.png">
 
 
 - **Requiere máquina virtual** JVM (*Java Virtual Machine*), lo cual posibilita que el mismo código se pueda ejecutar en todos los sistemas que implementen JVM.
@@ -39,14 +39,14 @@ Ejemplo de plataforma a **mayor nivel de abstracción** (incluye lenguaje de pro
 - Hay un compilador JIT (*Just In Time*) dentro JVM (version 1.2 en adelante) que traduce Java **bytecodes en instrucciones nativas** del procesador en tiempo de ejecución, las cuales son almacenadas para su posterior reutilización.
 - El uso del compilador JIT permite que, después de un breve retardo en la carga y prácticamente su total compilación, las aplicaciones Java se ejecuten **tan rápidamente como programas nativos.**
 
-<img src="media/Tema5/diap7.png>
+<img src="media/Tema5/diap7.png">
 
 
 ## 2. Framework de desarrollo de aplicaciones
 ### 2.1 Herramientas básicas para el desarrollo software en Linux
 Un marco de trabajo es.....
 
-<img src="media/Tema5/diap8.png>
+<img src="media/Tema5/diap8.png">
 
 
 ### 2.2 Integrated Development Enviroment (IDE)
@@ -68,7 +68,7 @@ Un marco de trabajo es.....
   **b) Al mismo tiempo** para un conjunto de lenguajes/plataformas relacionados: *Microsoft Visual Studio* y *Xcode* (OS X/iOS y lenguajes C/C++, Objective-C, Java, AppleScript, Python...)
 
 ### 2.5 IDE ejemplo: NetBeans para Java
-<img src="media/Tema5/diap12.png>
+<img src="media/Tema5/diap12.png">
 
 
 ### 2.6 IDEs y programación visual
@@ -139,7 +139,7 @@ se ha comentado en el punto anterior).
 - **La infección causa el fallo:** error observable externamente en el comportamiento de un programa.
 
 ### 3.3 Ejecución de un programa como secuencia de estados
-<img src="media/Tema5/diap20.png>
+<img src="media/Tema5/diap20.png">
 
 ### 3.4 Propiedades en la generación de fallos
 - **Un estado de programa** viene definido por los valores de las variables y la posición de ejecución (contador de programa).
@@ -172,7 +172,7 @@ se ha comentado en el punto anterior).
 - 44.000 variables (vértices).
 - Aproximadamente 42.000 referencias entre variables (arcos).
 
-<img src="media/Tema5/diap24.png>
+<img src="media/Tema5/diap24.png">
 
 ### 3.8 Búsqueda del defecto
 - Se aplican **dos principios básicos** para la búsqueda:
@@ -180,7 +180,7 @@ se ha comentado en el punto anterior).
   2. separar **variables relevantes e irrelevantes**.
 - Un fallo puede ocurrir debido a ciertos valores de variables en estados anteriores (!), lo cual determina **dependencias que ayudan a localizar el defecto.**
 
-<img src="media/Tema5/diap25.png>
+<img src="media/Tema5/diap25.png">
 
 ### 3.9 Programación estructurada y depuración
 La construcción de programas estructurados ayuda de forma importante a la depuración gracias a las siguientes características:
