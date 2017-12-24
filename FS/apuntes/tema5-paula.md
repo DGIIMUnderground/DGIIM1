@@ -8,11 +8,13 @@ La versión más simple de plataforma puede ser una arquitectura de computadora 
 
 <img src="media/Tema5/diap2.png">
 
->Un programa normal va a depender de una plataforma (hardware y software( SO)).
+>Un programa normal va a depender de una plataforma (hardware (máquina) y software (SO)). Aunque algunos programas no necesitan SO (tienen un chip que hace la función de SO).
+
+>Normalmente, las plataformas nos ofrecen una máquina virtual.
 
 ### 1.2 Clasificación del software
 En cuanto a plataformas, el software se puede clasificar como:
-1. **Dependiente de una plataforma particular** para la cual se desarrolla y ejecuta, bien sea esta hardware, sistema operativo o máquina virtual.
+1. **Dependiente de una plataforma particular** para la cual se desarrolla y ejecuta, bien sea esta hardware, SO o máquina virtual.
 2. **Multiplataforma** cuando el software es implementado e interopera en varias plataformas.
 
 Una **aplicación multiplataforma** se puede ejecutar en:
@@ -44,19 +46,17 @@ Ejemplo de plataforma a **mayor nivel de abstracción** (incluye lenguaje de pro
 
 ## 2. Framework de desarrollo de aplicaciones
 ### 2.1 Herramientas básicas para el desarrollo software en Linux
-Un marco de trabajo es.....
 
 <img src="media/Tema5/diap8.png">
 
-
 ### 2.2 Integrated Development Enviroment (IDE)
-- **Entorno integrado de desarrollo (IDE):** aplicación que proporciona un **conjunto de herramientas relacionadas** para el desarrollo del software: creación y edición de código fuente, generadores (compiladores, interpretes, enlazadores, gestores de bibliotecas, etc) de código objeto, y despliegue y depuración de programas.
+- **Entorno integrado de desarrollo (IDE):** aplicación que proporciona un **conjunto de herramientas relacionadas** para el desarrollo del software: creación y edición de código fuente, generadores (compiladores, intérpretes, enlazadores, gestores de bibliotecas, etc) de código objeto, y despliegue y depuración de programas.
 - La integración de herramientas **contrasta** con el desarrollo utilizando las herramientas aisladas que incluye Linux (*gcc, make...*)
 - **IDEs ejemplo:** *Microsoft Visual Studio, Eclipse, SharpDevelop...*
 - IDEs actuales para el desarrollo de software **orientado a objetos** (ej: *Netbeans*) incluyen otras herramientas adicionales: navegadores para diagramas de jerarquía de clases, inspectores de objetos, etc.
 
 ### 2.3 Objetivos de un IDE
-- **Maximizar la productividad** de los programadores con herramiestas provistas de interfaces de usuario similares; todo el desarrollo se lleva a cabo bajo una misma aplicación.
+- **Maximizar la productividad** de los programadores con herramientas provistas de interfaces de usuario similares; todo el desarrollo se lleva a cabo bajo una misma aplicación.
 - **Reducir tareas de configuración** de múltiples herramientas proporcionando un conjunto de facilidades de forma cohesiva.
 - **Aprender rápidamente** a utilizar un IDE que integra manualmente todas las herramientas.
 - **Acelerar el aprendizaje de lenguajes de programación**, e.g., el código se puede analizar mientras se edita proporcionando información inmediata acerca de errores léxicos, sintácticos, etc.
@@ -69,7 +69,6 @@ Un marco de trabajo es.....
 
 ### 2.5 IDE ejemplo: NetBeans para Java
 <img src="media/Tema5/diap12.png">
-
 
 ### 2.6 IDEs y programación visual
 - La **programación visual** hace uso de IDEs que permiten a los diseñadores/programadores crear nuevas aplicaciones **combinando bloques/nodos de código** mediante diagramas de estructura y de flujos, normalmente basados en UML (*Unified Modeling Language*).
@@ -103,26 +102,33 @@ se ha comentado en el punto anterior).
   - Las clases definidas por el usuario reciben mensajes de las clases del frameword (inversión de control); los desarrolladores manejan ésto implementando los métodos abstractos de la superclase.
 
 ## 3. Técnicas de depuración de programas
->Apuntes de clase:
-> 1. Hago el programa.
-> 2 Quiero ver si cumple la especificación (lo que tiene que hacer), puedo hacerlo de dos formas:
-  2.1 Verificación formal de programas:
-  La especificación es un conjunto de requisitos.
-  Si en la especificación de la semántica del lenguaje de programación es una caracterización axiomática.
-  Axiomática: la especificación de la semántica del lenguaje de programación es un sistema deductivo (conjunto de axiomas y conjunto de diferencias).
-  Hay tres tipos de sentencias (semánticamente simples) ->
-  semánticamente com...?
-  A partir de la especificación semántica se construye un algoritmo (Lógica de Hoare). Se construye esa lógica, que es el lenguaje de la lógica, meto el sistema deductivo, admite el lenguaje de programación y el de especificación. Una vez construida esa lógica, mi programa se convierte en una teoría.
-  Una teoría es un conjunto de formulas bien formadas.
-  Por lo que la Verificación formal consiste, con este sistema deductivo, cada uno de los requisitos de mi especificación son cosas que se tienen que cumplir. Por lo que hay que probar que los requisitos se cumplen en esta teoría, con el sistema deductivo. Esta comprobación lo hace un humano. Se hace en programas muy delicados para asegurarme de que está bien.
-  Lo que estoy verificando es que la literatura del programa satisface las especificaciones
-  Pero no verifico que si cuando se ejecute se va a cumplir.
-  Por lo que probamos la ejecución de programas.
-  2.2 Forma general:
-  Se diseña un conjunto de datos para ejecutar el programa de los cuales sabemos los resultados.
-  Se diseña para que haga todos los posibles recorridos que hace el programa.
-  Por lo que así no tengo ningún motivo para pensar que no es correcto, pero no puedo pensar que es correcto totalmente.
-  Suponemos que el programa no funciona: hay que corregir el programa. En programas complejos es más habitual que el fallo se detecte donde no se ha producido el fallo. Por lo que hay que ir haciendo trazas en la ejecución, para ver dónde falla. Cuando uno corrige el fallo, hay que tener cuidado con la propagación de las correcciones, porque yo he podido corregir algo, pero estoy desajustando otras cosas.
+*Apuntes de clase:*
+1. Hago el programa.
+2. Quiero ver si cumple la especificación o diseño (lo que tiene que hacer), puedo hacerlo de dos formas:
+  2.1 **Verificación formal de programas:**
+  - Tengo una serie de sentencias escritas en un lenguaje y una especificación ( es un conjunto de requisitos).
+  - Mi programa es un conjunto de órdenes.
+  - En la especificación de la semántica del lenguaje de programación se hace una especificación axiomática.
+  - *Axiomática*: la especificación de la semántica del lenguaje de programación es un sistema deductivo (conjunto de axiomas y conjunto de diferencias).
+  - Hay dos tipos de sentencias:
+    - Semánticamente simples: leer una variable y escribir una variable. Se especifican mediante axiomas.
+    - Semánticamente compuestas: se especifican mediante reglas de diferencias.
+
+  - A partir de la especificación semántica se construye un **algoritmo** (Lógica de Hoare). Se construye esa lógica (que es el lenguaje de la lógica), meto el sistema deductivo, admite el lenguaje de programación y el de especificación como lenguajes correctos.
+  - Una vez construida esa lógica, mi programa se convierte en una teoría (conjunto de fórmulas bien formadas).
+  - Por lo que la verificación formal consiste, con este sistema deductivo, en probar que cada uno de los requisitos de mi especificación se cumplen. Por lo que hay que probar que los requisitos se cumplen en esta teoría, con el sistema deductivo.
+  - Esta comprobación lo hace un humano.
+  - Se hace en programas muy delicados para asegurarme de que están bien.
+  - Lo que estoy verificando es que la literatura del programa satisface las especificaciones.
+  - Pero no verifico que si cuando se ejecute se va a cumplir.
+  - Por lo que hacemos otra cosa: probar la ejecución de programas.
+
+  2.2 **Forma general:**
+  - Se diseña un conjunto de datos para ejecutar el programa de los cuales sabemos los resultados.
+  - Se diseña para que haga todos los posibles recorridos que tiene que hacer el programa.
+  - Por lo que así no tengo ningún motivo para pensar que no es correcto, pero no puedo pensar que es correcto totalmente.
+  - Suponemos que el programa no funciona: hay que corregir el programa. En programas complejos es más habitual que el fallo se detecte donde no se ha producido el fallo. Por lo que hay que ir haciendo trazas en la ejecución, para ver dónde falla.
+  - Cuando uno corrige el fallo, hay que tener cuidado con la propagación de las correcciones, porque yo he podido corregir algo, pero estoy desajustando otras cosas.
 
 ### 3.1 Definición y Objetivos
 - **Depuración:** es una actividad compleja consistente en encontrar y solucionar errores cometidos en el diseño y codificación de programas.

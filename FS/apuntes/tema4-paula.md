@@ -7,19 +7,18 @@
 
 **Archivo** es conjunto de información sobre un mismo tema, tratada como una unidad de almacenamiento en memoria secundaria y organizada de forma estructurada para la búsqueda de un dato individual.
 
-Un archivo está compuesto de registros homogéneos que contienen información sobre el tema.
+Un archivo está compuesto de **registros homogéneos** que contienen información sobre el tema.
 
-Un **registro** es una estructura dentro del archivo que contiene la información correspondiente a un elemento individual.
+Un **registro** es una estructura o unidad que forma el archivo y que contiene la información correspondiente a un elemento individual.
 
-Un registro se puede dividir en campos. Un **campo** es un dato que representa una información unitaria o independiente.
-
+Un registro se puede dividir en campos. Un **campo** es un dato que forma parte de un registro y representa una información unitaria o independiente.
 
 ### 1.1.1 Operaciones sobre archivos
 El sistema operativo permite que el usuario pueda aludir al archivo mediante un **nombre**, independientemente de la forma en que se almacene en el dispositivo (p.e., un disco).
 
 Todo archivo tiene asociados unos **atributos**, además del nombre, como: tamaño, fecha de creación y de modificación, propietario, permisos de acceso, etc. (dependerá del sistema operativo).
 
-El SO proporciona órdenes o servicios para operar sobre los archivos como:
+El SO permite que el usuario pueda aludir al archivo mediante un nombre, independientemente de la forma en que se almacene en el dispositivo, y suministra órdenes que realizan operaciones como:
 - Crear/copiar/borrar/renombrar un archivo.
 - Establecer/obtener atributos de un archivo.
 - Abrir/cerrar un archivo para el procesamiento de su contenido.
@@ -28,21 +27,23 @@ El SO proporciona órdenes o servicios para operar sobre los archivos como:
 ### 1.1.2 Gestión de archivos
 >Prie06 596
 
+>INsertar diap4
 
 >Nos dice cómo interviene el SO para manipular los archivos del sistema
 
+
 ### 1.1.2.1 Gestión de archivos: comentarios
-- El sistema operativo transporta, cada vez que se accede al dispositivo, una cantidad fija de información que depende de las características físicas de éste: bloque o registro físico, de longitud distinta al tamaño del registro.
-- El sistema operativo transforma la dirección lógica usada en los programas de usuario en la dirección física con la que se direcciona en el dispositivo.
+- El SO transporta, cada vez que se accede al dispositivo, una cantidad fija de información que depende de las características físicas de éste: bloque o registro físico, de longitud distinta al tamaño del registro.
+- El SO transforma la dirección lógica usada en los programas de usuario en la dirección física con la que se direcciona en el dispositivo.
 - Un archivo es una estructura de datos externa al programa que lo usa; en las operaciones de lectura/escritura se transfiere la información a/desde un buffer en memoria principal asociado a las operaciones de entrada/salida sobre el archivo.
 
 
 ### 1.1.3 Clasificación de archivos según el tipo de registros
 1. **Longitud fija**: los registros tienen la misma longitud.
 2. **Longitud variable**: los registros no tienen la misma longitud. Sin embargo, si se sabe la longitud que tiene cada registro.
-	2.1 **Con delimitador:** un determinado carácter llamado delimitador marca el fin de un registro (suelen usarse como delimitadores el salto de línea, nulo, etc.).
+	2.1 **Con delimitador:** un determinado carácter llamado delimitador marca el fin de un registro (suelen usarse como delimitadores el salto de línea, nulo...).
 	2.2 **Con cabecera:** cada registro contiene un campo inicial que almacena el número de bytes del registro.
-3. **Longitud indefinida**: los registros no tienen la misma longitud y no sabemos la longitud que van a tener. El SO no realiza ninguna gestión sobre la longitud de los registros ya que el archivo no tiene realmente ninguna estructura interna. En cada operación de lectura/escritura se transfiere una determinada subcadena del archivo y será el programa de usuario quien indique al SO el principio y final de ese registro.
+3. **Longitud indefinida**: los registros no tienen la misma longitud y no sabemos la longitud que van a tener. El SO no realiza ninguna gestión sobre la longitud de los registros ya que el archivo no tiene realmente ninguna estructura interna. En cada operación de lectura/escritura se transfiere una determinada subcadena del archivo y será el programa de usuario quien indique al SO el principio y final de cada registro.
 
 
 Una posibilidad añadida: disponer de un **campo clave** (o llave) que permita localizar rápidamente un registro.
@@ -50,15 +51,14 @@ Una posibilidad añadida: disponer de un **campo clave** (o llave) que permita l
 ### 1.2 Concepto de directorio
 **Directorio** es un archivo especial que permite agrupar archivos según las necesidades de los usuarios. En cada dispositivo existe una estructura jerárquica donde se localizan todos los archivos de los distintos usuarios que lo usan.
 
-En la visión que el usuario tiene de la estructura jerárquica de archivos se utilizan los
-siguientes conceptos:
+En la visión que el usuario tiene de la estructura jerárquica de archivos se utilizan los siguientes conceptos:
 - Directorio actual o de trabajo.
 - Directorio inicial o *home*.
 - Rutas (*pathname*) absoluta y relativas.
 - Lista de búsqueda.
 - Enlace duro, enlace simbólico.
 
-El sistema operativo proporciona operaciones para manejar los conceptos anteriores.
+El SO proporciona operaciones para manejar los conceptos anteriores.
 
 ## 2. Organización de archivos
 ### 2.1 Organización secuencial
@@ -87,9 +87,9 @@ La organización secuencial es **adecuada**:
 
 
 #### 2.1.2 Organización secuencial: operaciones sobre archivos
-- **Añadir.** Sólo es posible escribir al final del archivo, después del último registro escrito.
-- **Consulta o recuperación.** Se realiza en orden secuencial, es decir, el orden en el que se hubieran escrito determina el orden en el que se leen los registros. Para leer el registro que ocupa la posición n en el archivo es necesario leer previamente los **n-1** registros que hay antes que él. Por ejemplo, si queremos leer el 4º registro, tenemos que leer los registros 1, 2, 3 y 4.
-- **Inserción, modificación y eliminación.** No es fácil realizar estas operaciones sobre un archivo secuencial.
+- **Añadir.** Solo es posible escribir al final del archivo, después del último registro escrito. Es decir, la información se graba en el archivo escribiendo los registros en secuencia, en el orden en que se desea que estén en el archivo.
+- **Consulta o recuperación.** Se realiza en orden secuencial, es decir, el orden en el que se hubieran escrito determina el orden en el que se leen los registros. Para leer el registro que ocupa la posición **n** en el archivo es necesario leer previamente los **n-1** registros que hay antes que él. Por ejemplo, si queremos leer el 4º registro, tenemos que leer los registros 1, 2, 3 y 4.
+- **Inserción, modificación y eliminación.** No es fácil realizar estas operaciones sobre un archivo secuencial, siendo posible que sea necesario crear otro archivo que incorpore las actualizaciones.
 	- La **modificación** de un registro solo es posible si no se aumenta su longitud.
 	- No es posible **eliminar** un registro del archivo, pero se puede realizar un borrado lógico, es decir, marcarlo de tal forma que al leer se identifique como no válido.
 	- En otros casos es necesario crear un archivo nuevo con las actualizaciones que se quieran realizar.
@@ -110,7 +110,7 @@ El último registro de la cadena contiene una marca especial en el lugar del pun
 
 #### 2.2.1 Organización secuencial encadenada: operaciones sobre archivos
 - **Consulta o recuperación.** La consulta es secuencial, al igual que en un archivo con organización secuencial pura. Cada vez que se lee un registro se lee la posición del siguiente, lo que permite seguir la secuencia lógica del archivo.
-- **Inserción.** Hay que seguir los siguientes pasos:
+- **Inserción.** Para insertar un registro hay que seguir los siguientes pasos:
 	1. Localizar la posición donde se desea insertar; es decir, entre qué dos registros debe estar el nuevo registro del archivo.
 	2. Escribir el registro en una zona libre de memoria.
 	3. Asignar al nuevo registro como puntero la dirección física del registro siguiente.
@@ -135,13 +135,13 @@ Se inserta un registro con llave “Gato”.
 
 Un archivo con organización secuencial indexada está formado por dos estructuras: zona de registros y zona de índices.
 
-**Zona de registros:** es una zona donde se direccionan los registros del archivo; está dividida en **tramos** (conjunto de registros consecutivos). Los registros están ordenados según el valor de una llave.
+**Zona de registros:** se encuentran los registros en sí, ordenados según el valor de una llave. Es una zona donde se direccionan los registros del archivo y está dividida en **tramos** (conjunto de registros consecutivos).
 **Zona de índices:** es una zona en la que por cada tramo de la zona de registros hay un registro que contiene:
-- El mayor valor de la llave del tramo (valor de llave del último registro del tramo).
-- La dirección del primer registro del tramo.
+	- El mayor valor de la llave del tramo (valor de llave del último registro del tramo).
+	- La dirección del primer registro del tramo.
 
 
-La gestión de la estructura la realiza el sistema operativo o un software especial, por lo que el usuario de esta estructura no necesita conocer la existencia de ambas zonas, pudiendo contemplar ambas como un todo.
+La gestión de la estructura la realiza el SO o un software especial, por lo que el usuario de esta estructura no necesita conocer la existencia de ambas zonas, pudiendo contemplar ambas como un todo.
 
 
 **Ejemplo.**
@@ -159,53 +159,52 @@ Para buscar caceres, leo almeria pero no me dice nada. Ahora tendria que leer cu
 	3. Leer secuencialmente el tramo de la zona de registros a partir de la dirección obtenida en la zona de índices hasta encontrar el registro buscado o uno con valor de llave mayor que el buscado (en este último caso el registro no se encuentra en el archivo).
 - **Inserción.** Dado que ambas zonas son secuenciales, no es posible insertar un registro en archivos con esta organización. En algunos casos se permite la escritura de nuevos registros al final de la zona de registros. Estos registros, como es lógico, no podrán ser consultados por llave con el procedimiento descrito anteriormente.
 - **Borrado.** Al estar los registros escritos en secuencia no es posible borrar un registro. La única forma de eliminar la información contenida en un registro es marcándolo, lo que se conoce como **borrado lógico**.
-- **Modificación.** Las modificaciones son posibles tan sólo si el registro no aumenta
-de longitud al ser modificado y no se altera el valor de la llave del mismo.
+- **Modificación.** Las modificaciones son posibles tan sólo si el registro no aumenta de longitud al ser modificado y no se altera el valor de la llave del mismo.
 
 #### 2.2.2 Organización secuencial indexada: ejemplo
+Consulta de un registro con llave "Digital".
 
+>Insertar diap16
 
 
 ### 2.3 Organización directa o aleatoria
 >Prie06 608-611
 
 
-Un archivo con organización directa o aleatoria (“random”) es un archivo escrito sobre un soporte de acceso directo para el cual existe una función de transformación que genera la dirección de cada registro en el archivo a partir de un campo que se usa como llave.
+Un archivo con **organización directa o aleatoria** (“random”) es un archivo escrito sobre un soporte de acceso directo para el cual existe una función de transformación que genera la dirección de cada registro en el archivo a partir de un campo que se usa como llave.
 
 El nombre de “aleatorio” se debe a que normalmente no existe ninguna vinculación aparente entre el orden lógico de los registros y su orden físico.
 
 La organización directa es útil para archivos donde los accesos deben realizarse por llave, accediéndose siempre a registros concretos.
 
-Si la información se va a procesar en conjunto, con frecuencia puede ser más rentable
-una organización secuencial indexada.
+Si la información se va a procesar en conjunto, con frecuencia puede ser más rentable una organización secuencial indexada.
 
 #### 2.3.1 Organización directa o aleatoria: problemas de los sinónimos
 Un problema fundamental de esta organización es elegir adecuadamente la
-función de transformación o método de direccionamiento que se va a
+**función de transformación o método de direccionamiento** que se va a
 utilizar ya que pueden darse las siguientes situaciones no deseadas:
 - Que haya direcciones que no se corresponden con ninguna llave y, por tanto, habrá zonas de disco sin utilizar.
 - Que haya direcciones que se correspondan con más de una llave. En este caso se dice que las llaves son sinónimas para esa transformación o que se produce una colisión.
 
-Hay dos formas de resolver el problema de los sinónimos, siempre a costa de complicar la estructura del archivo:
-- Cuando se asocia a una llave una dirección ya ocupada por un registro distinto (esto es, por un sinónimo de esta llave), se busca en el archivo hasta encontrar una posición libre donde escribir el registro.
-- Se reserva una zona de desbordamiento donde se escribirán los registros que no se pueden escribir en la posición que les corresponde según la transformación. Esta zona se puede gestionar secuencialmente o encadenada a la zona principal de registros.
+Hay **dos formas de resolver el problema de los sinónimos**, siempre a costa de complicar la estructura del archivo:
+- Cuando se asocia a una llave **una dirección ya ocupada** por un registro distinto (esto es, por un sinónimo de esta llave), se busca en el archivo hasta encontrar una posición libre donde escribir el registro.
+- Se reserva una **zona de desbordamiento** donde se escribirán los registros que no se pueden escribir en la posición que les corresponde según la transformación. Esta zona se puede gestionar secuencialmente o encadenada a la zona principal de registros.
 
 
 #### 2.3.2 Organización directa o aleatoria: métodos de direccionamiento
-1. Direccionamiento directo. Se utiliza como dirección la propia llave y solo es factible cuando la llave es numérica y su rango de valores no es mayor que el rango de direcciones en el archivo. Por ejemplo, el archivo de habitaciones de un hotel puede organizarse en forma aleatoria con direccionamiento directo haciendo coincidir la dirección
-con el número de habitación.
-	**Inconveniente:** En algunos casos pueden quedar lagunas de direcciones sin utilizar, en lugares conocidos de antemano. En este caso se pueden ocupar dichas direcciones desplazando las direcciones superiores.
+1. **Direccionamiento directo.** Se utiliza como dirección la propia llave y solo es factible cuando la llave es numérica y su rango de valores no es mayor que el rango de direcciones en el archivo. Por ejemplo, el archivo de habitaciones de un hotel puede organizarse en forma aleatoria con direccionamiento directo haciendo coincidir la dirección con el número de habitación.
+	**Inconveniente:** en algunos casos pueden quedar lagunas de direcciones sin utilizar, en lugares conocidos de antemano. En este caso se pueden ocupar dichas direcciones desplazando las direcciones superiores.
 2. **Direccionamiento asociado.** Se puede utilizar cualquier tipo de llave. Si se utiliza este método debe construirse una tabla en la que se almacena para cada llave la dirección donde se encuentra el registro correspondiente. Dicha tabla se debe guardar mientras exista el archivo.
 
-3) **Direccionamiento calculado (“hashing”).** La dirección de cada registro se obtiene realizando una transformación sobre la llave.
+3. **Direccionamiento calculado (“hashing”).** La dirección de cada registro se obtiene realizando una transformación sobre la llave. Se utiliza cuando:
+	- La llave no es numérica, en cuyo caso se necesita una conversión previa para obtener un número a partir de ella. Por ejemplo se usa el equivalente decimal al propio código binario del carácter (al carácter *A* le correspondería el 65, ...)
+	- La llave es numérica pero toma valores en un rango inadecuado para usarse directamente como dirección.
 
-Se utiliza cuando:
-- La llave no es numérica, en cuyo caso se necesita una conversión previa para obtener un número a partir de ella. Por ejemplo se usa el equivalente decimal al propio código binario del carácter (al carácter A le correspondería el 65, ...)
-- La llave es numérica pero toma valores en un rango inadecuado para usarse directamente como dirección.
 
 #### 2.3.3 Organización directa o aleatoria: operaciones sobre archivos
-
-
+- **Consulta.** La consulta se realiza por llave. Para leer un registro debe aplicarse a la llave el algoritmo de transformación, este algoritmo devuelve un número que es la dirección del registro que se quiere leer. Si el registro con la llave buscada no se encuentra allí, se procederá según se haya resuelto la gestión de sinónimos o colisiones.
+- **Borrado.** Siempre se realiza un borrado lógico, pudiéndose reutilizar el espacio del registro eliminado.
+- **Modificación e inserción.** Siempre se puede modificar o insertar un nuevo registro, realizando la transformación de la llave correspondiente.
 
 
 ## 3. Bases de datos
@@ -213,7 +212,7 @@ Se utiliza cuando:
 >Prie06 617-628
 
 
-En una aplicación convencional con archivos aparecen los siguientes problemas:
+En una aplicación convencional con archivos aparecen los siguientes **problemas**:
 1. **Dificultad de mantenimiento.** Si hay archivos con información parcialmente duplicada, realizar las actualizaciones necesarias es un problema complejo y costoso. Normalmente, es necesario actualizar varios archivos con diferentes organizaciones. Si la actualización no se realiza correctamente se tendrá información incoherente.
 2. **Redundancia.** Se dice que hay redundancia si un dato se puede deducir a partir de otros datos (se dan los problemas explicados en el caso anterior).
 	- **Redundancia directa:**
@@ -252,11 +251,13 @@ La forma en la que se almacenan las relaciones entre datos y el utilizar como un
 10. **Interrogación directa (“query”).** Existe una utilidad que permite el acceso a los datos de forma interactiva o conversacional.
 
 ### 3.4 Estructura de una base de datos
->Su diapositiva.
-Se almacena información de una serie de objetos o elmentos. Estos objetos reciben el nombre de entidades, siendo una entidad cualquier ente sobre el que se almacena información.
-De cada entidad se alamacenan una serie de datos que se denominan atributos de la entidad. Puede ser atributo de una entidad cualquier característica o propiedad de esta.
-¿¿¿¿...elemnto, valor acutal de registro...??
+En una base de datos se almacena información de una serie de objetos o elementos. Estos objetos reciben el nombre de **entidades**, siendo una entidad cualquier ente sobre el que se almacena información.
 
+	De cada entidad se almacenan una serie de datos que se denominan **atributos** de la entidad. Puede ser atributo de una entidad cualquier característica o propiedad de ésta.
+
+	Las entidades y los atributos son conceptos abstractos. En una base de datos la información de cada entidad se almacena en **registros**, y cada atributo en **campos** de dicho registro, de forma análoga al almacenamiento en archivos. Sin embargo, en una base de datos **hay diferentes tipos de registros**, uno por cada entidad.
+
+	Normalmente se reserva el nombre "registro" para especificar un "tipo de registro", utilizándose otros nombres para especificar cada una de las apariciones de ese registro en la base de datos, tales como: **elemento, valor actual de registro, u ocurrencia de registro.**
 
 
 Se dice que uno o más atributos de una entidad es un **identificador** o **clave primaria** si el valor de dichos atributos determina de forma unívoca cada uno de los elementos de dicha entidad, y no existe ningún subconjunto de él que permita identificar a la entidad de manera única.
@@ -265,10 +266,9 @@ En una base de datos se almacenan además de las entidades, las **relaciones** e
 
 En la implementación de la base de datos, estas relaciones se almacenan con punteros que inserta automáticamente el software que la maneja y esto es "transparente" al usuario.
 
-
+//diap 35
 ### 3.5 Niveles de abstracción de la información: vistas y esquemas
-- **Nivel de vista:** permite describir diferentes
-**vistas** o **subesquemas**, cada una de las cuales se corresponde con la parte de la base de datos que interesa a un determinado grupo
+- **Nivel de vista:** permite describir diferentes **vistas** o **subesquemas**, cada una de las cuales se corresponde con la parte de la base de datos que interesa a un determinado grupo
 de usuarios. Además limita el acceso solo a la información de la vista.
 - **Nivel conceptual.** Describe el **esquema de la base de datos**. En éste se especifica qué información se guarda en la base de datos,
 incluyendo todos los datos almacenados en ella y las relaciones entre ellos. Este nivel se utiliza en la administración de la base de datos.
@@ -335,7 +335,7 @@ Sus componentes principales son:
 
 
 2. **Modelo de datos en red.** Permite especificar una **base de datos en red**, donde pueden darse relaciones binarias con cualquier cardinalidad (1:1, 1:N, N:1, N:N) y no es necesario que la estructura tenga forma de árbol.
-3. **Modelo de datos relacional.** Permite especificar una base de datos relacional, que estará formada por tablas. Una **tabla** es una estructura bidimensional formada por una sucesión de registros del mismo tipo.
+3. **Modelo de datos relacional.** Permite especificar una **base de datos relacional**, que estará formada por tablas. Una **tabla** es una estructura bidimensional formada por una sucesión de registros del mismo tipo.
 Si se imponen ciertas condiciones a las tablas, se pueden tratar como **relaciones** matemáticas.
 Las tablas deben cumplir las siguientes condiciones:
 	1. Todos los registros de una tabla son del mismo tipo. Para almacenar registros de tipos distintos se usan tablas distintas.
@@ -363,7 +363,7 @@ Dado un Diagrama entidad-relación, el paso a tablas o relaciones del Modelo de 
 
 
 ## 4. Sistema de gestión de la bases de datos
-### 4.1 Definición de sistema de gestión de base de datos 
+### 4.1 Definición de sistema de gestión de base de datos
 **Sistema de gestión de la base de datos - SGBD** (*Data Base Management System* - DBMS): conjunto de software destinado a la creación, control y manipulación de la información de una base de datos.
 
 Un SGBD debe permitir la realización de las siguientes **tareas**:
@@ -381,4 +381,3 @@ Las tres primeras tareas se realizan mediante dos lenguajes específicos:
 
 
 El **sistema de gestión de la base de datos** actúa como intermediario entre los programas de aplicación y el sistema operativo, lo que permite que los programas sean independientes de la estructura física de los datos.
-
