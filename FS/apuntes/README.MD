@@ -5,7 +5,7 @@
  [tema1.md](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/tema1.md) | Sistemas de cómputo
  [tema2.md](https://github.com/pwaqo/DGIIM1/tree/master/FS/apuntes/tema2.md) | Introducción a los sistemas operativos
  [tema3.pdf](https://github.com/pwaqo/DGIIM1/blob/master/FS/apuntes/Tema3.pdf) | Compilación y enlazado
- [tema5.pdf] (https://github.com/pwaqo/DGIIM1/blob/master/FS/apuntes/Tema5.pdf) | Generación y depuración de aplicaciones
+ [tema5.pdf](https://github.com/pwaqo/DGIIM1/blob/master/FS/apuntes/Tema5.pdf) |  Generación y depuración de aplicaciones
 
 ### Resúmenes sobre el manejo de BASH
 
