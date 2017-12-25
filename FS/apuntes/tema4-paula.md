@@ -52,8 +52,8 @@ Este software se encarga de efectuar los accesos necesarios al dispositivo donde
 ### 1.1.3 Clasificación de archivos según el tipo de registros
 1. **Longitud fija**: los registros tienen la misma longitud.
 2. **Longitud variable**: los registros no tienen la misma longitud. Sin embargo, si se sabe la longitud que tiene cada registro, ya que el sistema reserva una palabra al comienzo de cada registro para anotar su longitud.
-	2.1 **Con delimitador:** un determinado carácter llamado delimitador marca el fin de un registro (suelen usarse como delimitadores el salto de línea, nulo...).
-	2.2 **Con cabecera:** cada registro contiene un campo inicial que almacena el número de bytes del registro.
+	- **Con delimitador:** un determinado carácter llamado delimitador marca el fin de un registro (suelen usarse como delimitadores el salto de línea, nulo...).
+	- **Con cabecera:** cada registro contiene un campo inicial que almacena el número de bytes del registro.
 3. **Longitud indefinida**: los registros no tienen la misma longitud y no sabemos la longitud que van a tener. El SO no realiza ninguna gestión sobre la longitud de los registros ya que el archivo no tiene realmente ninguna estructura interna. En cada operación de lectura/escritura se transfiere una determinada subcadena del archivo y será el programa de usuario quien indique al SO el principio y final de cada registro.
 
 
@@ -64,8 +64,8 @@ Cuando una clave se utiliza como campo de localización en el archivo la denomin
 ### 1.2 Tipos de archivos
 - **Archivos permanentes:** contiene información relevante para una aplicación, es decir, los datos necesarios para el funcionamiento de la misma. Su vida es larga y no puede generarse de una forma inmediata a partir de otros archivos. Se pueden clasificar en:
 	- **Archivos maestros.** Contiene el estado actual de los datos susceptibles de ser modificados en la aplicación. Es el núcleo central de la aplicación. Todos los procesos están orientados a actualizar el archivo maestro o a obtener resultados de él. Un ejemplo es el archivo de clientes de un banco, en el que los registros contienen información de identificación de clientes, su saldo en cuenta...
-	- Archivos constantes.
-	- Archivos históricos.
+	- **Archivos constantes.**
+	- **Archivos históricos.**
 - **Archivos temporales:** contiene información relevante para un determinado proceso  programa, pero no para el conjunto de la aplicación. Se genera a partir de los datos de archivos permanentes o par actualizar estos, y su vida es muy corta.
 
 ### 1.3 Concepto de directorio
@@ -132,6 +132,7 @@ Los archivos con esta organización solo pueden ser gestionados en soportes dire
 
 
 **Principal ventaja:** facilidad de inserción y borrado de registros.
+
 **Principal inconveniente:** limita las consultas de forma secuencial.
 
 #### 2.2.1 Organización secuencial encadenada: operaciones sobre archivos
@@ -158,8 +159,9 @@ Se inserta un registro con llave “Gato”.
 ### 2.2 Organización secuencial indexada
 Un archivo con organización secuencial indexada está formado por dos estructuras: zona de registros y zona de índices.
 
-**Zona de registros:** se encuentran los registros en sí, ordenados según el valor de una llave. Es una zona donde se direccionan los registros del archivo y está dividida en **tramos** (conjunto de registros consecutivos). Por cada tramo hay un registro en un la zona de índices.
-**Zona de índices:** es una zona en la que por cada tramo de la zona de registros hay un registro que contiene:
+- **Zona de registros:** se encuentran los registros en sí, ordenados según el valor de una llave. Es una zona donde se direccionan los registros del archivo y está dividida en **tramos** (conjunto de registros consecutivos). Por cada tramo hay un registro en un la zona de índices.
+
+- **Zona de índices:** es una zona en la que por cada tramo de la zona de registros hay un registro que contiene:
 	- El mayor valor de la **llave** del tramo (valor de llave del último registro del tramo).
 	- La **dirección** del primer registro del tramo.
 
@@ -172,8 +174,10 @@ La gestión de la estructura la realiza el SO o un software especial, por lo que
 
 
 >El indice tendria 4 tramos.
-P.e. Logroño esta en el segundo tramo.
-Para buscar caceres, leo almeria pero no me dice nada. Ahora tendria que leer cuenca y entonces me habría pasado.
+
+>P.e. Logroño esta en el segundo tramo.
+
+>Para buscar Cáceres, leo Almería pero no me dice nada. Ahora tendría que leer cuenca y entonces me habría pasado.
 
 #### 2.2.1 Organización secuencial indexada: operaciones sobre archivos
 - **Consulta.** Se realiza por llave (esto es, localizar un registro conocida su llave) sin necesidad de leer los registros que no se encuentran en su mismo tramo. El procedimiento a seguir para realizar una consulta por llave es:
@@ -308,11 +312,11 @@ En cualquier base de datos se puede tolerar un cierto nivel de redundancia. Se u
 ### 3.4 Estructura de una base de datos
 En una base de datos se almacena información de una serie de objetos o elementos. Estos objetos reciben el nombre de **entidades**, siendo una entidad cualquier ente sobre el que se almacena información.
 
-	De cada entidad se almacenan una serie de datos que se denominan **atributos** de la entidad. Puede ser atributo de una entidad cualquier característica o propiedad de esta.
+De cada entidad se almacenan una serie de datos que se denominan **atributos** de la entidad. Puede ser atributo de una entidad cualquier característica o propiedad de esta.
 
-	Las entidades y los atributos son conceptos abstractos. En una base de datos la información de cada entidad se almacena en **registros**, y cada atributo en **campos** de dicho registro, de forma análoga al almacenamiento en archivos. Sin embargo, en una base de datos **hay diferentes tipos de registros**, uno por cada entidad.
+Las entidades y los atributos son conceptos abstractos. En una base de datos la información de cada entidad se almacena en **registros**, y cada atributo en **campos** de dicho registro, de forma análoga al almacenamiento en archivos. Sin embargo, en una base de datos **hay diferentes tipos de registros**, uno por cada entidad.
 
-	Normalmente se reserva el nombre "registro" para especificar un "tipo de registro", utilizándose otros nombres para especificar cada una de las apariciones de ese registro en la base de datos, tales como: **elemento, valor actual de registro, u ocurrencia de registro.**
+Normalmente se reserva el nombre "registro" para especificar un "tipo de registro", utilizándose otros nombres para especificar cada una de las apariciones de ese registro en la base de datos, tales como: **elemento, valor actual de registro, u ocurrencia de registro.**
 
 Se dice que uno o más atributos de una entidad es un **identificador** o **clave primaria** si el valor de dichos atributos determina de forma unívoca cada uno de los elementos de dicha entidad, y no existe ningún subconjunto de él que permita identificar a la entidad de manera única.
 
@@ -358,8 +362,11 @@ En el caso de un conjunto binario de relaciones R entre los conjuntos de relacio
 - **Muchos a muchos (N:M):** a cada entidad de A le puede corresponder más de una entidad de B, y a cada entidad de B le puede corresponder más de una entidad de A.
 
 **Ejemplo.**
+
 alumno <-> expediente -------- 1 a 1
+
 alumno <->> libro ------------ 1 a N
+
 profesor <<->>alumno --------- N a N
 
 #### 3.7.3 Diagrama entidad-relación
