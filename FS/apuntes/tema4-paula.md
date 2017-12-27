@@ -46,7 +46,7 @@ Este software se encarga de efectuar los accesos necesarios al dispositivo donde
 	- La dirección física es la posición real o efectiva donde se encuentra el registro en el soporte de información.
 - Un archivo es una estructura de datos externa al programa que lo usa; en las operaciones de lectura/escritura se transfiere la información a/desde un buffer en memoria principal asociado a las operaciones de entrada/salida sobre el archivo.
 - Los archivos se guardan o almacenan en dispositivos de memoria masiva, estando limitados en tamaño tan solo por el de los dispositivos que los albergan. Los dispositivos o soportes de memoria auxiliar, pueden ser de tipo secuencial o no direccionables o de acceso directo o direccionables.
-	- En los soportes no direccionables si el último acceso se ha efectuado al registro físico i, para acceder al registo j>i, hay que leer op asar por los registros situados entre el i y el j.
+	- En los soportes no direccionables si el último acceso se ha efectuado al registro físico i, para acceder al registo j>i, hay que leer o pasar por los registros situados entre el i y el j.
 	- En los soportes direccionables, se puede leer o escribir directamente un registro físico sin más que dar su dirección física, sin necesidad de recorrer o leer otros registros.
 
 ### 1.1.3 Clasificación de archivos según el tipo de registros
