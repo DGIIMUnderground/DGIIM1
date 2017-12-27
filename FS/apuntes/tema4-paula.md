@@ -85,7 +85,7 @@ Se debe optar por una u otra organización atendiendo a la forma en que se va a 
 - **Secuencial.** Los registros se encuentran en cierto orden y yuxtapuestos consecutivamente. Los registros han de ser leídos necesariamente según este orden.
 - **Indexada.** Se utiliza un índice para obtener la ubicación de la zona del archivo donde se encuentra del registro buscado. Esto permite localizar un registro sin leer previamente todos los que le preceden (solo los de su zona).
 - **Encadenada.** Cada registro contiene un puntero que permite localizar el siguiente registro. El archivo tiene la misma estructura que una lista lineal.
-- **Directa.** La ubicación de registro en el soporte se obtiene a partir del valor de la llave (mediante un algoritmo de transofmración de esta).
+- **Directa.** La ubicación de registro en el soporte se obtiene a partir del valor de la llave (mediante un algoritmo de transformación de esta).
 
 ### 2.1 Organización secuencial
 Los registros están almacenados físicamente de forma contigua siguiendo la secuencia lógica del archivo.
