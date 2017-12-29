@@ -33,3 +33,47 @@
 ### R no es numerable
 - Proposición 1.50 (pág 31). Demostración.
 - Proposición 1.51 (pág 31): R y R\Q son no numerables. Mini-demostración.
+
+
+
+## Pregunta 3: Sucesiones convergentes. Sucesiones monótonas.
+
+### Sucesiones convergentes.
+- Definición 2.2 (pág 36): Suceción convergente y límite.
+- Proposición 2.6 (pág 39): Unicidad del límite. Demostración.
+- Proposición 2.8 (pág 40): Principio de las sucesiones encajadas. Demostración
+- Definición 2.11 (pág 41): Sucesión mayorada, minorada, acotada, creciente estrictamente creciente, decreciente, estrictamente decreciente, monótona, estrictamente monótona.
+- Proposición 2.12 (pág 41): Toda sucesión convergente está acotada. Demostración.
+
+### Sucesiones monótonas.
+- **Teorema** 2.14 (pág 42): **Toda sucesión monótona y acotada es convergente**. **Demostración**.
+
+
+
+## Pregunta 4:  Las funciones logaritmo y exponencial
+Que se lo estudie él.
+
+
+
+## Pregunta 5: Sucesiones parciales. Valores de adherencia. Teorema de Bolzano – Weierstrass.
+
+### Sucesiones parciales y valores de adherencia.
+- Definición de suceción parcial y valor de adherencia (pág 57)
+- Proposiciones 2.40 y 2.41 (pág 58). Demostración.
+
+### Teorema de Bolzano-Weirtrass
+- **Lemilla** 2.42 (pág 59). Demostración.
+- **Teorema de Bolzano-Weierstrass**. (como consecuencia directa del "lemilla")
+- Opcionalmente, proposición 2.44 (pág 60)
+
+
+
+## Pregunta 6: Teorema de complitud de R. Límites superior e inferior.
+
+### Teorema de complitud de R.
+- Definición 2.46 (pág 62): **Condición de Cauchy**.
+- Teorema 2.47 (pág 62): **Teorema de Complitud de R**. Demostración pa un lao y pa otro.
+
+### Límites superior e inferior.
+- Epígrafe 2.4.2 (páginas 73 y 74).
+
