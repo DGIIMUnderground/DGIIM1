@@ -77,3 +77,66 @@ Que se lo estudie él.
 ### Límites superior e inferior.
 - Epígrafe 2.4.2 (páginas 73 y 74).
 
+
+
+## Pregunta 7: Convergencia de series de términos positivos. Criterios de comparación, del cociente y de la raíz.
+- Proposición 3.9 (pág 86): Criterio **Básico de convergencia** de series de términos positivos. (¡No viene demostrado!)
+- Proposición 3.12 (paǵ 87): Criterio básico de **comparación**. Demostración.
+- Proposición 3.14 (pág 88): Criterio límite de comparación. Demostración.
+- Proposición 3.21 (pág 91): Criterio del **cociente**. Demostración.
+- Proposición 2.23 (página 93): Criterio De la **raíz**. Demostración.
+
+
+
+## Pregunta 8: Series absolutamente convergentes y series conmutativamente o incondicionalmente convergentes. Series alternadas. Criterio de Leibnitz.
+- Definiciones de serie **conmutativamente convergente** y **absolutamente convergente**. Página 99.
+- Teorema 3.27 (pág 100). Demostración.
+- Teorema 3.28 (pág 101). (¡No viene demostrado)
+- Proposición 3.29 (pág 101): Criterio de **Leibniz** para series alternadas. Demostración.
+
+
+
+## Pregunta 9: Funciones reales continuas. Propiedades básicas. Propiedades locales.
+
+### Funciones reales continuas.
+- Definición de **continuidad en un punto**. Página 109
+- Definición 4.11 (pág 110): continuidad por la izquierda, continuidad por la derecha.
+- Definición 4.12 (pág 110): **continuidad en un conjunto**
+- Proposición 4.13 (pád 111). Demostración. -< **Importante**
+
+### Propiedades básicas de las funciones continuas
+- Teorema 4.14 (pág 111): Continuidad de las **funciones suma, producto y cociente**. Demostración.
+- Corolario 4.15 (pág 112)
+- Teorema 4.16 (pág 112): Continuidad de una **función compuesta**
+- Funciones racionales y polinómicas (pág 113). Poquito y fácil.
+
+### Propiedades locales
+- Definición 4.18 (pág 114): Función **restricción**
+- Proposición 4.20 (pág 115): **Localización de la continuidad**. Demostración.
+- Proposición 4.21 (pág 115). (¡No viene demostrado!)
+- Teorema 4.22 (pág 115): **Conservación local del signo**. Demostración.
+- Proposición 2.23 (páf 116): **Acotación local**. Demostración.
+
+
+
+## Pregunta 10: Teorema de Bolzano y teorema del valor intermedio. Consecuencias.
+
+### Teorema de los ceros de Bolzano.
+- Teorema 4.24 (pág 118). Demostración.
+
+### Teorema del valor intermedio.
+- Teorema 4.25 (pág 118). Demostración.
+
+### Consecuencias.
+- **Estrategia** 4.26 (pág 119). Enunciar el truquillo.
+- Corolario 4.27 (pág 120): **Existencia de raíces**. Demostración.
+- Corolario 4.28 (pág 120): **Ceros de polinomio de grado impar**. Demostración.
+
+
+
+## Pregunta 11: Continuidad y monotonía.
+- Teorema 4.29 (pág 121): Una función monótona cuya imagen es un intervalo es continua. Demostración.
+- Corolario 4.30 (pág 122). Enunciarlo.
+- Corolario 4.31 (pág 122). Demostración.
+- **Teorema 4.32** (pág 122): Toda función inyectiva y continua en un intervalo es estrictamente monótona. Demostración.
+- Corolario 4.33 (pág 123). Enunciarlo
