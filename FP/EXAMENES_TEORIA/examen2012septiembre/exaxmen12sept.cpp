@@ -1,30 +1,34 @@
 /* ENUNCIADO DE UN PROBLEMA DE EXAMEN
-1. (3 puntos) Se est´a desarrollando una aplicaci´on para automatizar la realizaci´on de ex´amenes tipo test. El
-software incluir´a una clase Examen que debe almacenar: el nombre de la asignatura, la lista de enunciados de las
+
+1. (3 puntos) Se está desarrollando una aplicación para automatizar la realización de exámenes tipo test. El
+software incluirá una clase Examen que debe almacenar: el nombre de la asignatura, la lista de enunciados de las
 preguntas (cada enunciado es una cadena de caracteres) y la lista de respuestas correctas para cada pregunta
-(cada respuesta es un car´acter). Implementa la clase junto con los siguientes m´etodos:
-Un constructor que inicialice un objeto de tipo Examen dando el nombre de la asignatura y con la lista de
-preguntas vac´ıa.
-Un m´etodo NuevaPregunta que reciba un enunciado y la respuesta correcta y que los a˜nada a la lista de
-preguntas del examen. Cada nueva pregunta siempre se a˜nade al final de la lista.
-Un m´etodo NumPreguntas que devuelva el n´umero de preguntas de que consta el examen.
-Un m´etodo GetEnunciado que devuelva el enunciado de la pregunta i-´esima.
-Un m´etodo GetRespuesta que devuelva la respuesta de la pregunta i-´esima.
-Recuerda que los m´etodos deben ser robustos frente a entradas de datos err´oneas.
-A continuaci´on, se pide realizar un programa que permita evaluar a una serie de alumnos utilizando la clase
-Examen. El programa comenzar´a creando un objeto de tipo Examen y d´andole contenido, es decir, leyendo las
-preguntas y respuestas correctas desde la entrada est´andar y almacen´andolas.
-Una vez le´ıdo el examen se proceder´a a la evaluaci´on de un n´umero de alumnos dado desde la entrada est´andar.
-Para ello el programa le mostrar´a las preguntas del examen a cada alumno y leer´a sus respuestas. Al finalizar
-cada alumno la prueba, el programa le dir´a su nota de acuerdo a los siguientes criterios:
-Por cada pregunta sin responder se suman 0 puntos.
-Por cada respuesta correcta se suma 1 punto.
-Por cada respuesta incorrecta se resta 1 punto.
-La nota final estar´a en el intervalo [0, 10]. Un 10 significa que ha respondido y acertado todas las preguntas.
-Si la calificaci´on es negativa se sustituye por cero.
+(cada respuesta es un carácter). Implementa la clase junto con los siguientes métodos:
+	
+	- Un constructor que inicialice un objeto de tipo Examen dando el nombre de la asignatura y con la lista de
+	preguntas vacía.
+	- Un método NuevaPregunta que reciba un enunciado y la respuesta correcta y que los añada a la lista de
+	preguntas del examen. Cada nueva pregunta siempre se añade al final de la lista.
+	- Un método NumPreguntas que devuelva el número de preguntas de que consta el examen.
+	- Un método GetEnunciado que devuelva el enunciado de la pregunta i-ésima.
+	- Un método GetRespuesta que devuelva la respuesta de la pregunta i-ésima.
+
+Recuerda que los métodos deben ser robustos frente a entradas de datos erróneas. 
+
+A continuación, se pide realizar un programa que permita evaluar a una serie de alumnos utilizando la clase
+Examen. El programa comenzará creando un objeto de tipo Examen y dándole contenido, es decir, leyendo las
+preguntas y respuestas correctas desde la entrada estándar y almacenándolas.
+Una vez leído el examen se procederá a la evaluación de un número de alumnos dado desde la entrada estándar.
+Para ello el programa le mostrará las preguntas del examen a cada alumno y leerá sus respuestas. Al finalizar
+cada alumno la prueba, el programa le dirá su nota de acuerdo a los siguientes criterios:
+	Por cada pregunta sin responder se suman 0 puntos.
+	Por cada respuesta correcta se suma 1 punto.
+	Por cada respuesta incorrecta se resta 1 punto.
+La nota final estará en el intervalo [0, 10]. Un 10 significa que ha respondido y acertado todas las preguntas.
+Si la calificación es negativa se sustituye por cero.
 Observe que no es necesario almacenar las notas de los alumnos ya que se pueden ir mostrando al terminar
-cada uno de ellos la prueba. Adem´as, podr´a a˜nadir nuevos m´etodos a la clase Examen si lo considera oportuno,
-as´ı como implementar funciones externas a la misma. Se tendr´a en cuenta la calidad del dise˜no propuesto.
+cada uno de ellos la prueba. Además, podrá añaadir nuevos métodos a la clase Examen si lo considera oportuno,
+así como implementar funciones externas a la misma. Se tendrá en cuenta la calidad del diseño propuesto.
 */
 
 #include <iostream>
