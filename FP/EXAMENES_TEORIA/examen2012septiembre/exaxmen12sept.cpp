@@ -94,14 +94,6 @@ void Examen::nuevapregunta (string en, char resp)
 {
     enunciados.push_back(en);
     respuestas.push_back(resp);
-
-    while (en == "" || resp == ' ')
-    {
-        cout << "La pregunta y respuesta no deben ser vacías" << endl;
-        enunciados.push_back(en);
-        respuestas.push_back(resp);
-    }
-
 }
 
 int Examen::numpreguntas() const
