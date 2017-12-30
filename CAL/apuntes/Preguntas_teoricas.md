@@ -140,3 +140,24 @@ Que se lo estudie él.
 - Corolario 4.31 (pág 122). Demostración.
 - **Teorema 4.32** (pág 122): Toda función inyectiva y continua en un intervalo es estrictamente monótona. Demostración.
 - Corolario 4.33 (pág 123). Enunciarlo
+
+
+
+## Pregunta 12: Continuidad en intervalos cerrados y acotados. Teorema de Weierstrass. Consecuencias.
+- Definición 4.34 (pág 125): Función mayorada, minorad, máximo absoluto, mínimo absluto.
+- Teorema 4.35 (pág 125): **Teorema de valores máximo y mínimo de Weirstrass**. Demostración.
+
+### Consecuencias
+- Corolario 4.36: Toda dunción continua en un intervalo cerrado y acotado está acotada en dicho intervalo
+- Proposición 4.37. Demostración.
+
+
+
+## Pregunta 13: Límite de una función en un punto. Caracterización por sucesiones. Límites y discontinuidades de las funciones monótonas.
+
+### Límite de una función en un punto
+
+### Caractización por sucessiones
+
+### Límites y discontinuidades de las funciones monótonas
+
