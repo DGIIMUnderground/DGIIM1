@@ -50,23 +50,27 @@ public:
         @param: asig: Nombre de la asignatura a evaluar.
     */
     Examen(string asig);
+    
     /**
         @brief: Añade una pregunta y su respuesta al examen
         @param: en: Enunciado de la pregunta.
         @param: resp: Respuesta a la pregunta añadida.
     */
     void nuevapregunta(string en, char resp);
+    
     /**
         @brief: Muestra cuantas preguntas tiene el examen.
-        @return: Devuelve un entero que es e l numero de preguntas.
+        @return: Devuelve un entero que es el numero de preguntas.
     */
     int numpreguntas() const;
+    
     /**
         @brief: Muestra el enunciado de una pregunta
         @param: num: Numero de la pregunta a mostrar. empiezan en 0.
         @return: Devuelve el enunciado.
     */
     string getenunciado(int num) const;
+    
     /**
         @brief: Muestra la respuesta de una pregunta
         @param: num: Numero de la respuesta a mostrar. empiezan en 0.
