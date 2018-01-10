@@ -18,8 +18,10 @@ using namespace std;
 int main()
 {
 	int max;
+
 	cout << "Calcular números primos hasta el: ";
 	cin >> max;
+	
 
 	vector<int> primos; //para almacenar números primos
 	primos.push_back(2); //partimos de que el 2 es el primer primo;
@@ -34,7 +36,7 @@ int main()
 		
 		//Veamos si es divisible entre los primos que ya conocemos:
 		
-		for (int j=0; j<sqrt(i) && j<primos.size() ; j++) //pruebo a dividir el número entre los elementos del vector "primos" menores que su raíz cuadrada.
+		for (int j=0; primos[j]<=sqrt(i) && j<primos.size() ; j++) //pruebo a dividir el número entre los elementos del vector "primos" menores que su raíz cuadrada.
 		{
 			if ( i % primos[j] == 0)
 			{
@@ -49,4 +51,6 @@ int main()
 			cout << i << "\t"; //muestro el número
 		}
 	}
+	
+	cout << endl << "Se han encontrado " << primos.size() << " números primos menores que " << max << endl;
 }
