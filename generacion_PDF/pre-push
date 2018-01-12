@@ -1,0 +1,22 @@
+#!/bin/bash
+
+for archivo in $(echo $(git diff --stat --cached origin/master)) ; 
+do
+	es_tex=$(echo $archivo | grep .tex);
+
+	if [ ! -z $es_tex ]; then
+		
+		archivo_sin_extension=${es_tex::-4};
+		pdflatex -interaction=batchmode --jobname=$archivo_sin_extension $es_tex;
+		archivo_pdf=$archivo_sin_extension.pdf;
+		
+		rm $archivo_sin_extension.aux
+		rm $archivo_sin_extension.out
+		rm $archivo_sin_extension.log
+		rm .log
+
+		git add $archivo_pdf;
+		git commit -m "Añadido PDF $archivo_pdf";
+	
+	fi
+done
