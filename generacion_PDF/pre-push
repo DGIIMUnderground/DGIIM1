@@ -1,9 +1,17 @@
 #!/bin/bash
 
+#
+#   Comprobamos que las herramientas de latex necesarias estan instaladas
+#
+
 if ! command -v pdflatex; then
 	printf "\n\n\t Necesita instalar la herramienta pdflatex \n\n\n"
 	exit;
 fi
+
+#
+#   Buscamos entre los archivos a modificar en Git los que tengan extension .tex
+#
 
 for archivo in $(echo $(git diff --stat --cached origin/master)) ; 
 do
@@ -11,14 +19,20 @@ do
 
 	if [ ! -z $es_tex ]; then
 		
+		#  Una vez encontramos uno, eliminamos la extension para poder
+		# generarlo en la carpeta donde se encuentra el archivo tex 
+
 		archivo_sin_extension=${es_tex::-4};
 		pdflatex -interaction=batchmode --jobname=$archivo_sin_extension $es_tex;
 		archivo_pdf=$archivo_sin_extension.pdf;
 		
+		#  Eliminamos archivos temporales de la generacion
+
 		rm $archivo_sin_extension.aux
 		rm $archivo_sin_extension.out
 		rm $archivo_sin_extension.log
-		rm .log
+
+		#  Añadimos el PDF y realizamos commit		
 
 		git add $archivo_pdf;
 		git commit -m "Añadido PDF $archivo_pdf";
