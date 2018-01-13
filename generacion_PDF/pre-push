@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! command -v pdflatex; then
+	printf "\n\n\t Necesita instalar la herramienta pdflatex \n\n\n"
+	exit;
+fi
+
 for archivo in $(echo $(git diff --stat --cached origin/master)) ; 
 do
 	es_tex=$(echo $archivo | grep .tex);
