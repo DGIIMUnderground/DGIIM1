@@ -156,8 +156,17 @@ Que se lo estudie él.
 ## Pregunta 13: Límite de una función en un punto. Caracterización por sucesiones. Límites y discontinuidades de las funciones monótonas.
 
 ### Límite de una función en un punto
+- Definición (página 128, sin señalizar): Límte de un función en un punto
+- Proposión (página 128, sin señalizar). Enunciar.
+- Límites laterales de una función en un punto (pág 129): límite por la izquierda, límite por la derecha
+- Funciones divergentes en un punto (pág 130): positiva/negativamente divergente por la izquierda/derecha.
+- Límites en el infinito (pág 130)
+- Funciones divergentes en el infinito (pág 130)
 
 ### Caractización por sucessiones
+- Proposición 4.38 (pág 131): Enunciar
 
 ### Límites y discontinuidades de las funciones monótonas
-
+- Opcional: Definición 4.44 (pág 134): Clasificación de las discontinuidades
+- Teorema 4.45 (pág 134): Límites de una función monótona. Demostración.
+- Teorema 4.46 (pág 135): Discontinuidades de las funciones monótonas.
