@@ -160,8 +160,7 @@ Que se lo estudie él.
 - Proposión (página 128, sin señalizar). Enunciar.
 - Límites laterales de una función en un punto (pág 129): límite por la izquierda, límite por la derecha
 - Funciones divergentes en un punto (pág 130): positiva/negativamente divergente por la izquierda/derecha.
-- Límites en el infinito (pág 130)
-- Funciones divergentes en el infinito (pág 130)
+
 
 ### Caracterización por sucesiones
 - Proposición 4.38 (pág 131): Enunciar
