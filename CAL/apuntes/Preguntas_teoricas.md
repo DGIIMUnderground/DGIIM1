@@ -163,7 +163,7 @@ Que se lo estudie él.
 - Límites en el infinito (pág 130)
 - Funciones divergentes en el infinito (pág 130)
 
-### Caracterizaciónización por sucessiones
+### Caracterización por sucesiones
 - Proposición 4.38 (pág 131): Enunciar
 
 ### Límites y discontinuidades de las funciones monótonas
