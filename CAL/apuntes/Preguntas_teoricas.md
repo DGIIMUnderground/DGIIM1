@@ -161,7 +161,6 @@ Que se lo estudie él.
 - Límites laterales de una función en un punto (pág 129): límite por la izquierda, límite por la derecha
 - Funciones divergentes en un punto (pág 130): positiva/negativamente divergente por la izquierda/derecha.
 
-
 ### Caracterización por sucesiones
 - Proposición 4.38 (pág 131): Enunciar
 
