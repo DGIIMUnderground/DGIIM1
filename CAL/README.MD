@@ -25,3 +25,4 @@ Carpeta [apuntes](https://github.com/pwaqo/DGIIM1/tree/master/CAL/apuntes)
  Documento     	                                  | Descripción
  ---                               		          | ---
  ConceptosWIP  [ConceptosWIP.md](ConceptosWIP.md) | Conceptos básicos del tema 1: Números reales y conjuntos numerables
+ Series/Sucesiones [Límites sucesiones y convergencia series.pdf](https://github.com/pwaqo/DGIIM1/blob/master/CAL/apuntes/Límites%20sucesiones%20y%20convergencia%20series.pdf) | Resumen con los criterios usados a la hora de calcular límites de sucesiones y convergencia de series
