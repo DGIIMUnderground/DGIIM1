@@ -1,0 +1,67 @@
+------------------------------------------
+                 Día 1
+------------------------------------------
+- Poner foto en la página
+- Práctica final posible: pasar un documento al programa, y que te diga el idioma en el que está escrito
+- Examen de prácticas tras los dos primeros temas de 1 punto
+- Práctica final de 2 puntos
+- Examen teórico: 6 puntos
+- Resto de cosas que hagamos: 1 punto
+
+------------------------------------------
+        Tema 1: Arrays y cadenas
+------------------------------------------
+- Cadenas de caracteres tipo C: Se usan sobre todo en la función main
+int main(int argc, char* argv[]) | char* es una cadena tipo C 
+
+- Un array es un dato compuesto de un número FIJO de elementos. Se acceden a ellos de la misma forma. Una vez declarados, no pueden cambiar de tamaño
+Ejemplo de acceso: Si notas es un array, notas[0]
+- El índice, de la misma forma, va de 0 hasta n-1, siendo dim(array) = 1 
+Ejemplo de declaración: double notas[43]. 
+- Los arrays son súper comunes entre diferentes lenguajes. Cuidado, que en algunos libros se les llama vectores. Estos vectores != biblioteca <vector>
+// Inciso: recomiendo leerse las guías de estilo de C++. Luego pongo una si me acuerdo
+- La única forma de hacer que un array sea más grande es cambiando la propia declaración. Además, debe ser un número constante entero 
+
+Por ejemplo, esto no vale: 
+    int variable = -0.5
+    double mi_array[variable]; 
+(No podemos poner dimensiones fractales. Shit happens)
+
+Sin embargo, esto es bastante sano hacerlo:
+    int const constante = 100;
+    double mi_array[constante];
+
+Nota importante: No podemos pedir que el propio usuario cree el array mediante un valor introducido en la terminal. Es decir:
+    int n;
+    cin >>n;
+    array[n];
+Nota prima: a ver, por poder, se puede. Pero estos señores no nos dejan usarlos todavía
+
+- En la declaración, podemos iniciar el array directamente:
+    int array[3] = {1,2,3};
+    int otro_array[6] = {4,5};      // Los 4 elementos restantes son 0 
+    int another_array[] = {9,5,1}   // Ahora tiene tamaño 3
+
+- Hay una foto mu apañada en las diapositivas que te enseña cómo están almacenados los elementos de los arrays. Simplemente, muestra que es de forma secuencial en memoria
+Esto significa que el acceso es directo también
+
+- Típico trozo de código para mostrar los elementos de un array:
+    const int tamano = 100;
+    double mi_array[tamano];
+    for (unsigned int i=0; i<100; i++)
+        cout <<mi_array[i]<<" ";
+
+- NO se puede hacer la asignación completa. Ejemplo:
+    int notas[tamano];
+    int notas2[tamano];
+    notas = notas2                  // Eeeeeeerrooooooor
+
+- Es interesante usar acotaciones para mostrar ciertas partes del array que nos interesan:
+array:                          |*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|
+Lo que nos interesa:                    ^-------------------^
+
+(No os riais de mi cutre ASCII Art en mitad de la clase)
+
+A partir de esa infografía, podemos recorrer el array como nos dé la gana. Si llamamos a las acotaciones min,max:
+    for (int i=min; i<max; i++)
+        cout <<array[i]<<" ";
