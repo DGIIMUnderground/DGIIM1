@@ -11,6 +11,9 @@
 ------------------------------------------
         Tema 1: Arrays y cadenas
 ------------------------------------------
+
+|| Bases ||
+
 - Cadenas de caracteres tipo C: Se usan sobre todo en la función main
 int main(int argc, char* argv[]) | char* es una cadena tipo C 
 
@@ -65,3 +68,33 @@ Lo que nos interesa:                    ^-------------------^
 A partir de esa infografía, podemos recorrer el array como nos dé la gana. Si llamamos a las acotaciones min,max:
     for (int i=min; i<max; i++)
         cout <<array[i]<<" ";
+
+- Ahora está poniendo un programa para calcular medias. Es muy sencillo. Paso de copiarlo. Está en la presentación, sorry ¯\_(ツ)_/¯
+- Notas interesantes: Ya conocemos el variable++, pero en esta diapositiva nos podemos encontrar operadores aritméticos nuevos como += y /= 
+Por ejemplo, si tenemos que 
+    int media = Suma de todas las notas;
+    int num_alumnos = 100;
+    media /= num_alumnos;           // Esto es lo mismo que decir media = media/num_alumnos 
+
+
+- Elemento centinela: podemos definir el mayorante del conjunto dentro del propio array. Ejemplo gráfico:
+array           |3|9|10|0|0|0|-1|0|...|0|
+acotaciones     ^------------^
+Como podemos ver, el valor -1 no es un valor válido a la hora de hablar de notas (Aunque le hubiera gustado al de Cálculo I). Por ello, si llegamos a -1, paramos el bucle
+Hay un ejemplo en condiciones en la presentación. Echadle un ojo
+
+- Recordatorio de que no te debes pasar de la dimensión del array. Si dim(array) = n => array[i], donde i = {1,...,n-1}
+
+
+|| Funciones ||
+
+- A la hora de pasar un array a una función, en la cabecera se ignora el tamaño que le demos 
+    int funcion(char array[tamano])  // tamano es ignorado 
+Por temas de pereza, interesa más nombrarlo como array[]
+
+- Deberíamos pasarle el tamaño del array para evitar follones. Evidentemente, se puede hallar la dimensión de otras formas
+
+- Normalmente, se pasan por referencia a no ser que se indique de otra forma. 
+Es decir, lo que toques del array pasado en la función, se te va a cambiar en el main/otra funcion. 
+Antes, siempre teníamos que usar & para pasar por referencia. Para arrays, nope. Siempre es así de fomra estándar
+- Para pasarlo por referencia constante, con un const nos vale. 
