@@ -65,7 +65,7 @@ int main(){
 	leerArray( numeros, TAMANO, util_numeros);
 	
 	//MOSTRAR EL ARRAY
-	cout << "El vector introducido es: ";
+	cout << "El vector introducido es: " << endl;
 	imprimirArray(numeros, util_numeros);
 	
 	//CALCULAR POSICIÓN DEL MÍNIMO ELEMENTO
@@ -74,7 +74,7 @@ int main(){
 	
 	cout << "Inserte dos posiciones: ";
 	cin >> p1 >> p2;
-	while ( p1 < 0 || p2 > util_numeros || p1 > p2 ){
+	while ( p1 < 0 || p2 >= util_numeros || p1 > p2 ){
 		cerr << "Error. No sea idiota e introduzca valores válidos";
 		cout << "Inserte dos posiciones: ";
 		cin >> p1 >> p2;
