@@ -98,3 +98,12 @@ Por temas de pereza, interesa más nombrarlo como array[]
 Es decir, lo que toques del array pasado en la función, se te va a cambiar en el main/otra funcion. 
 Antes, siempre teníamos que usar & para pasar por referencia. Para arrays, nope. Siempre es así de fomra estándar
 - Para pasarlo por referencia constante, con un const nos vale. 
+
+- No se puede hacer un retorno de array 
+    int funcion(){
+        int array[] = {...}
+        ...
+        return array        // Esto está MAL
+    }
+
+Esto se puede arreglar usando pasos por referencia en la función
