@@ -107,3 +107,46 @@ Antes, siempre teníamos que usar & para pasar por referencia. Para arrays, nope
     }
 
 Esto se puede arreglar usando pasos por referencia en la función
+
+- A veces, nos puede hacer falta un array extra para resolver ciertos problemas. Lo suyo es crearlo con la dimensión mínima y necesaria
+Ahora mismo, como solución tenemos crear una constante global para tus arrays
+Más adelante, veremos que podemos crear arrays en memoria dinámica para solucionar ciertas limitaciones a día de hoy 
+
+
+|| TL:DR ||
+Resticciones: 
+    - No se permite la asignación directa (Es decir, array1 = array2). Sin embargo, al hablar de clases/structs, sí que se puede hacer para clases que contengan arrays.
+    - No se puede leer un array completo desde la entrada estándar (cin >> array)
+    - No se puede sacar a la salida estándar un array (cout << array)
+    - No es correcto hacer operaciones lógicas (<, >, <=, >=, ==, !=). Ojo, que no da error de compilación
+
+Matices:
+    - Sí que se pueden hacer asignaciones en clases que contengan arrays. Por ejemplo
+        class cosa{
+            int array[5];
+            int variable;
+        };
+        cosa v1, v2;
+        v1 = v2;
+    - Se pueden hacer arrays de clases:
+        class cosa{
+            ...
+        };
+        cosa mi_array[10];
+    - Cuidado con los constructores. Si no están presentes, al definir un array de objetos te podría dar error
+Expresión condicional:
+    radio = (NewRadius >= 0) ? variable : 0;
+
+    if (NewRadius >= 0)
+        radio = variable;
+    else 
+        radio = 0;
+
+|| Diferencias entre vectores y arrays ||
+- El tamaño de los vectores se redimensiona automáticamente según se necesite
+- Un array es más rápido que un acceso vector.at()
+- Podemos saber el tamaño del vector son vector.size(). En los arrays te jodes y lo haces tú
+- Esto implica que también tienes que pasar la dimensión a las funciones también
+- Un vector se puede pasar por valor, referencia o referencia constante. Los arrays o por referencia o por referencia constante
+- No se puede devolver un array con return. Un vector sí
+- Te puedes salir del rango permitido en los arrays
