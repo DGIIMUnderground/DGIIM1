@@ -1,0 +1,75 @@
+% Created 2017-10-07 sáb 19:53
+\documentclass[11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[spanis]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+
+\author{Blanca Cano}
+\date{\today}
+\title{Ejercicio 6}
+
+\begin{document}
+
+\maketitle
+
+\section{proposición}
+\label{sec-1}
+Todo número natural mayor que 1 es divisible por al menos
+un número primo.
+
+\section{Demostración}
+\label{sec-2}
+
+Definamos la aplicación f(x,y) \r
+Sea $A$ un conjunto que te devuelve los múltiplos de $x$
+
+$$
+A(x) = \left\{x \in \omega \geq x \in  \left\{f(x, a) \quad \forall a \in \omega \right\} a > 1  \right\}
+$$
+
+
+$P$ es un conjunto de números primos que luego definiremos,
+pero para que tenga sentido: $P=\emptyset$
+
+\subsection{Observación 1}
+\label{sec-2-1}
+
+Todo elemento contenido en $C$ es como mínimo múltiplo del
+primer elemento del conjunto, y, por definición ese primer
+elemento es siempre múltiplo.
+
+Sea A un conjunto definido por inducción tal que
+
+$$
+A(0) = {\emptyset}
+A(1) = C(2)
+A(2) = C(2) \bigcup C(3)
+$$
+y, generalizando
+$$
+A(n) = C(n+1) \cup (n+2)
+$$
+
+Definimos P, el conjunto de los números primos
+
+$$
+P = \left\{x: x > 1 \quad \forall x \in \omega: x \notin A(x-1) \right\}
+$$
+
+Para todo elemento perteneciente a P, su único múltiplo $> 1$,
+será él mismo.
+
+El resto de elementos $N = \omega -P \quad N \subset A$ y
+como $A$ está construido a partir de $C$, se cumple 
+\texttt{observación anterior 1}, luego todo $n \in N$ tiene al menos
+un múltiplo, el primero de $C$ al que pertenezca, que, por
+definición es primo.
+
+Luego todo número natural mayor que 1 es múltiplo al menos
+de un número primo.
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}

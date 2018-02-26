@@ -1,0 +1,67 @@
+#+SETUPFILE: ../setup/config.setup
+#+TITLE: Ejercicio 31
+
+* Enunciado
+
+Sea \(A = \left\{ 1 + \frac{1}{n}: n \in \mathbb{N} \right\}\). 
+
+* Prueba que \(\inf A = 1\)
+
+Por la observación 1.13.2, si $\alpha = inf A = 1$, entonces
+
+\[
+\forall \varepsilon > 0 \quad \exists x_\varepsilon \in A: \quad  x_\varepsilon < \alpha + \varepsilon
+\]
+
+Por tanto, \(x_\varepsilon < 1 + \varepsilon\), y como
+\(x_\varepsilon \in A\) entonces \(x_\varepsilon = 1 + \frac{1}{n_\varepsilon}\)
+
+Así, se tiene que:
+
+\[
+1 + \frac{1}{n_\varepsilon} < 1 + \varepsilon; \quad 
+\frac{1}{n_\varepsilon} < \varepsilon
+\]
+
+Despejando \(n_\varepsilon\):
+
+\[ \frac{1}{\varepsilon} < n_\varepsilon \]
+
+Y esto es cierto \(\forall \varepsilon \in \mathbb{R}_0^+ \quad \forall n_\varepsilon \in \mathbb{N}\) , ya que según la propiedad arquimediana,
+dado cualquier número real, se verifica que hay números naturales mayores que él.
+
+** ¿Tiene \(A\) mínimo?
+
+Si \(\inf A \in A \Rightarrow \min A = \inf A\)
+
+Suponiendo que \(\inf A \in A\), se tiene que
+
+\[ 1 + \frac{1}{n_i} = 1\]
+
+Pero entonces, \(\frac{1}{n_i} = 0\) lo cual es absurdo \(\forall n_i \in \mathbb{N}\), y por tanto $A$ no tiene mínimo.
+
+** ¿Y máximo?
+
+Suponiendo que \(k=\max A\), entonces por definición:
+
+\[\exists! k:\quad k \geq a \quad \forall a \in A \quad y \quad k \in A\]
+
+Es decir,
+
+\[ k \geq 1 + \frac{1}{n} \quad \forall n \in \mathbb{N} \]
+
+Y como \(k \in A\), tiene la forma \(1 + \frac{1}{n_k}\),
+para un único \(n_k \in \mathbb{N} \).
+
+Entonces, se tiene que
+
+\[ 1 + \frac{1}{n_k} \geq 1 + \frac{1}{n}\], de donde se deduce que \(n_k \leq n \quad \forall n \in \mathbb{N} \)
+
+Como el único número natural menor o igual que todos es el \(1\).
+
+\[n_k = 1 \Rightarrow k = 1 + \frac{1}{1} = 2\]
+
+Por tanto, $A$ tiene máximo que es igual a \(2\).
+
+
+

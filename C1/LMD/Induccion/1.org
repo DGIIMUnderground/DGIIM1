@@ -1,0 +1,57 @@
+#+SETUPFILE: ../../setup/config.setup
+#+TITLE: Ejercicio 1
+
+* Enunciado
+
+Demuestra por el principio de inducción que $P(n)$ se 
+verifica $\forall n \in \mathbb{N}, n \neq 0$
+
+\[
+P(n) = \prod_{k=1}^n \left(1 - \frac{1}{(k+1)^2}\right)
+= \frac{n+2}{2n+1} \quad \quad n > 0
+\]
+
+
+** Demostración
+
+*** Paso base
+
+\[
+P(1) = \prod_{k=1}^1 \left(1 - \frac{1}{(k+1)^2}\right) 
+= 1 - \frac{1}{(1+1)^2} = 1 - \frac{1}{4} = \frac{3}{4}
+\]
+
+\[
+P(1) = \frac{1+2}{2\cdot1+2} = \frac{3}{4}
+\]
+
+Por lo que $P(1)$ es cierta para $n=1$
+
+*** Paso de inducción.
+Supongamos que $1\leq k$ y que $P(k)$ es cierta (Hipótesis de
+Inducción).
+
+Demostremos que de ello se deduce que $P(n+1)$ es cierta
+
+\begin{eqnarray*}
+\prod_{k=1}^{n+1} \left(1 - \frac{1}{(k+1)^2}\right) = 
+\frac{n+1+2}{2(n+1)+1} = \frac{n+3}{2n+2+2} = \frac{n+3}{2n+4}
+\end{eqnarray*}
+
+Así pues:
+
+\begin{align*}
+\prod_{k=1}^{n+1} \left(1 - \frac{1}{(k+1)^2}\right)
+= \left[\prod_{k=1}^n \left(1 - \frac{1}{(k+1)^2}\right)\right]
+\cdot \left(1-\frac{1}{(n+1+1)^2}\right) = \\
+= \frac{n+2}{2n+2} \cdot \frac{(n+2)^2-1}{(n+2)^2}
+= \frac{(n+2)^2-1}{(2n+2)(n+2)}
+= \frac{n^2+4+4n-1}{2n^2+2n+4n+4} = \\
+= \frac{n^2+4n+3}{2n^2+6n+4}
+= \frac{(n+1)(n+3)}{2(n+1)(n+2)}
+= \frac{n+3}{2n+4}
+\end{align*}
+
+
+Por lo que, por el principio de inducción finita, $P(n)$
+es cierta para todo $n>0$

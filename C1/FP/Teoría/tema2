@@ -1,0 +1,63 @@
+# Tema 2: Estructuras de control
+
+- Depurador *ddd* herramienta para encontrar errores lógicos
+
+Cálculo de un número que sea menor, dejo de pedir valores cuando sea negativo
+'''
+#include<iostream>
+using namespace std;
+
+int main()
+{
+int x;
+int min = 0;
+
+    	cout << "Introduca un mínimos "
+	cin >> x;
+	if( x <0 )
+	{
+		cout << "No hay número \n";
+	}
+	else
+	{
+		min = x;
+		while( x>0)
+		{
+		    if( x < min)
+		      min = x;
+		     
+		     cout <<"Introzuca un núemero \n";
+		     cin >> x;
+
+		     
+		 }
+	}
+
+cout << "El mínimo es " << min << endl;
+
+}
+
+'''
+
+## Bucles controlador por contador **for**
+
+'''for (<contador = valor inicial> ; <condición sobre el contador> ; <actualización del contador>)
+<cuerpo de bucle>
+'''
+
+bucle que recomienda : > for(int i = 0 ; i < n ; i ++ )
+## Fuciones
+ ` int z = (a<b? a:b )// operador ternario, si la operación es verdad se emplea este, si no la otra; `
+
+Para declarar qué es algo antes de que se llame:
+`double sqrt(double x); ` o sea e escribe solo la declaración
+
+# Cabecera .h pra añadir el código fuente
+ejecutables .o, .obj
+bibliotecas odl..
+ descripción general
+-  includes
+- cabeceras de funciones
+- definiciones de funciones
+- definicioned de funciones
+- función main
