@@ -2,6 +2,8 @@
 de enteros leı́do de la entrada estándar, guardándola en otro array que se mostrará en la
 salida estándar.
 
+NOTA: He considerado que me piden la sucesión parcial creciente de mayor longitud, caso en el que los elementos no tienen por qué ser consecutivos. El profesor lo ha reselto en clase considerando que me piden la subsecuencia creciente (de términos positivos de mayor longitud). La función propuesta por el profesor es void MayorSecuenciaMonotonaCreciente2.
+
 José L. Ruiz
 */
 
@@ -31,6 +33,7 @@ void AsignaArray( int array[], const int nuevo_valor[], int & util_array, const 
 		array[i] = nuevo_valor[i];
 }
 
+
 void MayorSecuenciaMonotonaCreciente(const int v[], const int & util_v, int monotona[], int & util_monotona){
 	int candidata[util_v]; //variable temporal en la que se almacenan las secuencias monótonas encontradas.
 	util_monotona = 0;
@@ -45,6 +48,24 @@ void MayorSecuenciaMonotonaCreciente(const int v[], const int & util_v, int mono
 		if( util_candidata > util_monotona)
 			AsignaArray( monotona, candidata, util_monotona, util_candidata);
 	}
+}
+
+//////////////// PROFESOR /////////////////
+void MayorSecuenciaMonotonaCreciente2(const int array[], int util, int salida[], int & util_salida){
+	int longitud = 1;
+	int pos_max = 0; //guarda donde empieza la secuencia de mayor longitud encontrada
+	util_salida = 0;
+	for (int i=1; i<util; i++)
+		if( array[i] > array[i-1])
+			longitud++;
+			if(longitud > util){
+				util_salida = longitud;
+				pos_max = i-longitud;
+		else
+			longitud = 1;
+	for (int i=0; i<util_salida; i++)
+		salida[i] = array[pos_max+i];
+				
 }
 
 int main(){
