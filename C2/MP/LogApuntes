@@ -150,3 +150,21 @@ Expresión condicional:
 - Un vector se puede pasar por valor, referencia o referencia constante. Los arrays o por referencia o por referencia constante
 - No se puede devolver un array con return. Un vector sí
 - Te puedes salir del rango permitido en los arrays
+
+|| Cadenas de caracteres estilo C ||
+- Se denotan por cstring conceptualmente
+- Literal de cadena de caracteres: secuencia de 0 o más caracteres encerrados entre comillas dobles. Dim(cadena) >= cantidad de caracteres que contiene
+- Se crean de la misma forma que antes. Sin embargo, no seas matado y pongas char cadena[]={'p','r','u','e','b','a'}, haz char cadena[]="prueba". Si lo haces de la primera forma, debes oner un '\0' al final
+- Este '\0' corta las cadenas lógicamente
+- A la hora de introducir datos, cin salta separadores. Es decir, no la uses para leer cadenas con espacios en blanco. Para esas, usa getline
+- Se puede invocar mediante cin.getline(cadena, entero)
+- Contenidos interesantes de <cstring>
+    > char * strcpy(char cadena1[], const char cadena2[]): copia cadena2 en cadena1
+    > int strlen(const char cadena[]): devuelve la longitud de cadena
+    > char * strcat(char cadena1[], const char cadena2[]): concatena cadena2 al final de cadena1
+    > int strcmp(const char cadena1[], const char cadena2[]): compara las cadenas cadena1 y cadena2
+
+|| Matrices bidimensionales ||
+- Definición: int cadena[filas][columnas]
+- Sus valores se pueden definir como 
+    int cadena[filas][columnas]={{1,2},{3,5}}
