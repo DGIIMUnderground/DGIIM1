@@ -1,0 +1,314 @@
+\hypertarget{classIntervalo}{}\section{Referencia de la Clase Intervalo}
+\label{classIntervalo}\index{Intervalo@{Intervalo}}
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classIntervalo_a9b5b23dda7ee26b444898457959cb03d}{Intervalo} ()\hypertarget{classIntervalo_a9b5b23dda7ee26b444898457959cb03d}{}\label{classIntervalo_a9b5b23dda7ee26b444898457959cb03d}
+
+\begin{DoxyCompactList}\small\item\em Crea un intervalo vacio. \end{DoxyCompactList}\item 
+\hyperlink{classIntervalo_a321e56ef7e1f4a774bd64cc2609156f4}{Intervalo} (double cota\+Inferior, double cota\+Superior)
+\begin{DoxyCompactList}\small\item\em Crea un \hyperlink{classIntervalo}{Intervalo} cerrado. \end{DoxyCompactList}\item 
+\hyperlink{classIntervalo_af70d523399465f51862977a303656c72}{Intervalo} (double cota\+Inferior, double cota\+Superior, bool cerrado\+Inferior, bool cerrado\+Superior)
+\begin{DoxyCompactList}\small\item\em Crea un intervalo cualquiera. \end{DoxyCompactList}\item 
+double \hyperlink{classIntervalo_af8170b68c6d6a63192db6685b90f782f}{get\+Cota\+Inf} () const 
+\begin{DoxyCompactList}\small\item\em Devuelve la cota inferior del intervalo. \end{DoxyCompactList}\item 
+double \hyperlink{classIntervalo_a7f8ff94ce16f90a81a3c55f36044893b}{get\+Cota\+Sup} () const 
+\begin{DoxyCompactList}\small\item\em Devuelve la cota superior del intervalo. \end{DoxyCompactList}\item 
+bool \hyperlink{classIntervalo_a6737cfbda201a3a6e11a716d2568d322}{es\+Cerrado\+Inf} () const 
+\begin{DoxyCompactList}\small\item\em Consulta si el intervalo es cerrado en su cota inferior. \end{DoxyCompactList}\item 
+bool \hyperlink{classIntervalo_ad0c5573ee88ffbfda8f78454b78d91a6}{es\+Cerrado\+Sup} () const 
+\begin{DoxyCompactList}\small\item\em Consulta si el intervalo es cerrado en su cota superior. \end{DoxyCompactList}\item 
+bool \hyperlink{classIntervalo_ab53adad27de8ec98cf8f4280bd3a7df9}{es\+Vacio} () const 
+\begin{DoxyCompactList}\small\item\em Consulta si el intervalo almacenado es vacío o no. \end{DoxyCompactList}\item 
+bool \hyperlink{classIntervalo_af55ac0bb47855ef909402e2ec76cda5b}{esta\+Dentro} (double n) const 
+\begin{DoxyCompactList}\small\item\em Consulta si un determinado valor está dentro del intervalo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+
+
+Definición en la línea 11 del archivo intervalo.\+h.
+
+
+
+\subsection{Documentación del constructor y destructor}
+\index{Intervalo@{Intervalo}!Intervalo@{Intervalo}}
+\index{Intervalo@{Intervalo}!Intervalo@{Intervalo}}
+\subsubsection[{\texorpdfstring{Intervalo(double cota\+Inferior, double cota\+Superior)}{Intervalo(double cotaInferior, double cotaSuperior)}}]{\setlength{\rightskip}{0pt plus 5cm}Intervalo\+::\+Intervalo (
+\begin{DoxyParamCaption}
+\item[{double}]{cota\+Inferior, }
+\item[{double}]{cota\+Superior}
+\end{DoxyParamCaption}
+)}\hypertarget{classIntervalo_a321e56ef7e1f4a774bd64cc2609156f4}{}\label{classIntervalo_a321e56ef7e1f4a774bd64cc2609156f4}
+
+
+Crea un \hyperlink{classIntervalo}{Intervalo} cerrado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cota\+Inferior} & \\
+\hline
+{\em cota\+Superior} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+El intervalo es válido 
+\end{DoxyPrecond}
+
+
+Definición en la línea 33 del archivo intervalo.\+cpp.
+
+
+\begin{DoxyCode}
+34 \{
+35     assert (validar(cinf,csup, \textcolor{keyword}{true}, \textcolor{keyword}{true}));
+36     cotaInf = cinf;
+37     cotaSup = csup;
+38     cerradoInf = \textcolor{keyword}{true};
+39     cerradoSup = \textcolor{keyword}{true};
+40 \}
+\end{DoxyCode}
+\index{Intervalo@{Intervalo}!Intervalo@{Intervalo}}
+\index{Intervalo@{Intervalo}!Intervalo@{Intervalo}}
+\subsubsection[{\texorpdfstring{Intervalo(double cota\+Inferior, double cota\+Superior, bool cerrado\+Inferior, bool cerrado\+Superior)}{Intervalo(double cotaInferior, double cotaSuperior, bool cerradoInferior, bool cerradoSuperior)}}]{\setlength{\rightskip}{0pt plus 5cm}Intervalo\+::\+Intervalo (
+\begin{DoxyParamCaption}
+\item[{double}]{cota\+Inferior, }
+\item[{double}]{cota\+Superior, }
+\item[{bool}]{cerrado\+Inferior, }
+\item[{bool}]{cerrado\+Superior}
+\end{DoxyParamCaption}
+)}\hypertarget{classIntervalo_af70d523399465f51862977a303656c72}{}\label{classIntervalo_af70d523399465f51862977a303656c72}
+
+
+Crea un intervalo cualquiera. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cota\+Inferior} & \\
+\hline
+{\em cota\+Superior} & \\
+\hline
+{\em cerrado\+Inferior} & \\
+\hline
+{\em cerrado\+Superior} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+El intervalo es válido 
+\end{DoxyPrecond}
+
+
+Definición en la línea 42 del archivo intervalo.\+cpp.
+
+
+\begin{DoxyCode}
+43 \{
+44     assert (validar(cinf,csup, cerradoinferior, cerradosuperior));
+45     cotaInf = cinf;
+46     cotaSup = csup;
+47     cerradoInf = cerradoinferior;
+48     cerradoSup = cerradosuperior;
+49 \}
+\end{DoxyCode}
+
+
+\subsection{Documentación de las funciones miembro}
+\index{Intervalo@{Intervalo}!es\+Cerrado\+Inf@{es\+Cerrado\+Inf}}
+\index{es\+Cerrado\+Inf@{es\+Cerrado\+Inf}!Intervalo@{Intervalo}}
+\subsubsection[{\texorpdfstring{es\+Cerrado\+Inf() const }{esCerradoInf() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Intervalo\+::es\+Cerrado\+Inf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classIntervalo_a6737cfbda201a3a6e11a716d2568d322}{}\label{classIntervalo_a6737cfbda201a3a6e11a716d2568d322}
+
+
+Consulta si el intervalo es cerrado en su cota inferior. 
+
+\begin{DoxyReturn}{Devuelve}
+
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & si es cerrado \\
+\hline
+{\em false} & si es cerrado \\
+\hline
+\end{DoxyRetVals}
+
+
+Definición en la línea 61 del archivo intervalo.\+cpp.
+
+
+\begin{DoxyCode}
+62 \{
+63     \textcolor{keywordtype}{bool} comprobador=\textcolor{keyword}{false};
+64     \textcolor{keywordflow}{if} ( cerradoInf == \textcolor{keyword}{true})
+65         comprobador=\textcolor{keyword}{true};
+66     
+67     \textcolor{keywordflow}{return} comprobador;
+68 \}
+\end{DoxyCode}
+\index{Intervalo@{Intervalo}!es\+Cerrado\+Sup@{es\+Cerrado\+Sup}}
+\index{es\+Cerrado\+Sup@{es\+Cerrado\+Sup}!Intervalo@{Intervalo}}
+\subsubsection[{\texorpdfstring{es\+Cerrado\+Sup() const }{esCerradoSup() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Intervalo\+::es\+Cerrado\+Sup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classIntervalo_ad0c5573ee88ffbfda8f78454b78d91a6}{}\label{classIntervalo_ad0c5573ee88ffbfda8f78454b78d91a6}
+
+
+Consulta si el intervalo es cerrado en su cota superior. 
+
+\begin{DoxyReturn}{Devuelve}
+
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & si es cerrado \\
+\hline
+{\em false} & si es cerrado \\
+\hline
+\end{DoxyRetVals}
+
+
+Definición en la línea 70 del archivo intervalo.\+cpp.
+
+
+\begin{DoxyCode}
+71 \{
+72     \textcolor{keywordtype}{bool} comprobador=\textcolor{keyword}{false};
+73     \textcolor{keywordflow}{if} ( cerradoSup == \textcolor{keyword}{true})
+74         comprobador=\textcolor{keyword}{true};
+75     
+76     \textcolor{keywordflow}{return} comprobador;
+77 \}
+\end{DoxyCode}
+\index{Intervalo@{Intervalo}!esta\+Dentro@{esta\+Dentro}}
+\index{esta\+Dentro@{esta\+Dentro}!Intervalo@{Intervalo}}
+\subsubsection[{\texorpdfstring{esta\+Dentro(double n) const }{estaDentro(double n) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Intervalo\+::esta\+Dentro (
+\begin{DoxyParamCaption}
+\item[{double}]{n}
+\end{DoxyParamCaption}
+) const}\hypertarget{classIntervalo_af55ac0bb47855ef909402e2ec76cda5b}{}\label{classIntervalo_af55ac0bb47855ef909402e2ec76cda5b}
+
+
+Consulta si un determinado valor está dentro del intervalo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em n} & El valor consultado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & si el valor {\ttfamily n} pertenece al intervalo, \\
+\hline
+{\em false} & en otro caso \\
+\hline
+\end{DoxyRetVals}
+
+
+Definición en la línea 88 del archivo intervalo.\+cpp.
+
+
+\begin{DoxyCode}
+89 \{
+90     \textcolor{keywordtype}{bool} comprobador=\textcolor{keyword}{false};
+91     \textcolor{keywordflow}{if} ((\hyperlink{classIntervalo_af8170b68c6d6a63192db6685b90f782f}{getCotaInf}()<num && \hyperlink{classIntervalo_a7f8ff94ce16f90a81a3c55f36044893b}{getCotaSup}()>num) || (
+      \hyperlink{classIntervalo_a6737cfbda201a3a6e11a716d2568d322}{esCerradoInf}()==\textcolor{keyword}{true} && cotaInf==num)||(\hyperlink{classIntervalo_ad0c5573ee88ffbfda8f78454b78d91a6}{esCerradoSup}()==\textcolor{keyword}{true} && cotaSup==num))
+92         comprobador=\textcolor{keyword}{true};
+93     \textcolor{keywordflow}{return} comprobador;
+94 \}
+\end{DoxyCode}
+\index{Intervalo@{Intervalo}!es\+Vacio@{es\+Vacio}}
+\index{es\+Vacio@{es\+Vacio}!Intervalo@{Intervalo}}
+\subsubsection[{\texorpdfstring{es\+Vacio() const }{esVacio() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Intervalo\+::es\+Vacio (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classIntervalo_ab53adad27de8ec98cf8f4280bd3a7df9}{}\label{classIntervalo_ab53adad27de8ec98cf8f4280bd3a7df9}
+
+
+Consulta si el intervalo almacenado es vacío o no. 
+
+\begin{DoxyReturn}{Devuelve}
+
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em true} & si es un intervalo vacío, \\
+\hline
+{\em false} & en otro caso \\
+\hline
+\end{DoxyRetVals}
+
+
+Definición en la línea 79 del archivo intervalo.\+cpp.
+
+
+\begin{DoxyCode}
+80 \{
+81     \textcolor{keywordtype}{bool} comprobador=\textcolor{keyword}{false};
+82     \textcolor{keywordflow}{if} ((cotaInf == cotaSup) && (cerradoInf==\textcolor{keyword}{false}) && (cerradoSup==\textcolor{keyword}{false}))
+83         comprobador=\textcolor{keyword}{true};
+84         
+85     \textcolor{keywordflow}{return} comprobador;
+86 \}
+\end{DoxyCode}
+\index{Intervalo@{Intervalo}!get\+Cota\+Inf@{get\+Cota\+Inf}}
+\index{get\+Cota\+Inf@{get\+Cota\+Inf}!Intervalo@{Intervalo}}
+\subsubsection[{\texorpdfstring{get\+Cota\+Inf() const }{getCotaInf() const }}]{\setlength{\rightskip}{0pt plus 5cm}double Intervalo\+::get\+Cota\+Inf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classIntervalo_af8170b68c6d6a63192db6685b90f782f}{}\label{classIntervalo_af8170b68c6d6a63192db6685b90f782f}
+
+
+Devuelve la cota inferior del intervalo. 
+
+\begin{DoxyReturn}{Devuelve}
+El valor de la cota 
+\end{DoxyReturn}
+
+
+Definición en la línea 51 del archivo intervalo.\+cpp.
+
+
+\begin{DoxyCode}
+52 \{
+53     \textcolor{keywordflow}{return} cotaInf;
+54 \}
+\end{DoxyCode}
+\index{Intervalo@{Intervalo}!get\+Cota\+Sup@{get\+Cota\+Sup}}
+\index{get\+Cota\+Sup@{get\+Cota\+Sup}!Intervalo@{Intervalo}}
+\subsubsection[{\texorpdfstring{get\+Cota\+Sup() const }{getCotaSup() const }}]{\setlength{\rightskip}{0pt plus 5cm}double Intervalo\+::get\+Cota\+Sup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classIntervalo_a7f8ff94ce16f90a81a3c55f36044893b}{}\label{classIntervalo_a7f8ff94ce16f90a81a3c55f36044893b}
+
+
+Devuelve la cota superior del intervalo. 
+
+\begin{DoxyReturn}{Devuelve}
+El valor de la cota 
+\end{DoxyReturn}
+
+
+Definición en la línea 56 del archivo intervalo.\+cpp.
+
+
+\begin{DoxyCode}
+57 \{
+58     \textcolor{keywordflow}{return} cotaSup;
+59 \}
+\end{DoxyCode}
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{intervalo_8h}{intervalo.\+h}\item 
+src/\hyperlink{intervalo_8cpp}{intervalo.\+cpp}\end{DoxyCompactItemize}
