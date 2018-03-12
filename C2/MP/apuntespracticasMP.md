@@ -173,4 +173,24 @@ EN LOS APUNTES LA PRIMERA REGLA FALTA $(LIB) EN LA LIBRERIA
 OPT=-Wall -g
 NUNCA SE ENTREGA UN PROYECTO CON LA OPCION -g
 
+# Apuntes del 12/03
+
+## Primera instalación
+La primera vez que se instale netbeans no incluye soporte para c++,  para instalar un plugin se pulsa en _tools_, _plugins_ y se selecciona el plugin que pone _c/ c++_.
+El programa tiene un carpeta de configuracion en todos los proyectos por defecto y genera el makefile automáticamente.
+
+## Creando un nuevo proyecto
+- Cerrar la pestaña de entrada.
+- Botón derecho en la parte izquiera, _proyecto nuevo_, en  l aventana emergente seleccionamos _c++_, _application_, especificamos el nombre y ruta del proyecto, desmarcamos la opción de generar main automático y _finish_.
+- Ahora copiamos las carpetas _doc, src, zip, includes, data_ con la interfaz grafica y deberán aparecer en las carpetas en la pestaña de la vision fisica (_files_).
+- En _Projects_ tenemos que indicar donde están los .h y .cpp como sigue: En  _headers_ y _source_, botón derecho, _add existing items_ y seleccionamos todos los ficheros que necesitemos. (Si añadimos un fichero equivocado, se le da a _remove from project_, _delete_ lo borrará del ordenador).
+- En el nombre el proyecto botón derecho, _properties_, _c++ compiler_ y vemos las opciones de compilacion (_debug_ o _release_, con o sin depurar) y en _include directories_, _add_, metemos la carpeta includes para que sepa donde estan los ficheros de cabecera, _ok_ y ya está listo para compilar.
+- Copiamos y pegamos las reglas _doxy_ y _zip_ en el makefile, ahora botón derecho en el makefile, _make target_, _add target_ e incluimos los objetivos nuevos.
+## Practica a entregar
+Clase paquete de correos y funciones aparte (hay que decidir tu los pasos de parametros, las declaraciones pueden estar mal).
+No hace falta cambiar el doxy.
+El main no se modifica.
+
+
+
 _By Mapachana_
