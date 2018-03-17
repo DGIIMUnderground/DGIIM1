@@ -1,0 +1,43 @@
+\documentclass[a4paper , 11pt , spanish]{book}
+\def\COMPLETE{}
+% Codificación e idioma, para las tildes crucial
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+%paquetes para matemáticas
+\usepackage{fullpage,mathpazo,amsfonts,nicefrac, amssymb , amsmath, amsbsy}
+
+%paquetes para insertar gráficas (imágenes)
+\usepackage{graphicx}
+
+%paquete de enumerar, para realizar listas 
+\usepackage{enumerate}
+
+\usepackage{import}
+\usepackage{makeidx}
+
+%DEFINICICIONES 
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\makeindex
+
+\title{ 
+Métodos numéricos I \\
+\large
+Primero del doble grado en ingeniería informática y matemáticas}
+\author{Blanca de principios del 18}
+
+\begin{document}
+\maketitle
+
+\begin{flushright}
+\textit{Para todos aquellos que como a mí, \\ le produce urticaria las diapositivas del profesor}
+
+\end{flushright}
+
+\newpage
+\chapter{Introducción a los problemas de Análisis Numérico }
+\input{./1.tex}
+\end{document}

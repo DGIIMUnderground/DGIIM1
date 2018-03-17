@@ -1,0 +1,189 @@
+\ifdefined\COMPLETE
+\else 
+\def\COMPLETE{}
+\documentclass[a4paper , 11pt, spanish ]{article}
+
+% Codificación e idioma, para las tildes crucial
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+%paquetes para matemáticas
+\usepackage{fullpage,mathpazo,amsfonts,nicefrac, amssymb , amsmath, amsbsy}
+\usepackage{amsmath}
+%paquetes para insertar gráficas (imágenes)
+\usepackage{graphicx}
+
+%paquete de enumerar, para realizar listas 
+\usepackage{enumerate}
+
+\usepackage{import}
+
+
+%DEFINICICIONES 
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{ Tema 1: Introducción a los problemas de análisis numérico}
+
+\begin{document}
+\fi
+
+%\title{ Tema 1: Introducción a los problemas de análisis numérico}
+
+\maketitle 
+%%%%%%%%%%% ESPACIOS NORMADOS %%%%%%%%%%%%%%%%%%%%
+\section{Espacios normados} 
+%%%%%%%%%%%%%%%%%% definición de norma %%%%%%%%%%%%%
+\subsection{Definición de norma} 
+Sea E un espacio que admite una norma. \\
+Se define como \textbf{ norma} de un espacio vectorial real o complejo E, a la plicación $\norm{.} : E \longrightarrow \mathbb{R} $ y que verifica las siguientes propiedades: \\
+\begin{enumerate}
+\item $ x \in E  \Rightarrow $ $\begin{Bmatrix}
+	\norm{x} \ge 0\\
+	\norm{x} = 0 \Leftrightarrow x = 0
+\end{Bmatrix}$
+
+\item  Desigualdad triangular: $\quad$ x, y $\in $ E $\norm{ x + y } \le \norm{x} + \norm{y}$
+
+\item  $ x \in E, \quad \lambda \Rightarrow \norm{ \lambda x} = |\lambda | \norm{x}$
+\end{enumerate}
+%%%%%%%%%%%% ejemplos de norma %%%%%%%%%%
+\subsection{Ejemplo de normas}
+\subsubsection*{ Norma de vectores} 
+Sea E = $\mathbb{R}^n ,\quad p \le 1$ 
+\[\norm{x}_p :=  {(\sum_{j=1}^{N} |x_j|^p )} ^{\frac{1}{p}} \quad ( x \in \mathbb{R}^n)\]
+p = 2 se conoce como la norma euclídea. 
+\subsubsection*{Norma del máximo}
+\[ \norm{x}_\infty := max _{ j=1...N} | x_j | \quad ( x \in \mathbb{R}^n)\]
+
+Tambíen apliabla para la norma máximo de una función. 
+\subsubsection*{Norma de Frobeius}
+Usada en matrices
+\[ \norm{A}_F := \sqrt{ \sum_{i=1}^{M} \sum_{j=1}^{N} a_{ij}^2} \quad (A \in \mathbb{R}^{M \times N}) \]
+
+%%%%%%%%%%% aplicacione de norma %%%%%%%%%%%
+\subsection{ Conceptos de análisis con normas }
+Se define la distancia entre dos vectores x,y  de un espacion normado como:
+$$ dist(x,y) := \norm{x -y} $$  
+Gracias a esto podemos aplicar conceptos del cálculo con normas:
+
+\subsubsection*{Convergencia , límites }  
+Sea $ \{{ X_n\}}_{n \ge 1} $ una sucesión de E, se dice que esta sucesión converge a $ x_0 \in E $  
+Si y sólo si, para toda $\varepsilon > 0 $  existe un $n_0 \in \mathbb{N}$ tal que: 
+$$ \forall  n > n_0, \quad \norm{ x_n - x_0 } < \varepsilon $$   
+De donde concluimos (siguiendo el hilo de nuestras amadas diapositivas de nuestro querido profesor, vamos, que leáis Payá si queréis enteraros) que:
+$$ \lim_{n \to 	\infty}{ x_n} = x_0 	\quad \Leftrightarrow \quad \lim_{n \to 	\infty}{ \norm {x_n - x_0 } } = 0 $$
+
+\subsubsection*{Continuidad de una aplicación en espacios normados} 
+Sean X, Y dos espacios normados y f una aplicación de X a Y. Se dice que f es continua en $x_0 \in X$  si :
+ $$\begin{Bmatrix}
+
+
+	& x \in X & \\
+	\forall \varepsilon > 0 , \quad \exists \delta > 0 \quad \Rightarrow & & 	\quad \Rightarrow  	\norm{f(x) - f(x_0)} <	\varepsilon  \\
+	& \norm{x - x_0}=\delta & 
+\end{Bmatrix}$$
+
+\subsubsection*{Lema del sandwich}
+$$ x \in \mathbb{R} \Rightarrow \norm{x}_\infty \le \norm{x}_1 \le N\norm{x}_\infty $$
+
+Generalizando para cualquier norma: 
+$$ x \in \mathbb{E} \Rightarrow c_1\norm{x} \le \norm{x}_* \le c_2\norm{x} $$
+
+%%%%%%%%%%%%%%%% proposiciones y teoremas con normas %%%%%%
+\subsection{ Proposiciones y teoremas con normas}
+%%%%%%%%%%%%%%% teoremilla sin norma %%%%%%%%%
+\subsubsection{ Teoremilla sin demostrar}
+Todas las normas de un espacio finito dimensional son equivalentes. 
+
+%%%%%%%%%%%%5 norma inducida %%%%%%%%%%%%%%%
+\subsubsection{ Norma inducida en $\mathbb{R}^{ M\times N }$  por las normas en $\mathbb{R}^{ M}$ y  $\mathbb{R}^{ N }$}  
+Sean M , N $\in \mathbb{N}$ y consideremos sendas normas en $\mathbb{R}^{ M}$ y $\mathbb{R}^{ N }$, que sin luga a ambiguedad notaremos como $\norm{.}$. Entonces al aplicación qu notaremos igualmente como $\norm{.}$ 
+\[ \norm{A} := sup_{ x \in \mathbb{R}^N \\ \norm{x}= 1 } \norm{Ax} \quad A \in \mathbb{R}^{ M\times N } \]
+\
+\textbf{Demostración }:
+\par 
+En base a la definición de norma necesitaremos probar: \\
+\begin{enumerate}
+\item $ x \in E  \Rightarrow $ $\begin{Bmatrix}
+	\norm{x} \ge 0\\
+	\norm{x} = 0 \Leftrightarrow x = 0
+\end{Bmatrix}$
+
+\item  Desigualdad triangular: $\quad$ x, y $\in $ E $\norm{ x + y } \le \norm{x} + \norm{y}$
+
+\item  $ x \in E, \quad \lambda \Rightarrow \norm{ \lambda x} = |\lambda | \norm{x}$
+\end{enumerate}
+
+Procedamos pues al espectáculo:
+
+\begin{enumerate}
+\item Demostrar la desigualdad estricta es trivial, ya que al realizar el producto de A por x se le aplicaría la normas en $\mathbb{R}^{ M}$ o $\mathbb{R}^{ N }$ para las que sí sabemos que se cumple, por tanto faltaría, faltaría comprobar si $ sup_{\norm{x}=1} \norm{Ax} = 0 \Leftrightarrow \norm{A}=0 $  entonces A=0.
+\par
+Procederemos por una doble desigualdad: 
+\\ $\Leftarrow$
+\\ Nuestras hipótesis son: 
+\par 
+\centering
+$\begin{matrix}
+	\norm{A} = 0 & y &\forall x \in \mathbb{R}^{N} \quad  Ax=0 \\
+\end{matrix}$
+\flushleft 
+\par  
+Si x=0 es trivialmente cierto, veamos que ocuerre en caso contrario: \\
+$$ Ax = \norm{x} A \frac{x}{\norm{x}} = \norm{x}0 = 0$$  
+Para la primera igualdad hemos dividido y multiplicado por la norma de x, en la segunda que un vector dividido por la norma de otro es otro vector y para la tercera la hipótesis, que la matriz por un vector es igual a 0. 
+\\ De la igualdad anterior se deduce que $ sup_{\norm{x}=1} \norm{Ax} = 0 \Leftrightarrow \norm{A}=0 $
+
+\par 
+$\Rightarrow$
+\par
+Ahora solo nos faltaríacomprobar que para un vector cualquiera el producto con A sólo será 0 si A es 0, ya que para que el supremo sea 0, todos los vectores tienen que ser 0:
+
+Consideramos la aplicación lineal :\\
+\begin{tabular}{l}
+	$t:  \mathbb{R}^{ N } \longrightarrow   \mathbb{R}^{M} $ \\
+	$t: x \longrightarrow Ax $
+\end{tabular}
+
+
+ 
+La matiz de esta aplicación será A, ahora se tiene que $\forall x \in \mathbb{R}^{N} $ se cumple que  Ax = 0 entonces t(x) = 0 y esto solo se cumple para la aplicación identicamente nula, con lo cual A=0.  
+
+\item Aquí basta con aplicar las propiedades de las matrices: 
+$$ (A + B)x = Ax + Bx \quad \forall A \in A,B \in \mathbb{R}^{M \times N}  \quad x \in \mathbb{R}^{N}$$ 
+Como sabesmso que $\mathbb{R}^{N}$ en normado en $\norm{.}$ queda demostrada la desigualdad triangualar en matrices. 
+
+\item Partiendo de $\lambda$ es una constante perteneciente a números reales, es sabido que  $ sup \{ \norm{ \lambda Ax } \} =  |\lambda | sup\{\norm{Ax} \}$ que es lo que pretendiamos demostrar.  
+
+\end{enumerate} 
+%%%%%%%%%%%%%%%%%%% proposición consecuencia de la norma inducidad &&&&&&&& 
+\subsubsection{ Consecencia de la proposición }
+
+$$ Si A \in  \mathbb{R}^{M \times N}  \Rightarrow  \norm{A}= sup_{\norm{x}=1 , x \not = 0 }\frac{ \norm {Ax}}{ \norm{x}}  $$ 
+Y en particular 
+$$ x \in \mathbb{R}^n \Rightarrow \norm{Ax} \le \norm{A} \norm{x} $$ 
+\par 
+\textbf{Demostración} 
+\par 
+La primera igualdad es trivial si tenemos en cuenta la demostración anterior y que la $\norm{x}=1$ . 
+\par 
+Para la segunda igualdad probaremos primero que: 
+$$ \norm{A} = sup \{ \frac{ \norm{Ax}}{\norm{x}} : x \in \mathbb{R}^n \quad y \quad  x \not = 0\}$$
+\par Para ello primero tengamos presente la defincnición de la norma de A: 
+\\ \[ \norm{A} := sup \{ \norm{Ax} :  x \in \mathbb{R}^N \\ \norm{x}= 1 \} \]  
+\\   
+Procederemos a probar por una doble inclusión que ambos conjuntos son iguales y que por tanto su supremo $\norm{A}$ lo es también. 
+\par 
+ \[ \{ \norm{Ax} :  x \in \mathbb{R}^N \\ \norm{x}= 1 \}  = \{ \frac{ \norm{Ax}}{\norm{x}} : x \in \mathbb{R}^n \quad y \quad  x \not = 0\} \]  
+$\subseteq $
+\\ 
+$$ \frac{ \norm{Ax}}{\norm{x}}  = \norm{A \frac{x}{\norm{x}}} $$ 
+En base a que el miembro de la izquierda es un elemento del conjunto de la izquiera y que la $\norm{x} = 1$ lo hemos escrito de manera equivalente de una forma que resulta evidente que pertene al conjunto de la derecha que es lo que pretendiamos demostrar. 
+\\
+$\supseteq$ 
+\\
+Observemos que si $\norm{x} = 1 $ para un vector del conjunto de la derecha, este pertenece al conjunto de la izquierda, que es lo que pretendíamos probar. 
+
+\end{document}
