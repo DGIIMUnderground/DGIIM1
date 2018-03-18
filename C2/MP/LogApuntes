@@ -168,3 +168,16 @@ Expresión condicional:
 - Definición: int cadena[filas][columnas]
 - Sus valores se pueden definir como 
     int cadena[filas][columnas]={{1,2},{3,5}}
+- Para pasar arrays a funciones, debes poner únicamente la segunda dimensión. La primera no hace falta
+
+
+------------------------------------------
+   Tema 2: Punteros y memoria dinámica
+------------------------------------------
+- A partir de ahora, haré notas más específicas. Porque no merece la pena copiarlo todo, que para eso está en la presentación
+
+- dato1 & dato2: Comparador AND a nivel de bits. Es decir, compara bit a bit dato1 y dato2. Sin embargo, no devuelve un solo dato, sino la cadena de bits resultado de las comparaciones. Por ejemplo: 
+    1100 & 1001 = 1010
+- No se puede usar para operaciones aritméticas. Por ejemplo, no se puede hacer &(a+b)
+- No se pueden sumar punteros pero sí restarlos
+- Los arrays son punteros constantes
