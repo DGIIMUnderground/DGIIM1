@@ -230,27 +230,27 @@ $ $\newline
 	 
 	 \vspace{2mm}
 	 Existen, pues, tres motivos fundamentales por los que una variable que vamos a denominar dependiente o endógena está influida por otra que actúa como independiente, explicativa o exógena.
-	 - La casualidad o el azar ha hehco que ambas variables estén relacionadas estadísticamente. ( Si eres hermano mayor o menor con la cantidad de cosquillas que tienes )
-	 - Una tercera variable está determinando a las que estamos estudiando. Por ejemplo el consumo de caviar y la compra de yates de recreo.
+	 - La casualidad o el azar ha hehco que ambas variables estén relacionadas estadísticamente (si eres hermano mayor o menor con la cantidad de cosquillas que tienes).\\
+	 - Una tercera variable está determinando a las que estamos estudiando. Por ejemplo el consumo de caviar y la compra de yates de recreo.\\
 	 - Y por último puede existir una relación causa-efecto la cual es la que vamos buscando.
 	 \subsection{Nociones básicas}
 	 
-	 Dada una dstribución de frecuencias bidimensional, se supone que existe cierta dependencia estadística de Y respecto de X.
+	 Dada una distribución de frecuencias bidimensional, se supone que existe cierta dependencia estadística de Y respecto de X.
 	 Como está dependencia no es funcional es imposible encontrar una función tal que su gráfica pase por todos los puntos correspondientes al diagrama de dispersión asociado a las variables observadas. Por eso buscamos la que mejor se adapte.
 	 
 	  Nuestro objetivo es deducir una relación funcional que explique lo mejor posible tal dependencia, es decir, buscar según algún criterio adecuado de optimalidad una función $f(x)$ tal que se pueda expresar.
 	 $$ y = f(x) $$
 	 
-	En esta situación adaptaremos la siguiente terminología:
-		- La variable estadística Y se denomina variable dependiente o explicada.
-		- La variable X se denomina variable independiente o explicativa.
+	En esta situación adaptaremos la siguiente terminología:\\
+		- La variable estadística Y se denomina variable dependiente o explicada.\\
+		- La variable X se denomina variable independiente o explicativa.\\
 		- La función f se denomina función de regresión de Y sobre X.
 		
 	$$ x = g(y) $$
 	
-	En este contexto se dice que:
-		- La variable estadística X es la variable dependiente o explicada.
-		- La variable estadística Y es la variable independiente o explicativa.
+	En este contexto se dice que:\\
+		- La variable estadística X es la variable dependiente o explicada.\\
+		- La variable estadística Y es la variable independiente o explicativa.\\
 		- La función g es la función de regresión de X sobre Y.
 		
 	En concreto vamos a estudiar la denominada \textbf{Regresión mínimo cuadrática} 
@@ -266,7 +266,7 @@ $ $\newline
 	\vspace{2mm}
 	
 	
-	\textbf{Criterio de mínimos cuadrados} : Es un método de ajuste de una función a unos datos que consiste en determinar los óptimos valores de los parámetros desconocidos de la función imponiendo que éstos hagan mínima la suma de los errores, ( residuos ). al cuadrado. Por residuo entendemos la diferencia entre el verdadero valor observado de la variable dependiente y el ajustado por la función.
+	\textbf{Criterio de mínimos cuadrados} : Es un método de ajuste de una función a unos datos que consiste en determinar los óptimos valores de los parámetros desconocidos de la función imponiendo que éstos hagan mínima la suma de los errores, (residuos), al cuadrado. Por residuo entendemos la diferencia entre el verdadero valor observado de la variable dependiente y el ajustado por la función.
 	\vspace{2mm}
 	
 	 La función a minimizar se denomina error cuadrático de la función ECM que tiene la siguiente forma:
@@ -276,7 +276,7 @@ $ $\newline
 	\vspace{2mm}
 	
 	
-	Si el modelo o tipo de función de regresión seleccionado es lineal, la regresión recibe el nombre de \textbf{regresión lineal} y en caso contrario \textbf{regresión no lineal}. Sea cual sea el método es el mismo explicado anteriormente. Esta separación no se hace en los apuntes de Jamaldo, se empieza por el estudio de funciones de regresión polinómicas de grado 1 2 etc. Cuando hablamos de regresión lineal hablamos de funciones polinómicas de grado 1.
+	Si el modelo o tipo de función de regresión seleccionado es lineal, la regresión recibe el nombre de \textbf{regresión lineal} y en caso contrario \textbf{regresión no lineal}. Sea cual sea el método es el mismo explicado anteriormente. Esta separación no se hace en los apuntes de Jamaldo, se empieza por el estudio de funciones de regresión polinómicas de grado 1, 2 etc. Cuando hablamos de regresión lineal hablamos de funciones polinómicas de grado 1.
 	
 	
 	\subsection{Regresión lineal}
@@ -286,10 +286,10 @@ $ $\newline
 	
 	Ahora mediante el criterio de mínimos cuadrados hay que hallar los óptimos valores de a y b que definen a la función de regresión lineal f.
 	
-	Para cada pareja de valores observados $(x_i,y_j)_{i=1,2...k, j=1,2...p}$. Se define el error o residuo asociado, notado por $e_{ij}$, como la diferenia entre el valor $y_j$ observado conjuntamente con $x_i$ y el ajustado por la función de regresión, $f(x_i)$. Que será notado por $\hat{y_i} = ax_i +b$.
+	Para cada pareja de valores observados $(x_i,y_j)_{i=1,2...k, j=1,2...p}$. Se define el error o residuo asociado, notado por $e_{ij}$, como la diferenia entre el valor $y_j$ observado conjuntamente con $x_i$ y el ajustado por la función de regresión, $f(x_i)$, que será notado por $\hat{y_i} = ax_i +b$.
 	Por tanto $$e_{ij} = y_j - \hat{y_i} = y_j - ax_i + b $$
 	
-	Cómo expresamos anteriormente el objetivo del criterio de mínimos cuadrados es cálcular el mínimo de la siguiente función: 
+	Como expresamos anteriormente, el objetivo del criterio de mínimos cuadrados es cálcular el mínimo de la siguiente función: 
 	$$\psi (a,b) = \sum_{i=1}^k \sum_{j=1}^p f_{ij} [ y_j - (a+bx_i)]^2 $$
 	
 	Como la función es continua respecto a las variables $a$ y $b$, por ser suma de funcions polinómicas de estas variables. Puesto esto obtenemos el sistema de ecuaciones normales derivando parcialmente sobre a y sobre b.
