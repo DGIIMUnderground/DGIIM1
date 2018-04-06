@@ -301,7 +301,7 @@ $ $\newline
 	$$  \sum_{i=1}^k \sum_{j=1}^p x_i y_j n_{ij}  = a \sum_{i=1}^k x_i^2 n_i + b\sum_{j= 1}^p x_i n_i $$
 	$$ \sum_{j=1}^p y_j n_j = a \sum_{i=1}^k x_i n_i + b $$
 	
-	Dividiendo por n ambas ecuaciones y reconociendo los correspondientes momentos asociados a la distribución nos queda.
+	Dividiendo por n ambas ecuaciones y reconociendo los correspondientes momentos asociados a la distribución nos queda:
 	
 	$$
 	m_{01} = a + bm_{10}$$
@@ -316,7 +316,7 @@ $ $\newline
 $$	 
 $$  b = \frac{\sigma_{xy}}{\sigma_x^2} $$
 	 
-	 Estos valores no sólo son puntos críticos de la función, sino que la hacen mínima, pues cómo es fácil comprobar, se verifica la condición uficiente de mínimo. Como resumen de la regresión lineal podemos decir que la recta de regresión de Y sobre X tiene por expresión.
+	 Estos valores no sólo son puntos críticos de la función, sino que la hacen mínima, pues como es fácil comprobar, se verifica la condición suficiente de mínimo. Como resumen de la regresión lineal podemos decir que la recta de regresión de Y sobre X tiene por expresión:
 	 
 	$$ y = \overline{y} - \frac{\sigma_{xy}}{\sigma_x^2} x + \overline{y} - \frac{\sigma_{xy}}{\sigma_x^2} \overline{x}$$
 	O bien
@@ -329,7 +329,7 @@ $$  b = \frac{\sigma_{xy}}{\sigma_x^2} $$
 	
 	\vspace{2mm}
 	
-	Al número: $$\frac{\sigma_{xy}}{\sigma_x^2}$$ lo denominamos \textbf{coeficiente de regresión lineal de Y sobre X}. Este parámetro es la pendiente de la recta y representa la variación que se produce en Y por incrementos unitarios de X. Como mencionamos en el punto de los momentos bidimensionales una covarianza positiva dará dos coeficientes de regresión positivos y sus correspondientes rectas de regresión crecientes. Si la covarianza es negativa, las dos rectas de regresión seran decrecientes. En el caso de que la covarianza sea nula las rectas de regresión serán paralelas a los ejes y perpendiculares entre sí.
+	Al número: $$\frac{\sigma_{xy}}{\sigma_x^2}$$ lo denominamos \textbf{coeficiente de regresión lineal de Y sobre X}. Este parámetro es la pendiente de la recta y representa la variación que se produce en Y por incrementos unitarios de X. Como mencionamos en el punto de los momentos bidimensionales una covarianza positiva dará dos coeficientes de regresión positivos y sus correspondientes rectas de regresión crecientes. Si la covarianza es negativa, las dos rectas de regresión serán decrecientes. En el caso de que la covarianza sea nula las rectas de regresión serán paralelas a los ejes y perpendiculares entre sí.
 	
 	- El parámetro de b es el término independiente y presenta el valor de Y cuando X = 0, si ello tiene sentido.
 	
@@ -338,7 +338,7 @@ $$  b = \frac{\sigma_{xy}}{\sigma_x^2} $$
 \begin{enumerate}
 
 	
-\item Las rectras de regresión de (Y,X) y (X,Y)  se cortan en el punto $(\overline{x},\overline{y}$ que se denomina centro de gravedad de la distribución.
+\item Las rectas de regresión de (Y,X) y (X,Y)  se cortan en el punto $(\overline{x},\overline{y})$ que se denomina centro de gravedad de la distribución.
 
 \begin{proof}
 $ $\newline
@@ -379,21 +379,24 @@ $$ \overline{\hat{y}} = \sum_{i=1}^kf_{i.} \hat{y}  = \sum_{i=1}^k(ax_i +b)f_{i.
 
 El último paso considerando la segunda ecuación del sistema normal de la recta Y/X.
 \end{proof}
-\item La media de los propductos de los resiudos por los valores de la variable explicativa cale cero.
+\item La media de los propductos de los residuos por los valores de la variable explicativa cale cero.
 \item La media de los productos de los residuos por valores ajustados vale cero.
 
 \end{enumerate}
 
 \subsection{Ajuste de modelos no lineales}
 
-En este esta sección se estduia e lajuste demodelso de regresión no lineales que se resuelven previa linealización de estos. A continuación se estudiará el ajuste para funciones polinómicas con grado mayor que dos, hiperbólicas y potenciales.
+En este esta sección se estudia el ajuste de modelos de regresión no lineales que se resuelven previa linealización de estos. A continuación se estudiará el ajuste para funciones polinómicas con grado mayor que dos, hiperbólicas y potenciales.
 
 \subsubsection{Ajuste de funciones polinómicas}
 
 Si se quiere ajustar un polinomio de grado superior a dos de expresión general:
-$$ y = a_o + a_1x +a_2x^2 + ..- + a_nx^n $$
+$$ y = a_o + a_1x +a_2x^2 + ... + a_nx^n $$
 
-el método de mínimos cuadrados, nos conduce a un sistema de ecuaciones normales como el de la regresión lineal. La resolución de dicho sistema nos proporciona los valores de los parámetros buscados $a_0, a_11, .... , a_n$
+el método de mínimos cuadrados nos conduce a un sistema de ecuaciones normales como el de la regresión lineal. La resolución de dicho sistema nos proporciona los valores de los parámetros buscados $a_0, a_1, .... , a_n$.
+
+	Para el ajuste a la nube de puntos de otro tipo de función, intentaremos pasar a un ajuste polinómico (lineal, a ser posible), mediante transformaciones adecuadas sobre el conjunto de los datos.
+	
 \subsubsection{Modelo de regresión hiperbólico}
 
 Observada la distribución de frecuencias deducimos que la relación puede ser explicada por un modelo de regresión parabólico dado por la función:
@@ -406,7 +409,7 @@ $$ y = az +b $$
 Por tanto $$ a = \frac{\sigma{zy} }{\sigma_{z}^2} $$ 
 $$ b = \overline{y} - a \overline{z} $$
 
-Para el cálculo efectuamos una tabla en la que a acad $z_i$ le asignamos el valor de $1/x_i$ y a partir de ahí calculamos los distintos parámetros.
+Para el cálculo efectuamos una tabla en la que a cada $z_i$ le asignamos el valor de $1/x_i$ y a partir de ahí calculamos los distintos parámetros.
 
 \subsubsection{Modelo de regresión potencial}
 	Observada la distribución de frecuencias deducimos que la relación puede ser explicada por un modelo de regresión parabólico dado por la función:
@@ -421,12 +424,38 @@ $$y' = ax' + B $$
 	
 	Por tanto,
 	$$ a = \frac{\sigma_{x'y'} }{\sigma_{x'}^2}$$
-	$$ B = \overline{y'} - a\overline{x'} ; b = e^{b} $$
+	$$ B = \overline{y'} - a\overline{x'} ; b = e^{B} $$
+	
+	Así que la función quedaría de la siguiente forma:
+	$$ y = e^{B}x^{a} $$
+	
+	Hay que tener en cuenta que aquí la media de los residuos no es cero.
+	
+\subsubsection{Modelo de regresión exponencial}
+	Observada la distribución de frecuencias deducimos que la relación puede ser explicada por un modelo de regresión exponencial dado por la función:
+$$ y = f(x) = ab^{x} $$
+
+	Ahora calcularemos los parámetros a y b:
+	$$ log y = log a + xlog b $$
+	
+	Aplicando el cambio de variable obtenemos:
+	$$ y' = a' + b'x $$
+	
+	Por tanto,
+	$$ b' = \frac{\sigma_{xy'} }{\sigma_{x}^2} $$
+	$$ b = e^{b'} $$
+	$$ a' = \overline{y'} - b'\overline{x} $$
+	$$ a = e^{a'} $$
+	
+	Finalmente, obtenemos la siguiente función:
+	$$ y = e^{a'}(e^{b'})^{x} $$
+	
+	En este caso, la media de los residuos tampoco es cero.
 
 \subsection{Curvas generales de regresión}
-Uno de los objetivos más importantes del análisis de la regresión es predecir el valor de una variable dependeinte Y dado el valor $x_i$ de una variabel independiente asociada X;  es decir, predecir el comportamiento de la variblae condicionada Y/X = $x_i$ .
+Uno de los objetivos más importantes del análisis de la regresión es predecir el valor de una variable dependiente Y dado el valor $x_i$ de una variable independiente asociada X;  es decir, predecir el comportamiento de la variable condicionada Y/X = $x_i$ .
 
-Son bien conocidas las cualidades de la media aritmética como valor representativo del comportamiento de una variable. Teniendo en cuenta este hecho y el comentario anterior, se define la curva de regresión de tipo I de Y/X como la curva que pasa por los puntos $(x_i,\overline{y_i}; i = 1,....,k $ De forma análoga se hace con la curva de regresión X/Y.
+Son bien conocidas las cualidades de la media aritmética como valor representativo del comportamiento de una variable. Teniendo en cuenta este hecho y el comentario anterior, se define la curva de regresión de tipo I de Y/X como la curva que pasa por los puntos $(x_i,\overline{y_i}; i = 1,....,k) $. De forma análoga se hace con la curva de regresión X/Y.
 
 Las curvas así definidas tienen la importante propiedad de ser entre todas las funciones las que mejor se ajustan a los datos observados, según el criterio de mínimos cuadrados.
 
@@ -436,16 +465,17 @@ A pesar de esta importante propiedad ,esta curva de regresión no es de gran uti
 \section{Correlación}
 \subsection{Nociones básicas}
 
-Se denomina correlación al grado de dependencia entre las variables según una determinada función de regresión. Estas medidas tienen como objetivo cuantificar e lgrado en que una determinada función explica una variable a partir de otra. 
+Se denomina correlación al grado de dependencia entre las variables según una determinada función de regresión. Estas medidas tienen como objetivo cuantificar el grado en que una determinada función explica una variable a partir de otra. 
 
-Como comentamos en el punto de independencia y dependencia estadística existen dos situaciones extremas que se identifican con la incorrelación y correlación perfecta ( dependencia funcional ) .
+Como comentamos en el punto de independencia y dependencia estadística existen dos situaciones extremas que se identifican con la incorrelación y correlación perfecta (dependencia funcional).
 
 - Cuando el grado de correlación entre las variables según una función de regresión ajustada sea nulo, se dirá que las variables están incorreladas según esa función de regresión.
+
 - Cuando el grado de correlación entre las variables sea máximo, (total), se dirá que la correlación entre las varibales según el modelo ajustado es perfecta e indicará dependencia funcional.
 
 Entre estos dos casos existirán distintos grados de correlación
 
-A conitnuación se presentan distintas medidas de correlación fundamentales en el context ode la Regresión mínimo-cuadrática.
+A continuación se presentan distintas medidas de correlación fundamentales en el contexto de la Regresión mínimo-cuadrática.
 
 \subsection{Varianza residual}
 Se define como la media de los residuos al cuadrado. Se define la varianza residual de Y sobre X notada por $\sigma_{r_{Y/X}}^2 $
@@ -462,31 +492,33 @@ Varianza residual de Y/X en el modelo de regresión potencial:
 $$\sum_{i=1}^k \sum_{j=1}^p ( y_j - bx_i^a )^2 f_{ij} $$
 
 La interpretación es la siguiente: 
+
 - Si $\sigma_r^2 = 0$. Todos los errores son nulos, luego la función de regresión describe totalmente a la variable. Por tanto existe una correlación perfecta.
-- Si $\sigma_r^2 > 0$ caunto mayor sea, menor será el grado de correlación entre la las variables según la función de regresión ajutada.
+
+- Si $\sigma_r^2 > 0$ cuanto mayor sea, menor será el grado de correlación entre la las variables según la función de regresión ajutada.
 
 \vspace{2mm}
 
-Como ventajas de esta medida destacamos que siempre es posible su cálculo y su interpretación es inmediata. Sin embargo presena dos inconvenientes.
+Como ventajas de esta medida destacamos que siempre es posible su cálculo y su interpretación es inmediata. Sin embargo presenta dos inconvenientes.
 
 \vspace{2mm}
 
-- No está acotada superiormente, Esto prooca que no exista una cota general con la que identificar la incorrelación y que, además, no quedan perfectamente identificados los grados de correlación con valores de la varianza residual. 
+- No está acotada superiormente, esto provoca que no exista una cota general con la que identificar la incorrelación y que, además, no quedan perfectamente identificados los grados de correlación con valores de la varianza residual. 
 
 \vspace{2mm}
 
-- Depende de las unidades de medida de lavariable al cuadrado. Además ello provoca que no sea posible la comparación de varianzas residuales correspondientes al estudio del grado de correlación según diferentes modelos en distintas distribuciones.
+- Depende de las unidades de medida de la variable al cuadrado. Además ello provoca que no sea posible la comparación de varianzas residuales correspondientes al estudio del grado de correlación según diferentes modelos en distintas distribuciones.
 
 \subsection{Coeficiente de determinación}
 
-	El coeficiente de determinación intenta subsanar los inconvenientes de la varianza residual: En particular presenta las siguientes ventajas:
+	El coeficiente de determinación intenta subsanar los inconvenientes de la varianza residual. En particular presenta las siguientes ventajas:
 	\vspace{2mm}
 	
 	1. Está acotado superior e inferiormente. Ello conduce a identificar claramente la incorrelación, correlación perfecta y grados de correlación intermedios con valores concretos del coeficiente.
 	
 	\vspace{2mm}
 	
-	2. Los valroes del coeficiente varían en el mismo sentido que la intensiad del grado de correlación, a mayor valor del coeficiente, mayor grado de correlación viceversa.
+	2. Los valores del coeficiente varían en el mismo sentido que la intensidad del grado de correlación, a mayor valor del coeficiente, mayor grado de correlación y viceversa.
 	
 	\vspace{2mm}
 	
@@ -498,7 +530,7 @@ Como ventajas de esta medida destacamos que siempre es posible su cálculo y su 
 	
 	\vspace{2mm}
 	
-	Esta consiste en que la varianza de la variable dependiente, se puede descomponer como la suma de la varianza de los valores ajustados con la varianza residual. Siendo la varianza de los valores ajustados $$\sigma_{\hat{y}}^2 = \sum_{i=1}^k \sum_{j=1}^p f_{ij} (\hat{y_j} - \overline{x} )^2. $$
+	Esta consiste en que la varianza de la variable dependiente, se puede descomponer como la suma de la varianza de los valores ajustados con la varianza residual, siendo la varianza de los valores ajustados $$\sigma_{\hat{y}}^2 = \sum_{i=1}^k \sum_{j=1}^p f_{ij} (\hat{y_j} - \overline{x} )^2. $$
 Es decir
 	$$ \sigma_Y^2 = \sigma_{\hat{Y}}^2 + \sigma_{r_{Y/X}}^2 $$
 	
@@ -511,15 +543,15 @@ Es decir
 	
 \vspace{2mm}	
 	
-	$ \eta_{Y/X}^2 = 0 $ Luego la varianza residual y la varianza total son las mismas luego le modelo no explica nada de Y a partir de X. El ajuste es el peor posible, las variables están incorreladas.
+	$ \eta_{Y/X}^2 = 0 $. Luego la varianza residual y la varianza total son las mismas luego el modelo no explica nada de Y a partir de X. El ajuste es el peor posible, las variables están incorreladas.
 	
 \vspace{2mm}	
 	
-	$ \eta_{Y/X}^2 = 1 $ En este caso se verifica que $\sigma_r^2 = 0$ , entonces existe correlación perfecta o dependencia funcional entre las variables según la función de regresión ajustada.	
+	$ \eta_{Y/X}^2 = 1 $. En este caso se verifica que $\sigma_r^2 = 0$ , entonces existe correlación perfecta o dependencia funcional entre las variables según la función de regresión ajustada.	
 	
 \vspace{2mm}	
 	
-	$ 0 < \eta_{Y/X}^2 < 1 $  En este caso existe un cierto grado de correlación entre las variables según la función de regresión ajustada, tanto más intensa cuanto más cercano a 1 esté el coeficiente y más leve cuanto más cercano a cero.
+	$ 0 < \eta_{Y/X}^2 < 1 $. En este caso existe un cierto grado de correlación entre las variables según la función de regresión ajustada, tanto más intensa cuanto más cercano a 1 esté el coeficiente y más leve cuanto más cercano a cero.
 	
 En modelos lineales respecto a los parámetros como el lineal o el hiperbólico se verifica la descomposición de la varianza. En modelos no lineales como el potencial o el exponencial no se verifica la descomposición de la varianza, por tanto las medidas de correlación que se van a considerar serán las correspondientes varianzas residuales.
 
@@ -530,27 +562,29 @@ $$ r^2 = \frac{\sigma_{XY}^2}{ \sigma_{X}^2 \sigma_{Y}^2 } $$
 
 Si $r^2$ = 1 Entonces la correlación lineal es perfecta, en este caso las dos rectas de regresión coinciden. Esta recta pasa por todos los puntos de la nube.
 
-Si $r^2$ = 0 Existe Incorrelación lineal, en este vaso $\sigma_{XY}^2 = 0$ y las pendientes de las rectas son nulas, por tanto las rectas son perpendiculares y paralelas a los ejes de coordenadas.
+Si $r^2$ = 0 Existe incorrelación lineal, en este caso $\sigma_{XY}^2 = 0$ y las pendientes de las rectas son nulas, por tanto las rectas son perpendiculares y paralelas a los ejes de coordenadas.
 
 En el caso intermedio es igual que con los anteriores.
 
-\subsection{coeficiente de correlación lineal de Pearson}
+\subsection{Coeficiente de correlación lineal de Pearson}
 
 Este coeficiente estudia la interdependencia lineal entre las variables, entendiendo por ésta el grado de asociación lineal junto con el sentidio positivo, (directo), o negativo (inverso), de variación conjunta de las variables.
 
 Se define pues como:
-$$ r = \frac{\sigma_{XY}}{\sigma_{X} \sigma_{Y}}  = \sqrt{r^2}$$
+$$ r = \frac{\sigma_{XY}}{\sigma_{X} \sigma_{Y}}  = \pm \sqrt{r^2}$$
+
+(El signo depende de la covarianza).
 
 Interpretación:
 
-Si $r = 1$ La asociación lineal perfecta es positiva. En este caso $r^2 = 1$ y por tanto las dos rectas coinciden y pasan por todos los puntos de la nube. Por ser $r > 0$, la covarianza es positiva y la recta es creciente.
+Si $r = 1$, la asociación lineal perfecta es positiva. En este caso $r^2 = 1$ y por tanto las dos rectas coinciden y pasan por todos los puntos de la nube. Por ser $r > 0$, la covarianza es positiva y la recta es creciente.
 
-Si $r= -1$ La asociación lineal es perfecta pero negativa. En este caso $r^2 = 1$ las rectas coinciden y pasan por todos los puntos de la nube. Como $r < 0$ y la covarianza es negativa la recta es decreciente.
+Si $r= -1$, la asociación lineal es perfecta pero negativa. En este caso $r^2 = 1$ las rectas coinciden y pasan por todos los puntos de la nube. Como $r < 0$ y la covarianza es negativa la recta es decreciente.
 
 
-Si $r = 0$. La asociación lineal es nula $r^2 = 0$ las variables están incorreladas linealmente y las rectas son perpendiculares a los ejes, ( la covarianza es nula).  Que r sea cero no implica la independencia de las variables.
+Si $r = 0$, la asociación lineal es nula $r^2 = 0$ las variables están incorreladas linealmente y las rectas son perpendiculares a los ejes, (la covarianza es nula).  Que r sea cero no implica la independencia de las variables.
 
-Si $ 0 < r < 1 $ La asociación lineal entre las variables será tanto más intensa cuanto más próximo éste el coeficiente a 1, Por ser $ r > 0 $ las rectas son crecientes.
+Si $ 0 < r < 1 $, la asociación lineal entre las variables será tanto más intensa cuanto más próximo éste el coeficiente a 1, Por ser $ r > 0 $ las rectas son crecientes.
 
 Si $ -1 < r < 0 $ La asociación lineal será tanto más intensa cuanto más próximo esté le coeficiente a -1. Por ser $ r < 0$ las rectas son decrecientes.
 
@@ -559,11 +593,11 @@ Si $ -1 < r < 0 $ La asociación lineal será tanto más intensa cuanto más pr�
 1. La covarianza, el coeficiente de correlación lineal r y las pendientes de las rectas tienen el mismo signo.
 
 
-2. El coeficiente de correlación lineal tambin informa de la apertura entre las rectas de regresión: el ángulo entre sí las rectas de regresión de Y/X y X/Y crece en sentido inverso al valor de $ |r| $. Si r vale 0 las rectas son perpendiculares si es 1 coinciden y cuanto más se aproximen el valor será más próximo a 1.
+2. El coeficiente de correlación lineal también informa de la apertura entre las rectas de regresión: el ángulo entre sí las rectas de regresión de Y/X y X/Y crece en sentido inverso al valor de $ |r| $. Si r vale 0 las rectas son perpendiculares si es 1 coinciden y cuanto más se aproximen el valor será más próximo a 1.
 
 \subsection{Predicción}
 
-Uno de los objetivos que persigue la regresión y la correlación es hacer predicciones de lavariable dependiente o endógena en función de oque toma la independiente o exógena. Las predicciones se efectúan utilizando la función estimada por mínimos cuadrados. Con ella se obtienen valores teóricos. La predicción será tanto más fiable cuanto mayores sean los coeficientes de determinación correspondientes, ya que menor será la varianza de los residuos que es la que nos indica la cuantía de la separación entre lo observado y lo estimado.
+Uno de los objetivos que persigue la regresión y la correlación es hacer predicciones de la variable dependiente o endógena en función de o que toma la independiente o exógena. Las predicciones se efectúan utilizando la función estimada por mínimos cuadrados. Con ella se obtienen valores teóricos. La predicción será tanto más fiable cuanto mayores sean los coeficientes de determinación correspondientes, ya que menor será la varianza de los residuos que es la que nos indica la cuantía de la separación entre lo observado y lo estimado.
 
 La fiabilidad de las predicciones disminuye conforme los valores de la variable exógena se alejan de su recorrido.
 
