@@ -28,6 +28,9 @@ Pero, si quieres profundizar siempre puedes echarles un vistazo a una de las [gu
 Sí, hemos escrito un [pequeño documento](CONTRIBUTING.md) con las convenciones a seguir para mantener 
 el estilo de nuestro código fuente lo más coherente posible.
 
+## Como conectarse al repo tras la migración
+Tan solo es necesario entrar en la carpeta en la que se encuentra el repo antiguo y escribir `git remote set-url origin https://github.com/DGIIMUnderground/DGIIM1`
+
 ## LICENSE
 
 El código se encuentra bajo la licencia GPLv3 (Ver [LICENSE](LICENSE)) y el resto del contenido está bajo [Creative Commons Attribution No Commercial 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
