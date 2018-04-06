@@ -28,7 +28,7 @@ Empecemos realizando una copia del repositorio en tu ordenador.
 El comando `git clone` se encarga de ello:
 
 ```console
-$ git clone https://github.com/pwaqo/DGIIM1.git
+$ git clone https://github.com/DGIIMUnderground/DGIIM1
 ```
 
 Este comando te crea una carpeta en el directorio donde es ejecutado con el repositorio íntegro.
