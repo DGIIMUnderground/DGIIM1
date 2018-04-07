@@ -1,0 +1,48 @@
+\documentclass[a4paper , 11pt, spanish ]{article}
+
+% Codificación e idioma, para las tildes crucial
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+%paquetes para matemáticas
+\usepackage{fullpage,mathpazo,amsfonts,nicefrac, amssymb , amsmath, amsbsy}
+\usepackage{amsmath}
+%paquetes para insertar gráficas (imágenes)
+\usepackage{graphicx}
+
+%paquete de enumerar, para realizar listas 
+\usepackage{enumerate}
+
+\usepackage{import}
+
+
+%DEFINICICIONES 
+
+\title{Minimización de la desviación absoluta de la media respecto de la mediana}
+\author{Blanca Cano Camarero}
+
+\begin{document}
+\maketitle
+Se quiere probar que la desviación absoluta de la media respecto de la mediana es mínima, es decir, que $D_x$ alcanza un mínimo en X=Me:  
+$$ D_{X} = \frac{\sum_{i = 1}^{k} |x_i - X| n_i}{N}$$ 
+
+\textbf{Notación y conceptos usados } 
+\par
+\begin{itemize} 
+	\item Se parte de que en una población de tamaño N, se ha observado la variable estadística ordinal X, que ha presentado k modalidades posibles con una distribución de frecuencias $\{x_i , n_i\}_{i=1...k}$ ...
+	\item Prescindiré de la frecuencia absoluta y utilizaré directamente los datos ordenados, es decir que $x_i$ es el dato que ocupa la posición i-ésima en la distribución ordenada.
+	\item Trabajaremos con cuantiles, siendo $x_\alpha$ el cuantil de orden $\alpha$, y tengamos presente que la mediana se da cuando $\alpha = 0.5 $.
+	
+\end{itemize}
+\textbf{Demostración}
+\par
+Observemos que como conocemos el valor intermedio $X_\alpha$ podemos redefinir la desviación absoluta media respecto a $X_\alpha$ sin utilizar valores absolutos y en base al total de la población: 
+\begin{equation}
+	D_{X_\alpha} = \frac{1}{N}\Big\{ \sum_{i=1}^{\alpha N} \big(  X_\alpha - x_i \big) +  \sum_{i=\alpha N+1}^{N} \big( x_i - X_\alpha\big) \Big\}
+\end{equation}
+Si ahora derivamos (1) respecto de $ X_\alpha$    resulta:
+$$ D_{X_\alpha}' = \frac{\alpha N}{N} - \frac{N- \alpha N}{N} = \alpha - (1-\alpha )$$
+Esta función alcanza un punto crítico en $\alpha = 0.5 $. Para valores menores que 0,5 vemos que la derivada es negativa, mientras que para valores mayores es positiva, por tanto en $\alpha = 0.5 $ la función alcanza un mínimo, lo que es equivalente a que la función se minimice respecto a la mediana que es lo que queríamos probar. 
+\end{document}
