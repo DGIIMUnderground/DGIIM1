@@ -61,13 +61,35 @@ los link tienen la siguiente sintaxis `[<mensaje>](<link>).`
 definido con almohadillas \##. Para ello utilizas la sintaxis descrita anteriormente, pero
 escribiendo como link el título en minúsculas y sustituyendo espacios por guiones.
 Ejemplo.: `[<mensaje>](#visualización-del-contenido) `
+- Puedes hacer referencia  a un enlace relativo con la siguiente sintáxis (heredada de html)
+`<a href="nombre_dir"> nombre_que_aparecerá_en_la_página<\a> `  
 
+### Índices  
+- Podemos utilizar el estilo markdaniano de link `[<mensaje>](#visualización-del-contenido) `  
+- O continuar a lo html: 
+  - Con la etiqueta para crear enlaces internos  `<a name="id1"></a>`
+  ```md
+  [Título que se cree muy independiente](#id1)
+  #Soy un títulillo desatado <a name="id1"></a>
+  ```
+  - O la etiqueta *div* que se utiliza para crear secciones dentro de un texto en html  
+  ```md
+  [La parte interesante del documento](#id2)
+  <div id='id2' />
+  Texto aburrido
+  ```  
+    [Título que se cree muy independiente](#id1)
+	|
+	|
+	[Parte interesante de un documento](#id2)
+	|
+  #Soy un títullo desatado <a name="id1"></a>
 ### Imágenes
 
 - La sintaxis es `![<Texto ayuda>](<link de la imagen>) `
  ![Ejemplo de imagen](https://media.giphy.com/media/aRmAPxula4i7C/giphy.gif)
  
-- También se pueden subir con la sintaxis de html, que te permite ajustar su tamaño y además indicarle que está en su mismo directorio. `<img src="carpeta/imagen.ext" width="200" heigh="600">` 
+- También se pueden subir con la sintaxis de html, que te permite ajustar su tamaño y además indicarle que está en su mismo directorio. `<img src="carpeta\imagen.ext" width="200" heigh="600">` 
 Préstese especial atención a que *img* va pegado a < y que los tamaños se escriben entre dobles comillas, estos se pueden omitir y te cogerá el tamaño propio de la imagen. 
 <img src="media\haskell.png" width="200" heigh="200">  
 
@@ -101,7 +123,7 @@ columna 1 | columna 2
    dato 1 | dato 2
     dat 3 | dat 4
 ``` 
-
+<div id='id2' />
 ### Emoticonos markdown  
 Esta persona se lo ha montado súper bien, os dejo su [repositorio](https://gist.github.com/rxaviers/7360908) 
 
