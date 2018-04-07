@@ -19,4 +19,4 @@ Con el fin de estar preparados (no para lo peor, sino para el exámen) estas son
 - Relación de la varianza marginales con la condicionada.   
 - Transformaciones a fines de la correlación, coeficiente de variación...  (todo)  
 - Cuál de las pendientes de la recta de regresión  es mayor, la de Y sobre X o la de X sobre Y  
-
+- ¿Cuándo coinciden las rectas de regresión? (Sol.: cuando no hay residuos).
