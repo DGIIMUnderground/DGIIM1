@@ -350,8 +350,105 @@ void redimensionar (int *&v, int& tama, int aumento){
 ### Arrays dinámicos de objetos
 Funciona igual que con un tipo de dato nativo, salvo que se usa el constructor por defecto obligatoriamente al inicializar los datos de la memoria reservada.
 
+### Clases que contienen dartos en memoria dinámica
+Una clase puede contener punteros que se pueden a usar apra almacenar datos en memoria dinámica.
+Los constructores puedden reservar la memoria dinámica y el destructor elimina la memoria dinámica que contiene  un objeto. Obviamente se puede aumentaro disminuir la memoria reservada con otros métodos.
 
+### Matrices dinámicas
+Hay 3 formas distintas de declarar matrices dinámicas:
 
+- Primera forma:
+```cpp
+//Creación de la matriz
+int *m;
+int nfil,ncol;
+m = new int[nfil*ncol];
+//Acceso al elemento f,c
+int a;
+a = m[f*ncol+c];
+//Liberación de la matriz.
+delete[] m;
+```
+
+- Segunda forma:
+```cpp
+//Creación de la matriz:
+int **m;
+int nfil, ncol;
+m = new int*[nfil];
+for (int i=0; i<nfil;++i)
+m[i] = new int[ncol];
+//Acceso al elemento f,c:
+int a;
+a = m[f][c];
+//Liberación de la matriz:
+for(int i=0;i<nfil;++i)
+	delete[] m[i];
+delete[] m;
+```
+
+- Tercera forma:
+```cpp
+//Creación de la matriz:
+int **m;
+int nfil, ncol;
+m = new int*[nfil];
+m[0] = new int[nfil*ncol];
+for (int i=1; i<nfil;++i)
+m[i] = m[i-1]+ncol;
+DECSAI (Universidad de Granada)
+//Acceso al elemento f,c:
+int a;
+a = m[f][c];
+//Liberación de la matriz:
+delete[] m[0];
+delete[] m;
+```
+
+### Celdas enlazadas
+En estas listas se pueden insertar datos en la posición que se quiera usando celdas enlazadas, donde cada una está en el heap y se usan punteros para enlazar a la celda siguiente.
+Es obligatorio que la última celda de la lista el puntero último sea 0 para indicar el final.
+```cpp
+struct Celda{
+double dato;
+Celda* sig;
+}
+```
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Celda{
+double dato;
+Celda* sig;
+};
+
+int main(){
+	Celda* lista;
+	double valor;
+	lista = 0;
+	cin >> valor;
+	while(valor != 0.0){ // Creación de las celdas de la lista
+		Celda* aux = new Celda;
+		aux->dato = valor;
+		aux->sig = lista;
+		lista = aux;
+		cin >> valor;
+	}
+	// Mostrar la lista en salida estandar de principio a fin
+	aux = lista;
+	while(aux != 0){
+		cout << aux -> dato << " ";
+		aux = aux->sig; //aux apunta a la siguiente celda
+	}
+	cout << endl;
+	while (lista != 0) { // Destrucción de la lista
+		Celda* aux = lista;
+		lista = aux->sig;
+		delete aux;
+	}
+}
+```
 
 
 _By Mapachana_
