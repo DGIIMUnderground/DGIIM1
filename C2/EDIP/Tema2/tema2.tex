@@ -814,20 +814,50 @@ interpretación es inmediata. Sin embargo presenta dos inconvenientes.
 	definición. Para ello se tiene que verificar la llamada `descomposición de la
 	varianza`.
 
-	\vspace{2mm}
+	\begin{definition}
+		Se llama varianza explicada por la regresión a la varianza de los
+		valores ajustados. Considerando $Y/X$:
+		$$
+		\sigma_{ey}^2 = \sum_{i=1}^k\sum_{j=1}^p f_{ij}(\hat{y_j}-\overline{y})^2
+		$$
+	\end{definition}
 
-	Esta consiste en que la varianza de la variable dependiente, se puede
-	descomponer como la suma de la varianza de los valores ajustados con la
-	varianza residual, siendo la varianza de los valores ajustados
-	$$\sigma_{\hat{y}}^2 = \sum_{i=1}^k \sum_{j=1}^p f_{ij} {(\hat{y_j} -
-	\overline{x})}^2 $$ Es decir $$ \sigma_Y^2 = \sigma_{\hat{Y}}^2 +
-	\sigma_{r_{Y/X}}^2 $$
+	\begin{theorem}[Descomposición de la varianza marginal]
+	En funciones polinómicas en los parámetros, la varianza marginal de Y es la suma
+	de la varianza explicada por la regresión con la varianza residual.
+	$$\sigma_y^2 = \sigma_{ey}}^2 +\sigma_{r_{Y/X}}^2 $$
+	\end{theorem}
+	\newpage
+	\begin{proof}
+	\begin{align*}
+		\sigma_y^2 = \sum_{j=1}^p f_{.j} (y_j - \overline{y})^2 =
+		\sum_{j=1}^p f_{.j} (y_j - \hat{y} + \hat{y} - \overline{y}) = \\
+		= \sum_{j=1}^p f_{.j}\left[ (y_j - \hat{y})^2 +
+		(\hat{y} - \overline{y})^2 - 2(y_j - \hat{y})(\hat{y}-\overline{y})\right] = \\
+		= \sum_{j=1}^p f_{.j} (y_j - \overline{y})^2
+		+ \sum_{j=1}^p f_{.j} (\hat{y_j} - \overline{y})^2
+		-2 \sum_{j=1}^p f_{.j} (y_j - \hat{y_j})(\hat{y_j} - \overline{y}) = \\
+		= \sigma_{ry}^2 + \sigma_{ey}^2
+							- 2\sum_{j=1}^p f_{.j}
+											(y_j - \hat{y_j})
+											(f(x_i, a_ 0, \cdots, a_n) - \overline{y}) = \\
+		= \sigma_{ey}^2 + \sigma_{ry}^2
+							- \cancel{2(\hat{y_j} - \overline{y})
+								\sum_{j=1}^p f_{.j}(y_j - \hat{y_j})} = \\
+		= \sigma_{ey}^2 + \sigma_{ry}^2
+	\end{align*}
+	Donde se ha usado en el último paso que la media de los residuos de una
+	función polinómicas es 0.
+	\end{proof}
+
 
 	Así podemos ya definir el coeficiente de determinación denotado por $R^2$ o
 	$\eta_{Y/X}^2$ como la proporción de variabilidad de la variable dependiente
-	que es explicada por la regresión: $$R^2 =
-	\frac{\sigma_{\hat{Y}}^2}{\sigma_Y^2}  = 1 -
-	\frac{\sigma_{r_{Y/X}}^2}{\sigma_y^2}$$
+	que es explicada por la regresión:
+
+	$$
+	\eta_{Y/X}^2 =\frac{\sigma_{ey}^2}{\sigma_y^2}  = 1 -\frac{\sigma_{r_{Y/X}}^2}{\sigma_y^2}
+	$$
 
 	Este coeficiente es 1 menos la varianza residual entre la varianza total.
 
