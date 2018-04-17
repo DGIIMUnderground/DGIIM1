@@ -1,0 +1,399 @@
+\documentclass{article}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{scrextend}
+
+\title{\LARGE{\textbf{Métodos numéricos: Resolución numérica de sistemas de ecuaciones lineales.}}}
+\author{1º DGIIM}
+\date{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO,LE]{\textbf{Tema 2. Resolución numérica de sistemas de ecuaciones lineales.}}
+\fancyhead[RO,RE]{1º DGIIM}
+\fancyfoot[CO,CE]{\thepage}
+
+\begin{document}
+
+\maketitle
+\hrulefill
+%
+%SISTEMAS TRIANGULARES
+%
+\section{Sistemas triangulares}
+
+En un sistema de ecuaciones grande, la regla de Cramer es ineficiente. En un sistema de $n$ ecuaciones, para hallar las soluciones con el método de Cramer se pueden realizar hasta $(n+1)!n-1$ operaciones.
+\\
+Sea un sistema de ecuaciones $\text{A}x=\text{b}$, donde $\text{A}\in\mathbb{R}^{N\times N}$, $x\in\mathbb{R}^N$ y b es el vector de términos independientes, se definen los siguientes métodos de resolución:
+\begin{itemize}
+\item Resolución por sustitución hacia atrás (si A es triangular superior con elementos diagonales no nulos):
+$$x_N=\frac{b_N}{a_{NN}},$$
+$$i=N-1,\dots,1\Rightarrow x_i=\frac{1}{a_{ii}}\bigg(b_i-\sum_{j=i+1}^Na_{ij}x_j \bigg)$$
+\item Resolución por sustitución hacia delante (si A es triangular inferior con elementos diagonales no nulos):
+$$x_1=\frac{b_1}{a_{11}},$$
+$$i=2,\dots,N\Rightarrow x_i=\frac{1}{a_{ii}}\bigg(b_i-\sum_{j=1}^{i-1}a_{ij}x_j \bigg)$$
+\end{itemize}
+En ambos casos, el número máximo de operaciones que se realizan es sólamente $N^2$, muchas menos que con la regla de Cramer.
+%
+%MÉTODO DE GAUSS,PIVOTAJE PARCIAL Y TOTAL
+%
+\section{Método de Gauss}
+Sea un sistema de ecuaciones dado por $\text{A}x=\text{b}$, donde $\text{A}\in\mathbb{R}^{N\times N}$; el método de Gauss trata de transformar el sistema en otro equivalente $\text{U}x=\text{c}$, donde U es una matriz triangular superior. Para llegar a esa matriz U, es necesario realizar cambios en las filas, multiplicándolas por unos términos denominados \emph{multiplicadores}. Estos cambios tambien afectan al vector de términos independientes. Cada uno de esos pasos se denotará de la siguiente manera: $\text{A}^{(paso)}$, donde $\text{A}^{(1)}:=\text{A}$. El algoritmo del método de Gauss es el siguiente:
+\begin{itemize}
+\item Suposiciones iniciales: $k=1,\dots,N\implies a_{kk}^{(k)}\neq 0$
+\item Definición de multiplicadores: $i=k+1,\dots,N\implies m_{ik}:=\displaystyle\frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}$
+\item Transformaciones en A: $i=k+1,\dots,N,\;j=k,\dots,N\implies a_{ij}^{(k+1)}:=a_{ij}^{(k)}+m_{ik}a_{kj}^{(k)}$
+\item Transformaciones en b: $i=k+1,\dots,N\implies b_i^{(k+1)}:=b_i^{(k)}-m_{ik}b_k^{(k)}$
+\item Sistema triangular superior equivalente: $\text{U}x=\text{c},\quad\text{U}:=\text{A}^{(N)},\quad\text{c}:=\text{b}^{(N)}$
+\end{itemize}
+Ese sistema traingular superior se resuelve por sustitución hacia atrás.
+
+\hrulefill
+
+\underline{Ejemplo:}
+$$\textbf{A}=\begin{pmatrix}
+1 & 1 & 1 \\
+2 & 1 & 3 \\
+0 & 2 & 2
+\end{pmatrix},\quad\textbf{b}=\left(\begin{array}{c}
+3 \\
+6 \\
+4
+\end{array}\right)$$
+$$\text{A}^{(1)}=\text{A},\quad\text{b}^{(1)}=\text{b}$$
+$$\textbf{A}^{(2)}=\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -1 & 1 \\
+0 & 2 & 2
+\end{pmatrix},\quad\textbf{b}^{(2)}=\left(\begin{array}{c}
+3 \\
+0 \\
+4
+\end{array}\right)$$
+$$\textbf{A}^{(3)}=\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -1 & 1 \\
+0 & 0 & 4
+\end{pmatrix},\quad\textbf{b}^{(3)}=\left(\begin{array}{c}
+3 \\
+0 \\
+4
+\end{array}\right)$$
+\begin{center}Resolución hacia atrás: $x_1=x_2=x_3=1$\end{center}
+
+\hrulefill
+\\
+\textbf{Proposición:}
+\\
+Sea $\text{A}\in\mathbb{R}^{N\times N}$ una matriz cuadrada y sea $\text{b}\in\mathbb{R}^N$. Entonces son equivalentes:
+\begin{labeling}{ii}
+\item [(i)]El correspondiente método de Gauss puede completarse hasta el paso N-ésimo.
+\item [(ii)]Para cada $k=1,\dots,N$ la $k$-ésima submatriz principal de A es regular.
+$$\textbf{A}_k=\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1k} \\
+a_{21} & a_{22} & \cdots & a_{2k} \\
+\vdots & \vdots & & \vdots \\
+a_{k1} & a_{k2} & \cdots & a_{kk}
+\end{pmatrix}$$
+\end{labeling}
+El algoritmo del método de Gauss tiene dos problemas: Los errores de redondeo y el problema generado cuando $a_{kk}^{(k)}=0$. Es por ello por lo que aparece el método de Gauss con pivotaje parcial.
+\\
+Este nuevo método se diferencia del de Gauss en que antes de definir los multiplicadores $m_{ik}$, la matriz $\text{A}^{(k+1)}$ y el vector $\text{b}^{(k+1)}$, intercambiar de posición las filas $k,\dots,N$ de la matriz de forma que el elemento que tenga mayor valor absoluto sea $a_{kk}^{(k)}$. Este método tiene sentido siempre y cuando la matriz de coeficientes A sea regular.
+\\
+\\
+Otra variante es el método de Gauss con pivotaje total, que aparte de reordenar las filas $k,\dots,N$ reordena las columnas $k,\dots,N$, tal que el elemento de la submatriz correspondiente tenga a $a_{kk}^{(k)}$ como elemento de mayor valor absoluto.
+\\
+\\
+Una última variante del método de Gauss es el de Gauss-Jordan, que transforma la matriz A en una matriz diagonal en vez de una triangular superior, utilizando el mismo sistema. Su coste, sin embargo, es superior.
+%
+%FACTORIZACIÓN DE MATRICES (DOOLITTLE,CROUT Y CHOLESKY)
+%
+\section{Factorización de matrices}
+A la hora de calcular las soluciones de un sistema de ecuaciones en el cual varía el vector de términos independientes, resulta muy trabajosa la resolución mediante el método de Gauss. Aparece como solución a este problema la factorización de matrices, es decir, la transformación de la matriz A en un producto de una triangular superior y una triangular inferior:
+$$\text{A}x=\text{b}\implies\text{LU}x=\text{b}$$
+Resolver el sistema de ecuaciones se reduce a la resolución de dos sistemas triangulares (sustitución hacia delante + sustitución hacia atrás):
+$$y:=\text{U}x,\quad\text{L}y=\text{b}\implies\text{U}x=y$$ 
+\\
+\textbf{Proposición:}
+\\
+Sean $N\geq 1,\text{A}\in\mathbb{R}^{N\times N}, \text{b}\in\mathbb{R}^N$ y supongamos que aplicando el método de Gauss al sistema A$x=\text{b}$ se obtiene una matriz triangular superior $\text{A}^{(N)}$ y un vector $\text{b}^{N}$ de forma que el sistema $\text{A}^{(N)}x=\text{b}^{(N)}$ es equivalente al de partida. Entonces $\text{A}=\text{LU}$, siendo $\text{U}=\text{A}^{(N)}$ y los coeficientes de la parte inferior de L los multiplicadores del método de Gauss.
+$$\textbf{L}=\begin{pmatrix}
+1 & 0 & 0 & \cdots & 0 \\
+m_{21} & 1 & 0 & \cdots & 0 \\
+m_{31} & m_{32} & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+m_{N1} & m_{N2} & m_{N3} & \cdots & 1
+\end{pmatrix}$$
+
+\hrulefill
+
+\underline{Demostración:}
+
+$k=1,\dots,N-1$. El paso $(k+1)$ del método de Gauss se puede escribir de la siguiente manera: 
+$$\text{A}^{(k+1)}=\text{E}_k\text{A}^{(k)}$$
+$$\textbf{E}_k:=\begin{pmatrix}
+1 & 0 & \cdots & \cdots & \cdots & \cdots & 0 \\
+0 & 1 & \cdots & \cdots & \cdots & \cdots & 0 \\
+\vdots & & \ddots & & & & \vdots \\
+0 & \cdots & \cdots & 1 & 0 & \cdots & 0 \\
+0 & \cdots & \cdots & -m_{k+1\;k} & 1 & \cdots & 0 \\
+\vdots & & & \vdots & \vdots & \ddots & \vdots \\
+0 & \cdots & \cdots & -m_{Nk} & 0 & \cdots & 1
+\end{pmatrix}$$
+\begin{center}\begin{tabular}{ c | c }
+$e_k^T:=[0,0,\dots,0,1,0,\dots,0]$ & \\
+$m_k^T:=[0,\dots,0,m_{k+1\;k},\dots,m_{Nk}]$ & $\implies \text{E}_k=\text{I}_N-m_ke_k^T$\\
+$\text{I}_N$ matriz identidad de orden $N$ & 
+\end{tabular}
+
+$\text{E}_k$ es regular, por lo que $\text{E}_k^{-1}=\text{I}_N+m_ke_k^T$, al hacer el método de Gauss hasta el paso $N$:
+$$\text{E}_{N-1}\text{E}_{N-2}\dots\text{E}_{2}\text{E}_{1}\text{A}=\text{U}\implies\text{A}=\text{E}_{1}^{-1}\text{E}_{2}^{-1}\dots\text{E}_{N-2}^{-1}\text{E}_{N-1}^{-1}\text{U}$$
+$$\text{A}=(\text{I}_N+m_{1}e_{1}^T)(\text{I}_N+m_{2}e_{2}^T)\dots(\text{I}_N+m_{N-2}e_{N-2}^T)(\text{I}_N+m_{N-1}e_{N-1}^T)\text{U}=\bigg(\text{I}_N+\sum_{k=1}^{N-1}m_ke_k^T\bigg)\text{U}$$
+$$\text{A}=\begin{pmatrix}
+1 & 0 & 0 & \cdots & 0 \\
+m_{21} & 1 & 0 & \cdots & 0 \\
+m_{31} & m_{32} & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+m_{N1} & m_{N2} & m_{N3} & \cdots & 1
+\end{pmatrix}\text{U}$$ 
+\end{center}
+
+\hrulefill
+\\
+\textbf{Teorema:}
+\\
+Sea $\textbf{A}\in\mathbb{R}^{N\times N}$ una matriz regular. Entonces, las siguientes afirmaciones son equivalentes:
+\begin{labeling}{iii}
+\item [(i)] Para cualquier $\textbf{b}\in\mathbb{R}^N$, el método de Gauss para el correspondiente sistema de ecuaciones lineales puede completarse hasta el paso $N$-ésimo
+\item [(ii)] \textbf{A} admite factorización LU.
+\item [(iii)] Todas las submatrices de \textbf{A} son regulares
+\end{labeling}
+Existen tres algoritmos de factorización de matrices, Doolittle, Crout y Cholesky:
+\begin{itemize}
+\item Factorización de Doolittle: $l_{11}=\dots=l_{NN}=1$
+
+$$N\geq 1,\text{A}\in\mathbb{R}^{N\times N}\text{ regular},\;i=1,\dots,N$$
+$$j=i,\dots,N\implies u_{ij}=a_{ij}-\sum_{k=1}^{i-1}l_{ik}u_{kj}$$
+$$\text{supuesto que }u_{ii}\neq 0; j=i+1,\dots,N\implies l_{ij}=\frac{1}{u_{ii}}\bigg(a_{ij}-\sum_{k=1}^{i-1}l_{jk}u_{ki}\bigg)$$
+
+\item Factorización de Crout: $u_{11}=\dots=u_{NN}=1$
+
+El algoritmo usado para Crout es simplemente la trasposición de los resultados del algoritmo de Doolittle aplicado a la matriz traspuesta. Esto es:
+$$\text{A}^T=\text{LU}\quad\text{(Aplicando Doolittle)}\implies\text{A}=\text{U}^T\text{L}^T$$
+\end{itemize}
+
+\hrulefill
+
+\underline{Ejemplo de método manual} (factorización Doolittle):
+\\
+$$\textbf{A}=\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+2 & 5 & 8 & 11 \\
+3 & 9 & 16 & 23 \\
+4 & 12 & 24 & 37
+\end{pmatrix}$$
+$$\text{A}=\text{LU}\implies\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+l_{21} & 1 & 0 & 0 \\
+l_{31} & l_{32} & 1 & 0 \\
+l_{41} & l_{42} & l_{43} & 1
+\end{pmatrix}\begin{pmatrix}
+u_{11} & u_{12} & u_{13} & u_{14} \\
+0 & u_{22} & u_{23} & u_{24} \\
+0 & 0 & u_{33} & u_{34} \\
+0 & 0 & 0 & u_{44}
+\end{pmatrix}=\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+2 & 5 & 8 & 11 \\
+3 & 9 & 16 & 23 \\
+4 & 12 & 24 & 37
+\end{pmatrix}$$
+\begin{itemize}
+\item 1ª fila de A:
+$$u_{11}=1\quad\quad u_{12}=-2\quad\quad u_{13}=3\quad\quad u_{14}=4$$
+\item 2ª fila de A:
+$$l_{21}u_{11}=2\implies l_{21}=2\quad\quad l_{21}u_{12}+u_{22}=5\implies u_{22}=1$$
+$$l_{21}u_{13}+u_{23}=8\implies u_{23}=2\quad\quad l_{21}u_{14}+u_{24}=11\implies u_{24}=3$$
+\item 3ª fila de A:
+$$l_{31}u_{11}=3\implies l_{31}=3\quad\quad l_{31}u_{12}+l_{32}u_{22}=9\implies l_{32}=3$$
+$$l_{31}u_{13}+l_{32}u_{23}+u_{33}=16\implies u_{33}=1\quad\quad l_{31}u_{14}+l_{32}u_{24}+u_{34}=23\implies u_{34}=2$$
+\item 4ª fila de A:
+$$l_{41}u_{11}=4\implies l_{41}=4\quad\quad l_{41}u_{12}+l_{42}u_{22}=12\implies l_{42}=4$$
+$$l_{41}u_{13}+l_{42}u_{23}+l_{43}u_{33}=24\implies l_{43}=4\quad\quad l_{41}u_{14}+l_{42}u_{24}+l_{43}u_{34}+u_{44}=37\implies u_{44}=13$$
+\end{itemize}
+$$\textbf{L}=\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+2 & 1 & 0 & 0 \\
+3 & 3 & 1 & 0 \\
+4 & 4 & 4 & 1
+\end{pmatrix},\quad\textbf{U}=\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 1 & 2 & 3 \\
+0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 13
+\end{pmatrix}$$
+
+\hrulefill
+
+\begin{itemize}
+\item Factorización de Cholesky:
+$$\text{Sea }\;\textbf{A}\in\mathbb{R}^{N\times N}\;\text{simétrica y semidefinida positiva, entonces }\;x\in\mathbb{R}^N\setminus\{0\}\implies x\text{A}x^T>0$$
+$$\text{Existe una matriz triangular superior }\;\textbf{U}\in\mathbb{R}^{N\times N}\;\text{tal que la factorización de A es:}$$
+$$\text{A}=\text{U}^T\text{U}$$
+$$j=1,\dots,N\Rightarrow i=1,\dots,j-1\implies u_{ij}=\frac{1}{u_{ii}}\bigg(a_{ij}-\sum_{k=1}^{i-1}u_{ki}u_{kj}\bigg)$$
+$$u_{jj}=\sqrt{a_{ij}-\sum_{k=1}^{j-1}u_{kj}^2}$$
+\end{itemize}
+%
+%MÉTODOS ITERATIVOS, JACOBI Y GAUSS-SEIDEL
+%
+\section{Métodos iterativos}
+
+En este tipo de métodos, la solución del sistema se calcula como el límite de una sucesión generada de forma recursiva. Se dice que un sistema es consistente si tiene una o más soluciones. Los métodos iterativos se definen de la siguiente manera:
+$$x_0\;\text{dado},\quad n\geq 1\Rightarrow x_n=\text{B}x_{n-1}+c$$
+$$\lim_{n\to\infty}x_n=x\implies x=\text{B}x+c$$
+Si un método iterativo converge a la solución del sistema $\implies$ El método es consistente con el sistema. La consistencia en un método iterativo vale $c=(\text{I}-\text{B})\text{A}^{-1}\text{b}$.
+\\
+\\
+\textbf{Proposición:}
+\\
+Supongamos que $N\geq 1$, $\textbf{A},\textbf{B}\in\mathbb{R}^{N\times N}$, con \textbf{A} regular, $x_0,\textbf{b},\textbf{c}\in\mathbb{R}^N$ y que el método iterativo es consistente con el sistema unisolvente $\text{A}x=\text{b}$, entonces:
+$$\text{El método iterativo converge a la solución del sistema cualquiera sea}\;x_0\in\mathbb{R}^{N\times N}\iff\rho(\textbf{B})<1$$
+
+\hrulefill
+
+\underline{Demostración:}
+
+Consistencia, $n\geq 1$
+$$x_n-x=\text{B}x_{n-1}+c-x$$
+$$c=(\text{I}-\text{B})\text{A}^{-1}\text{b},\;x=\text{A}^{-1}\text{b}\implies c=(\text{I}-\text{B})x$$
+$$x_n-x=\text{B}x_{n-1}+(\text{I}-\text{B})x-x=\text{B}(x_{n-1}-x)$$
+
+De forma recursiva: $x_n-x=\text{B}^n(x_0-x)\quad$ (2)
+
+\begin{tabular}{|c|}
+\hline
+$\Rightarrow$ \\
+\hline	
+\end{tabular}
+Al ser convergente para todo $x_0\in\mathbb{R}^N$ y con la recurrencia (2):
+$$\lim_{n\to\infty}\text{B}^n(x_0-x)=0\iff\lim_{n\to\infty}\text{B}^n=0\iff\rho(\textbf{B})<1$$
+
+\begin{tabular}{|c|}
+\hline
+$\Leftarrow$ \\
+\hline	
+\end{tabular}
+Sea un $x_0\in\mathbb{R}^N$, y $\rho(\textbf{B})<1\implies\lim_{n\to\infty}\text{B}^n=0$
+
+Si a la recurrencia (2) le hacemos la norma $\|$·$\|$ en $\mathbb{R}^N$ y su matricial inducida en $\mathbb{R}^{N\times N}$
+$$\|x_n-x\|=\|\text{B}^n(x_0-x)\|\leq\|\text{B}^n\|\|x_0-x\|\implies\lim_{n\to\infty}x_n=x$$
+
+\hrulefill
+\\
+El diseño de métodos iterativos elimina el problema de la comprobación de la consistencia. En este diseño se separa la matriz de coeficientes en suma de otras dos ($\text{A}=\text{M}-\text{N}$).
+$$\text{A}x=\text{b}\Leftrightarrow(\text{M}-\text{N})x=\text{b}\Leftrightarrow x=\text{M}^{-1}\text{N}x+\text{M}^{-1}\text{b}$$
+Por tanto, el método iterativo quedaría de la siguiente manera:
+$$\text{Dado un }\:x_0\quad n\geq 1\Rightarrow x_n=\text{M}^{-1}\text{N}x_{n-1}+\text{M}^{-1}\text{b}$$
+Equivalentemente, se puede reescribir de esta otra forma:
+$$\text{M}x_n=\text{N}x_{n-1}+\text{b}$$
+Para que estos nuevos métodos iterativos sean convergentes, debemos asegurar que $\rho(\text{M}^{-1}\text{N})<1$
+\\
+\\
+\textbf{Métodos de Jacobi y Gauss-Seidel:}
+\\
+Sea $\textbf{A}\in\mathbb{R}^{N\times N}$ regular, entonces se definen las siguientes matrices:
+$$\textbf{D}:=\begin{pmatrix}
+a_{11} & 0 & \cdots & 0 \\
+0 & a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & a_{NN}
+\end{pmatrix}$$
+$$\textbf{E}:=\begin{pmatrix}
+0 & 0 & 0 & \cdots & 0 \\
+-a_{21} & 0 & 0 & \cdots & 0 \\
+-a_{31} & -a_{32} & 0 & \cdots & 0 \\
+\vdots & \vdots & \vdots & & \vdots \\
+-a_{N1} & -a_{N2} & -a_{N3} & \cdots & 0
+\end{pmatrix}$$
+$$\textbf{F}:=\begin{pmatrix}
+0 & -a_{12} & \cdots & -a_{1\:N-1} & -a_{2N} \\
+\vdots &  &  & \vdots & \vdots \\
+0 & \cdots & 0 & -a_{N-2\:N-1} & -a_{N-2\:N} \\
+0 & \cdots & 0 & 0 & -a_{N-1\:N} \\
+0 & \cdots & 0 & 0 & 0
+\end{pmatrix}$$
+Cuyos coeficientes se escriben de la siguiente manera: $i,j=1,\dots,N$
+\begin{itemize}
+\item $d_{ij}:=a_{ij}\delta_{ij}$, donde $\delta_{ij}$ es la delta de Kronecker (1 en la diagonal y 0 fuera).
+\item $e_{ij}:=\begin{cases}
+-a_{ij} & \quad \text{si }j<i\\
+0 & \quad \text{en caso contrario}
+\end{cases}$
+\item $f_{ij}:=\begin{cases}
+-a_{ij} & \quad \text{si }i<j\\
+0 & \quad \text{en caso contrario}
+\end{cases}$
+\end{itemize}
+En el método de Jacobi, A$=$M$-$N con: $\text{M}:=\text{D}$ y $\text{N}:=\text{E}+\text{F}$. Por tanto:
+$$\text{D}x_n=(\text{E}+\text{F})x_{n-1}+\text{b}$$
+En el método de Gauss-Seidel, sin embargo, $\text{M}:=\text{D}-\text{E}$ y $\text{N}:=\text{F}$. Esto es:
+$$(\text{D}-\text{E})x_n=\text{F}x_{n-1}+\text{b}$$
+Cosas a tener en cuenta es que tanto la velocidad de convergencia como la convergencia en sí de los métodos es independiente, es decir, podría ocurrir que un sistema fuera convegergente con el método de Jacobi pero no con el de Gauss-Seidel.
+\\
+\\
+Se dice que $\textbf{A}\in\mathbb{R}^{N\times N}$ es diagonalmente estrictamente dominante si:
+$$i=1,\dots,N\Rightarrow\sum_{\substack{
+j=1 \\
+j\neq i
+}}^N|a_{ij}|<|a_{ii}|$$
+\textbf{Proposición:}
+\\
+Sea $\textbf{A}\in\mathbb{R}^{N\times N}$ una matriz diagonalmente estrictamente dominante. Entonces los métodos de Jacobi y de Gauss-Seidel, para todo sistema de ecuaciones lineales que tenga como matriz de coeficientes \textbf{A}, convergen hacia su solución, independientemente de la estimación inicial que se fije.
+%
+%ANÁLISIS DEL ERROR
+%
+\section{Análisis del error}
+En los métodos iterativos se produce un error, puesto que se trata de una aproximación al resultado. También se pueden dar errores debidos al redondeo, propagación, etc.
+\\
+\\
+\textbf{Proposición:}
+\\
+Sean $\textbf{A}\in\mathbb{R}^{N\times N}$ una matriz regular y $x,u,\textbf{b}\in\mathbb{R}^N$ ($u$ es la aproximación de $x$) con $\|x\|\|\text{b}\|\neq 0$ y de forma que $\text{A}x=\text{b}$. Entonces, para cualquier norma en $\mathbb{R}^N$ se cumplen las desigualdades siguientes:
+$$\frac{1}{c(\text{A})}\frac{\|\text{A}u-\text{b}\|}{\|\text{b}\|}\leq\frac{\|x-u\|}{\|x\|}\leq c(\text{A})\frac{\|\text{A}u-\text{b}\|}{\|\text{b}\|}$$
+donde $c(\text{A})$ es el condicionamiente de la matriz \textbf{A} relativo a la norma matricial inducida por $\|$·$\|$.
+
+\hrulefill
+
+\underline{Demostración:}
+
+\emph{Primera desigualdad}:
+$$\begin{matrix}
+\|\text{A}u-\text{b}\|\leq\|\text{A}\|\|u-\text{b}\| \\
+\|x\|\leq\|\text{A}^{-1}\|\|\text{b}\|
+\end{matrix}\implies\|\text{A}u-\text{b}\|\|x\|\leq c(\text{A})\|x-u\|\|\text{b}\|$$
+$\quad\;$ Si se reordena se llega a la primera desigualdad.
+
+\emph{Segunda desigualdad}: Tomando $v=\text{A}u$:
+$$\frac{\|x-u\|}{\|x\|}=\frac{\|\text{A}^{-1}\text{b}-\text{A}^{-1}v\|}{\|x\|}\leq\frac{\|\text{A}^{-1}\|\|\text{b}-v\|}{\|x\|}\leq\|\text{A}\|\|\text{A}^{-1}\|\frac{\|\text{b}-v\|}{\|\text{b}\|}=c(\text{A})\frac{\|\text{A}u-\text{b}\|}{\|\text{b}\|}$$
+
+\hrulefill
+\\
+A la expresión A$u-$b se la llama residuo. Sin embargo, como se estudió en el tema 1, un residuo pequeño no garantiza un error relativo pequeño en la solución, ya que entra en juego el condicionamiento del problema.
+\\
+\\
+\textbf{Proposición:}
+\\
+Sean $N\geq 1,\textbf{A},\textbf{B}\in\mathbb{R}^{N\times N}$ con \textbf{A} regular, $\textbf{b},\textbf{c}\in\mathbb{R}^N$ y supongamos que el método iterativo: 
+$$\text{Dado un }\:x_0\quad n\geq 1\Rightarrow x_n=\text{M}^{-1}\text{N}x_{n-1}+\text{M}^{-1}\text{b}$$
+converge a la solución $x$ del sistema $\text{A}x=\text{b}$, cualquiera sea $x_0\in\mathbb{R}^N$. Si además $\|$·$\|$ es una norma en $\mathbb{R}^N$ con norma matricial inducida en $\mathbb{R}^{N\times N}$ denotada de igual forma, de tal forma que $\|\textbf{B}\|<1$, entonces, para todo $n\geq 1$ se tiene:
+\begin{labeling}{(iii)}
+\item [(i)] $\|x_n-x\|\leq\displaystyle\frac{\|\text{B}\|^n}{1-\|\text{B}\|}\|x_1-x_0\|$.
+\item [(ii)] $\|x_n-x\|\leq\|\text{B}\|\|x_{n-1}-x\|$.
+\item [(iii)] $\|x_n-x\|\leq\displaystyle\frac{\|\text{B}\|}{1-\|\text{B}\|}\|x_n-x_{n-1}\|$.	
+\end{labeling}
+Las acotaciones (i) y (ii) dan una estimación del error absoluta, aunque la primera no necesita conocer la solución $x$. La tercera estimación del error absoluto no sólo se obtiene sin necesidad de conocer $x$ sino que además constituye un criterio de parada cuando se programa el método y alcanza una tolerancia dada.
+\end{document}
