@@ -46,7 +46,7 @@ Sea un sistema de ecuaciones dado por $\text{A}x=\text{b}$, donde $\text{A}\in\m
 \begin{itemize}
 \item Suposiciones iniciales: $k=1,\dots,N\implies a_{kk}^{(k)}\neq 0$
 \item Definición de multiplicadores: $i=k+1,\dots,N\implies m_{ik}:=\displaystyle\frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}$
-\item Transformaciones en A: $i=k+1,\dots,N,\;j=k,\dots,N\implies a_{ij}^{(k+1)}:=a_{ij}^{(k)}+m_{ik}a_{kj}^{(k)}$
+\item Transformaciones en A: $i=k+1,\dots,N,\;j=k,\dots,N\implies a_{ij}^{(k+1)}:=a_{ij}^{(k)}-m_{ik}a_{kj}^{(k)}$
 \item Transformaciones en b: $i=k+1,\dots,N\implies b_i^{(k+1)}:=b_i^{(k)}-m_{ik}b_k^{(k)}$
 \item Sistema triangular superior equivalente: $\text{U}x=\text{c},\quad\text{U}:=\text{A}^{(N)},\quad\text{c}:=\text{b}^{(N)}$
 \end{itemize}
