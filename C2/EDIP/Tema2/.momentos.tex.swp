@@ -1,0 +1,88 @@
+\documentclass[a4paper , 11pt, spanish ]{article}
+
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{lipsum}
+\usepackage[makeroom]{cancel}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newmdtheoremenv{theorem}{\textit{Teorema}}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+
+\title{Momentos conjuntos no centrales en función de los centrales}
+\author{Ricardo Ruiz Fernández de Alba}
+
+\begin{document}
+\maketitle
+
+\begin{theorem}
+Los momentos conjuntos no centrales pueden expresarse en función de los
+centrales a partir de la siguiente relación
+$$
+\mu_{rs} = \sum_{t=0}^r \sum _{q=0}^s
+    (-1)^{t+q} \binom{r}{t} \binom{s}{q} m_{10}^t m_{01}^q m_{r-t,s-q}
+$$
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+\mu_{rs} = \sum_{i=1}^k \sum_{j=1}^p f_{ij} (x_i - m_{10})^t (y_j - m_{01})^s = \\
+= \sum_{i=1}^k \sum_{j=1}^p f_{ij}
+            \sum_{t=0}^r (-1)^t \binom{r}{t} m_{10}^t x_i^{r-t}
+            \sum_{q=0}^s (-1)^q \binom{s}{q} m_{10}^q y_j^{r-q}  = \\
+= \sum_{i=1}^k \sum_{j=1}^p f_{ij}
+            \sum_{t=0}^r \sum_{q=0}^s
+            (-1)^t \binom{r}{t} m_{10}^t x_i^{r-t}
+            (-1)^q \binom{s}{q} m_{10}^q y_j^{r-q}  = \\
+= \sum_{i=1}^k \sum_{j=1}^p  \sum_{t=0}^r \sum_{q=0}^s
+            (-1)^t \binom{r}{t} m_{10}^t x_i^{r-t}
+            (-1)^q \binom{s}{q} m_{10}^q y_j^{r-q}
+            f_{ij} = \\
+= \sum_{t=0}^r \sum_{q=0}^s \sum_{i=1}^k \sum_{j=1}^p
+            (-1)^t \binom{r}{t} m_{10}^t x_i^{r-t}
+            (-1)^q \binom{s}{q} m_{10}^q y_j^{r-q}
+            f_{ij} = \\
+= \sum_{t=0}^r \sum_{q=0}^s
+          (-1)^{t+q} \binom{r}{t} \binom{s}{q} m_{10}^t m_{10}^q
+          \left[\sum_{i=1}^k \sum_{j=1}^p x_i^{r-t} y_j^{r-q} f_{ij}\right] = \\
+= \sum_{t=0}^r \sum_{q=0}^s
+          (-1)^{t+q} \binom{r}{t} \binom{s}{q} m_{10}^t m_{10}^q m_{r-t,s-q}
+\end{align*}
+\end{proof}
+
+\newpage
+\begin{corollary}[La covarianza es la media del producto menos el pruducto de las medias]
+$$
+\sigma_{xy} = m_{11} - m_{10}m_{01}
+$$
+\end{corollary}
+
+\begin{proof}
+Como $\sigma_{xy} = \mu_{11}$, se tiene en particular que
+\begin{align*}
+\sigma_{xy} = \mu_{11} = \sum_{t=0}^1 \sum _{q=0}^1
+    {(-1)}^{t+q} \binom{1}{t} \binom{1}{q} m_{10}^t m_{01}^q m_{1-t,1-q} = \\
+= (-1)^0 \binom{1}{0} \binom{1}{0} m_{10}^0 m_{01}^0 m_{11}
+  - \binom{1}{0} \binom{1}{1} m_{10}^0 m_{01}m_{10}  \\
+  - \binom{1}{1} \binom{1}{0} m_{10}m_{01}^0 m_{01}
+  + \binom{1}{1} \binom{1}{1} m_{10}m_{01}{m_00} = \\
+= \cancel{(-1)^0} \cancel{\binom{1}{0}\binom{1}{0}} \cancel{m_{10}^0 m_{01}^0}
+  m_{11}
+  - \cancel{\binom{1}{0}\binom{1}{1}}\cancel{m_{10}^0} m_{01}m_{10} \\
+  - \cancel{\binom{1}{1} \binom{1}{0}} m_{10}\cancel{m_{01}^0} m_{01}
+   + \cancel{\binom{1}{1} \binom{1}{1}} m_{10}m_{01}\cancel{m_00} = \\
+   = m_{11} - 2m_{01}m_{10} + m_{10}m{01} = \\
+   = m_{11} - m_{10}m_{01} = \
+   =  \sum_{i=1}^k \sum_{j=1}^p f_{ij} x_i y_j - \overline{x}\overline{y}
+\end{align*}
+\end{proof}
+
+\end{document}

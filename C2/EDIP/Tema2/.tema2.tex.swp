@@ -1,0 +1,972 @@
+\documentclass{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{lipsum}
+\usepackage[makeroom]{cancel}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newmdtheoremenv{theorem}{\textit{Teorema}}
+\newtheorem{corollary}{Corolario}[theorem] \newtheorem{lemma}[theorem]{Lema}
+
+\begin{document}
+\pagenumbering{arabic}
+\author{Juan Helios García Guzmán}
+\large
+\title{ %
+	Apuntes Tema 2: Estadística descriptiva bidimensional. Regresión y correlación. \\
+}
+\maketitle
+
+\section{Introducción}
+
+La información para hacer estos puntos han sido sacados
+de los apuntes de Juan Antonio Maldonado profesor de la UGR y del libro
+Estadística Básica. Introducción a la programación lineal de María Jesús
+Rosales Moreno editorial Fleming.
+
+En muchas situaciones interesa hacer un estudio simúltaneo de más de un
+carácter en una población. Así podemos hallar relaciones entre las distintas
+características que estudiemos.
+\section{El doble asterisco: Distribución de frecuencias bidimensional}
+
+Al igual que con el tema 1 todo lo que hagamos en este tema tiene sentido dentro
+de la siguiente afirmación:
+
+Se considera una población de tamaño n en la que se ha observado un vector
+bidimensional (X,Y) de variables estadística. Dichas variables podran ser
+discretas continuas, cualitativas etc. La variable X ha presentado $k$
+modalidades posibles tal que $x_1, \ldots, x_k$ y la variable Y ha
+presentado $p$ modalidades posibles tal que $y_i, \ldots, y_p$. Con la
+siguiente distribución de frecuencias $\{(x_i , y_j); n_{ij}\}$ con
+$i=1,2\dots,k$ y $j=1,2\dots,p$  \\ \\ \\ \\ \\ \\
+
+Dicho esto podemos definir los siguientes los siguientes conceptos: \\
+
+\begin{itemize}
+
+ \item \textbf{Frecuencia absoluta del par ($x_i$, $y_j$) $n_{ij}$}: \\
+
+ Es el número total de individuos en la población que presentan simultáneamente
+ la modalidad $x_i$ del caracter X y la modalidad $y_j$ del carácter Y.  \\
+
+ \item \textbf{Frecuencia relativa}: frecuencia absoluta del par entre el total de
+ \item \textbf{La población.} \\
+
+ Se verifica que:    $$ \sum_{i=1}^{k} \sum_{j=1}^{p} n_{ij} = n$$
+
+ y que: $$\sum_{i=1}^{k} \sum_{j=1}^{p} f_{ij} = \sum_{i=1}^{k} \sum_{j=1}^{p}
+ \frac{n_{ij}}{n} = \frac{1}{n} \sum_{i=1}^{k} \sum_{j=1}^{p} n_{ij} = 1$$
+
+Este tipo de distribuciones se representan usando tablas de doble entrada o de
+contingencia cuando tenemos muchos valores. Cuando se tienen pocos valores,
+puede ser más útil representarlos como pares en una tabla simple.
+
+\end{itemize}
+
+\vspace{5cm}
+
+Gráficamente usando nubes de puntos o esteogramas.
+
+\section{Distribuciones marginales}
+
+Definimos la frecuencia absoluta marginal asociada a $x_i$ como el número
+total de individuos que ha presentado dicha modalidad de X
+\textbf{independientemente} del valor de la Y. Se denota por $n_{i.}$
+
+Así mismo, la frecuencia realativa marginal asociada a $x_i$ es la proporción
+de individuos que ha presentado dicha modalidad de X. Se denota por $f_{i.}$
+
+El punto representa que no nos importa la variable a ese lado del punto, es
+decir solo tenemos en cuenta la otra.
+
+Se denomina \textbf{ distribución marginal de X} al conjunto de valores de X
+junto con sus correspondientes frecuencias marginales. Esta se representa como
+$${\{x_i;n_{i.}\}}_{i = 1,2,\dots,k}$$
+
+Análogamente, podemos definir exactamente lo mismo para la variable Y.
+
+Para calcular las medias varianzas etc de de estas distribuciones se aplica lo
+mismo que lo visto en el tema 1. La media general de X es: $$ \overline{x} =
+\sum_{i=1}^k x_i f_{i.} =\sum_{i=1}^{k} \sum_{j=1}^{p} f_{ij} x_i$$ $$
+\overline{y} = \sum_{j=1}^k y_j f_{.j} =\sum_{j=1}^{p} \sum_{i=1}^{k} f_{ij}
+y_j$$
+
+Las igualdades anteriores se extraen de la siguiente expresión $$f_{ij} =
+\frac{n_{ij}}{n} = \frac{n_i}{n} \frac{n_{ij}} {n_i} = \frac{n_j}{n}
+\frac{n_{ij}}{n_j} $$
+
+La varianza se calcula de igual manera.
+
+\section{Distribuciones condicionadas}
+
+	En ocasiones puede resultar de interés el estudio de un solo carácter sobre
+	los individuos que presentan una modalidad.
+
+	Definimos pues los siguientes conceptos:
+
+	\textbf{Frecuencia $x_i$ condicionada a $y_j$}: es la proporción de individuos
+	que presentan el valor $x_i$ de X en el subconjunto de los que han presentando
+	el valor $y_j$. En esta distribución en vez de ignorar la otra variable como
+	en las marginales lo que hacemos es que fijamos la modalidad de la otra
+	variable en este caso de la Y.
+
+	Se denota como $$ f_{i/j} = f_i^j = \frac{n_{ij} } {n_j} =
+	\frac{n_{ij}/n}{n_j/n} = \frac{f_{ij}}{f_{.j}} $$
+
+	El superíndice indica a qué variable está condicionada y el subíndice qué
+	variable es estudiada.
+
+	De esta desigualdad podemos deducir que $$ f_{ij} = f_i^j f_{.j} $$ y que  $$
+	f_{ij} = f_j^i f_{i.} $$
+
+	Se nota $X/Y=y_j$ a la distribución de $X$ condicionada a la modalidad $y_j$
+	de $Y$. Es el conjunto de valores de X junto con sus correspondientes
+	frecuencias condicionadas al valor $y_j$ de la variable estadística Y.
+
+	$$
+	{\{(x_i, y_j); n_{ij}\}}_{i=1,2,\dots,k}
+	$$
+
+	Análogamente si queremos condicionar la variable Y. Las distintas
+	características se hacen igual que en una distribución unidimensional.
+
+	La media, varianza y demás características de una distribución de $X$
+	condicionada a la 		modalidad $y_j$ de $Y$, se tratan igual que en una
+	distribución unidimensional, considerando ahora el conjunto de la población
+	como $n_{.j}$
+
+	\textbf{Media}:
+
+	$$ \overline{x_j} = \frac{1}{n_{.j}} \sum_{i=1}^k n_{ij} x_i = \sum_{i=1}^k
+	f_i^j x_i $$
+
+	\textbf{Varianza}:
+
+	$$ \sigma_{xj}^2 = \sum_{i=1}^k f_i^j {(x_i - \overline{x_j})}^2 $$
+
+\subsection{Relaciones entre características marginales y condicionadas}
+
+	Las características de las distribuciones marginales y condicionadas están
+	relacionadas entre sí y pueden ser muy útiles de conocer. Para demostrar estas
+	relaciones usaremos las siguientes relaciones: $$f_{ij} = f_{i.} f_j^i =
+	f_{.j} f_i^j $$
+
+	\begin{align*} \overline{x} = \sum_{i=1}^k f_{i.} x_i = \sum_{i=1}^{k}
+	\sum_{j=1}^{p} f_{ij} x_i =  \sum_{i=1}^{k} \sum_{j=1}^{p} f_{.j} f_i^j x_i =  \\ =
+	\sum_{j=1}^p \sum_{i=1}^k f_{.j}f_i^j x_i = \sum_{j=1}^{p} f_{.j}
+	\sum_{i=1}^{p} f_i^j  x_i = \sum_{j=1}^p f_{.j} \overline{x_j} \end{align*}
+
+	Análogamente se hace para $\overline{y}$ solo que sustituyendo $f_{ij}$ por
+	$f_{i.} f_j^i$
+
+	Para la varianza sería tal que:
+
+\begin{align*}
+\sigma_x^2 =
+	\sum_{i=1}^k f_{i.} (x_i - \overline{x})^2 =
+	\sum_{i=1}^k \sum_{j=1}^p f_i^j f_{.j} {(x_i -\overline{x})}^2 =
+	\sum_{j=1}^p \sum_{i=1}^k f{.j}f_i^j {(x_i - \overline{x})}^2 = \\
+	\sum_{j=1}^p f_{.j} \left[
+												\sum_{i=1}^k f_i^j {(x_i - \overline{x})}^2
+											\right] =
+	\sum_{j=1}^p f_{.j} \left[
+											  \sum_{i=1}^k f_i^j
+													{(x_i - \overline{x_j} +
+													\overline{x_j} - \overline{x})}^2
+											\right] = \\
+	= \sum_{j=1}^p f_{.j} \left[
+										 	 	  \sum_{i=1}^k f_i^j {(x_i - \overline{x_j})}^2 +
+												  \sum_{i=1}^k f_i^j {(\overline{x_j}-\overline{x})}^2 +
+											   2\sum_{i=1}^k f_i^j
+											  	{(x_i - \overline{x_j})}
+													 {(\overline{x_j} -\overline{x})}
+												\right] = \\
+= \sum_{j=1}^p f_{.j} \left[
+												\sum_{i=1}^k f_i^j {(x_i - \overline{x_j})}^2 +
+												\sum_{i=1}^k f_i^j {(\overline{x_j}-\overline{x})}^2
+												+ \cancel{2\sum_{i=1}^k f_i^j
+														{(x_i - \overline{x_j})}
+														{(\overline{x_j}-\overline{x})}}
+											 \right] = \\
+= \sum_{j=1}^p f_{.j} \left[
+												\sum_{i=1}^k f_i^j{(x_i - \overline{x_j})}^2 +
+												\sum_{i=1}^k f_i^j {(\overline{x_j}-\overline{x})}^2
+												\right] =
+\sum_{j=1}^p f_{.j} \left[
+												\sigma_{xj}^2 +
+												{(\overline{x_j}-\overline{x})}^2
+										\right] = \\
+= \sum_{j=1}^p f_{.j} \sigma_{xj}^2 +
+	\sum_{j=1}^p f_{.j} {(\overline{x_j} - \overline{x})}^2
+\end{align*}
+
+\vspace{8cm}
+
+Donde se ha usado que
+
+\begin{align*} 2\sum_{i=1}^k f_i^j (x_i -
+\overline{x_j}){(\overline{x_j}-\overline{x})} =
+2(\overline{x_j}-\overline{x})\sum_{i=1}^k f_i^j(x_i - \overline{x_j}) = 0
+\end{align*}
+
+Ya que la media aritmética de las diferencias respecto a la media aritmética es
+nula (siendo éste el caso de una media aritmética en una distribución
+condicionada $X/Y=y_j$)
+
+\section{Momentos bidimensionales}
+
+\begin{definition}
+Dada una variable estadística bidimensional (X,Y) con distribución conjunta, se
+define el \textbf{momento conjunto respecto al origen de órdenes r y s.}
+
+$$ m_{rs} = \sum_{i=1}^k \sum_{j=1}^p x_i^r y_j^s f_{ij}$$
+\end{definition}
+
+\begin{definition}
+Se define el \textbf{momento conjunto central de órdenes r y s} como:
+
+	$$
+	\mu_{rs} = \sum_{i=1}^k \sum_{j=1}^p f_{ij}
+			{(x_i - \overline{x})}^r {(y_j - \overline{y})}^s
+	$$
+\end{definition}
+
+	Los momento bidimensionales más utilizados son las varianzas marginales
+	{($\mu_{20}=\sigma_x^2, \mu_{02}=\sigma_y^2$)}. También el momento conjunto
+	central de órdenes 1 y 1: $\mu_{11}$ se denomina covarianza: $\sigma_{XY}$
+
+	$$\sigma_{XY} = \sum_{i=1}^k \sum_{j=1}^p f_{ij} {(x_i - \overline{x} )}( y_j -
+	\overline{y} )$$
+
+	Desarrollando la expresión que define la covarianza podemos obtener otra más
+	útil para el cálculo práctico.  $$ \frac{1}{n} \sum_{i=1}^k \sum_{j=1}^p x_i
+	y_j n_{ij} - \overline{x} \overline{y} $$
+
+	La covarianza es fundamental en el estudio conjunto de dos variables
+	estadísticas. El signo de ésta evidencia el sentido de variación conjunta de
+	las variables: si es positiva, las variables varían general en el mismo
+	sentido (si una variable aumenta de valor, la otra disminuye y viceversa), si
+	es negativa varían en sentidos opuestos. La covarianza interviene en medidas
+	que estudian la asociación lineal entre dos variables.
+
+	\section{Independencia y dependencia estadística}
+
+ Una de las cuestiones mas interesantes de estudiar y de mayor aplicación
+ práctica cuando se considera una distribución bidimensional es poder deducir si
+ entre las variables observadas existe algún tipo de relación.
+
+ En general en el estudio de la posible asociación o relación que puede existir
+ entre variables estadísticas, puede presentarse una gama de situaciones
+ intermedias que oscilan entre dos extremos una relación perfecta y ausencia
+ total de relación.
+
+ La relación perfecta entre las variables recibe el nombre de
+ \textbf{dependencia funcional}. Pues ello supone que existe una aplicación
+ matemática que transforma los valores de una variable a los de otra. Por
+ ejemplo la relación que existe entre volumen y densidad para valores conocidos
+ de masa.
+
+ La ausencia de relación se denomina \textbf{independencia estadística}.
+
+ Cuando entre las variables en estudio se detecta algún tipo de relación o
+ asociación, sin que ésta llegue a ser perfecto se dirá que entre las variables
+ existe una \textbf{dependencia estadística}. La dependencia estadística admite
+ grados ya que esta puede ser más o menos fuerte.
+
+ \subsection{Independencia estadística propiedades}
+
+ Se dice que X es independiente estadisticamente de Y si para cualquier
+ modalida de X las frecuencias condicionadas de Y son idénticamente iguales. En
+ esta situación, las frecuencias condicionadas no sólo son idénticas entre sí,
+ sino que también lo son a la correspondiente frecuencia relativa marginal.
+
+ $$ f_{i.} = f_i^{j=1} = f_i^{j=2} f_i^{j=3} \ldots $$
+
+ Igualmente ocurre para Y
+
+ \vspace{0.5cm}
+
+\begin{theorem}[Teorema de caracterización de la independencia]
+
+X es independiente estadísticamente de Y si y solo sí $$ f_{ij} = f_{i.} \cdot
+f_{.j} $$ o para frecuencias absolutas $$n_{ij} = \frac{n_{i.}\cdot n_{.j}}{n}$$
+\end{theorem}
+
+\begin{proof} $ $\newline
+
+$\boxed{\Rightarrow}$
+
+$ $\newline Partimos de que X es independiente de Y  $$f_{ij} = f_i^j f_{.j} =
+f_{i.} f_{.j}$$
+
+$\boxed{\Leftarrow}$
+
+$ $\newline Partimos de que $$ f_{ij} = f_{i.} \cdot f_{.j} $$ así que $$ f_{ij} =
+f_i^j f_{.j} $$ Con ambas expresiones $$f_i^j = f_{i.} $$ lo que implica que X
+es independiente de Y. \end{proof}
+
+ \subsubsection{Propiedades de la independencia}
+
+ \begin{enumerate} \item La independencia es una propiedad recíproca, si X es
+ independiente estadísticamente de X, Y lo es de X. Por el teorema de
+ caracterización de la independencia, si X es independiente $ f_{ij} = f_{i.}
+ \cdot f_{.j} $ y también sabemos que $f_{ij} = f_j^i \cdot f_{i.}$ Luego
+ comparando las expresiones  $f_j^i = f_{.j} $ lo que implica la independencia
+ de Y respecto de X.
+
+ Cuando decidmos que X e Y son independientes queremos decir que X e Y son
+ independientes.
+
+ \item Si son independientes, los momentos condicionados de cualquier orden son
+ iguales entre sí e iguales a los correspondientes marginales. \item Si X e Y
+ son independientes su covarianza es 0.
+
+ \end{enumerate}
+
+\subsection{Dependencia funcional}
+
+Se dice que el caracter X depende funcionalmente del carácter Y si a cada
+modalidad $y_j$ de Y corresponde una única modalidad posible de X con frecuencia
+no nula; esto es para cualquier $j=1,2,\dots,p$ la frecuencia absoluta $n_{ij}$
+excepto para el valor $i = \phi (j)$ donde $n_{ij} $ es igual a $n_j$. Así en
+cada columna de la tabla de doble entrada, un término y sólo un término es
+diferente de 0.
+
+	La dependencia funcional puede ser recíproca o no. Es recíproca cuando la
+	correspondencia $i = \phi (j)$ es biunívoca; es decir, cuando en cada fila y
+	en cada columna de la tabla de doble entrada existe una única casilla con
+	frecuencia no nula. Cuando esto no ocurre esta dependendencia no es recíproca.
+
+\section{Regresión}
+
+Uno de los objetivos de toda ciencia es el de encontrar relaciones entre los
+sucesos que se le presentan en su campo de investigación.
+El científico intenta traducir estas relaciones en estructuras manejables, para
+lo cual hace uso de un lenguaje ya conocido, fundamentalmente el
+estadístico-matemático, a través del establecimiento de relaciones funcionales
+en donde un número finito de magnitudes (variables o atributos) $x_1, \ldots,
+x_n$ se suponen que están relacionadas con una variableY, a través de la
+expresión $$y = f(x_1, \ldots, x_n)$$
+
+	Como hemos visto entre nuestras dos variables podía existir tres tipos de
+	relaciones: independencia estadística, dependencia funcional y dependencia
+	estadística. Aquí nos encargaremos de estudiar la dependencia estadística.
+	\vspace{2mm}
+
+	Para abordar esto utilizaremos dos enfoques simultáneamente:
+
+\begin{itemize}
+	 \item \textbf{Teoría de la regresión:} Tiene como objetivo determina la mejor
+	 función matemática que pueda explicar la dependencia estadística de una
+	 variable respecto a otras. Los métodos de regresión tratan, bajo diversos
+	 criterios, de deducir dicha relación funcional suponiendo que es de tipo
+	 causal.
+
+	 \vspace{2mm}
+
+	 \item \textbf{Teoría de la correlación:} Tiene como objetivo
+	 estudiar el grado en el que las variables están ligadas mediante las
+	 relaciones funcionales derivadas por los métodos de regresión y, con este
+	 fin, se diseñan medidas que permitan dicha cuantificación.
+
+	 \vspace{2mm}
+	 Existen, pues, tres motivos fundamentales por los que una
+	 variable que vamos a denominar dependiente o endógena está influida por otra
+	 que actúa como independiente, explicativa o exógena.
+
+	 \begin{itemize}
+
+	 \item La casualidad o el azar han hecho que ambas variables estén
+	 relacionadas estadísticamente (si eres hermano mayor o menor con la
+	 cantidad de cosquillas que tienes)
+	 \item Una tercera variable está determinando a las que estamos estudiando.
+	 Por ejemplo: el consumo de caviar y la compra de yates de recreo.
+	 \item Y por último puede existir una relación causa-efecto la cual es la que vamos buscando.
+
+ 		\end{itemize}
+
+\end{itemize}
+
+	 \subsection{Nociones básicas}
+
+	 Dada una distribución de frecuencias bidimensional, se supone que existe
+	 cierta dependencia estadística de Y respecto de X. Como está dependencia no
+	 es funcional es imposible encontrar una función tal que su gráfica pase por
+	 todos los puntos correspondientes al diagrama de dispersión asociado a las
+	 variables observadas. Por eso buscamos la que mejor se adapte.
+
+	  Nuestro objetivo es deducir una relación funcional que explique lo mejor
+	  posible tal dependencia, es decir, buscar según algún criterio adecuado de
+	  optimalidad una función $f(x)$ tal que se pueda expresar. $$ y = f(x) $$
+
+	En esta situación adaptaremos la siguiente terminología:
+
+\begin{itemize}
+	\item La variable estadística Y se denomina variable dependiente o explicada.
+	\item La variable X se denomina variable independiente o explicativa.
+	\item La función f se denomina función de regresión de Y sobre X.
+\end{itemize}
+
+	$$ x = g(y) $$
+
+	En este contexto se dice que:
+	\begin{itemize}
+	\item La variable estadística X es la variable dependiente o explicada.
+	\item La variable estadística Y es la variable independiente o explicativa.
+	\item La función g es la función de regresión de X
+	sobre Y.
+\end{itemize}
+
+	En concreto vamos a estudiar la denominada \textbf{Regresión mínimo
+	cuadrática}
+
+
+	\subsection{Ajuste por mínimos cuadrados}
+
+	Lo primero que tenemos que hacer es especificar el modelo de regresión. Es
+	decir eligiremos que tipo de función parece acercarse más a la disposición de
+	los datos. Para esto es muy útil usar los diagramas de nube de puntos. Así
+	eligiremos por ejemplo un modelo de regresión lineal: $$ y = f(x) = ax + b $$
+	siendo a y b constantes reales.
+
+	O un módelo de regresión parabólico del tipo: $$ y = f(x) = ax^2 +bx + c,
+	a,b,c $$
+
+	Una vez hecho esto determinaremos los parámetros del modelo de regresión según
+	el criterio de mínimos cuadrados. \vspace{2mm}
+
+	\textbf{Criterio de mínimos cuadrados}: Es un método de ajuste de una función
+	a unos datos que consiste en determinar los óptimos valores de los parámetros
+	desconocidos de la función imponiendo que éstos hagan mínima la suma de los
+	errores, (residuos) al cuadrado. Por residuo entendemos la diferencia entre
+	el verdadero valor observado de la variable dependiente y el ajustado por la
+	función. \vspace{2mm}
+
+	 La función a minimizar se denomina error cuadrático de la función ECM que
+	 tiene la siguiente forma:
+	 $$
+	 \psi(a_0,a_1,\ldots,a_n) =
+	 		\sum_{i=1}^k \sum_{j=1}^p [f_{ij} - f{(x_i,a_0,a_1,\ldots,a_n)}^2]
+	 $$
+
+	 Donde pone la f la sustituriamos por el modelo de regresión elegido. El
+	 cálculo de los parámetros como señalamos antes consiste en derivar respecto a
+	 los distintos coeficientes e igualar la expresión resultante a 0. El sistema
+	 de ecuaciones resultantes se denomina: Sistema de ecuaciones normales.
+	 \vspace{2mm}
+
+	Si el modelo o tipo de función de regresión seleccionado es lineal, la
+	regresión recibe el nombre de \textbf{regresión lineal} y en caso contrario
+	\textbf{regresión no lineal}. Sea cual sea el método es el mismo explicado
+	anteriormente. Esta separación no se hace en los apuntes de Jamaldo, se
+	empieza por el estudio de funciones de regresión polinómicas de grado 1,2 etc.
+	Cuando hablamos de regresión lineal hablamos de funciones polinómicas de grado
+	1.
+
+	\subsection{Regresión lineal}
+
+	Dada la distribución de frecuencias bidimensional asociada a la variable (X,Y)
+	se supone que existe cierta relación de dependencia estadística de Y respecto
+	a X. Representada la nube de puntos asociada a la distribución, se deduce que
+	un modelo lineal, una recta, expresa adecuadamente esa dependencia.
+	Consideramos entonces el siguiente modelo. $$ y = f(x) = ax + b $$
+
+	Ahora mediante el criterio de mínimos cuadrados hay que hallar los óptimos
+	valores de a y b que definen a la función de regresión lineal f.
+
+	Para cada pareja de valores observados ${(x_i,y_j)}_{i=1,2, \ldots, k; j=1,2,\ldots,p}$. Se
+	define el error o residuo asociado, notado por $e_{ij}$, como la diferenia
+	entre el valor $y_j$ observado conjuntamente con $x_i$ y el ajustado por la
+	función de regresión, $f(x_i)$, que será notado por $\hat{y_i} = ax_i +b$. Por
+	tanto $$e_{ij} = y_j - \hat{y_i} = y_j - ax_i + b $$
+
+	Como expresamos anteriormente el objetivo del criterio de mínimos cuadrados es
+	cálcular el mínimo de la siguiente función:
+
+	$$
+	\psi (a,b) =
+			\sum_{i=1}^k \sum_{j=1}^p f_{ij} {[y_j - (a+bx_i)]}^2
+	$$
+
+	Como la función es continua respecto a las variables $a$ y $b$, por ser suma
+	de funcions polinómicas de estas variables. Puesto esto obtenemos el sistema
+	de ecuaciones normales derivando parcialmente sobre a y sobre b.
+
+	$$ \frac{\partial}{\partial a} \psi(a,b) = 2 \sum_{i=1}^k \sum_{j=1}^p ( y_j -
+	(ax_i +b )) n_{ij} (-x_i) = 0 $$ $$ \frac{\partial}{\partial b} \psi(a,b) = 2
+	\sum_{i=1}^k \sum_{j=1}^p ( y_j - (ax_i +b )) n_{ij} (-1) = 0 $$
+
+	Este sistema recibe el nombre de `sistema de ecuaciones normales de la recta
+	de regresión de Y sobre X (Y/X)`, y su resolución nos conducirá a los óptimos
+	valores de a y b. Haciendo operaciones el sistema queda reducido a: $$
+	\sum_{i=1}^k \sum_{j=1}^p x_i y_j n_{ij}  = a \sum_{i=1}^k x_i^2 n_i +
+	b\sum_{j= 1}^p x_i n_i $$ $$ \sum_{j=1}^p y_j n_j = a \sum_{i=1}^k x_i n_i + b $$
+
+	Dividiendo por n ambas ecuaciones y reconociendo los correspondientes momentos
+	asociados a la distribución nos queda:
+
+	$$ m_{01} = a + bm_{10}$$ $$ m_{11} = am_{10} + bm_{20} $$
+
+	La resolución da los coeficientes buscados:
+
+	$$ a = \overline{y} - \frac{\sigma_{xy}}{\sigma_x^2} \overline{x} $$	  $$  b =
+	\frac{\sigma_{xy}}{\sigma_x^2} $$
+
+	 Estos valores no sólo son puntos críticos de la función, sino que la hacen
+	 mínima, pues como es fácil comprobar, se verifica la condición suficiente de
+	 mínimo. Como resumen de la regresión lineal podemos decir que la recta de
+	 regresión de Y sobre X tiene por expresión.
+
+	$$ y = \overline{y} - \frac{\sigma_{xy}}{\sigma_x^2} x + \overline{y} -
+	\frac{\sigma_{xy}}{\sigma_x^2} \overline{x}$$ O bien
+
+	$$ y - \overline{y} = \frac{\sigma_{xy}}{\sigma_x^2} (x - \overline{x}) $$
+
+	De forma análoga, la recta de regresión mínimo cuadrática de X sobre Y es la
+	recta $x = c +dy$ que hace mínima la función: $$\psi (a,b) = \sum_{i=1}^k
+	\sum_{j=1}^p f_{ij} {(x_i - \hat{x})}^2 $$ Donde $\hat{x} = c +dy_j $
+
+	\vspace{2mm}
+
+	Al número: $$\frac{\sigma_{xy}}{\sigma_x^2}$$ lo denominamos
+	\textbf{coeficiente de regresión lineal de Y sobre X}. Este parámetro es la
+	pendiente de la recta y representa la variación que se produce en Y por
+	incrementos unitarios de X. Como mencionamos en el punto de los momentos
+	bidimensionales una covarianza positiva dará dos coeficientes de regresión
+	positivos y sus correspondientes rectas de regresión crecientes. Si la
+	covarianza es negativa, las dos rectas de regresión seran decrecientes. En el
+	caso de que la covarianza sea nula las rectas de regresión serán paralelas a
+	los ejes y perpendiculares entre sí.
+
+	\begin{itemize}
+	\item El parámetro de b es el término independiente y presenta el valor de Y
+	\item Cuando X = 0, si ello tiene sentido.
+	\end{itemize}
+
+	\subsubsection{Propiedades de la recta de regresión}
+
+\begin{enumerate}
+
+\item Las rectas de regresión de (Y,X) y (X,Y)  se cortan en el punto
+$(\overline{x},\overline{y} ) $ que se denomina centro de gravedad de la
+distribución.
+
+\begin{proof} $ $\newline
+
+Se deduce de las expresiones $$ y - \overline{y} =
+\frac{\sigma_{xy}}{\sigma_x^2} (x - \overline{x}) $$ y  $$ x - \overline{x} =
+\frac{\sigma_{xy}}{\sigma_y^2} (y - \overline{y} ) $$
+
+\end{proof}
+
+\item Las rectas de regresión de Y/X y X/Y son ambras crecientes, decrecientes o
+perpendiculares a cada uno de los ejes de coordenadas, dependiendo del valor de
+la covarianza.
+
+A partir de las observaciones de los sistemas de ecuaciones normales asociados a
+cada una de las rectas de regresión se deducen las siguientes propiedades
+como:
+
+\item La media de los errores, (residuos), es nula: $\overline{e} = 0$
+
+\begin{proof} $ $\newline
+\begin{align*}
+\overline{e} = \sum_{i=1}^k\sum_{j=1}^p f_{ij}e_{ij}
+						 = \sum_{i=1}^k\sum_{j=1}^p f_{ij}[y_j - (ax_i +b)]  = \\
+						 = \sum_{i=1}^k\sum_{j=1}^p [f_{ij}y_j - f_ {ij}(ax_i +b)] = \\
+						 = \sum_{i=1}^k\sum_{j=1}^p f_{ij}y_j -
+						 	 \sum_{i=1}^k\sum_{j=1}^p [f_ {ij}(ax_i +b)] = \\
+						 = \sum_{j=1}^p y_j \sum_{i=1}^k f_{ij} -
+						 		\sum_{i=1}^k\sum_{j=1}^p [f_{ij}ax_i + f_{ij}b] = \\
+						 = \sum_{j=1}^p y_j f_{.j}
+						 				- \left[a\sum_{i=1}^k\sum_{j=1}^p f_{ij} x_i
+						 				+ b\sum_{i=1}^k\sum_{j=1}^p f_{ij}\right] = \\
+							= \sum_{j=1}^p y_j f_{.j} - (a\overline{x}+b)
+							= \sum_{j=1}^p y_j f_{.j} - (\overline{ax+b}) = \\
+							= \overline{y} - \overline{y} = 0
+\end{align*}
+\end{proof}
+
+\item La media de los valores ajustados coincide con la de los datos observados
+de la variable dependiente: $\overline{\hat{y}} = \overline{y}; $
+$\overline{\hat{x}} = \overline{x}$
+
+\begin{proof} $ $\newline
+\begin{align*}
+\overline{\hat{y}} = \sum_{i=1}^k f_{i.} \hat{y} =
+											\sum_{i=1}^k (ax_i +b)f_{i.} =
+										 a\overline{x} +b = \overline{y}
+\end{align*}
+\end{proof}
+
+\item La media de los productos de los residuos por los
+valores de la variable explicativa cale cero. \item La media de los productos de
+los residuos por valores ajustados vale cero.
+
+\end{enumerate}
+
+\subsection{Ajuste de modelos no lineales}
+
+En este esta sección se estudia el ajuste de modelos de regresión no lineales que
+se resuelven previa linealización de estos. A continuación se estudiará el
+ajuste para funciones polinómicas con grado mayor que dos, hiperbólicas y
+potenciales.
+
+\subsubsection{Ajuste de funciones polinómicas}
+
+Si se quiere ajustar un polinomio de grado superior a dos de expresión general: $$
+y = a_o + a_1x +a_2x^2 + ..- + a_n x^n $$
+
+el método de mínimos cuadrados, nos conduce a un sistema de ecuaciones normales
+como el de la regresión lineal. La resolución de dicho sistema nos proporciona
+los valores de los parámetros buscados $a_0, a_1, \ldots , a_n$
+
+Para el ajuste a la nube de puntos de otro tipo de función, intentaremos pasar a
+un ajuste polinómico (lineal, a ser posible), mediante transformaciones
+adecuadas sobre el conjunto de los datos.
+
+\subsubsection{Modelo de regresión hiperbólico}
+
+Observada la distribución de frecuencias deducimos que la relación puede ser
+explicada por un modelo de regresión parabólico dado por la función: $$ y= f(x) =
+a\frac{1}{x} + b $$ La determinación de los parámetros a y b se realiza
+linealizando previamente mediante la transformación  $$ z = \frac{1}{x} $$ Y el
+modelo transformado se expresa como:
+
+$$ y = az +b $$ Por tanto $$ a = \frac{\sigma{zy} }{\sigma_{z}^2} $$  $$ b =
+\overline{y} - a \overline{z} $$
+
+Para el cálculo efectuamos una tabla en la que a cada $z_i$ le asignamos el
+valor de $1/x_i$ y a partir de ahí calculamos los distintos parámetros.
+
+\subsubsection{Modelo de regresión potencial}
+
+Observada la distribución de frecuencias deducimos que la relación puede ser
+explicada por un modelo de regresión parabólico dado por la función:
+
+$$ y = f(x) = bx^a $$
+
+La determinación de los parámetors a y b se realiza linealizando previamente el
+modelo mediante transformación logarítmica.
+
+$$ \log y = \log b + a\log x $$
+
+	Hacemos las siguientes notaciones: $$x' = \log x; y' = \log y ; B = \log b $$
+	el modelo transformado se expresa como: $$y' = ax' + B $$
+
+	Por tanto,
+	$$ a = \frac{\sigma_{x'y'} }{\sigma_{x'}^2}$$
+	$$ B = \overline{y'} - a\overline{x'} ; b = e^{b} $$
+
+  Así que la función quedaría de la siguiente forma:
+	$$ y = e^{B}x^{a} $$
+
+	Hay que tener en cuenta que aquí la media de los residuos no es cero.
+
+\subsubsection{Modelo de regresión exponencial}
+	Observada la distribución de frecuencias deducimos que la relación puede ser explicada por un modelo de regresión exponencial dado por la función:
+  $$ y = f(x) = ab^{x} $$
+
+	Ahora calcularemos los parámetros a y b:
+	$$ log y = log a + xlog b $$
+
+	Aplicando el cambio de variable obtenemos:
+	$$ y' = a' + b'x $$
+
+	Por tanto,
+	$$ b' = \frac{\sigma_{xy'} }{\sigma_{x}^2} $$
+	$$ b = e^{b'} $$
+	$$ a' = \overline{y'} - b'\overline{x} $$
+	$$ a = e^{a'} $$
+
+	Finalmente, obtenemos la siguiente función:
+	$$ y = e^{a'}(e^{b'})^{x} $$
+
+	En este caso, la media de los residuos tampoco es cero.
+
+
+\subsection{Curvas generales de regresión}
+
+Uno de los objetivos más importantes del análisis de la regresión es predecir el
+valor de una variable dependiente Y dado el valor $x_i$ de una variable
+independiente asociada $X$; es decir, predecir el comportamiento de la variable
+condicionada $Y/X = x_i$.
+
+Son bien conocidas las cualidades de la media aritmética como valor
+representativo del comportamiento de una variable. Teniendo en cuenta este hecho
+y el comentario anterior, se define la curva de regresión de tipo I de Y/X como
+la curva que pasa por los puntos $(x_i,\overline{y_i}; i = 1,\ldots,k $.
+De forma análoga se hace con la curva de regresión X/Y.
+
+Las curvas así definidas tienen la importante propiedad de ser entre todas las
+funciones las que mejor se ajustan a los datos observados, según el criterio de
+mínimos cuadrados.
+
+A pesar de esta importante propiedad,esta curva de regresión no es de gran
+utilidad práctica. Pues el hecho de conocerla solamente en puntos aislados la
+hace inútil para la predicción.
+
+\section{Correlación}
+
+\subsection{Nociones básicas}
+
+Se denomina correlación al grado de dependencia entre las variables según una
+determinada función de regresión. Estas medidas tienen como objetivo cuantificar
+el grado en que una determinada función explica una variable a partir de otra.
+
+Como comentamos en el punto de independencia y dependencia estadística existen
+dos situaciones extremas que se identifican con la incorrelación y correlación
+perfecta (dependencia funcional).
+
+- Cuando el grado de correlación entre las variables según una función de
+- regresión ajustada sea nulo, se dirá que las variables están incorreladas
+- según esa función de regresión. Cuando el grado de correlación entre las
+- variables sea máximo, (total), se dirá que la correlación entre las varibales
+- según el modelo ajustado es perfecta e indicará dependencia funcional.
+
+Entre estos dos casos existirán distintos grados de correlación
+
+A continuación, se presentan distintas medidas de correlación fundamentales en el
+contexto de la Regresión mínimo-cuadrática.
+
+\subsection{Varianza residual}
+
+Se define como la media de los residuos al
+cuadrado. Se define la varianza residual de Y sobre X notada por $\sigma_{r_{Y/X}}^2 $
+
+$$
+\sigma_{r_{Y/X}}^2 =
+	\sum_{i=1}^k \sum_{j=1}^p e_{ij}^2 f_{ij} =
+	\sum_{i=1}^k \sum_{j=1}^p {(y_j - f(x_i))}^2 f_{ij} =
+	\sum_{i=1}^k \sum_{j=1}^p {(y_j -\hat{y_i})}^2 f_{ij}
+$$
+
+Varianza residual de $Y/X$ en el modelo de regresión lineal:
+
+$$ \sum_{i=1}^k \sum_{j=1}^p {(y_j - (ax_i +b))}^2 f_{ij} $$
+
+Varianza residual de Y/X en el modelo de regresión hiperbólico:
+
+$$ \sum_{i=1}^k \sum_{j=1}^p {(y_j - (a\frac{1}{x_i} +b))}^2 f_{ij} $$
+
+Varianza residual de Y/X en el modelo de regresión potencial:
+
+$$\sum_{i=1}^k \sum_{j=1}^p {(y_j - bx_i^a)}^2 f_{ij} $$
+
+La interpretación es la siguiente:
+
+\begin{itemize}
+\item Si $\sigma_r^2 = 0$. Todos los errores son nulos, luego la función de
+  regresión describe totalmente a la variable. Por tanto existe una correlación
+  perfecta.
+\item Si $\sigma_r^2 > 0$ cuanto mayor sea, menor será el grado de correlación
+entre las variables según la función de regresión ajustada.
+\end{itemize}
+
+\vspace{2mm}
+
+Como ventajas de esta medida destacamos que siempre es posible su cálculo y su
+interpretación es inmediata. Sin embargo presenta dos inconvenientes.
+
+\vspace{2mm}
+
+- No está acotada superiormente, Esto provoca que no exista una cota general con
+- la que identificar la incorrelación y que, además, no quedan perfectamente
+- identificados los grados de correlación con valores de la varianza residual.
+
+\vspace{2mm}
+
+- Depende de las unidades de medida de la variable al cuadrado. Además ello
+- provoca que no sea posible la comparación de varianzas residuales
+- correspondientes al estudio del grado de correlación según diferentes modelos
+- en distintas distribuciones.
+
+\subsection{Coeficiente de determinación}
+
+	El coeficiente de determinación intenta subsanar los inconvenientes de la
+	varianza residual: En particular presenta las siguientes ventajas:
+	\vspace{2mm}
+
+	1. Está acotado superior e inferiormente. Ello conduce a identificar
+	claramente la incorrelación, correlación perfecta y grados de correlación
+	intermedios con valores concretos del coeficiente.
+
+	\vspace{2mm}
+
+	2. Los valores del coeficiente varían en el mismo sentido que la intensidad del
+	grado de correlación, a mayor valor del coeficiente, mayor grado de
+	correlación y viceversa.
+
+	\vspace{2mm}
+
+	3. Es un coeficiente adimensional. En consecuencia va a permitir la
+	comparación de la bonddad de distintos ajustes.
+
+	\vspace{2mm}
+
+	Sin embargo esta medida tiene un inconveniente, no siempre es posible su
+	definición. Para ello se tiene que verificar la llamada `descomposición de la
+	varianza`.
+
+	\begin{definition}
+		Se llama varianza explicada por la regresión a la varianza de los
+		valores ajustados. Considerando $Y/X$:
+		$$
+		\sigma_{ey}^2 = \sum_{i=1}^k\sum_{j=1}^p f_{ij}(\hat{y_j}-\overline{y})^2
+		$$
+	\end{definition}
+
+	\begin{theorem}[Descomposición de la varianza marginal]
+	En funciones polinómicas en los parámetros, la varianza marginal de Y es la suma
+	de la varianza explicada por la regresión con la varianza residual.
+	%$$\sigma_y^2 = \sigma_{ey}}^2 +\sigma_{r_{Y/X}}^2 $$
+	\end{theorem}
+	\newpage
+	\begin{proof}
+	\begin{align*}
+		\sigma_y^2 = \sum_{j=1}^p f_{.j} (y_j - \overline{y})^2 =
+		\sum_{j=1}^p f_{.j} (y_j - \hat{y} + \hat{y} - \overline{y}) = \\
+		= \sum_{j=1}^p f_{.j}\left[ (y_j - \hat{y})^2 +
+		(\hat{y} - \overline{y})^2 - 2(y_j - \hat{y})(\hat{y}-\overline{y})\right] = \\
+		= \sum_{j=1}^p f_{.j} (y_j - \overline{y})^2
+		+ \sum_{j=1}^p f_{.j} (\hat{y_j} - \overline{y})^2
+		-2 \sum_{j=1}^p f_{.j} (y_j - \hat{y_j})(\hat{y_j} - \overline{y}) = \\
+		= \sigma_{ry}^2 + \sigma_{ey}^2
+							- 2\sum_{j=1}^p f_{.j}
+											(y_j - \hat{y_j})
+											(f(x_i, a_ 0, \cdots, a_n) - \overline{y}) = \\
+		= \sigma_{ey}^2 + \sigma_{ry}^2
+							- \cancel{2(\hat{y_j} - \overline{y})
+								\sum_{j=1}^p f_{.j}(y_j - \hat{y_j})} = \\
+		= \sigma_{ey}^2 + \sigma_{ry}^2
+	\end{align*}
+	Donde se ha usado en el último paso que la media de los residuos de una
+	función polinómicas es 0.
+	\end{proof}
+
+
+	Así podemos ya definir el coeficiente de determinación denotado por $R^2$ o
+	$\eta_{Y/X}^2$ como la proporción de variabilidad de la variable dependiente
+	que es explicada por la regresión:
+
+	$$
+	\eta_{Y/X}^2 =\frac{\sigma_{ey}^2}{\sigma_y^2}  = 1 -\frac{\sigma_{r_{Y/X}}^2}{\sigma_y^2}
+	$$
+
+	Este coeficiente es 1 menos la varianza residual entre la varianza total.
+
+	Está claro que $ 0 <= \eta_{Y/X}^2  <= 1 $. La interpretación de está medida
+	es la siguiente.
+
+\vspace{2mm}
+
+	$ \eta_{Y/X}^2 = 0 $ Luego la varianza residual y la varianza total son las
+	mismas luego el modelo no explica nada de Y a partir de X. El ajuste es el
+	peor posible, las variables están incorreladas.
+
+\vspace{2mm}
+
+	$ \eta_{Y/X}^2 = 1 $. En este caso se verifica que $\sigma_r^2 = 0$, entonces
+	existe correlación perfecta o dependencia funcional entre las variables según
+	la función de regresión ajustada.
+
+\vspace{2mm}
+
+	$ 0 < \eta_{Y/X}^2 < 1 $  En este caso existe un cierto grado de correlación
+	entre las variables según la función de regresión ajustada, tanto más intensa
+	cuanto más cercano a 1 esté el coeficiente y más leve cuanto más cercano a
+	cero.
+
+En modelos lineales respecto a los parámetros como el lineal o el hiperbólico se
+verifica la descomposición de la varianza. En modelos no lineales como el
+potencial o el exponencial no se verifica la descomposición de la varianza, por
+tanto las medidas de correlación que se van a considerar serán las
+correspondientes varianzas residuales.
+
+\subsection{Coeficiente de determinación el modelo de regresión lineal}
+
+En el modelo de regresión lineal se puede definir el coeficiente de
+determinación lineal, notado en particular por $r^2$. Tanto si la dependencia es
+de Y/X como de $X/Y$:
+
+$$ r^2 = \frac{\sigma_{XY}^2}{ \sigma_{X}^2 \sigma_{Y}^2 } $$
+
+Si $r^2$ = 1 Entonces la correlación lineal es perfecta, en este caso las dos
+rectas de regresión coinciden. Esta recta pasa por todos los puntos de la nube.
+
+Si $r^2$ = 0 Existe incorrelación lineal, en este caso $\sigma_{XY}^2 = 0$ y las
+pendientes de las rectas son nulas, por tanto las rectas son perpendiculares y
+paralelas a los ejes de coordenadas.
+
+En el caso intermedio es igual que con los anteriores.
+
+\subsection{Coeficiente de correlación lineal de Pearson}
+
+Este coeficiente estudia la interdependencia lineal entre las variables,
+entendiendo por ésta el grado de asociación lineal junto con el sentidio
+positivo, (directo), o negativo (inverso), de variación conjunta de las
+variables.
+
+Se define pues como:
+$$ r = \frac{\sigma_{XY}}{\sigma_{X} \sigma_{Y}}  = \pm \sqrt{r^2}$$
+
+(El signo depende de la covarianza):
+
+Interpretación:
+
+\begin{itemize}
+
+\item Si $r = 1$, la asociación lineal perfecta es positiva. En este caso $r^2 = 1$ y
+por tanto las dos rectas coinciden y pasan por todos los puntos de la nube. Por
+ser $r > 0$, la covarianza es positiva y la recta es creciente.
+
+\item Si $r= -1$, la asociación lineal es perfecta pero negativa. En este caso $r^2 =
+1$ las rectas coinciden y pasan por todos los puntos de la nube. Como $r < 0$ y
+la covarianza es negativa la recta es decreciente.
+
+\item Si $r = 0$, la asociación lineal es nula $r^2 = 0$ las variables están
+incorreladas linealmente y las rectas son perpendiculares a los ejes, (la
+covarianza es nula).  Que r sea cero no implica la independencia de las
+variables.
+
+\item Si $ 0 < r < 1 $, la asociación lineal entre las variables será tanto más intensa
+cuanto más próximo éste el coeficiente a 1, Por ser $ r > 0 $ las rectas son
+crecientes.
+
+\item Si $ -1 < r < 0 $, la asociación lineal será tanto más intensa cuanto más próximo
+esté le coeficiente a -1. Por ser $ r < 0$ las rectas son decrecientes.
+
+\end{itemize}
+
+\subsubsection{Propiedades}
+
+1. La covarianza, el coeficiente de correlación lineal r y las pendientes de las
+rectas tienen el mismo signo.
+
+2. El coeficiente de correlación lineal también informa de la apertura entre las
+rectas de regresión: el ángulo entre sí las rectas de regresión de Y/X y X/Y
+crece en sentido inverso al valor de $ |r| $. Si r vale 0 las rectas son
+perpendiculares si es 1 coinciden y cuanto más se aproximen el valor será más
+próximo a 1.
+
+\subsection{Predicción}
+
+Uno de los objetivos que persigue la regresión y la correlación es hacer
+predicciones de lavariable dependiente o endógena en función de oque toma la
+independiente o exógena. Las predicciones se efectúan utilizando la función
+estimada por mínimos cuadrados. Con ella se obtienen valores teóricos. La
+predicción será tanto más fiable cuanto mayores sean los coeficientes de
+determinación correspondientes, ya que menor será la varianza de los residuos
+que es la que nos indica la cuantía de la separación entre lo observado y lo
+estimado.
+
+La fiabilidad de las predicciones disminuye conforme los valores de la variable
+exógena se alejan de su recorrido.
+
+\end{document}
