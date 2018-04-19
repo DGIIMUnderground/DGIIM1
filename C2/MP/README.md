@@ -1,4 +1,4 @@
-# Metodologa de la Programación
+# Metodología de la Programación
 
 Bienvenidos a la asignatura de **Metodología de la Programación**.
 
