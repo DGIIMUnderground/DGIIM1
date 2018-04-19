@@ -79,7 +79,7 @@ mat_2 : genmatrix(lambda([i,j], 2*i-4*j), 4, 4);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-radioespectral_2 : max(abs(eigenvalues(mat_2)[1]));
+radioespectral_2 : lmax(abs(eigenvalues(mat_2)[1]));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: section start ]
