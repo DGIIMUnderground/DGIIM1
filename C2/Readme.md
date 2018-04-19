@@ -3,7 +3,7 @@ Trabajar con siglas es "rápido", pero quizás no te entienda ni el Tato, os dej
 
 siglas  | nombre
 ---     | ---
-GEOM_II | Geometría II
+GEOII | Geometría II
 MN | Métodos numéricos  
 MP | Metodología de la programación  
 TOC | Metodología de la programación  
