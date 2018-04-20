@@ -63,6 +63,16 @@
 %  OTROS
 \usepackage{hyperref}   % Enlaces
 \usepackage{graphicx}   % Permite incluir gráficos en el documento
+\usepackage{relsize}
+ 
+ 
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+% \equalto
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\equalto}[2]{\underset{\scriptstyle\overset{\mkern4mu\verteq}{#2}}{#1}}
 
 
 % ---------------------------------------------------------------------------
@@ -445,15 +455,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a nisi id mi dapibus
 
 Como introducción, tomaremos el \textbf{producto escalar}:
 
-\hspace{1cm} $ \rm I\!R^3 \text{ espacio vectoral sobre un cuerpo } K, \hspace{0.5cm} x=(x_1,x_2,x_3), y=(y_1,y_2,y_3) \in \rm I\!R^3$ \\
-$$\cdot : \rm I\!R^3 \rightarrow \rm I\!R, \hspace{0.5cm} (x,y) \mapsto x \cdot y = x_1y_1+x_2y_2+x_3y_3=\sum^3_{i=1}x_iy_i$$
+\hspace{1cm} $ \rm I\!R^n \text{ espacio vectoral sobre un cuerpo } K, \hspace{0.5cm} x=(x_1,\ldots,x_n), y=(y_1,\ldots,y_n) \in \rm I\!R^n$ \\
+$$\cdot \hspace{2mm} : \hspace{2mm} \rm I\!R^n \hspace{2mm} \rightarrow \hspace{2mm} \rm I\!R, \hspace{0.5cm} (x,y) \hspace{2mm} \mapsto \hspace{2mm} x \cdot y = x_1y_1+\ldots+x_ny_n=\sum^n_{i=1}x_iy_i$$
 \subsubsection*{Propiedades del producto escalar}
 
 \begin{enumerate}
-	\item $ (x+x')\cdot y=x \cdot y+x' \cdot y \text{\hspace{0.5cm}y\hspace{0.5cm}} x\cdot(y+y') = x \cdot y + x\cdot y' \hspace{0.5cm} \forall x, y, x', y' \in \rm I\!R^3$
-	\item $ (\alpha x)\cdot y = \alpha x\cdot y \text{\hspace{0.5cm}y\hspace{0.5cm}} x\cdot(\alpha y) = \alpha x\cdot y \hspace{0.5cm} \forall x, y \in \rm I\!R ^3, \hspace{0.2cm} \forall \alpha \in K $
-	\item $ x\cdot y = y\cdot x \hspace{0.5cm} \forall x, y \in \rm I\!R ^3 $
-	\item $ x\cdot x \geq 0 \text{\hspace{0.5cm}y\hspace{0.5cm}} x\cdot x = 0 \iff x=0 \hspace{0.5cm} \forall x \in \rm I\!R ^3$
+	\item $ (x+x')\cdot y=x \cdot y+x' \cdot y \text{\hspace{0.5cm}y\hspace{0.5cm}} x\cdot(y+y') = x \cdot y + x\cdot y' \hspace{0.5cm} \forall x, y, x', y' \in \rm I\!R^n$
+	\item $ (\alpha x)\cdot y = \alpha x\cdot y \text{\hspace{0.5cm}y\hspace{0.5cm}} x\cdot(\alpha y) = \alpha x\cdot y \hspace{0.5cm} \forall x, y \in \rm I\!R ^n, \hspace{0.2cm} \forall \alpha \in K $
+	\item $ x\cdot y = y\cdot x \hspace{0.5cm} \forall x, y \in \rm I\!R ^n $
+	\item $ x\cdot x \geq 0 \text{\hspace{0.5cm}y\hspace{0.5cm}} x\cdot x = 0 \iff x=0 \hspace{0.5cm} \forall x \in \rm I\!R ^n$
 \end{enumerate}
 
 %\begin{align*}
@@ -464,11 +474,11 @@ $$\cdot : \rm I\!R^3 \rightarrow \rm I\!R, \hspace{0.5cm} (x,y) \mapsto x \cdot 
 
 \subsection{Definición y ejemplos}
 
-\begin{ndef}
-  Sea $V(\rm I\!R) $ un espacio vectorial. Diremos que $b$ es \textbf{bilineal} si se verifica:
+\begin{ndef}[Forma bilineal]
+  Sea $V(\rm I\!R) $ un espacio vectorial. Diremos que la aplicación $b$ es \textbf{bilineal} si se verifica lo siguiente:
    \begin{align*}
-    b: V \times V & \rightarrow \rm I\!R \\
-    (a,b) & \mapsto \varphi(a,b)
+    b \hspace{2mm} : \hspace{2mm} V \times V \hspace{2mm} &\rightarrow \hspace{2mm} \rm I\!R \\
+    (a,b) \hspace{2mm} & \mapsto \hspace{2mm} \varphi(a,b)
   \end{align*}
   \begin{itemize}
   \item[(1.1)] $b(u+u',v)=b(u,v)+b(u',v) \hspace{0.5cm} \forall u, u', v \in V $
@@ -481,6 +491,7 @@ Las cuales se resumen en las siguientes:
   \item[(1)] $b(\alpha u+\beta u',v)=\alpha b(u,v)+ \beta b(u',v) \hspace{0.5cm} \forall u, u', v \in V,\hspace{0.2cm} \forall \alpha, \beta \in \rm I\!R$
   \item[(2)] $b(u,\alpha v+\beta v')=\alpha b(u,v)+ \beta b(u,v') \hspace{0.5cm} \forall u, v, v' \in V,\hspace{0.2cm} \forall \alpha, \beta \in \rm I\!R$
   \end{itemize}
+  Es decir, que $b$ es lineal por cada una de las dos variables.
 \end{ndef}
 
 Notaremos $\mathfrak{B}(V)$ al \textbf{conjunto de las formas bilineales} en un espacio vectorial $V$.
@@ -493,59 +504,98 @@ Notaremos $\mathfrak{B}(V)$ al \textbf{conjunto de las formas bilineales} en un 
 
 \begin{sol}
   Basta comprobar que:
-  
+  \begin{align*}
+	(b_1+b_2)(u,v)&=b_1(u,v)+b_2(u,v)\\(\alpha b)(u,v) &= \alpha b(u,v)
+\end{align*}
 \end{sol}
 
-\begin{nth}
-  Ut sit amet sem id nunc feugiat lacinia sit amet eu felis. Quisque gravida, nisi eget elementum aliquam, arcu urna sodales sapien, sed gravida arcu nisl aliquam lectus. Vestibulum mollis mollis mauris et tristique. Aliquam erat volutpat. Suspendisse in lorem mi.
+\subsubsection{Propiedades}
 
-  $${\frac {d}{dx}}\arctan(\sin({x}^{2}))=-2\,{\frac {\cos({x}^{2})x}{-2+ \left (\cos({x}^{2})\right )^{2}}}$$
-\end{nth}
+\begin{enumerate}
+	\item $b(0,v) = b(u, 0) = 0 \hspace{5mm}\forall u,v \in V$
+	\begin{proof}
+	$b(0,v)=b(0\cdot v, v) = 0 \cdot b(v,v) = 0 $
+\end{proof}
+	\item $b(-u,v)=-b(u,v); \hspace{2mm} b(u,-v)=-b(u,v) \hspace{5mm} \forall u,v \in V$
+	\begin{proof}
+	$b(-u,v)=b((-1)u,v)=(-1)b(u,v)$
+	\end{proof}
+	\item $ \mathlarger{b\left(\sum^n_{i=1}\alpha_iu_i, \sum_{j=1}^m \beta_j v_j \right) = \sum_{i=1}^n \sum_{j=1}^m \alpha_i \beta_j b(u_i,v_j)}$
+	\begin{proof}
+	Procederemos por inducción.
+	
+	\boxed{\emph{n}=1, \emph{m}=1} \hspace{3mm} $b(\alpha_1 u_1, \beta_1 v_1) = \alpha_1 \beta_1 b(u_1,v_1)$
+	
+	Supuesto cierto para $n-1$, $m-1$, ¿es cierto para $n$, $m$?
+	
+	\boxed{\emph{n}, \emph{m}}
+	\begin{align*}
+	b \left( \sum_{i=1}^{n-1} \alpha_i u_i + \alpha_n u_n, \sum_{j=1}^{m-1} + \beta_m v_m \right) \stackrel{(1)}{=}
+	b \left( \sum_{i=1}^{n-1} \alpha_i u_i, \sum_{j=1}^{m-1} + \beta_m v_m \right) +
+	\alpha_n b \left(u_n, \sum_{j=1}^{m-1} + \beta_m v_m \right) \\
+	\stackrel{(1)}{=}b \left( \sum_{i=1}^{n-1} \alpha_i u_i, \sum_{j=1}^{m-1} + \beta_m v_m \right) +
+	\beta_m b \left( \sum_{i=1}^{n-1} \alpha_i u_i,  v_m \right) +
+	\alpha_n b \left( u_n, \sum_{j=1}^{m-1} + \beta_m v_m \right) +
+	\alpha_n \beta_m b \left( u_n, v_m \right) \\
+	\stackrel{(2)}{=} \sum_{i=1}^{n-1} \sum_{j=1}^{m-1} (u_i, v_j) + \beta_m \sum_{i=1}^{n-1} \alpha_i (u_i,v_m) + \alpha_n  \sum_{j=1}^{m-1}(u_n, v_j) + \alpha_n \beta_m b(u_n, v_n)=\sum_{i=1}^{n} \sum_{j=1}^{m}	\alpha_i \beta_j b(u_i, v_j)
+\end{align*}
+Donde en (1) hemos aplicado que $b$ es bilineal, y en (2) la hipótesis de inducción.
+\end{proof}
+\end{enumerate}
 
+\pagebreak
+
+\subsubsection{Ejemplos de formas bilineales}
+
+En los siguientes ejemplos, a menos que se especifique lo contrario, tenemos un espacio vectorial $V(\rm I\!R)$, una base $\mathcal{B}$ de $V$ y $A \in M_n(\rm I\!R)$. Podemos definir entonces una forma bilineal $b \hspace{1mm} : \hspace{1mm} V\times V \hspace{1mm} \rightarrow \hspace{1mm} R$ como:
+
+\begin{enumerate}
+	\item $V=\rm I\!R^3, \hspace{2mm} \mathcal{B} = \{(1,0,0),(0,1,0),(0,0,1)\}$
+	
+	$M(b_0, \mathcal{B}) = \left( \begin{matrix} 1&0&0\\0&1&0\\0&0&1 \end{matrix} \right) = I_3$ \\
+	
+	Podemos generalizar: en $V = \rm I\!R^n$ consideraremos $b_0$ como la forma bilineal asociada a $I_n$ si $\mathcal{B} = \mathcal{B}_u$, en cuyo caso $M(b_0, \mathcal{B}_u) = I_n$.
+	
+\end{enumerate}
+
+\pagebreak
+
+\subsection{Matriz asociada a una forma bilineal}
+Sea $V(\rm I\!R)$ un espacio vectorial real, $\mathcal{B} = \{u_1, \ldots, u_n\}$ base de $V$. Dado $b \in \mathfrak{B}(V)$, tenemos entonces que:
+$$ u,v \in V \hspace{1cm} u=\sum_{i=1}^n x_i u_i\hspace{0.5mm}; \hspace{2mm} v = \sum_{j=1}^n y_ju_j \hspace{1cm}
+	x = \left( \begin{matrix} x_1 \\ \vdots \\ x_n \end{matrix} \right)\hspace{0.5mm}; \hspace{2mm}
+	y = \left( \begin{matrix} y_1 \\ \vdots \\ y_n \end{matrix} \right)$$
+Luego $ \mathlarger{b(u,v)=b\left(\sum_{i=1}^n x_iu_i, \sum_{j=1}^n y_ju_j\right) = \sum_{i=1}^n \sum_{j=1}^m x_i y_j b(u_i,u_j)}$.
+
+A la matriz cuya entrada $(i,j)$ es $b(u_i,u_j)$ la denotaremos $M(b, \mathcal{B})$ y la llamaremos \textbf{matriz de la forma bilineal $b$ en la base $\mathcal{B}$}. De este modo:
+\begin{align*}
+	b(u,v) &= \left(\begin{matrix} x_1 & \cdots & x_n \end{matrix} \right) \left( \begin{matrix} b(u_1, u_1) & \ldots & b(u_1, u_n) \\ \vdots &\ddots & \vdots \\ b(u_n,u_1) & \cdots & b(u_n,u_n) \end{matrix} \right)
+	\left( \begin{matrix} y_1 \\ \vdots \\ y_n \end{matrix} \right) = x^tM(b, \mathcal{B})y
+\end{align*}
+
+\begin{nota}
+	Si hacemos $M(b, \mathcal{B})\left( \begin{matrix} y_1 \\ \vdots \\ y_n \end{matrix} \right)$ obtendremos en la fila $i$-ésima: $y_1b(u_i,u_1))+y_2b(u_i,u_2)+\ldots+y_nb(u_i,u_n)$.
+	Es por tanto claro que $\left( \begin{matrix} x_1 & \cdots & x_n \end{matrix} \right)M(b, \mathcal{B})\left( \begin{matrix} y_1 \\ \vdots \\ y_n \end{matrix} \right)=b(u,v)$.
+\end{nota}
+	
+\vspace{2mm}
+
+Dada $\mathcal{B}$ base de $V$ podemos definir:
+\begin{align*}
+	F_\mathcal{B} \hspace{2mm} : \hspace{2mm} \mathfrak{B}(V) \hspace{2mm} &\rightarrow \hspace{2mm} M_n(\rm I\!R) \\
+	b \hspace{2mm} &\mapsto \hspace{2mm} M(b, \mathfrak{B})
+\end{align*}
+
+Tenemos un isomorfismo de espacios vectoriales, con $\text{dim}(\mathfrak{B}(V))=n^2$.
 \begin{proof}
-  Sed sodales rhoncus lacus non feugiat. Vivamus mi nisl, commodo ut vulputate sed, facilisis at risus. Duis eget cursus mauris. Sed sed augue sit amet enim elementum accumsan. Curabitur imperdiet risus lectus, id volutpat nibh malesuada vitae. Praesent vel libero in justo porta congue et at justo. Cras iaculis eleifend nisl id malesuada. Aenean ac arcu non felis convallis placerat id nec libero. Proin faucibus a ligula et tempor. Nam commodo venenatis ultrices. Nunc tempor hendrerit dolor eget tincidunt. Integer lacinia mi aliquam, faucibus leo finibus, aliquet elit. Mauris laoreet facilisis sagittis. Mauris et varius magna.
+$$ \begin{matrix} F_\mathcal{B}(\lambda b + \mu b') & = & \lambda F_\mathcal{B}(b) + \mu F_\mathcal{B}(b') & \\ \rotatebox{90}{$\,=$} & & \rotatebox{90}{$\,=$} & \hspace{1cm}\forall b,b' \in \mathfrak{B}(V), \hspace{2mm} \forall \lambda, \mu \in \rm I\!R \\ \equalto{M(\lambda b + \mu b', \mathcal{B})}{(a_{ij})} & = & \lambda \equalto{M(b, \mathcal{B})}{(b_{ij})} + \mu \equalto{M(b', \mathcal{B})}{(c_{ij})} \end{matrix} $$
+
+De hecho estas igualdades son así debido a que se verifica:
+$$a_{ij}=(\lambda b + \mu b' )(u_i, u_j)=\lambda b(u_i,u_j) + \mu b'(u_i,u_j)$$
+$$ b_{ij} = b(u_i,u_j)\hspace{1cm} c_{ij} = b'(u_i,u_j)$$
 \end{proof}
 
-\begin{nprop}
-  Suspendisse in tortor sit amet ex feugiat aliquet et vitae nisl. Phasellus auctor imperdiet odio, eget vestibulum augue. Nunc finibus leo rhoncus nisl imperdiet, ac tincidunt nisi fermentum. Phasellus vestibulum ex odio, id laoreet nisl molestie sed.
-
-  $$\frac{d}{dx}\left( \int_{0}^{x} f(u)\,du\right)=f(x)$$
-\end{nprop}
-
-\begin{ndef}
-  Suspendisse maximus hendrerit dui. Sed ac dapibus enim. Phasellus tempor dolor et metus ullamcorper pretium. Morbi varius ac orci ac volutpat. Pellentesque gravida urna risus, ut porta felis mattis vitae. Suspendisse vulputate sagittis mauris, ac bibendum mauris volutpat iaculis. Suspendisse suscipit ac quam ut commodo. Fusce id leo sollicitudin, placerat velit nec, tempor velit. Donec sed dapibus ex. Duis tincidunt sem non velit blandit sollicitudin eget at sem.
-\end{ndef}
-
-\begin{ejemplo}
-  Sed dignissim, purus eu consequat volutpat, lectus nulla ullamcorper tellus, tempus blandit sem purus eget ligula. Cras sapien purus, placerat laoreet eros id, tristique imperdiet est. Sed orci purus, hendrerit finibus orci sed, elementum gravida libero. Sed vitae imperdiet magna, nec bibendum velit. Nunc tincidunt risus eget mi pulvinar, nec rhoncus enim dictum.
-\end{ejemplo}
-
-In ultricies accumsan faucibus. Quisque faucibus mi vel augue cursus, eu cursus neque pulvinar. Praesent eget velit in nulla interdum efficitur at nec turpis. Sed massa velit\footnotemark, consequat ac dui pharetra, sodales sodales quam. In rhoncus turpis ac elementum imperdiet. Etiam ipsum metus, euismod vel viverra eget, gravida eu felis. Nulla facilisi. Sed eget elementum justo. Morbi fermentum sapien vitae erat fermentum blandit quis ut leo. Morbi aliquam libero eu odio egestas, et condimentum sapien dignissim. Morbi quis lacinia tellus. Sed mattis suscipit feugiat.
-
-\footnotetext{Sed lobortis eu ante nec commodo. Cras ut feugiat mauris. Nullam mollis lacus nisi, eu tristique eros sagittis ac. Nullam mattis tincidunt maximus. Integer quis diam justo. Pellentesque in pharetra nisi. Praesent at interdum dolor. Suspendisse nunc nulla, lobortis vitae libero non, consequat pretium mi. Sed sollicitudin}
-
-
-
-
-Sed lobortis eu ante nec commodo. Cras ut feugiat mauris. Nullam mollis lacus nisi, eu tristique eros sagittis ac. Nullam mattis tincidunt maximus. Integer quis diam justo. Pellentesque in pharetra nisi. Praesent at interdum dolor. Suspendisse nunc nulla, lobortis vitae libero non, consequat pretium mi. Sed sollicitudin, erat at lacinia venenatis, lectus magna tincidunt justo, id condimentum tellus nulla non lectus. Vestibulum sem libero, ultrices vel finibus sit amet, lobortis vitae augue. Nunc sit amet diam egestas, aliquet augue vel, rutrum erat. Nunc scelerisque ultricies nulla, sit amet euismod quam lobortis eu.
-
-Etiam in enim in lectus tempor elementum sed nec arcu. Cras nec nisl non turpis molestie vulputate eu at eros. Nulla facilisis molestie elit eget varius. Aenean vel ex euismod, scelerisque purus nec, porta sem. Pellentesque ullamcorper, augue sit amet fringilla dignissim, nulla justo elementum tellus, id semper metus lacus non diam.
-
-Ut auctor fermentum ligula. In non diam commodo, efficitur enim vel, pretium tortor. Suspendisse mollis elit quis leo vehicula posuere. Integer imperdiet malesuada diam non vestibulum. Aliquam felis tortor, fringilla in faucibus ac, malesuada in metus. Vestibulum ullamcorper egestas nisi vel ultrices. Pellentesque euismod arcu eu nisi congue, a accumsan metus sollicitudin. Aenean ornare cursus feugiat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus et gravida neque, a tristique ex. Curabitur in eros eu urna suscipit aliquam nec euismod mauris. Nam sollicitudin hendrerit accumsan. Nunc semper lorem risus, at eleifend turpis mollis ac.
-
-Aliquam vitae sem ut arcu tincidunt imperdiet non non nulla. Suspendisse eu maximus lacus. Sed et lorem sapien. Sed id facilisis erat. Nulla porttitor, mauris non lacinia congue, arcu libero blandit quam, sed laoreet magna lectus iaculis justo. Praesent commodo aliquam elementum. Vestibulum volutpat fermentum finibus. Quisque semper vitae mauris id fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vulputate imperdiet mollis. Aenean accumsan rhoncus est, sed molestie ligula congue in. Donec aliquet ante tempor pellentesque posuere.
-
-Etiam sit amet congue nibh. Morbi auctor vitae enim ut porttitor. Mauris finibus tellus ligula, at mattis tortor auctor in. Morbi dignissim pretium elit, non pretium massa ultricies at. Ut volutpat efficitur est quis varius. Vestibulum cursus non elit et luctus. Cras elit orci, facilisis non blandit a, vulputate dignissim libero. Aliquam condimentum ut velit quis facilisis. Donec in mi nec dolor mattis placerat vitae vitae turpis. Integer blandit erat et tortor ornare posuere. Donec ornare nisl eget laoreet tincidunt. Donec gravida eros a lorem tincidunt pharetra. Curabitur porta sem at ex consectetur efficitur. Phasellus semper porttitor consequat. Etiam bibendum condimentum ligula ac viverra.
-
-Aliquam scelerisque sit amet arcu a egestas. Quisque malesuada ornare risus, ultrices lacinia lacus congue sit amet. Integer porttitor in dolor nec vehicula. Nulla sagittis odio enim, et congue tellus lacinia a. Nam tempor vulputate varius. Quisque porta hendrerit libero, vel facilisis eros fringilla vitae. Fusce ac felis ut mi placerat volutpat id vitae quam. Curabitur porttitor, eros in malesuada laoreet, velit enim scelerisque mi, a bibendum quam libero id lacus. Praesent malesuada leo ut turpis bibendum, vitae hendrerit metus consectetur. Fusce libero urna, porta at tempus ut, bibendum sit amet lacus. Duis dictum elementum fermentum. Praesent risus odio, tempor sit amet est eu, efficitur egestas massa.
-
-Integer rutrum est eu sodales vehicula. Donec sagittis leo ac augue consequat pellentesque. Maecenas ultrices vehicula augue ac pellentesque. Fusce id convallis orci. Mauris id facilisis lorem. Phasellus eros urna, eleifend vitae dignissim nec, blandit non neque. Etiam id mauris sollicitudin, sollicitudin urna sed, facilisis lectus. Nulla facilisi. Suspendisse eget tristique erat.
-
-Nam aliquet augue quis sapien viverra, scelerisque vestibulum nisl blandit. Duis ut efficitur purus, sed tincidunt purus. Morbi sed nisi tempus purus finibus maximus et a metus. Aenean nisl elit, dignissim et sodales vitae, mollis eget ex. Suspendisse hendrerit tincidunt ex, nec tempus urna ultricies vel. Aenean sed mattis risus. Proin sit amet est porta, posuere ipsum sit amet, tristique leo. Donec sed porta velit, a vestibulum orci. Phasellus pharetra semper lectus sed commodo. Aliquam pellentesque luctus leo. Sed commodo tellus eu mauris suscipit, et lobortis arcu tincidunt. Sed feugiat magna quis ligula viverra, nec pellentesque enim consequat.
-
-Sed eleifend malesuada augue, eget dapibus ante scelerisque eget. Vestibulum gravida dui eu congue pulvinar. Sed sed purus in nisi molestie facilisis eget at nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus a laoreet sem, nec auctor tellus. Donec sed pharetra nisl. Pellentesque accumsan quam a semper dapibus. Proin elementum viverra metus sed ultrices.
-
-Aenean finibus ex at magna bibendum, ut vehicula dolor tempor. In semper, ipsum suscipit tincidunt posuere, diam arcu accumsan ligula, mollis hendrerit massa ipsum et enim. Duis finibus, urna ac interdum luctus, lorem enim faucibus dolor, a sollicitudin dui augue vel nibh. Nulla sed efficitur est. Mauris ut metus tincidunt, iaculis turpis sed, mattis lacus. Vestibulum ut purus maximus massa tristique ultrices sit amet ut tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
+Es más, podemos ver que $F_\mathcal{B}$ es inyectiva:
+$$ \text{Ker}(F_\mathcal{B})=\{b \in \mathfrak{B}(V) : F(b) = 0 \} = \{b \in \mathfrak{B}(V) : M(b, \mathcal{B}) = 0 \} = \{0\}$$
 
 \end{document}
