@@ -74,7 +74,7 @@ Podemos usar arrays con la sintaxis de punteros.
 ```cpp
 int v[5] = [2,6,3,5,3};
 cout << *v << endl; //escribe 2
-cput << *(v+2) << endl; //escribe 3
+cout << *(v+2) << endl; //escribe 3
 ```
 También podemos usar punteros como arrays.
 ```cpp
@@ -95,13 +95,13 @@ Por ejemplo, para recorrer los elementos de un array mediante punteros:
 int v[10] = {3,5,2,7,6,7,5,1,2,5};
 int *p=v;
 for (int i=0; i<10; i++)
-cout << *(p++) << endl;
+	cout << *(p++) << endl;
 ```
 O bien:
 ```cpp
 int v[10] = {3,5,2,7,6,7,5,1,2,5};
 for (int *p=v; p<v+10; p++)
-cout << *p << endl;
+	cout << *p << endl;
 ```
 ### Punteros y cadenas
 
@@ -111,7 +111,7 @@ const char *cadena = "Hola"; //tamaño 5
 const char *p; //p puntero a caracter constante, p es modificable
 int i = 0;
 for (p=cadena;*p!='\0';p++)
-++i;
+	++i;
 cout << "Longitud: " << i << endl;
 ```
 ```cpp
@@ -120,7 +120,7 @@ cout << "Original: " << cadena << endl;
 << "Sin la primera palabra: " << cadena+5;
 //Escribe Hola Adios y luego Adios, normalmente escribiría la dirección de memoria a la que apunta, pero muestra por pantalla el contenido ya que está apuntando a una cadena de char (esto pasa siempre, es una excepción). Si pusiéramos *cadena sólo mostraría la primera h, ya que apunta a la primera letra. Si quisiéramos que mostrara la dirección de memoria pondríamo (char *) cadena
 ```
-Si lo delcaramos con corchetes se puede cambiar un carácter, si se declara como puntero no se pueden modificar caracteres ya que está apuntando a caracteres constantes.
+Si lo declaramos con corchetes se puede cambiar un carácter, si se declara como puntero no se pueden modificar caracteres ya que está apuntando a caracteres constantes.
 
 ### Punteros y struct o class
 
@@ -139,9 +139,9 @@ También podemos modificar un puntero pasando por referencia el puntero
 ```cpp
 void funcion (int *p) //Pasa puntero como argumento.
 void funcion (int* & p) //Pasa puntero como argumento POR REFERENCIA
-int* doble(int x) //Devuelve un puntero.
+int* double (int x) //Devuelve un puntero.
 ```
-No se pueden devolver punteros a una variable local a la función, ya que la variable se dedstruye al acabar la función.
+No se pueden devolver punteros a una variable local a la función, ya que la variable se destruye al acabar la función.
 ```cpp
 int* ptr, ptr2 //ptr es puntero, ptr2 es entero.
 int *ptr, ptr2; //lo mismo
@@ -165,7 +165,7 @@ const double *p //El dato apuntado es constante
 double const *p //El dato apuntado es constante
 double *const p=<valor> //El puntero es constante
 const double *const p //Ambos son constantes
-dpuble const *const p //Ambos son constantes
+double const *const p //Ambos son constantes
 ```
 Un puntero a dato no constante no puede apuntar a un dato constante (permitiría cambiar el valor de una constante mediante el puntero).
 
@@ -223,7 +223,7 @@ Son útiles para, por ejemplo, con una sola función hacer una función que orde
 
 ### Errores comunes con punteros
 - Asignar punteros a distinto tipo (puntero entero que intenta apuntar a puntero a carácter).
-- Usar de punteros no inicializados.
+- Usar punteros no inicializados (salvajes).
 - Asignar valores al puntero y no a la variable.
 
 ## Gestión de memoria dinámica
@@ -244,11 +244,11 @@ Un SO divide la memoria en varias partes:
 int *p2;
 p2 = new int[200]; //Almacena la direccion de memoria
 ```
-- La zona de memoria reservada puede allmacenar nuevas variables dinámicas que pueden almacenar la dirección de nuevas peticiones de reserva de memoria.
+- La zona de memoria reservada puede almacenar nuevas variables dinámicas que pueden almacenar la dirección de nuevas peticiones de reserva de memoria.
 - Se libera la memoria dinámica que ya no necesitamos.
 
 ### Operador _new_
-Reserva en el _heap_ memomria suficiente del tipo especificado.
+Reserva en el _heap_ memoria suficiente del tipo especificado.
 ```cpp
 <tipo> *p;
 p = new <tipo>;
@@ -351,8 +351,8 @@ void redimensionar (int *&v, int& tama, int aumento){
 Funciona igual que con un tipo de dato nativo, salvo que se usa el constructor por defecto obligatoriamente al inicializar los datos de la memoria reservada.
 
 ### Clases que contienen dartos en memoria dinámica
-Una clase puede contener punteros que se pueden a usar apra almacenar datos en memoria dinámica.
-Los constructores puedden reservar la memoria dinámica y el destructor elimina la memoria dinámica que contiene  un objeto. Obviamente se puede aumentaro disminuir la memoria reservada con otros métodos.
+Una clase puede contener punteros que se pueden a usar para almacenar datos en memoria dinámica.
+Los constructores pueden reservar la memoria dinámica y el destructor elimina la memoria dinámica que contiene  un objeto. Obviamente se puede aumentar o disminuir la memoria reservada con otros métodos.
 
 ### Matrices dinámicas
 Hay 3 formas distintas de declarar matrices dinámicas:
