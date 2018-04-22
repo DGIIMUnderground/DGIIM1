@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 using namespace std;
 
 class ArrayDinamico{
@@ -37,9 +38,9 @@ void imprimir (const ArrayDinamico *v, int n){
   cout << endl;
 }
 
-void unionArrays (const ArrayDinamico *v1, int long1, const ArrayDinamico *v2, int long2, ArrayDinamico *v3, int &long3){
+void unionArrays (const ArrayDinamico *v1, int long1, const ArrayDinamico *v2, int long2, ArrayDinamico *&v3, int &long3){
   bool existe;
-  int z = 1;
+  int z=0, j;
 
   for (int i=0; i<long1; i++){
     v3[i].setVector(v1[i].getVector());
@@ -47,11 +48,13 @@ void unionArrays (const ArrayDinamico *v1, int long1, const ArrayDinamico *v2, i
 
   for (int i=0; i<long2; i++){
     existe = false;
+    j=0;
 
-    for (int j=0; j<long3 || existe; j++){
-      if (v3[j].getVector() == v2[i].getVector()){
+    while(j<=long1 && !existe){
+      if (strcmp(v3[j].getVector(), v2[i].getVector()) == 0){
         existe = true;
       }
+      j++;
     }
     if(!existe){
       v3[long1+z].setVector(v2[i].getVector());
@@ -59,7 +62,7 @@ void unionArrays (const ArrayDinamico *v1, int long1, const ArrayDinamico *v2, i
     }
   }
 
-  long3 = long1 + z;
+  long3 = long1 +z;
 }
 
 int main (){
@@ -113,4 +116,5 @@ int main (){
   v2 = NULL;
   delete[] v3;
   v3 = NULL;
+  return 0;
 }
