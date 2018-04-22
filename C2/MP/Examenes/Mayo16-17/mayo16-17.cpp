@@ -1,3 +1,12 @@
+/*
+ENUNCIADO
+Dados los ficheros A y B, se pide construir un programa en C++ que lea
+ambos ficheros en sendos arrays dinamicos en memoria y que realice la union
+entre los elementos que constituyen ambos ficheros, es decir, que encuentre
+los strings comunes que aparecen en ambos ficheros.
+By Paula.
+*/
+
 #include <iostream>
 #include <fstream>
 #include <cstring>
