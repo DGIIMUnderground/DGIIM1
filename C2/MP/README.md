@@ -10,10 +10,10 @@ A continuación, una clasificación de los contenidos de la asignatura:
 
 Carpeta                  | Descripción
 ---                      | ---
-[Teoría](Teoría) | Ejercicios de MP.
+[Teoría](Teoría) | Teoría de MP.
 ∟ [Apuntes](Teoría/Apuntes) | Apuntes de *temas completos* MP hechos en Markdown.
 ∟ [Anotaciones](Teoría/Anotaciones) | Anotaciones en clase de teoría de MP.
-[Ejercicios](Ejercicios)
+[Ejercicios](Ejercicios) | Ejercicios de MP.
 ∟ [Teoría](Ejercicios/Teoría) | Ejercicios de relaciones de teoría de MP.
 ∟ [Otros](Ejercicios/Otros) | Otros ejercicios (ej. libro Antonio Garrido)
 [Prácticas](Prácticas) | Prácticas de MP resueltas.
