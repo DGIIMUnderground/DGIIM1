@@ -14,11 +14,9 @@ Carpeta                  | Descripción
 
 __*__: en proceso de creación, no finalizado.
 
-### En Drive/Dropbox/loquesea
-
-> **NOTA IMPORTANTE:** subir los PDF a una plataforma cloud, y enlazarlos a continuación:
+### En Google Drive
 
 Carpeta         | Descripción
 ---             | ---
-[Libros](#) | Libros relacionados con la asignatura.
-[Prácticas](#) | Documentos utilizados en prácticas.
+[Apuntes](https://drive.google.com/drive/u/3/folders/1Z_yhc_x0Y2oBvcqBt8YdZlTpvJL__sF1)    | Apuntes de la asignatura, en PDF.
+[Prácticas](https://drive.google.com/drive/u/3/folders/1JFA-DCBBY8Vi-FirDKXnr5OzqQr9GNgy)  | Documentos utilizados en prácticas.
