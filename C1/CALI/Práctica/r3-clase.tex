@@ -1,0 +1,64 @@
+% Created 2017-11-11 sáb 17:48
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\DeclareMathOperator{\R}{\mathbb{R}}
+\setcounter{secnumdepth}{0}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+\author{Ricardo Ruiz}
+\date{\today}
+\title{Relación 3 - Clase}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.5.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+
+\section{Ejercicio 3}
+\label{sec-1}
+
+\subsection{Enunciado}
+\label{sec-1-1}
+Sea $x \in \R$. Prueba que el $\sup\{r \in \mathbb{Q}: r < x\} = x =
+\inf\{s \in \mathbb{Q}: s > x\}$.  ¿Permanece válido este resultado si
+se sustituye $\mathbb{Q}$ por un conjunto denso en $\R$?
+
+\subsection{Demostración}
+\label{sec-1-2}
+
+Sea $A = \{r \in \mathbb{Q}: r < x \}$, está claro que $x$ es
+mayorante de $A$.  Si $x$ no fuera el mínimo mayorante, existiría un
+$y \in \R$, mayorante de $A$ tal que $y < x$.  Sin embargo, por la
+densitud de $\mathbb{Q}$ en $\R$, existe $r \in \mathbb{Q}$, tal que
+$y < r < x$.  Por tanto, $y$ no sería mayorante de $B$ y $x$ es
+claramente el supremo.
+
+Análogamente, sea $B = \{s \in \mathbb{Q}: s > x \}$, está claro que
+$x$ es minorante de $B$. Si $x$ no fuera el máximo minorante,
+existiría un $y \in \R$, minorante de $B$, tal que $y > x$.  Sin
+embargo, por la densitud de $\mathbb{Q}$ en $\R$, existe $r \in
+\mathbb{Q}$, tal que $y > r > x$.  Por tanto, $y$ no sería minorante
+de $B$, y $x$ es claramente el ínfimo.
+
+Permanecería válido pues la demostración no depende de $\mathbb{Q}$,
+sino de su densitud en $\R$.
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}

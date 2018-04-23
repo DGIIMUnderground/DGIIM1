@@ -1,0 +1,183 @@
+------------------------------------------
+                 Día 1
+------------------------------------------
+- Poner foto en la página
+- Práctica final posible: pasar un documento al programa, y que te diga el idioma en el que está escrito
+- Examen de prácticas tras los dos primeros temas de 1 punto
+- Práctica final de 2 puntos
+- Examen teórico: 6 puntos
+- Resto de cosas que hagamos: 1 punto
+
+------------------------------------------
+        Tema 1: Arrays y cadenas
+------------------------------------------
+
+|| Bases ||
+
+- Cadenas de caracteres tipo C: Se usan sobre todo en la función main
+int main(int argc, char* argv[]) | char* es una cadena tipo C 
+
+- Un array es un dato compuesto de un número FIJO de elementos. Se acceden a ellos de la misma forma. Una vez declarados, no pueden cambiar de tamaño
+Ejemplo de acceso: Si notas es un array, notas[0]
+- El índice, de la misma forma, va de 0 hasta n-1, siendo dim(array) = 1 
+Ejemplo de declaración: double notas[43]. 
+- Los arrays son súper comunes entre diferentes lenguajes. Cuidado, que en algunos libros se les llama vectores. Estos vectores != biblioteca <vector>
+// Inciso: recomiendo leerse las guías de estilo de C++. Luego pongo una si me acuerdo
+- La única forma de hacer que un array sea más grande es cambiando la propia declaración. Además, debe ser un número constante entero 
+
+Por ejemplo, esto no vale: 
+    int variable = -0.5
+    double mi_array[variable]; 
+(No podemos poner dimensiones fractales. Shit happens)
+
+Sin embargo, esto es bastante sano hacerlo:
+    int const constante = 100;
+    double mi_array[constante];
+
+Nota importante: No podemos pedir que el propio usuario cree el array mediante un valor introducido en la terminal. Es decir:
+    int n;
+    cin >>n;
+    array[n];
+Nota prima: a ver, por poder, se puede. Pero estos señores no nos dejan usarlos todavía
+
+- En la declaración, podemos iniciar el array directamente:
+    int array[3] = {1,2,3};
+    int otro_array[6] = {4,5};      // Los 4 elementos restantes son 0 
+    int another_array[] = {9,5,1}   // Ahora tiene tamaño 3
+
+- Hay una foto mu apañada en las diapositivas que te enseña cómo están almacenados los elementos de los arrays. Simplemente, muestra que es de forma secuencial en memoria
+Esto significa que el acceso es directo también
+
+- Típico trozo de código para mostrar los elementos de un array:
+    const int tamano = 100;
+    double mi_array[tamano];
+    for (unsigned int i=0; i<100; i++)
+        cout <<mi_array[i]<<" ";
+
+- NO se puede hacer la asignación completa. Ejemplo:
+    int notas[tamano];
+    int notas2[tamano];
+    notas = notas2                  // Eeeeeeerrooooooor
+
+- Es interesante usar acotaciones para mostrar ciertas partes del array que nos interesan:
+array:                          |*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|
+Lo que nos interesa:                    ^-------------------^
+
+(No os riais de mi cutre ASCII Art en mitad de la clase)
+
+A partir de esa infografía, podemos recorrer el array como nos dé la gana. Si llamamos a las acotaciones min,max:
+    for (int i=min; i<max; i++)
+        cout <<array[i]<<" ";
+
+- Ahora está poniendo un programa para calcular medias. Es muy sencillo. Paso de copiarlo. Está en la presentación, sorry ¯\_(ツ)_/¯
+- Notas interesantes: Ya conocemos el variable++, pero en esta diapositiva nos podemos encontrar operadores aritméticos nuevos como += y /= 
+Por ejemplo, si tenemos que 
+    int media = Suma de todas las notas;
+    int num_alumnos = 100;
+    media /= num_alumnos;           // Esto es lo mismo que decir media = media/num_alumnos 
+
+
+- Elemento centinela: podemos definir el mayorante del conjunto dentro del propio array. Ejemplo gráfico:
+array           |3|9|10|0|0|0|-1|0|...|0|
+acotaciones     ^------------^
+Como podemos ver, el valor -1 no es un valor válido a la hora de hablar de notas (Aunque le hubiera gustado al de Cálculo I). Por ello, si llegamos a -1, paramos el bucle
+Hay un ejemplo en condiciones en la presentación. Echadle un ojo
+
+- Recordatorio de que no te debes pasar de la dimensión del array. Si dim(array) = n => array[i], donde i = {1,...,n-1}
+
+
+|| Funciones ||
+
+- A la hora de pasar un array a una función, en la cabecera se ignora el tamaño que le demos 
+    int funcion(char array[tamano])  // tamano es ignorado 
+Por temas de pereza, interesa más nombrarlo como array[]
+
+- Deberíamos pasarle el tamaño del array para evitar follones. Evidentemente, se puede hallar la dimensión de otras formas
+
+- Normalmente, se pasan por referencia a no ser que se indique de otra forma. 
+Es decir, lo que toques del array pasado en la función, se te va a cambiar en el main/otra funcion. 
+Antes, siempre teníamos que usar & para pasar por referencia. Para arrays, nope. Siempre es así de fomra estándar
+- Para pasarlo por referencia constante, con un const nos vale. 
+
+- No se puede hacer un retorno de array 
+    int funcion(){
+        int array[] = {...}
+        ...
+        return array        // Esto está MAL
+    }
+
+Esto se puede arreglar usando pasos por referencia en la función
+
+- A veces, nos puede hacer falta un array extra para resolver ciertos problemas. Lo suyo es crearlo con la dimensión mínima y necesaria
+Ahora mismo, como solución tenemos crear una constante global para tus arrays
+Más adelante, veremos que podemos crear arrays en memoria dinámica para solucionar ciertas limitaciones a día de hoy 
+
+
+|| TL:DR ||
+Resticciones: 
+    - No se permite la asignación directa (Es decir, array1 = array2). Sin embargo, al hablar de clases/structs, sí que se puede hacer para clases que contengan arrays.
+    - No se puede leer un array completo desde la entrada estándar (cin >> array)
+    - No se puede sacar a la salida estándar un array (cout << array)
+    - No es correcto hacer operaciones lógicas (<, >, <=, >=, ==, !=). Ojo, que no da error de compilación
+
+Matices:
+    - Sí que se pueden hacer asignaciones en clases que contengan arrays. Por ejemplo
+        class cosa{
+            int array[5];
+            int variable;
+        };
+        cosa v1, v2;
+        v1 = v2;
+    - Se pueden hacer arrays de clases:
+        class cosa{
+            ...
+        };
+        cosa mi_array[10];
+    - Cuidado con los constructores. Si no están presentes, al definir un array de objetos te podría dar error
+Expresión condicional:
+    radio = (NewRadius >= 0) ? variable : 0;
+
+    if (NewRadius >= 0)
+        radio = variable;
+    else 
+        radio = 0;
+
+|| Diferencias entre vectores y arrays ||
+- El tamaño de los vectores se redimensiona automáticamente según se necesite
+- Un array es más rápido que un acceso vector.at()
+- Podemos saber el tamaño del vector son vector.size(). En los arrays te jodes y lo haces tú
+- Esto implica que también tienes que pasar la dimensión a las funciones también
+- Un vector se puede pasar por valor, referencia o referencia constante. Los arrays o por referencia o por referencia constante
+- No se puede devolver un array con return. Un vector sí
+- Te puedes salir del rango permitido en los arrays
+
+|| Cadenas de caracteres estilo C ||
+- Se denotan por cstring conceptualmente
+- Literal de cadena de caracteres: secuencia de 0 o más caracteres encerrados entre comillas dobles. Dim(cadena) >= cantidad de caracteres que contiene
+- Se crean de la misma forma que antes. Sin embargo, no seas matado y pongas char cadena[]={'p','r','u','e','b','a'}, haz char cadena[]="prueba". Si lo haces de la primera forma, debes oner un '\0' al final
+- Este '\0' corta las cadenas lógicamente
+- A la hora de introducir datos, cin salta separadores. Es decir, no la uses para leer cadenas con espacios en blanco. Para esas, usa getline
+- Se puede invocar mediante cin.getline(cadena, entero)
+- Contenidos interesantes de <cstring>
+    > char * strcpy(char cadena1[], const char cadena2[]): copia cadena2 en cadena1
+    > int strlen(const char cadena[]): devuelve la longitud de cadena
+    > char * strcat(char cadena1[], const char cadena2[]): concatena cadena2 al final de cadena1
+    > int strcmp(const char cadena1[], const char cadena2[]): compara las cadenas cadena1 y cadena2
+
+|| Matrices bidimensionales ||
+- Definición: int cadena[filas][columnas]
+- Sus valores se pueden definir como 
+    int cadena[filas][columnas]={{1,2},{3,5}}
+- Para pasar arrays a funciones, debes poner únicamente la segunda dimensión. La primera no hace falta
+
+
+------------------------------------------
+   Tema 2: Punteros y memoria dinámica
+------------------------------------------
+- A partir de ahora, haré notas más específicas. Porque no merece la pena copiarlo todo, que para eso está en la presentación
+
+- dato1 & dato2: Comparador AND a nivel de bits. Es decir, compara bit a bit dato1 y dato2. Sin embargo, no devuelve un solo dato, sino la cadena de bits resultado de las comparaciones. Por ejemplo: 
+    1100 & 1001 = 1010
+- No se puede usar para operaciones aritméticas. Por ejemplo, no se puede hacer &(a+b)
+- No se pueden sumar punteros pero sí restarlos
+- Los arrays son punteros constantes

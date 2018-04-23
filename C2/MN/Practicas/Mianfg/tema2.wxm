@@ -1,0 +1,311 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 15.08.2 ] */
+
+/* [wxMaxima: title   start ]
+Práctica 2: 
+MN-I · 1º DGIIM 2017/2018
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Alumno: Miguel Ángel Fernández Gutiérrez
+Fecha:  17 de abril, 2018
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 1
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Programa la resolución de un sistema triangular superior compatible determinado. Aplícalo al sistema de matriz de coeficientes
+
+➔ matrix([0.34,−1.99,2/7,0],[0,1.1,2.3,−3.57],[0,0,3.2,33], [0,0,0,66.72]);
+
+y vector de términos independientes
+
+➔ [1,34,78,−9.42];
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Programación del algoritmo
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+resolver_u(U, x, b) :=
+for i:matrix_size(U)[1] step -1 thru 1 do
+    x[i] : (1/U[i][i])*(b[i]-sum(x[j]*U[i][j], j, i+1, matrix_size(U)[1]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Resolución del SEL propuesto
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+U_1 : matrix([0.34,−1.99,2/7,0],[0,1.1,2.3,−3.57],[0,0,3.2,33], [0,0,0,66.72]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b_1 : [1,34,78,−9.42];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_1 : b_1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+resolver_u(U_1, x_1, b_1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 2
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Programa el método de Gauss y úsalo para resolver el sistema con matriz de coeficientes
+
+➔ matrix([0.24,1.1,3/2,3.45],[−1.2,1,3.5,6.7],[33.1,1,2,−3/8],[4,17,71,−4/81]);
+
+y vector de términos independientes
+
+➔ [1,2,4,−21/785];
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Programación del algoritmo
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+metodo_gauss(A, x, b) := {
+    {
+        for k:1 thru matrix_size(A)[1] do
+            if A[k][k] = 0 then {
+                print("No pudo ser realizado"),
+                break
+            } else
+                for i:k+1 thru matrix_size(A)[1] do 
+                for j:k thru matrix_size(A)[1] do {
+                    A[i][j] : A[i][j] - A[i][k]/A[k][k]*A[k][j],
+                    b[i] : b[i] - A[i][k]/A[k][k]*b[k]
+                }
+    },
+    resolver_u(A, x, b)
+};
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Resolución del SEL propuesto
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+A_2 : matrix([0.24,1.1,3/2,3.45],[−1.2,1,3.5,6.7],[33.1,1,2,−3/8],[4,17,71,−4/81]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b_2 : [1,2,4,−21/785];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_2 : b_2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+metodo_gauss(A_2, x_2, b_2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 3
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Programa el método de Crout y aplícalo para encontrar la solución del sistema con matriz de coeficientes y vector de términos independientes, respectivamente
+
+➔ matrix([3,6,9],[1,4,11],[0,4,19]);
+
+y
+
+➔ [1/2,−2/3,−3/4];
+
+
+Nota: por algún motivo que no logro comprender, Maxima no me dejaba asignar bien valores a las matrices.
+Explico por tanto qué hacemos.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+1. Insertamos los datos proporcionados, trasponiendo A
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+A : transpose(matrix([3,6,9],[1,4,11],[0,4,19]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b : [1/2,−2/3,−3/4];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+2. Realizamos la factorización Doolittle de At
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ {
+    L : genmatrix( lambda([i,j], if i=j then 1 else 0), matrix_size(A)[1], matrix_size(A)[1] ),
+    U : genmatrix( lambda([i,j], if i<=j then 1 else 0), matrix_size(A)[1], matrix_size(A)[1] ),
+    for i:1 thru matrix_size(A)[1] do {
+        for j:i thru matrix_size(A)[1] do (
+            U[i][j] : (A[i][j] - sum(L[i][k]*U[k][j], k, 1, i-1))),
+        for j:i+1 thru matrix_size(A)[1] do (
+            L[j][i] : 1/U[i][i]*(A[j][i] - sum(L[j][k]*U[k][i], k, 1, i-1)))
+    }};
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+3. Como At = UtLt, intercambiamos: U = Lt, L = Ut
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+aux : L;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L:transpose(U);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+U:transpose(aux);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+4. Programamos la resolución L
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+resolver_l(L, x, b) :=
+for i:1 thru matrix_size(U)[1] do
+    x[i] : (1/L[i][i])*(b[i]-sum(x[j]*L[i][j], j, 1, i-1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+5. Generamos los vectores donde almacenar la solución
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+y : [0,0,0];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : [0,0,0];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+6. Resolvemos el sistema
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+resolver_l(L, y, b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+resolver_u(U, x, y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 4
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Programa los métodos de Jacobi y Gauss-Seidel y aplícalos, partiendo de la iteración inicial
+
+➔ [1,−1.34,1.456];
+
+y realizando 15 iteraciones, para obtener una aproximación de la solución del sistema con matriz de coeficientes
+
+➔ matrix([3,−2,0.25],[2,9,−5],[2,3,−6]);
+
+y vector de términos independientes
+
+➔ [1.1,2.2,3.3];
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Método de Jacobi
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+a : matrix([3,−2,0.25],[2,9,−5],[2,3,−6]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_0 : [1,−1.34,1.456];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b : [1.1,2.2,3.3];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+num_iteraciones : 15;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+n : matrix_size(a)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_a : x_0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_b : x_a;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for m:1 thru num_iteraciones do
+    for i:1 thru n do
+        x_b[i] : (1/a[i][i])*(b[i] - sum(a[i][j]*x_a[j], j, 1, i-1) - sum(a[i][j]*x_a[j], j, i+1, n)),
+        x_a : x_b;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_b;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Método de Gauss-Seidel
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+x_0 : [1,−1.34,1.456];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_a : x_0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_b : x_a;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for m:1 thru num_iteraciones do
+    for i:1 thru n do
+        x_b[i] : (1/a[i][i])*(b[i] - sum(a[i][j]*x_b[j], j, 1, i-1) - sum(a[i][j]*x_a[j], j, i+1, n)),
+        x_a : x_b;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_b;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

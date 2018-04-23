@@ -1,0 +1,310 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 15.08.2 ] */
+
+/* [wxMaxima: title   start ]
+Práctica 1: Introducción a Maxima
+MN-I · 1º DGIIM 2017/2018
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Alumno: Miguel Ángel Fernández Gutiérrez (@mianfg)
+Fecha:  13 de abril, 2018
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 1
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Define la función real g en el intervalo [0,1] como
+       | 2x-log(x)    si 0.3<=x<=0.5
+g(x) = | 2/x+|x-0.6|  si 0.5<=x<=0.8
+       | 0            en otro caso
+Calcula su integral y dibuja su gráfica
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Definición de la función
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+g(x) := if x<0.3 then 0
+            else if x <= 0.5 then 2*x-log(x)
+            else if x <= 0.8 then 2/x+abs(x-0.6)
+            else 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Cálculo de la integral
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+Para calcular la integral, definimos cada parte:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+g_1(x) := 2*x-log(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(g_1(x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g_2(x) := 2/x+abs(x-0.6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(g_2(x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Plot de la gráfica
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([g(x)], [x,0,1])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 2
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Halla el radio espectral de la matriz de orden 4x4 cuyo coeficiente (i,j) es 2i-4j.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+mat_2 : genmatrix(lambda([i,j], 2*i-4*j), 4, 4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+radioespectral_2 : lmax(abs(eigenvalues(mat_2)[1]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 3
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Calcula la suma de los cubos de los 23 primeros números naturales mediante un adecuado bucle.
+Comprueba que el resultado obtenido es correcto mediante el comando apply.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Cálculo usando un for
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+suma_3 : 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 23 do suma_3 : suma_3 + i^3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+suma_3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Comprobación usando apply
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+elementos_3 : makelist(k^3, k, 1, 23);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+apply("+", elementos_3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 4
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Halla el producto de los inversos de los números naturales comprendidos entre 6 y 19 haciendo
+uso de un bucle, y compruba la validez de tu respuesta con la orden apply.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Haciendo uso de un for
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+producto_4 : 1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for i:6 thru 19 do producto_4 : producto_4/i;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+producto_4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Comprobación usando apply
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+elementos_4 : makelist(1/k, k, 6, 19);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+apply("*", elementos_4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 5
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Determina el término 43º de la sucesión de Fibonacci de forma recurrente y a partir de la
+expresión explícita de dicho término
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Determinación de forma recurrente
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+Teniendo en cuenta que la recurrencia de la sucesión es:
+x_0 = 1; x_1 = 1; x_n = x_(n-2) + x_(n-1)
+Nos basta almacenar dos valores.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_a : 1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x_b : 1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 43 do ( aux : x_b, x_b : x_b + x_a, x_a : aux );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Tendremos en x_b el valor del término 43.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x_b;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Determinación a partir de expresión explícita
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+Definiremos la recurrencia resuelta.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+phi : ( 1 + sqrt(5) ) / 2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(num) := ( phi^num - ( 1 - phi )^num ) / sqrt(5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(f(43+1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Nótese que hay cierto error.
+
+Igualmente, Maxima tiene integrada una función que nos lo resuelve:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+fib(43+1)
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 6
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Calcula, aplicando el comando float, el valor de √(5+10^-n)-√5, para n=1,...,20. Repite los cálculos, reescribiendo la expresión √(5+10^-n)-√5 como 10^(-n)/(√(5+10^-n)+√5). Interpreta los resultados.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(float(sqrt(5+10^k)-sqrt(5)), k, 1, 20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(float((10^(-k))/(sqrt(5+10^(-k))+sqrt(5))), k, 1, 20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 7
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Programa (no necesariamente módulo) el cálculo de la norma 1 de una matriz cuadrada cualquiera.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+norma_1(matriz) := lmax(makelist(apply("+", makelist(abs(matriz[i][j]), i, 1, matrix_size(matriz)[1])), j, 1, matrix_size(matriz)[1]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 8
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Diseña un programa que, a partir de una matriz cuadrada, genere como salida su condicionamiento (norma infinito) si es regular, o el mensaje "la matriz no es regular" en caso contrario.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Programación de la norma infinito
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+norma_infinito(matriz) := norma_1(transpose(matriz));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Programación del programa pedido
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+programa_8(matriz) := if determinant(matriz) # 0 then norma_infinito(matriz)
+                      else print("la matriz no es regular");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 9
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Calcula la norma euclídea de la matriz 2x4 cuyo coeficiente (i,j) sea i/(i+j+1).
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Programación de la norma euclídea
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+norma_euclidea(matriz) := sqrt(lmax(abs(eigenvalues(transpose(matriz).matriz)[1])));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Cálculo de la norma euclídea de la matriz dada
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+matriz_9 : genmatrix(lambda([i,j], i/(i+j+1)), 2, 4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(norma_euclidea(matriz_9));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
