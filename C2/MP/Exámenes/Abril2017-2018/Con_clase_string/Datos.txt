@@ -1,0 +1,2 @@
+10 aa ab ea eb ec ia ib ob ua ub
+11 aa ac ad ea ef ia ob oa ua ub uc
