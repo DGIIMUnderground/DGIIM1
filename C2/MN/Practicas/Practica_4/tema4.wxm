@@ -306,11 +306,19 @@ l(i,t):=product((t-x[j])/(x[i]-x[j]),j,1,i-1)*product((t-x[j])/(x[i]-x[j]),j,i+1
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
+Además, la derivamos:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ld(i,t) := subst([u=t], diff(l(i,u),u));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
 El polinomio de interpolación Hermite es:
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-herm(t) := sum(y[i]*(1-2*(t-x[i])*diff(l(i,t), t))*(l(i,t))^2 + d[i]*(t-x[i])*(l(i,t))^2, i, 1, n);
+herm(t) := sum(y[i]*(1-2*(t-x[i])*ld(i,t))*(l(i,t))^2 + d[i]*(t-x[i])*(l(i,t))^2, i, 1, n);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
