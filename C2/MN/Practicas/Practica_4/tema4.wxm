@@ -1,19 +1,21 @@
 /* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
-/* [ Created with wxMaxima version 15.08.2 ] */
-
+/* [ Created with wxMaxima version 18.02.0 ] */
 /* [wxMaxima: title   start ]
 Práctica 4: Interpolación
 MN-I · 1º DGIIM 2017/2018
    [wxMaxima: title   end   ] */
+
 
 /* [wxMaxima: comment start ]
 Alumno: Miguel Ángel Fernández Gutiérrez
 Fecha:  14 de mayo, 2018
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: section start ]
 Ejercicio 1
    [wxMaxima: section end   ] */
+
 
 /* [wxMaxima: comment start ]
 Programa la forma de Lagrange del polinomio p de grado menor o igual que N que resuelve el problema
@@ -27,37 +29,46 @@ Aplícalo al problema: encuentra el polinomio p de grado menor o igual que 8 de 
 Dibuja simultáneamente las gráficas de p y de f(x)=senx-2x en el intervalo [0,1].
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 x : makelist(i/8, i, 0, 8);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 f(x):=sin(x)-2*x;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 n : length(x);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 y : makelist(f(x[i]), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 l(i,t):=product((t-x[j])/(x[i]-x[j]),j,1,i-1)*product((t-x[j])/(x[i]-x[j]),j,i+1,n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 lagrange(t) := sum(y[i]*l(i,t), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 wxplot2d([lagrange(t), f(t)], [t,0,1]);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: section start ]
 Ejercicio 2
    [wxMaxima: section end   ] */
+
 
 /* [wxMaxima: comment start ]
 Programa la forma de Newton del polinomio p que resuelve el problema de interpolación polinómica
@@ -65,21 +76,26 @@ anterior. Para ello, calcula previamente los polinomios nodales y las diferencia
 a los mismos datos del ejercicio anterior y comprueba que el resultado que obtienes es el mismo.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 f(t);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 x : makelist(i/8, i, 0, 8);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 n : length(x);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 y : makelist(f(x[i]), i, 1, n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 dif(i, j) :=
@@ -91,33 +107,41 @@ dif(i, j) :=
         0;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 w(i, t) := if i=1 then 1 else product(t-x[j], j, 1, i-1);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 dif_mat : genmatrix(lambda([i,j], dif(i,j)), n, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 newton(t) := sum( dif_mat[1,i] * w(i,t), i, 1, n );
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d([newton(t), f(t)], [t,0,1]);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Comparándolo con el ejercicio anterior, para comprobar que es el mismo resultado:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d([lagrange(t), newton(t), f(t)], [t,0,1]);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: section start ]
 Ejercicio 3
    [wxMaxima: section end   ] */
+
 
 /* [wxMaxima: comment start ]
 Sea f la función en C[-1,1] definida como
@@ -134,138 +158,172 @@ Considera los nodos xj=1-2j/21, j=0,1,...,21, los datos (xj,f(xj)) y los datos p
      la misma función f. Analiza el condicionamiento de este nuevo problema.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 f(x) := 7.21*cos(2*x/%pi);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 x : makelist(1-2*i/21, i, 0, 21);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 n : length(x);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 y_1 : makelist(f(x[i]), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 y_2 : makelist(f(x[i]) + 10^(-3) * (-1)^i, i, 1, n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: subsect start ]
 Apartado a)
    [wxMaxima: subsect end   ] */
 
+
 /* [wxMaxima: input   start ] */
 lmax(makelist(abs(y_1[i]-y_2[i]), i, 1, n));
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: subsect start ]
 Apartado b)
    [wxMaxima: subsect end   ] */
 
+
 /* [wxMaxima: comment start ]
 Interpolaremos ambas series de datos:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 l(i,t):=product((t-x[j])/(x[i]-x[j]),j,1,i-1)*product((t-x[j])/(x[i]-x[j]),j,i+1,n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 p_1(t) := sum(y_1[i]*l(i,t),i,1,n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 p_2(t) := sum(y_2[i]*l(i,t),i,1,n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Veremos gráficamente la estimación de dicha constante calculando la distancia entre ambas interpolaciones:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d([abs(p_2(t)-p_1(t))], [t,-1,1])$
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: subsect start ]
 Apartado c)
    [wxMaxima: subsect end   ] */
+
 
 /* [wxMaxima: comment start ]
 Creamos la función Lambda, lambd, para hallar la constante:
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 lambd(t) := sum(abs(l(i,t)), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 wxplot2d(lambd(t), [t,-1,1]);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 Podemos estimar la constante de Lebesgue encontrando el máximo de la función que hemos representado.
 Para ser más precisos, haremos "zoom" sobre uno de los máximos:
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 wxplot2d(lambd(t), [t,-0.98,-0.97])$
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 Vemos que el valor de dicha constante es, aproximadamente, 20600.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: subsect start ]
 Apartado d)
    [wxMaxima: subsect end   ] */
+
 
 /* [wxMaxima: comment start ]
 Hallamos los nodos de Chebyshev:
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 nodos_cheb : makelist(cos((2*(i-1)+1)/(2*n)*%pi) , i, 1, n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 Hallamos la base de Lagrange para dichos nodos:
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 l_cheb(i,t):=product((t-nodos_cheb[j])/(nodos_cheb[i]-nodos_cheb[j]),j,1,i-1)*product((t-nodos_cheb[j])/(nodos_cheb[i]-nodos_cheb[j]),j,i+1,n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 Interpolamos para y_1 (datos) e y_2 (perturbados):
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 p_cheb1(t) := sum(y_1[i]*l_cheb(i,t),i,1,n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 p_cheb2(t) := sum(y_2[i]*l_cheb(i,t),i,1,n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Veremos ahora la distancia entre ambas:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d([abs(p_cheb2(t)-p_cheb1(t))], [t,-1,1])$
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Vemos que al usar los nodos de Chebyshev esta distancia es mucho menor.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: section start ]
 Ejercicio 4
    [wxMaxima: section end   ] */
+
 
 /* [wxMaxima: comment start ]
 Resuelve el problema de interpolación de Hermite: encuentra el polinomio p de grado menor o igual que 9 de forma que
@@ -273,110 +331,137 @@ Resuelve el problema de interpolación de Hermite: encuentra el polinomio p de g
     p(j)=log j, p’(j)=j/2.36, j=1,2,3,4,5
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 x : [1, 2, 3, 4, 5];
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 n : length(x);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 p(t) := log(t);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 y : makelist(p(x[i]), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 pd(t) := t/2.36;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 d : makelist(pd(i), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Buscamos la base de Lagrange en primer lugar (ejercicio 1):
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 l(i,t):=product((t-x[j])/(x[i]-x[j]),j,1,i-1)*product((t-x[j])/(x[i]-x[j]),j,i+1,n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 El polinomio de interpolación Hermite es:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 herm(t) := sum(y[i]*(1-2*(t-x[i])*diff(l(i,t), t))*(l(i,t))^2 + d[i]*(t-x[i])*(l(i,t))^2, i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Cuya gráfica es:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d([herm(t), p(t)], [t,1,5]);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Veremos cómo las derivadas también coinciden:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d([diff(herm(t),t), pd(t)], [t,1,5]);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: section start ]
 Ejercicio 5
    [wxMaxima: section end   ] */
+
 
 /* [wxMaxima: comment start ]
 Calcula la solución del problema de interpolación de Taylor: determina el polinomio p de grado menor o igual que 5 tal que
 la derivada de orden j en 1.47 coincide con la integral entre 0 y 1 de la función x^j, para j=0,1,2,3,4,5
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 x_0 : 1.47;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 pts : makelist(j, j, 0, 5);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 n : length(pts);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 f(t) := integrate(u^t, u, 0, 1);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 d : makelist(f(pts[i]), i, 1, n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 T(i, t) := (t - x_0)^i/i!;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 p(t) := sum(d[i+1]*T(i, t), i, 0, n-1);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 p(t);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Claramente, este polinomio verifica todo lo especificado en el enunciado.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: section start ]
 Ejercicio 6
    [wxMaxima: section end   ] */
+
 
 /* [wxMaxima: comment start ]
 Considera un intervalo real cualquiera [a,b], con a<b, y una partición suya P={x0,x1,...,xN}.
@@ -386,9 +471,11 @@ Considera un intervalo real cualquiera [a,b], con a<b, y una partición suya P={
      encontrar el único elemento s de E de forma que s(xj)=1-xj^2/20.78, (j=0,1,...,6). Dibuja conjuntamente las gráficas de s y de f(x)=1-x^2/20.78.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: subsect start ]
 Apartado a)
    [wxMaxima: subsect end   ] */
+
 
 /* [wxMaxima: comment start ]
 Haremos una base genérica, una función B, con los siguientes parámetros:
@@ -399,6 +486,7 @@ Haremos una base genérica, una función B, con los siguientes parámetros:
 
 Obviamente, debe ser length(x) = length(y)
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 B(i, t, x, y) :=
@@ -419,65 +507,81 @@ B(i, t, x, y) :=
         0;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: subsect start ]
 Apartado b)
    [wxMaxima: subsect end   ] */
+
 
 /* [wxMaxima: comment start ]
 Se comprobará en el apartado siguiente.
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: subsect start ]
 Apartado c)
    [wxMaxima: subsect end   ] */
+
 
 /* [wxMaxima: comment start ]
 Definimos la partición:
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 x : [0.4, 0.5, 2.34, 3.45, 4.657, 5.081, 5.26];
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 f(t) := 1-t^2/20.78;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 n : length(x);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 y : makelist(f(x[i]), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Es fácil comprobar en la siguiente matriz que se verifica lo especificado en el apartado b):
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 genmatrix(lambda([i,j], B(i, x[j], x, y)), n, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Ahora encontramos la función spline lineal, spline:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 spline(t) := sum(y[i]*B(i, t, x, y), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 Hacemos el correspondiente plot:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d([spline(t), f(t)], [t,0.4,5.26]);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: section start ]
 Ejercicio 7
    [wxMaxima: section end   ] */
+
 
 /* [wxMaxima: comment start ]
 Partiendo de una partición uniforme  P={x0,x1,...,xN} de in intervalo real cualquiera [a,b], 
@@ -486,117 +590,147 @@ Partiendo de una partición uniforme  P={x0,x1,...,xN} de in intervalo real cual
   - dibuja conjuntamente las gráficas de s y de f(x)=log √(1 + |x|).
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: comment start ]
 0. Constatamos el intervalo, las partes en lo que lo queremos dividir y la función que queremos interpolar
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 f(x) := log(sqrt(1 + abs(x)));
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 int : [-2.09, 4.56];
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 partes : 8;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 1. Hacer subintervalos
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 h(int, partes) := (int[2] - int[1])/partes;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 subint(int, partes) := makelist(int[1] + i*h(int, partes), i, 0, partes);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 1b. Lo aplicamos a nuestro problema
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 x : subint(int, partes);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 n : length(x);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 h : h(int, 8);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 y : makelist(f(x[i]), i, 1, n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 2. Creamos la matriz que tendremos que invertir
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 dos : diagmatrix(n, 2);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 for i:2 thru n-1 do (dos[i][i-1] : 1/2, dos[i][i+1] : 1/2);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 dos;
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 dos : dos^^-1;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 3. Creamos la matriz de términos independientes
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 b : makelist( 0, i, 1, n );
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 for i:2 thru n-1 do (b[i] : y[i-1] - 2*y[i] + y[i+1]);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 b;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 c : transpose(3/h^2*dos.b);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: input   start ] */
 c : makelist( c[1,i], i, 1, n);
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: comment start ]
 4. Creamos los trozos del spline, y obtenemos la función spline sumándolos
    [wxMaxima: comment end   ] */
 
+
 /* [wxMaxima: input   start ] */
 s(i, t) := if t < x[i] then 0 else if t < x[i+1] then c[i]*(x[i+1]-t)^3/(6*h) + c[i+1]*(t-x[i])^3/(6*h)+((y[i+1]-y[i])/h-h/6*(c[i+1]-c[i]))*(t-x[i])+y[i]-c[i]*h^2/6 else 0;
 /* [wxMaxima: input   end   ] */
+
 
 /* [wxMaxima: input   start ] */
 spline(t) := if t > x[n] then 0 else if t = x[n] then y[n] else sum(s(i,t),i,1,n);
 /* [wxMaxima: input   end   ] */
 
+
 /* [wxMaxima: comment start ]
 5. El plot del spline y de la función interpolada:
    [wxMaxima: comment end   ] */
+
 
 /* [wxMaxima: input   start ] */
 wxplot2d([spline(t), f(t)], [t,-2.5,5]);
 /* [wxMaxima: input   end   ] */
 
-/* Maxima can't load/batch files which end with a comment! */
-"Created with wxMaxima"$
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 18.02.0"$
