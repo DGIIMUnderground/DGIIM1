@@ -36,40 +36,52 @@ Primeramente, hemos de encontrar las bases de los subespacios.
 Llamaremos base1 y base2 a las bases de los subespacios S1 y S2, respectivamente.
    [wxMaxima: comment end   ] */
 
+/* [wxMaxima: subsubsect start ]
+Base del subespacio S1, base1
+   [wxMaxima: subsubsect end   ] */
+
 /* [wxMaxima: input   start ] */
 base1 : [[1,1,2,3], [1,1,1,3], [0,1.2,2.3,3.4]];
 /* [wxMaxima: input   end   ] */
 
+/* [wxMaxima: comment start ]
+Vemos que es base, pues tiene rango 3
+   [wxMaxima: comment end   ] */
+
 /* [wxMaxima: input   start ] */
-base2 : [[1,1,2,3], [1,1,1,3], [0,1.2,2.3,3.4]];
+transpose(genmatrix(lambda([i,j], base1[i][j]), length(base1), length(base1[1])));
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-s1 : [[1,1,2,3], [1,1,1,3], [0,1.2,2.3,3.4]];
+echelon(%);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-length(s1[1]);
+rank(%);
 /* [wxMaxima: input   end   ] */
 
-/* [wxMaxima: input   start ] */
-echelon(s1);
-/* [wxMaxima: input   end   ] */
+/* [wxMaxima: comment start ]
+Directamente, tomamos base1 como los vectores que nos dan.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Base del subespacio S2, base2
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Hacemos uso del comando linsolve:
+   [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-A : transpose(genmatrix(lambda([i,j], s1[i][j]), length(s1), length(s1[1])));
+linsolve([2*x+y-3.4*z=0, 0.5*x-0.6*y+z-w/5=0], [x,y,z,w]);
 /* [wxMaxima: input   end   ] */
 
-/* [wxMaxima: input   start ] */
-echelon(A);
-/* [wxMaxima: input   end   ] */
+/* [wxMaxima: comment start ]
+Tenemos que base2 es:
+   [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-Ab : genmatrix(lambda([i,j], s1[i][j]), length(s1), length(s1[1]));
-/* [wxMaxima: input   end   ] */
-
-/* [wxMaxima: input   start ] */
-rank(Ab);
+base2 : [[10/85, -4/17, 0, 1], [52/85, 37/17, 1, 0]];
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: subsect start ]
