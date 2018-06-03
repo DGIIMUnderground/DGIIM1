@@ -1,0 +1,409 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 15.08.2 ] */
+
+/* [wxMaxima: title   start ]
+Práctica 5: Aproximación
+MN-I · 1º DGIIM 2017/2018
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Alumno: Miguel Ángel Fernández Gutiérrez
+Fecha:  3 de junio, 2018
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 1
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Halla la mejor aproximación del vector [0.1,0.1,-1,0.3]^T sobre los subespacios vectoriales de R^4 
+
+    S1= lin {[1,1,2,3]^T,[1,1,1,3]^T,[0,1.2,2.3,3.4]^T} 
+    S2={[x,y,z,w]^T: 2x+y-3.4z=0, 0.5x-0.6y+z-w/5=0}.
+
+Comprueba que la solución obtenida en cada caso es correcta verificando la condición de ortogonalidad.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Extracción de bases
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+Primeramente, hemos de encontrar las bases de los subespacios.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Llamaremos base1 y base2 a las bases de los subespacios S1 y S2, respectivamente.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+base1 : [[1,1,2,3], [1,1,1,3], [0,1.2,2.3,3.4]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+base2 : [[1,1,2,3], [1,1,1,3], [0,1.2,2.3,3.4]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s1 : [[1,1,2,3], [1,1,1,3], [0,1.2,2.3,3.4]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+length(s1[1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+echelon(s1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A : transpose(genmatrix(lambda([i,j], s1[i][j]), length(s1), length(s1[1])));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+echelon(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Ab : genmatrix(lambda([i,j], s1[i][j]), length(s1), length(s1[1]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rank(Ab);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Programación del algoritmo
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+Primero, hemos de pasar las bases a la matriz A, que contiene los vectores por columnas. Nótese que sólo basta hacer:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+toA(base) := transpose(genmatrix(lambda([i,j], base[i][j]), length(base), length(base[1])));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ahora nos queda obtener la mejor aproximación del vector, v, en S. Este vector es A.x en el SEL At.A.x=At.v.
+
+Podemos hacer una función que nos lo calcule directamente:
+
+    1. Despejando x tenemos que: x=(At.A)^-1.At.v
+    2. Calculamos A.x : A.x = A.(At.A)^-1.At.v
+
+Una última nota: queremos obtener un vector, y al calcular (2) obtendremos una matriz 1xn.
+                    Haremos también un módulo para transformar una matriz 1xn a un vector, que es más fácil de tratar en Maxima.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+mejor_aprox_mat(base, v) := toA(base).((transpose(toA(base)).toA(base))^^-1).(transpose(toA(base))).v;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mat1xn_a_vect(mat) := makelist(mat[i][1], i, 1, length(mat));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mejor_aprox(base, v) := mat1xn_a_vect(mejor_aprox_mat(base,v));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Resolución del problema planteado
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Encontrar mejor aproximación
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Basta aplicar mejor_aprox sobre base1 y base2, teniendo como vector v:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+vector : [0.1,0.1,-1,0.3];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+La solución será, por tanto, aprox1 y aprox2 para los subespacios S1 y S2, respectivamente:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+aprox1 : mejor_aprox(base1, vector);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+aprox2 : mejor_aprox(base2, vector);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Comprobación de condición de ortogonalidad
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Tenemos que vector debe ser ortogonal a vector-aprox. Para comprobarlo, haremos rápidamente un módulo que calcule
+el producto escalar de dos vectores, u y v:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+prod_escalar(u,v) := apply("+", u*v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobamos la ortogonalidad:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+prod_escalar(vector, vector-aprox1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prod_escalar(vector, vector-aprox2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Vemos que la diferencia es prácticamente 0, y por tanto son ortogonales (pequeño error).
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 2
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Calcula la recta y la parábola de ecuaciones respectivas y = mx + n e y=ax^2 + bx + c que mejor aproximan, en el sentido de los mínimos cuadrados, los datos:
+
+    (1,2), (0,0), (-1.1,3.2), (2,π/9), (0,4), (-19/2,4).
+
+Dibuja simultáneamente la recta, la parábola y los puntos.
+Para ello, deberás hacer uso del comando wxplot2d con la opción discrete (consulta la ayuda de Maxima). 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Generar la base y el vector de los datos
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+Hemos de tener en cuenta que este ejercicio hace uso de lo anterior. Para ello, simplemente hemos de generar la base y un vector con las coordenadas en y.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Generar la base
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Intentaremos crear un módulo que genere la base para poder calcular los coeficientes de un polinomio de cualquier grado:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+genbase_polin(datos, grado) := append([makelist(1, i, 1, length(datos2))], makelist(makelist(datos[j][1]^(i-1), j, 1, length(datos)), i, 2, grado+1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Este módulo da un vector de vectores (que podrá usarse con lo anterior), que tiene primero el vector de unos, luego los datos elevados a 1, 2, 3, ..., grado.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Obtener coordenadas y
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Igualmente, hacemos un módulo que extrae las coordenadas y y las coloca en un vector (un simple makelist):
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+obtener_y(datos) := makelist(datos[i][2], i, 1, length(datos));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Algoritmo para problema general
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+Hemos dicho que el problema es muy similar. La diferencia radica en que ahora nuestra solución es x, no A.x.
+
+Despejando x tenemos que: x=(At.A)^-1.At.v. Hacemos, de forma análoga al ejercicio anterior:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+mejor_aprox_coef_mat(base, v) := ((transpose(toA(base)).toA(base))^^-1).(transpose(toA(base))).v;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mejor_aprox_coef(base, v) := mat1xn_a_vect(mejor_aprox_coef_mat(base,v));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Tenemos ahora las coordenadas, el x. Hacemos un módulo que obtenga los coeficientes del polinomio haciendo uso de los dos módulos
+implementados en el apartado anterior, el 2.1:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+mejor_aprox_polin_coord(datos,grado) := mejor_aprox_coef(genbase_polin(datos,grado), obtener_y(datos));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ahora sólo queda definir el polinomio a partir de los coeficientes:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+mejor_aprox_polin(datos, grado, t) := sum(mejor_aprox_polin_coord(datos, grado)[i]*t^(i-1), i, 2, grado+1) + mejor_aprox_polin_coord(datos,grado)[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Resolución del problema planteado
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: input   start ] */
+datos2 : [[1,2], [0,0], [-1.1,3.2], [2,π/9], [0,4], [-19/2,4]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Polinomios de primer y segundo grado
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Polinomio de primer grado (lineal):
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+float(mejor_aprox_polin(datos2, 1, t));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Polimonio de segundo grado (parabólico):
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+float(mejor_aprox_polin(datos2, 2, t));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Plots
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: comment start ]
+Obtenemos los puntos para plotearlos:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+obtener_x(datos) := makelist(datos[i][1], i, 1, length(datos));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v_x : obtener_x(datos2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+v_y : obtener_y(datos2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Plot de la función lineal:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d( [mejor_aprox_polin(datos2, 1, t), [discrete, v_x, v_y]], [t,-10,2.5], [style, lines, points], [legend, "aprox. lineal", "datos"] );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Plot de la función parabólica:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d( [mejor_aprox_polin(datos2, 2, t), [discrete, v_x, v_y]], [t,-10,2.5], [style, lines, points], [legend, "aprox. parabólica", "datos"] );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ambos plots:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d( [mejor_aprox_polin(datos2, 1, t), mejor_aprox_polin(datos2, 2, t), [discrete, v_x, v_y]], [t,-10,2.5], [style, lines, lines, points], [legend, "aprox. lineal", "aprox. parabólica", "datos"] );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+¡FUN FACT! [Las ventajas de la modularización ;)]
+    Podemos incluso hacer plot de un polinomio de grado 4 que aproxime los datos porque... por qué no ;)
+
+NOTA: me motivé en mi ordenador y puse grado 33. Funcionó, pero no es recomendable. Además, el de grado 4 sale ya monísimo :P
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d( [mejor_aprox_polin(datos2, 4, t), [discrete, v_x, v_y]], [t,-10,2.5], [style, lines, points], [legend, "grado 4", "datos"] );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: section start ]
+Ejercicio 3
+   [wxMaxima: section end   ] */
+
+/* [wxMaxima: comment start ]
+Determina la proyección ortogonal de la función f de C[0,2π] definida como f(x)=(x-2π)^2 en el subespacio vectorial
+
+    S=lin{1, x, sen x, cos 2x, e^x}
+
+y dibuja conjuntamente las gráficas de f y de su proyección.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: subsect start ]
+Algoritmo para el problema general
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: comment start ]
+Primero, hemos de crear las matrices A y b, a partir de los siguientes datos:
+
+    f es la función que queremos aproximar, con respecto a la variable t
+    base es la base con las funciones expresadas con respecto a la variable t
+    a y b son los extremos del espacio vectorial de funciones continuas C[a,b]
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+toA_fcont(base,t, a,b) := genmatrix(lambda([i,j], integrate(base[i]*base[j], t, a,b)), length(base), length(base));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+tob_fcont(base,f,t, a,b) := genmatrix(lambda([i,j], integrate(base[i]*f(t), t, a,b)), length(base), 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ahora nos queda resolver el SEL A.x=b. x serán las coordenadas de la mejor aproximación en la base.
+Despejando, nos queda x=A^-1.b. Procedemos de forma similar al ejercicio anterior.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+mejor_aprox_fcont_coord(base, f,t, a,b) := mat1xn_a_vect((toA_fcont(base,t, a,b)^^-1).tob_fcont(base, f,t, a,b));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mejor_aprox_fcont(base, f,t, a,b) := sum(mejor_aprox_fcont_coord(base, f,t, a,b)[i] * base[i], i, 1, length(base));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Resolución del problema planteado
+   [wxMaxima: subsect end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Obtención de mejor aproximación
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: input   start ] */
+f(t) := (t - 2*π)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+base3 : [1, t, sin(t), cos(2*t), (%e)^t];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(mejor_aprox_fcont(base3, f(t),t, 0,2*π));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsubsect start ]
+Plot
+   [wxMaxima: subsubsect end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d( [f(t), mejor_aprox_fcont(base3, f(t),t, 0,2*π)], [t,0,2*π], [legend, "f(t)", "aproximación"] );
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
