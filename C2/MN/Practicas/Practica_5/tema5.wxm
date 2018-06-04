@@ -166,11 +166,11 @@ Comprobamos la ortogonalidad:
    [wxMaxima: comment end   ] */
 
 /* [wxMaxima: input   start ] */
-prod_escalar(vector, vector-aprox1);
+prod_escalar(aprox1, vector-aprox1);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: input   start ] */
-prod_escalar(vector, vector-aprox2);
+prod_escalar(aprox2, vector-aprox2);
 /* [wxMaxima: input   end   ] */
 
 /* [wxMaxima: comment start ]
