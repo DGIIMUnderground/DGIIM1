@@ -27,7 +27,7 @@ Class Dissee{
         int numero;
         int * puntero;      
     public:
-        Dissee(const Dissee otro_objeto ){
+        Dissee(const Dissee & otro_objeto ){
             numero  = otro_objeto.numero;
             puntero = new int;
             *puntero = otro_objeto.*puntero;
@@ -253,7 +253,7 @@ Class Dissee{
         int numero;
         int * puntero;      //Recuerda que los arrays pueden ser punteros
     public:
-        bool SaveFile(string archivo){
+        bool SaveFile(string archivo) const{
 
             //Creamos flujo y abrirmos archivo
             ofstream salida;
