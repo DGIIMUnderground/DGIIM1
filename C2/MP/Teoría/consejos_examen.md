@@ -84,7 +84,14 @@ class Disseee{
         }
 }
 ```
-Tenemos que hacer un `return *this`. ¿Por qué? Porque queremos modificar nuestro objeto. En otros operadores, devolveremos otros de la misma clase, pero no cambiamos el nuestro. 
+Tenemos que hacer un `return *this`. ¿Por qué? Porque queremos modificar nuestro objeto. Esto nos permite la concatenación del operador de asiganción, de la siguiente forma:
+```cppp
+	Disseee a, b, c;
+	//...
+	a = b = c; //a y b toman el valor de c
+```
+
+En otros operadores, devolveremos otros de la misma clase, pero no cambiamos el nuestro. 
 
 # Destructor
 Se encarga de liberar la memoria dinámica. Y ya. Se hacen casi siempre así: 
@@ -100,6 +107,7 @@ Se encarga de liberar la memoria dinámica. Y ya. Se hacen casi siempre así:
         }
 }
 ```
+Con el destructor, se liberará la memoria dinámeica automáticamente al salir de una función o de un bloque de sentencias, sin necesidad de llamarlo explícitamente.
 
 # Otros operadores
 Son bastantes similares. Podemos hacerlas como funciones externas o internas a la clase. Si queremos hacerlas externas, tenemos que hacerlas `friend`: 
@@ -214,7 +222,7 @@ Class Disseee{
         int numero;
         int * puntero;      //Recuerda que los arrays pueden ser punteros
     public:
-        bool LoadFile(string archivo){
+        bool LoadFile(string archivo){ //OJO: en el examen es preferible usar cadenas de caracteres tipo c en lugar de la clase string. Sí, son horribles y no demasiado útiles, pero es lo que hay.
 
             //Creamos flujo y abrirmos archivo
             ifstream entrada;
@@ -290,7 +298,7 @@ Los fundamentos de escritura de código a papel y en ordenador son exactamente l
 
 **Piensa con calma qué te dan y qué te piden**. Es MUY importante entender esto bien. Gasta el tiempo que necesites, y pregúntale al profesor tantas veces como haga falta. Pero las conclusiones a las que llegues aquí determinan el tiempo y la limpieza con la que harás el examen.
 
-Una vez lo sepas, intenta escribir bien. Un código limpio es un código feliz. Y más si es a papel. Si lo necesitas, usa un folio aparte para hacer guarradas. Después lo pasas a limpio.
+Una vez lo sepas, intenta escribir bien. Un código limpio es un código feliz. Y más si es a papel. Si lo necesitas, usa un folio aparte para sucio. Después lo pasas a limpio.
 
 Recuerda pensar qué te piden en cada apartado. Muchas veces puedes reusar los anteriores, y se te queda muy limpico el actual
   
