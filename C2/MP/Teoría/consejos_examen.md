@@ -1,12 +1,12 @@
 # Preámbulos
-Esta es una pequeña guía de cómo afrontar el examen de MP. La he escrito en media mañana, y es posible que haya erratas. Si veis alguna, hacédmelo saber, o actualizad el archivo en [el repositorio de DGIIM Underground](https://github.com/DGIIMUnderground/DGIIM1). Si queréis mejorar el archivo con vuestros ejemplos o consejos, adelante. Encantadísimo que estaría. ¡Espero que os sea útil!
-<div style="text-align: right"> -Asmilex </div>
+Esta es una pequeña guía de cómo afrontar el examen de MP. No es un documento preciso, ni técnico; nunca ha sido su finalidad. Sin embargo, sirve como repaso para las implementaciones de punteros, constructores, sobrecarga de operadores y entradas y salidas a ficheros. Si encontráis alguna errata, o queréis aportar nueva información, el documento está disponible en [el repositorio de DGIIM Underground](https://github.com/DGIIMUnderground/DGIIM1). Estaríamos encantadísimos de que fuera participarais. ¡Esperamos que os sea útil!
+-DGIIM Underground
 
 # Constructores por defecto:
 En la mayoría de los casos, inicializar los miembros estáticos a 0, -1 o similares. Ejemplo: `int`, `double`, etc.
 Punteros: inicializarlos a `0` = `nullptr`. Ejemplo:
 ```cpp
-Class Disseee{
+class Disseee{
     private:
         int numero;
         int * puntero;      //Recuerda que los arrays pueden ser punteros
@@ -15,14 +15,14 @@ Class Disseee{
             numero  = 0;
             puntero = nullptr;
         }
-}
+};
 ```
 
 # Constructores de copia
-Reciben un objeto de la misma clase, y copian sus datos al nuevo. 
+Reciben un objeto de la misma clase, y copian sus datos al nuevo.
 ¡Cuidado con asignar los punteros a la ligera!
 ```cpp
-Class Disseee{
+class Disseee{
     private:
         int numero;
         int * puntero;      
@@ -32,13 +32,13 @@ Class Disseee{
             puntero = new int;
             *puntero = otro_objeto.*puntero;
         }
-}
+};
 ```
 Lo que buscamos al igualar punteros es copiar el **contenido** de la dirección del puntero, **no las direcciones** . Por eso, en este caso, `puntero = otro_objeto.puntero` sería incorrecto. Haríamos que nuestro objeto a crear apunte a la zona de memoria de `otro_objeto`
 
 Si nuestros punteros son arrays(que lo van a ser en el examen) se haría así:
 ```cpp
-Class Disseee{
+class Disseee{
     private:
         int numero;
         int * puntero;      
@@ -46,18 +46,18 @@ Class Disseee{
         Disseee(const Disseee & otro_objeto ){
             numero  = otro_objeto.numero;
             puntero = new int [numero];      //supongamos que numero es la dimensión del array
-            
+
             for (int i=0; i<numero; i++)
                 puntero[i] = otro_objeto.puntero[i];
         }
-}
+};
 ```
 El operador `*` y `[]` para arrays son extremadamente similares. Para nuestro nivel de aprendizaje, idénticos. Ambos acceden al valor que reside en su zona de memoria a la que apunta el puntero
 
 # Operador de asignación
 Es exactamente igual el de copia, con un ligero matiz. Como hacen lo mismo, vamos a _copiar_ en una función aparte lo que teníamos en el constructor de copia anterior. Para no repetir código, vamos. Por vagos. Veamos un ejemplo:
 ```cpp
-Class Disseee{
+class Disseee{
     private:
         int numero;
         int * puntero;      
@@ -66,7 +66,7 @@ Class Disseee{
             Copiar(otro_objeto);
         }
         //    v         <- Notice me//
-        Disseee& operator=(const Disseee& otro_objeto){ 
+        Disseee& operator=(const Disseee& otro_objeto){
             if (&otro_objeto != this) //Comprobamos que no asignamos un objeto a sí mismo.
             	Copiar(otro_objeto);
             return *this;
@@ -74,21 +74,22 @@ Class Disseee{
 
         void Copiar(const Disseee & otro_objeto){
             numero  = otro_objeto.numero;
-            if (puntero != NULL) //o de 0 o de nullptr
-            	delete [] puntero;  //para no perder memoria por el camino si la asignacion es en un objeto ya hecho.
+            if (puntero != NULL)             //NULL = 0 = nullptr. Lo mismo da que da lo mismo
+            	delete [] puntero;           //Para no perder memoria por el camino si la asignacion es en un objeto ya hecho.
             puntero = new int [numero];      //supongamos que numero es la dimensión del array
-            
+
             for (int i=0; i<numero; i++)
                 puntero[i] = otro_objeto.puntero[i];
-        }//Disseee esta función suele ser private para proteger acceso indebido a datos miembros, pero en este ejemplo la hemos puesto pública porque total, es un ejemplo.
-}
+        }                                   
+};
 ```
-Tenemos que hacer un `return *this`. ¿Por qué? Porque queremos modificar nuestro objeto. En otros operadores, devolveremos otros de la misma clase, pero no cambiamos el nuestro. 
+
+Tenemos que hacer un `return *this`. ¿Por qué? Porque queremos modificar nuestro objeto. En otros operadores, devolveremos otros de la misma clase, pero no cambiamos el nuestro.
 
 # Destructor
-Se encarga de liberar la memoria dinámica. Y ya. Se hacen casi siempre así: 
+Se encarga de liberar la memoria dinámica. Y ya. Se hacen casi siempre así:
 ```cpp
-    Class Disseee{
+    class Disseee{
     private:
         int numero;
         int * puntero;      
@@ -97,15 +98,15 @@ Se encarga de liberar la memoria dinámica. Y ya. Se hacen casi siempre así:
             if (puntero != nullptr)
                 delete [] puntero;
         }
-}
+};
 ```
 
 # Otros operadores
-Son bastantes similares. Podemos hacerlas como funciones externas o internas a la clase. Si queremos hacerlas externas, tenemos que hacerlas `friend`: 
+Son bastantes similares. Podemos hacerlas como funciones externas o internas a la clase. Si queremos hacerlas externas, tenemos que hacerlas `friend`:
 
-Supongamos que lo que hace el operador + es sumar ambos arrays. Lo haríamos así: 
+Supongamos que lo que hace el operador + es sumar ambos arrays. Lo haríamos así:
 ```cpp
-Class Disseee{
+class Disseee{
     private:
         int numero;
         int * puntero;      
@@ -116,19 +117,19 @@ Class Disseee{
 //Aquí ya no lleva friend. Ten en cuenta eso
 Disseee operator+(const Disseee& primero, const Disseee& segundo){
     //Implementación
-}
+};
 ```
 Ya que estamos, vamos a implementarlo:
 ```cpp
 Disseee operator+(const Disseee& primero, const Disseee& segundo){
 
     //Los pasos serían: hacer un nuevo objeto y copiar ambos objetos poco a poco
-    
+
     Disseee resultado;
     resultado.numero = primero.numero + segundo.numero;
 
-    /*Tenemos que copiarnos los VALORES de los punteros, pero no sus direcciones. Para 
-      Ello, tenemos que reservar nueva memoria, y empezar a pasar poco a poco. 
+    /*Tenemos que copiarnos los VALORES de los punteros, pero no sus direcciones. Para
+      Ello, tenemos que reservar nueva memoria, y empezar a pasar poco a poco.
       Siempre es así (para nuestro examen, de momento)*/
 
     resultado.puntero = new int [resultado.numero];
@@ -146,13 +147,13 @@ Disseee operator+(const Disseee& primero, const Disseee& segundo){
     }
 
     return resultado;
-}
+};
 ```
-No olvides que los operadores son funciones. Puestas mu bonicas, pero funciones. Como toda función, tiene un valor de retorno, unos parámetros pasados y un nombre. 
+No olvides que los operadores son funciones. Puestas mu bonicas, pero funciones. Como toda función, tiene un valor de retorno, unos parámetros pasados y un nombre.
 
 Lo que devuelve va al principio. En la suma de arriba, nos devuelve un objeto de la clase Disseee. El nombre de la función es `operator+` (y se le invoca poniendo solo +. Una suma de toda la vida, vamos), y recibe lo que te haga falta.
 
-Si lo hacemos como método de la clase, recuerda que en la llamada va intrínseco el primer objeto. Por ejemplo, imagina que hubiéramos hecho la suma como método. Entonces, la cabecera sería así: 
+Si lo hacemos como método de la clase, recuerda que en la llamada va intrínseco el primer objeto. Por ejemplo, imagina que hubiéramos hecho la suma como método. Entonces, la cabecera sería así:
 
 ```cpp
 Disseee operator+(const Disseee& segundo) const{
@@ -161,7 +162,7 @@ Disseee operator+(const Disseee& segundo) const{
 ```
 De hecho, implementémoslo. Todo es prácticamente lo mismo. Para matizar dónde está el primer objeto de antes, voy a usar `this`:
 ```cpp
-Class Disseee{
+class Disseee{
     private:
         int numero;
         int * puntero;      
@@ -169,7 +170,7 @@ Class Disseee{
         Disseee operator+(const Disseee& segundo) const {
 
             //Hacemos un nuevo objeto y copiamos ambos objetos
-            
+
             Disseee resultado;
             resultado.numero = this->numero + segundo.numero;
 
@@ -204,14 +205,14 @@ Vamos a implementar ambas para nuestra cutre-clase. Primero, tenemos que ver có
 4
 1 53 63 -1
 ```
-donde el primer número corresponde al miembro privado `numero` y los otros son los que van en el array `* puntero`. En este caso, sería así: 
+donde el primer número corresponde al miembro privado `numero` y los otros son los que van en el array `* puntero`. En este caso, sería así:
 
 ## Lectura de archivo
 ```cpp
-Class Disseee{
+class Disseee{
     private:
         int numero;
-        int * puntero;      //Recuerda que los arrays pueden ser punteros
+        int * puntero;      
     public:
         bool LoadFile(string archivo){
 
@@ -224,11 +225,11 @@ Class Disseee{
                 cout <<"El archivo no se ha abierto correctamente";
                 return false; //También podríamos usar cerr al ser código de error.
             }
-            
-            int n; 
+
+            int n;
             entrada >> n;
 
-            /*Esta parte no es tan mecánica. Se reduce ahora en hacerse un nuevo 
+            /*Esta parte no es tan mecánica. Se reduce ahora en hacerse un nuevo
               array del tamaño adecuado, e ir metiendo los valores del fichero.
               Depende en su totalidad de cómo esté organizado el formato del fichero
               En nuestro caso:*/
@@ -242,19 +243,19 @@ Class Disseee{
 
             //Cerramos el fichero y devolvemos true para indicar que ha ido bien
             entrada.close();
-            
+
             return true;
         }
-}
+};
 ```
 
 ## Escritura de archivo
 Realmente, ambas son funciones similares. Los pasos siguen siendo los mismos:
 ```cpp
-Class Disseee{
+class Disseee{
     private:
         int numero;
-        int * puntero;      //Recuerda que los arrays pueden ser punteros
+        int * puntero;      
     public:
         bool SaveFile(string archivo) const{
 
@@ -267,7 +268,7 @@ Class Disseee{
                 cout <<"El archivo no se ha abierto correctamente";
                 return false;
             }
-            
+
             //Escribimos en archivo con el formato que nos han indicado
             salida <<this->numero;
 
@@ -277,10 +278,10 @@ Class Disseee{
 
             //Cerramos el fichero y devolvemos true para indicar que ha ido bien
             salida.close();
-            
+
             return true;
         }
-}
+};
 ```
 
 Hey! Mapachana al habla, solo quería recordar en este pequeño párrafo que si en vez de pedirnos una función de escribir o cargar archivo se pide sobrecargar el operador `<<` o `>>` la implementaación sería la misma sin que el flujo sea un fichero, devolviendo `ostream&` o `istream&` y la función sería externa, pero siendo `friend` a la clase. Dejo aquí esta cabecera:
@@ -297,7 +298,7 @@ Los fundamentos de escritura de código a papel y en ordenador son exactamente l
 Una vez lo sepas, intenta escribir bien. Un código limpio es un código feliz. Y más si es a papel. Si lo necesitas, usa un folio aparte para hacer guarradas. Después lo pasas a limpio.
 
 Recuerda pensar qué te piden en cada apartado. Muchas veces puedes reusar los anteriores, y se te queda muy limpico el actual
-  
+
 ## Sobre memoria dinámica
 Es bastante posible que tengas que reservar y liberar memoria en varios métodos, sea cual sea el motivo. Aunque pueden llegar a ser funciones muy tontas, a veces viene bien tenerlas en funciones aparte. Suelen tener este formato:
 ### Reservas de memoria:
@@ -305,7 +306,7 @@ Es bastante posible que tengas que reservar y liberar memoria en varios métodos
     void ReservarMemoria(int dimension){
         if (puntero != nullptr)
             LiberarMemoria();
-        
+
         numero  = dimension;
         puntero = new int [dimension];'
     }
@@ -322,24 +323,25 @@ No tiene mucha complicación. Eliminas lo que tengas (si es que tienes algo), y 
         numero = 0;
     }
 ```
-De nuevo, hemos supuesto que `numero` almacena la dimensión del array. 
+De nuevo, hemos supuesto que `numero` almacena la dimensión del array.
 
 Podemos reusar estas funciones para diferentes métodos. Incluso constructores. Por ejemplo, el destructor de la clase anterior quedaría así:
 ```cpp
-    Class Disseee{
+    class Disseee{
     private:
         int numero;
-        int * puntero;      //Recuerda que los arrays pueden ser punteros
+        int * puntero;      
     public:
         ~Disseee(){
             LiberarMemoria();
         };
-        
+
         void LiberarMemoria(){
             if (this->puntero != nullptr)
                 delete[] puntero;
             numero = 0;
         }
 
-}
+};
 ```
+Estas funciones que hemos puesto en esta última parte suelen ir en `private`. Son métodos que el usuario no debería ser capaz de tocar a la ligera. Sin embargo, aquí están propuestas en la parte pública por mantener un orden didáctico. ¡Pero en tu implementación, hazlas privadas!
