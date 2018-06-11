@@ -1,5 +1,5 @@
 # Preámbulos
-Esta es una pequeña guía de cómo afrontar el examen de MP. La he escrito en media mañana, y es posible que haya erratas. Si veis alguna, hacémelo saber, o actualizad el archivo en [el repositorio de DGIIM Underground](https://github.com/DGIIMUnderground/DGIIM1). Si queréis mejorar el archivo con vuestros ejemplos o consejos, adelante. Encantadísimo que estaría. ¡Espero que os sea útil!
+Esta es una pequeña guía de cómo afrontar el examen de MP. La he escrito en media mañana, y es posible que haya erratas. Si veis alguna, hacédmelo saber, o actualizad el archivo en [el repositorio de DGIIM Underground](https://github.com/DGIIMUnderground/DGIIM1). Si queréis mejorar el archivo con vuestros ejemplos o consejos, adelante. Encantadísimo que estaría. ¡Espero que os sea útil!
 <div style="text-align: right"> -Asmilex </div>
 
 # Constructores por defecto:
