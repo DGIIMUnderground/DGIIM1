@@ -1,5 +1,5 @@
 # Preámbulos
-Esta es una pequeña guía de cómo afrontar el examen de MP. La he escrito en media mañana, y es posible que haya erratas. Si veis alguna, hacémdelo saber, o actualizad el archivo en [el repositorio de DGIIM Underground](https://github.com/DGIIMUnderground/DGIIM1). Si queréis mejorar el archivo con vuestros ejemplos o consejos, adelante. Encantadísimo que estaría. ¡Espero que os sea útil!
+Esta es una pequeña guía de cómo afrontar el examen de MP. La he escrito en media mañana, y es posible que haya erratas. Si veis alguna, hacédmelo saber, o actualizad el archivo en [el repositorio de DGIIM Underground](https://github.com/DGIIMUnderground/DGIIM1). Si queréis mejorar el archivo con vuestros ejemplos o consejos, adelante. Encantadísimo que estaría. ¡Espero que os sea útil!
 <div style="text-align: right"> -Asmilex </div>
 
 # Constructores por defecto:
@@ -36,7 +36,7 @@ Class Dissee{
 ```
 Lo que buscamos al igualar punteros es copiar el **contenido** de la dirección del puntero, **no las direcciones** . Por eso, en este caso, `puntero = otro_objeto.puntero` sería incorrecto. Haríamos que nuestro objeto a crear apunte a la zona de memoria de `otro_objeto`
 
-Si nuestros punteros son arrays(que lo van a ser en el exanen) se haría así:
+Si nuestros punteros son arrays(que lo van a ser en el examen) se haría así:
 ```cpp
 Class Dissee{
     private:
@@ -55,7 +55,7 @@ Class Dissee{
 El operador `*` y `[]` para arrays son extremadamente similares. Para nuestro nivel de aprendizaje, idénticos. Ambos acceden al valor que reside en su zona de memoria a la que apunta el puntero
 
 # Operador de asignación
-Es exactamente igual al de copia, con un ligero matiz. Como hacen lo mismo, vamos a _copiar_ en una función aparte lo que teníamos en el constructor de copia anterior. Para no repetir código, vamos. Por vagos. Veamos un ejemplo:
+Es exactamente igual el de copia, con un ligero matiz. Como hacen lo mismo, vamos a _copiar_ en una función aparte lo que teníamos en el constructor de copia anterior. Para no repetir código, vamos. Por vagos. Veamos un ejemplo:
 ```cpp
 Class Dissee{
     private:
@@ -67,17 +67,20 @@ Class Dissee{
         }
         //    v         <- Notice me//
         Dissee& operator=(const Dissee& otro_objeto){ 
-            Copiar(otro_objeto);
+            if (&otro_objeto != this) //Comprobamos que no asignamos un objeto a sí mismo.
+            	Copiar(otro_objeto);
             return *this;
         }
 
         void Copiar(const Dissee & otro_objeto){
             numero  = otro_objeto.numero;
+            if (puntero != NULL) //o de 0 o de nullptr
+            	delete [] puntero;  //para no perder memoria por el camino si la asignacion es en un objeto ya hecho.
             puntero = new int [numero];      //supongamos que numero es la dimensión del array
             
             for (int i=0; i<numero; i++)
                 puntero[i] = otro_objeto.puntero[i];
-        }
+        }//Dissee esta función suele ser private para proteger acceso indebido a datos miembros, pero en este ejemplo la hemos puesto pública porque total, es un ejemplo.
 }
 ```
 Tenemos que hacer un `return *this`. ¿Por qué? Porque queremos modificar nuestro objeto. En otros operadores, devolveremos otros de la misma clase, pero no cambiamos el nuestro. 
@@ -219,7 +222,7 @@ Class Dissee{
             //Comprobamos que se ha abierto bien
             if (!entrada){
                 cout <<"El archivo no se ha abierto correctamente";
-                return false;
+                return false; //También podríamos usar cerr al ser código de error.
             }
             
             int n; 
@@ -279,6 +282,11 @@ Class Dissee{
         }
 }
 ```
+
+Hey! Mapachana al habla, solo quería recordar en este pequeño párrafo que si en vez de pedirnos una función de escribir o cargar archivo se pide sobrecargar el operador `<<` o `>>` la implementaación sería la misma sin que el flujo sea un fichero, devolviendo `ostream&` o `istream&` y la función sería externa, pero siendo `friend` a la clase. Dejo aquí esta cabecera:
+```cpp
+friend ostream& operator<<(const Dissee& unobjeto);
+```
 # Consejos generales
 
 ## Cómo afrontar un examen a papel
@@ -291,7 +299,7 @@ Una vez lo sepas, intenta escribir bien. Un código limpio es un código feliz. 
 Recuerda pensar qué te piden en cada apartado. Muchas veces puedes reusar los anteriores, y se te queda muy limpico el actual
   
 ## Sobre memoria dinámica
-Es bastante posible que tengas que reservar y liberar memoria en varios métodos, sea cual sea el motivo. Aunque pueden llegar a ser funciones muy tontas, a veces viene bien tenerlas en funciones a parte. Suelen tener este formato:
+Es bastante posible que tengas que reservar y liberar memoria en varios métodos, sea cual sea el motivo. Aunque pueden llegar a ser funciones muy tontas, a veces viene bien tenerlas en funciones aparte. Suelen tener este formato:
 ### Reservas de memoria:
 ```cpp
     void ReservarMemoria(int dimension){
