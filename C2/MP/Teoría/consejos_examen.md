@@ -1,6 +1,6 @@
 # Preámbulos
-Esta es una pequeña guía de cómo afrontar el examen de MP. La he escrito en media mañana, y es posible que haya erratas. Si veis alguna, hacédmelo saber, o actualizad el archivo en [el repositorio de DGIIM Underground](https://github.com/DGIIMUnderground/DGIIM1). Si queréis mejorar el archivo con vuestros ejemplos o consejos, adelante. Encantadísimo que estaría. ¡Espero que os sea útil!
-<div style="text-align: right"> -Asmilex </div>
+Esta es una pequeña guía de cómo afrontar el examen de MP. No es un documento preciso, ni técnico; nunca ha sido su finalidad. Sin embargo, sirve como repaso para las implementaciones de punteros, constructores, sobrecarga de operadores y entradas y salidas a ficheros. Si encontráis alguna errata, o queréis aportar nueva información, el documento está disponible en [el repositorio de DGIIM Underground](https://github.com/DGIIMUnderground/DGIIM1). Estaríamos encantadísimos de que fuera participarais. ¡Esperamos que os sea útil!
+-DGIIM Underground
 
 # Constructores por defecto:
 En la mayoría de los casos, inicializar los miembros estáticos a 0, -1 o similares. Ejemplo: `int`, `double`, etc.
@@ -74,13 +74,13 @@ class Disseee{
 
         void Copiar(const Disseee & otro_objeto){
             numero  = otro_objeto.numero;
-            if (puntero != NULL) //o de 0 o de nullptr
-            	delete [] puntero;  //para no perder memoria por el camino si la asignacion es en un objeto ya hecho.
+            if (puntero != NULL)             //NULL = 0 = nullptr. Lo mismo da que da lo mismo
+            	delete [] puntero;           //Para no perder memoria por el camino si la asignacion es en un objeto ya hecho.
             puntero = new int [numero];      //supongamos que numero es la dimensión del array
 
             for (int i=0; i<numero; i++)
                 puntero[i] = otro_objeto.puntero[i];
-        }//Disseee esta función suele ser private para proteger acceso indebido a datos miembros, pero en este ejemplo la hemos puesto pública porque total, es un ejemplo.
+        }                                   
 };
 ```
 
@@ -212,7 +212,7 @@ donde el primer número corresponde al miembro privado `numero` y los otros son 
 class Disseee{
     private:
         int numero;
-        int * puntero;      //Recuerda que los arrays pueden ser punteros
+        int * puntero;      
     public:
         bool LoadFile(string archivo){
 
@@ -255,7 +255,7 @@ Realmente, ambas son funciones similares. Los pasos siguen siendo los mismos:
 class Disseee{
     private:
         int numero;
-        int * puntero;      //Recuerda que los arrays pueden ser punteros
+        int * puntero;      
     public:
         bool SaveFile(string archivo) const{
 
@@ -330,7 +330,7 @@ Podemos reusar estas funciones para diferentes métodos. Incluso constructores. 
     class Disseee{
     private:
         int numero;
-        int * puntero;      //Recuerda que los arrays pueden ser punteros
+        int * puntero;      
     public:
         ~Disseee(){
             LiberarMemoria();
@@ -344,3 +344,4 @@ Podemos reusar estas funciones para diferentes métodos. Incluso constructores. 
 
 };
 ```
+Estas funciones que hemos puesto en esta última parte suelen ir en `private`. Son métodos que el usuario no debería ser capaz de tocar a la ligera. Sin embargo, aquí están propuestas en la parte pública por mantener un orden didáctico. ¡Pero en tu implementación, hazlas privadas!
