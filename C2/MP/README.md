@@ -10,16 +10,14 @@ A continuación, una clasificación de los contenidos de la asignatura:
 
 Carpeta                  | Descripción
 ---                      | ---
-[Teoría](Teoría) | Teoría de MP.
-∟ [Apuntes](Teoría/Apuntes) | Apuntes de *temas completos* MP hechos en Markdown.
-∟ [Anotaciones](Teoría/Anotaciones) | Anotaciones en clase de teoría de MP.
 [Ejercicios](Ejercicios) | Ejercicios de MP.
 ∟ [Teoría](Ejercicios/Teoría) | Ejercicios de relaciones de teoría de MP.
 ∟ [Otros](Ejercicios/Otros) | Otros ejercicios (ej. libro Antonio Garrido)
+[Exámenes](Exámenes) | Exámenes varios de MP resueltos. Consulta la base de Datos de la DEIIT para obtenerlos
 [Prácticas](Prácticas) | Prácticas de MP resueltas.
-[Exámenes](Exámenes) | Exámenes de MP resueltos.
-∟ [Teoría](Exámenes/Teoría) | Exámenes de MP de teoría resueltos.
-∟ [Prácticas](Exámenes/Prácticas) | Exámenes de MP de prácticas resueltos.
+[Teoría](Teoría) | Teoría de MP.
+∟ [Apuntes](Teoría/ApuntesClase) | Apuntes de *temas completos* MP hechos en Markdown, así como varios sueltos
+[Manejo de celdas](manejo_de_celdas) | Apuntes y ejercicios de celdas enlazadas
 
 ### En Google Drive
 
