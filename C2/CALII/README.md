@@ -6,13 +6,6 @@ Bienvenidos a la asignatura de **Cálculo II**.
 
 A continuación, una clasificación de los contenidos de la asignatura:
 
-### En GitHub
-
-Carpeta                  | Descripción
----                      | ---
-
-__*__: en proceso de creación, no finalizado.
-
 ### En Google Drive
 
 Carpeta         | Descripción
