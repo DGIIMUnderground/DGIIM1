@@ -12,11 +12,12 @@ A continuación, una clasificación de los contenidos de la asignatura:
 
 Carpeta                  | Descripción
 ---                      | ---
-[Apuntes](Apuntes)       | Apuntes hechos en LaTeX de EDIP.  __*__
-[Relaciones](Relaciones) | Relaciones de ejercicios de EDIP, en LaTeX.
-[Cuestiones](Cuestiones) | Cuestiones planteadas por el profesor en clase.
+[Apuntes](Apuntes)       | Apuntes hechos en LaTeX de EDIP
+[Problemas/Probabilidad](Problemas/Probabilidad) | Programa para resolver un problema planteado. Mira el comentario inicial 
+[Tema1](Tema1)           | Estadística descriptiva unidimensional 
+[Tema2](Tema2)           | Estadística descriptiva bidimensional
 
-__*__: en proceso de creación, no finalizado.
+
 
 ### En Google Drive
 
