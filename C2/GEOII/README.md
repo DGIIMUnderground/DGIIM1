@@ -10,9 +10,7 @@ A continuación, una clasificación de los contenidos de la asignatura:
 
 Carpeta                  | Descripción
 ---                      | ---
-[Apuntes](Apuntes)       | Apuntes hechos en LaTeX de GEOII. __*__
-
-__*__: en proceso de creación, no finalizado.
+[Apuntes](Apuntes)       | Apuntes hechos en LaTeX y PDFs de GEOII
 
 ### En Google Drive
 
