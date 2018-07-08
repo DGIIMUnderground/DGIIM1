@@ -3,7 +3,6 @@
 El contenid que encontrarás aquí será:
 
 ### Resúmenes hechos por nosotros
-
- Documento     	                                  | Descripción
- ---                               		          | ---
-  | Ecuaciones generales y útiles del tema de corriente continua. (sin explicaciones de los métodos.)
+- Una memoria de la práctica de diodos y MOSFETs
+- Un pequeñito resumen del teorema de Gauss
+- Preguntas cortas y sus correspondientes respuestas de corriente continua
