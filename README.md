@@ -1,7 +1,6 @@
 # 1º DGIIM
 
-Repositorio de apuntes de 1º del Doble grado de Ingeniería Informática y Matemáticas de la UGR
-Nuestro objetivo es mantener un espacio separado para el curso y luego fusionar los cambios con el [repositorio general del grado - LibreIM](https://github.com/libreim/apuntesDGIIM/)
+Repositorio de apuntes de 1º del Doble grado de Ingeniería Informática y Matemáticas de la UGR, realizado por los estudiantes de dicho curso durante el año académico 2017/2018
 
 ## ¿Por qué debería colaborar en este maravilloso repositorio?
 Trabajar en vano no es algo deseado, pero la generosidad en épocas electivas sí. Entre todos, nos proponemos los siguientes objetivos para mejorar:
