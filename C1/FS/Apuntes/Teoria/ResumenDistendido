@@ -1,0 +1,81 @@
+------------------------------
+            Registros
+------------------------------
+Memoria de menor capacidad y más rápida que la principal. 
+Funciones: 
+|> Visibles para el usuario. Se puede acceder a ella, leer las instrucciones en lenguaje máquina y optimizar el uso de variables y de RAM
+|> Registros de control y estado. Usados por el SO y procesador para controlar ejecuciones de programas
+
+Se necesita usar lenguaje máquina para modificar registros
+
+Tipos de registros:
+|> De datos: Usados por los programadores, aunque con restricciones. 
+|> De direcciones: contienen direcciones a RAM con datos. La dirección puede ser parcial. Ejemplos de registros de direcciones:
+    -> Registros índices: suma un índice a una base para obtener la dirección completa
+    -> Punteros de segmento: Divide la memoria en segmentos de cierta longitud. Cada dirección consta de uan referencia a un segmento y su desplazamiento dentro de este
+    -> Puntero de pila: permite el uso de instrucciones que no contienen campo de dirección. 
+|> De códigos de condición: se usan para controlar el estado del procesador. No suelen ser visibles para el usuario. Ejemplos: 
+    -> Contador de programa (PC, program counter): direccion de la próxima instrucción leída.
+    -> Instrucción de registro: contiene la última dirección leída
+    -> Códigos de condicion: bits asignados teniendo en cuenta el resultado de operaciones, o para realizar trampas, etc...
+
+------------------------------
+  Ejecución de instrucciones
+------------------------------
+Divisón de acciones:
+|> Procesador-memoria
+|> Procedaor-I/O
+|> Procesamiento de datos (Operaciones Aritmético - Lógicas)
+|> Control
+
+------------------------------
+        Técnicas I/O
+------------------------------
+|> I/O programada: la más básica de todas. El procesador es responsable de saber cuándo ha finalizado el proceso de entrada, salida (o si se necesita), por lo que se debe
+comprobar periódicamente. Además, es responsable de extraer los propios datos. Al tener que realizar todo él mismo, incluidas comprobaciones, esto hace que sea muy lento
+|> I/O dirigida con interrupciones: ahora, el procesador genera la orden de I/O, y realiza un trabajo de mientras. Cuando la I/O esté lista, el procesador vuelve al traspaso de datos
+Es más eficiente que la anterior, pues elimina el tiempo de espera innecesario. 
+Aún así, sigue siendo bastante lento, porque cada palabra de datos que va desde RAM hasta I/O pasa por la CPU
+|> Direct Access Memory (DMA): Ahora, un nuevo módulo integrado en la I/O se encarga de gestionar todo el traspaso de datos: La CPU manda la instrucción, cantidad de datos, dirección de memoria, palabras... etc
+Así, la CPU se quedad libre de trabajo, y solo se encarga de encarga de general la propia señal, mandarla, y recibir la respuesta del módulo. No es perfecto, ya que los buses se pueden saturar, y el DMA tiene prioridad, pero es mejor que lo que había antes 
+
+------------------------------
+Seguridad varia, y modo kernel
+------------------------------
+I/O solo es accesible en modo admin para evitar acceder a información sensible 
+Solo existe una instrucción máquina para pasar de kernel a usuario. Sin embargo, una trap pasa de usuario a kernel (a través de una interrupción)
+Mecanismos de protección de memoria (pointer exception, amairite). No toques zonas de memoria que no te correspondan. 
+    |> (SIN MEMORIA VIRTUAL) Para solucionar esto, se incluyen una pareja de registros barrera (límite y base). La zona de memoria asignada está entre esos límites. 
+    |> (CON MEMORIA VIRTUAL) 
+        -> Con permisos de usuario, no se pueden acceder a determinadas zonas del mapa de memoria. 
+        -> Otro método consiste en crear un registro RIED. Cada programa solo puede acceder a su propio espacio virtual, para no meterse en los jardines de los otros procesos
+        -> But wait, there´s more: en la tabla de páginas, el REID crea una tabla que contiene los espacios de memoria designados a cada programa. La MMU realiza la traducción de cada dirección y comprueba los límites de la tabla correspondiente para que no se pase. 
+
+------------------------------
+      Funciones del SO
+------------------------------
+|> Desarrollo de programas: editores, depuradores, IDEs...
+|> Ejecución de programas: Carga de datos e instrucciones, control de I/O, gestión de memoria...
+|> Acceso a I/O: requiere el conocimiento del tipo de dispositivo conectado, cómo se debe tratar... El SO se encarga de ello. Por ejemplo, a través de controladores. El SO hace de interfaz
+|> Acceso a ficheros: de forma controlada, permisos, modo de tratarlos, compresión...
+|> En sistemas públicos, se debe controlar quién tiene permisos para accceder a qué. Resuelve conflictos en estos casos
+|> Detección y respuesta a errores: hardware, software, solucionar el error (Menos Windows. Goddammit Windows)
+|> Monitorización del funcionamiento del ordenador: tiempo de ejecución, estadísticas, mapas de memoria, optimización...
+
+------------------------------
+   Gestión de recursos y SO 
+------------------------------
+|> Al fin y al cabo, el SO es un software más. También depende de la CPU. Sin embargo, también proporciona instrucciones para la CPU 
+|> El objetivo principal del SO es dirigir la ejecución de programas y manejar los recursos. También asigna prioridades. 
+|> Una parte de la memoria está siempre reservada al SO. Incluye el kernel cargado; las instrucciones básicas para que funcione toda la pesca. 
+|> El SO decide qué programas pueden usar I/O, controla el acceso a ficheros, manejo de recursos usados por los usuarios...
+
+------------------------------
+   Lo que deseamos en un SO  
+------------------------------
+|> User friendly 
+|> Eficiencia
+|> Capacidad de evolucionar (actualizaciones que lo mejoren. No como otros, Microsoft)
+    -> Debe soportar nuevo hardware
+    -> Nuevos servicios. Actualízate o muere
+    -> Resolución de fallos (It's not a bug. It's a feauture)
