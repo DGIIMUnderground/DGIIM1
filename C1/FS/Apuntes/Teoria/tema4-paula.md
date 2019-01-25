@@ -177,8 +177,8 @@ La gestión de la estructura la realiza el SO o un software especial, por lo que
 
 >P.e. Logroño esta en el segundo tramo.
 
->Para buscar Cáceres, leo Almería pero no me dice nada. Ahora tendría que leer cuenca y entonces me habría pasado.
-
+>Para buscar Cáceres, primero leo Almería, pero no es el registro que busco, luego leo Álava, que tampoco es, finalmente leo Cáceres que es el que estoy buscando. Si no lo hubiese encontrado en el tramo, entonces no existe en el archivo.
+ 
 #### 2.3.1 Organización secuencial indexada: operaciones sobre archivos
 - **Consulta.** Se realiza por llave (esto es, localizar un registro conocida su llave) sin necesidad de leer los registros que no se encuentran en su mismo tramo. El procedimiento a seguir para realizar una consulta por llave es:
 	1. Leer secuencialmente las llaves en la zona de índices hasta encontrar una mayor o igual a la del registro buscado.
