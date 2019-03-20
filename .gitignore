@@ -2,3 +2,7 @@
 *~
 *#
 *.jpg
+*.aux
+*.toc
+*.log
+*.dvi
