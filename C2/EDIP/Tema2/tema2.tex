@@ -674,7 +674,7 @@ $$ \log y = \log b + a\log x $$
   $$ y = f(x) = ab^{x} $$
 
 	Ahora calcularemos los parámetros a y b:
-	$$ log y = log a + xlog b $$
+	$$ \log y = \log a + x\log b $$
 
 	Aplicando el cambio de variable obtenemos:
 	$$ y' = a' + b'x $$
@@ -701,7 +701,7 @@ condicionada $Y/X = x_i$.
 Son bien conocidas las cualidades de la media aritmética como valor
 representativo del comportamiento de una variable. Teniendo en cuenta este hecho
 y el comentario anterior, se define la curva de regresión de tipo I de Y/X como
-la curva que pasa por los puntos $(x_i,\overline{y_i}; i = 1,\ldots,k $.
+la curva que pasa por los puntos $(x_i,\overline{y_i}; i = 1,\ldots,k)$.
 De forma análoga se hace con la curva de regresión X/Y.
 
 Las curvas así definidas tienen la importante propiedad de ser entre todas las
@@ -724,13 +724,9 @@ Como comentamos en el punto de independencia y dependencia estadística existen
 dos situaciones extremas que se identifican con la incorrelación y correlación
 perfecta (dependencia funcional).
 
-- Cuando el grado de correlación entre las variables según una función de
-- regresión ajustada sea nulo, se dirá que las variables están incorreladas
-- según esa función de regresión. Cuando el grado de correlación entre las
-- variables sea máximo, (total), se dirá que la correlación entre las varibales
-- según el modelo ajustado es perfecta e indicará dependencia funcional.
+ Cuando el grado de correlación entre las variables según una función de regresión ajustada sea nulo, se dirá que las variables están incorreladas según esa función de regresión. Cuando el grado de correlación entre las variables sea máximo, (total), se dirá que la correlación entre las varibales según el modelo ajustado es perfecta e indicará dependencia funcional.
 
-Entre estos dos casos existirán distintos grados de correlación
+Entre estos dos casos existirán distintos grados de correlación.
 
 A continuación, se presentan distintas medidas de correlación fundamentales en el
 contexto de la Regresión mínimo-cuadrática.
@@ -774,19 +770,10 @@ entre las variables según la función de regresión ajustada.
 Como ventajas de esta medida destacamos que siempre es posible su cálculo y su
 interpretación es inmediata. Sin embargo presenta dos inconvenientes.
 
-\vspace{2mm}
-
-- No está acotada superiormente, Esto provoca que no exista una cota general con
-- la que identificar la incorrelación y que, además, no quedan perfectamente
-- identificados los grados de correlación con valores de la varianza residual.
-
-\vspace{2mm}
-
-- Depende de las unidades de medida de la variable al cuadrado. Además ello
-- provoca que no sea posible la comparación de varianzas residuales
-- correspondientes al estudio del grado de correlación según diferentes modelos
-- en distintas distribuciones.
-
+\begin{itemize}
+    \item[-] No está acotada superiormente, Esto provoca que no exista una cota general con la que identificar la incorrelación y que, además, no quedan perfectamente identificados los grados de correlación con valores de la varianza residual.
+    \item[-] Depende de las unidades de medida de la variable al cuadrado. Además ello provoca que no sea posible la comparación de varianzas residuales correspondientes al estudio del grado de correlación según diferentes modelos en distintas distribuciones.
+\end{itemize}
 \subsection{Coeficiente de determinación}
 
 	El coeficiente de determinación intenta subsanar los inconvenientes de la
