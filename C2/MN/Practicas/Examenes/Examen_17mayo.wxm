@@ -1,0 +1,89 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+dominio:makelist(0+(2*%pi*i)/11,i,0,11);
+n:length(dominio);
+p(x):=(cos(x));
+imagenes:map(p,dominio);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+omega(i,x):=product(x - dominio[j],j,1,i-1)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+DiferenciasDivididas:diagmatrix(n,0);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:1 thru n step 1 do(
+    DiferenciasDivididas[i][1]:imagenes[i]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+DiferenciasDivididas;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for j:2 thru n step 1 do (
+    for i:j thru n step 1 do (
+        DiferenciasDivididas[i][j]:(DiferenciasDivididas[i][j-1] - DiferenciasDivididas[i-1][j-1])/(dominio[i] - dominio[i-j+1])
+    )
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(DiferenciasDivididas);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+InterpolacionNewton(x):=sum(DiferenciasDivididas[i][i] * omega(i,x),i,1,n)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(InterpolacionNewton(x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Lagrange(i,x):=product((x - dominio[j])/(dominio[i] - dominio[j]),j,1,i-1) * product((x - dominio[j])/(dominio[i] - dominio[j]),j,i+1,n)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Lambdan(x):=sum(abs(Lagrange(i,x)),i,1,n)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(Lambdan(x),[x,0,2*%pi]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lambdan:50;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([cos(x),InterpolacionNewton(x)],[x,0,%pi],same_xy);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(InterpolacionNewton(x),[x,0,%pi]);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

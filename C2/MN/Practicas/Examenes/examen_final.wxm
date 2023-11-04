@@ -1,0 +1,74 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+f(x):=(log(x+2))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+datos:makelist(-1+2*i/5,i,0,5);
+imagenes:map(f,datos);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+coef: matrix(
+ [2,0,0,0,0,0], 
+ [1/2,2,1/2,0,0,0], 
+ [0,1/2,2,1/2,0,0], 
+ [0,0,1/2,2,1/2,0], 
+ [0,0,0,1/2,2,1/2], 
+ [0,0,0,0,0,2]
+);
+n:length(datos);
+h:(datos[n] - datos[1])/n;
+vector:[0,0,0,0,0,0];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:2 thru n-1 do vector[i]: (imagenes[i+1] - 2*imagenes[i] + imagenes[i-1]);
+vector;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ci:(3/h^2) * (coef^^-1).vector;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+alpha(i,x):=(imagenes[i+1] - imagenes[i])/h - h/6 * (ci[i+1][1] - ci[i][1])$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+beta(i,x):=imagenes[i] - ci[i][1] *(h^2)/6$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+si(i,x):=if x>datos[i] and x<datos[i+1] then
+ci[i][1]*((datos[i+1] - x)^3)/(6*h)+ ci[i+1][1]*((x - datos[i])^3)/(6*h) + alpha(i,x)*(x - datos[i]) + beta(i,x)
+else 0$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+s(x):=sum(si(i,x),i,1,n-1)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([s,f],[x,-1,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+diff(s,x,2,-1);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
