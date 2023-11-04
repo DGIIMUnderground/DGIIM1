@@ -1,0 +1,68 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+linsolve([2*x+y-3*z=0, x+y+z=0, x+z=0], [x,y,z]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:matrix([2,2,1,2],[4,6,1,3],[6,12,1,3],[2,4,−1,−1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lu_factor(a);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+b:transpose([1,−2,3,−4]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lu_backsub(lu_factor(a),b);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+c:matrix([0.24,1.1,3/2,3.45],[−1.2,1,3.5,6.7],[33.1,1,2,−3/8],[4,17,71,−4/81]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+d:[1,2,4,−21/785];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+n:matrix_size(c);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for k:1 step 1 thru n[1] do 
+for i:k+1 step 1 thru n[1] do 
+for j:k step 1 thru n[2] do (
+    if (c[k][k]=0) then print("No se puede") else (
+        m:c[i][k]/c[k][k],
+        c[i][j]:c[i][j]-m.c[k][j],
+        d[i]:d[i]-m.d[i]
+    )
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+c;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+d;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

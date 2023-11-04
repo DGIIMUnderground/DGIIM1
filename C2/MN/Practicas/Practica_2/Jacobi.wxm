@@ -1,0 +1,53 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+/*Ejercicio4*/;/*Jacobi*/
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a: matrix(
+ [4,1,1], 
+ [2,-9,0], 
+ [0,-8,-6]
+);
+b:[6,-7,-14];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+n:matrix_size(a)[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x:makelist(0,i,1,n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+y:x;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+iteraciones:1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for m:1 thru iteraciones do (
+    for i:1 thru n do y[i]:(1/a[i,i])*(b[i]-sum(a[i,j]*x[j],j,1,i-1)-sum(a[i,j]*x[j],j,i+1,n)),
+    x:y
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

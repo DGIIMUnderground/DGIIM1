@@ -1,0 +1,55 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+P:[0.5, 1, -0.25, -0.5, 0.2];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+y:[1,0.2,1,0.2,1/3];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+N:length(y);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+dife: genmatrix(lambda([i,j], 0), N, N+1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:1 thru N do (
+    dife[i][1]:P[i],
+    dife[i][2]:y[i]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+dife /** fdf */;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for j:3 thru N+1 do (
+    for i:j-1 thru N do /**esa condicion indica la diagonal fila 3 col 2*/ (
+        if i+1=j then 
+        dife[i][j] : (dife[i][j-1]-dife[i-1][j-1])/(P[i]-P[1])
+         else  
+        dife[i][j] : (dife[i][j-1]-dife[i-1][j-1])/(dife[i][1]-dife[i-(j-2)][1])
+    )
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+dife;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

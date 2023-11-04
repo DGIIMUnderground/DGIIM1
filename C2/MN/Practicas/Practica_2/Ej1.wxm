@@ -1,0 +1,97 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+u:matrix([0.34,-1.99,2/7,0],[0,1.1,2.3,-3.57],[0,0,3.2,33],[0,0,0,66.72]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+b:transpose([1,34,78,-9.42]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x:transpose([0,0,0,0]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+N:matrix_size(u)[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+print("Implementación de Paula:");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+c:0;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+if determinant(u)=0 then print("No es regular la matriz") else print ("Es regular");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:N step -1 thru 1 do (
+    c:0,
+    for j:i+1 step 1 thru N do
+    c:c+(u[i][j].x[j]),
+    x[i]:1/(u[i][i])*(b[i]-c)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+u.x;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+print("Implementación de Andrés:");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones:[0,0,0,0];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+j:N;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:N thru 1 step -1 do (
+    soluciones[i] : (b[i] - soluciones[j]*u[i][j] - soluciones[j-1]*u[i][j-1] - soluciones[j-2]*u[i][j-2] - soluciones[j-3]*u[i][j-3]  )/u[i][i] 
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/* Comentario: este cutre-algoritmo se aprovecha del hecho de que soluciones está inicializado a 0. 
+No te hacen falta dos bucles, porque vas construyendo desde abajo hacia arriba. 
+Por ejemplo: en la iteración 1, se ignora a soluciones 3, 2 y 1 porque valen 0. 
+En la iteración 2, se consigue usar solución 4 y se ignoran 2 y 1, porque siguen valiendo 0.
+Realmente, me hace gracia porque es la fórmula que te queda cuando pones la matriz * soluciones = b, 
+puesta directamente en un bucle)*/;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

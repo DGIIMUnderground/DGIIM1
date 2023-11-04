@@ -1,0 +1,61 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+/*Doolittle*/;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:matrix([3,6,9],[1,4,11],[0,4,19]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+b:transpose([1/2,−2/3,−3/4]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+n:matrix_size(a)[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lu:lu_factor( transpose(a) )[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+u:transpose(genmatrix( lambda([i,j], if i=j then 1 else if j<=i then lu[i,j] else 0) ,n,n));
+l:transpose(genmatrix( lambda([i,j], if i<=j then lu[i,j] else 0),n,n));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+y:transpose(makelist(0,i,1,n) );
+x:transpose( makelist(0,i,1,n) );
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for r:1 thru n do (
+    y[r]:(1/l[r,r])*(b[r]-sum(l[r,s]*y[s],s,1,n) )
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for r:n step -1 thru 1 do (
+    x[r]:(1/u[r,r])*(y[r]-sum(u[r,s]*x[s],s,1,n) )    
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(x);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
