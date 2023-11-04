@@ -1,0 +1,111 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+s:1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:6 step 1 thru 19 do print("El producto de los inversos de los numeros naturales entre 6 y 19 es: ",s:s*1/i);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+v:makelist(1,i,1,43);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:3 step 1 thru 43 do (
+    v[i]:(v[i-1]+v[i-2]),
+    print("Termino numero: ",i," es ",v[i])
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(n):=sqrt(5+10^-n)-sqrt(5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 20 do print("f(",i,") es ",float(f(i)));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+g(n):=10^-n/(sqrt(5+10^-n)+sqrt(5));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 20 do print("g(",i,") es ",float(g(i)));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a: matrix(
+ [1,1,0], 
+ [0,1,0], 
+ [0,0,1]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+b:transpose(a);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+normmax(b):=block(apply(max,makelist(apply("+",abs(b[i])),i,1,matrix_size(b)[1])))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+print(normmax(b));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+h(x):=if determinant(x)=0 then print("No regular") else print("Su norma maximo es ", normmax(x))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+h(b);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+matrizsingular:matrix(
+ [3,03,04], 
+ [0,0,0],
+ [0,0,0]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+h(matrizsingular);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+euclidea(y):=sqrt(apply(max,abs(eigenvalues(y.transpose(y))[1])))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mimatriz: genmatrix(lambda([i,j], i/(i+j+1)), 2, 4);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+euclidea(mimatriz);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
